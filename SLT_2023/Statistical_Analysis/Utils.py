@@ -1,10 +1,8 @@
 
 from scipy import stats
 from sklearn import metrics
-import statsmodels
 import numpy as np
-from sklearn import metrics
-import sklearn
+import statsmodels
 
 
 def delete_multiple_element(list_object, indices):
