@@ -17,15 +17,16 @@ def delete_multiple_element(list_object, indices):
     return list_object
 
 
-def kruskal(f, task, c, p, c_name, p_name):
-    for i, title in enumerate(task):
+def kruskal(f, biomarker, c, p, c_name, p_name):
+    '''Function perform Kruskal-Wallis t-tests. '''
+    for i, title in enumerate(biomarker):
         nome = title
         f.write(('\n' + f'kruskal results for {title} {c_name} {p_name} {stats.kruskal(c[i], p[i]).pvalue} \n\n'))
 
 
 def compute_auc(array_1, array_2):
 
-    ''''Compute AUROC in each pair-wise comparison.'''''
+    ''' Compute AUROC for each pair of biomarkes.'''
 
     xs = np.concatenate([array_1, array_2], axis=1)
     y = np.concatenate([array_1.shape[1] * [2], array_2.shape[1] * [1]])
@@ -38,13 +39,16 @@ def compute_auc(array_1, array_2):
 
 
 def compute_eta_squared(H, n_of_grp, n_of_observ):
-    return (H - n_of_grp + 1) / (n_of_observ - n_of_grp)
 
+    '''Compute eta squared effect size.'''
+
+    return (H - n_of_grp + 1) / (n_of_observ - n_of_grp)
 
 
 def holm_correction(kruskal):
 
-    ''''Holm correction to apply after Kruskal wallis test. '''
+    ''''Holm correction to apply after Kruskal-Wallis t-test. '''
+
     line_to_remove = []
     values = []
     corrected = []
@@ -74,7 +78,7 @@ def holm_correction(kruskal):
 
 def read_stats_test(file):
 
-    ''' Read the statistics from .txt files. ''''
+    ''' Read the statistics from .txt files. '''
 
     with open(file, 'r') as f:
         lista = []
@@ -93,7 +97,7 @@ def read_stats_test(file):
 
 def compute_best_scores(lista):
 
-    ''''Extract only p-values < 0.0.5 from saved statistics. ''''
+    ''' Extract only p-values < 0.0.5 from saved statistics. '''
 
     values = []
     critical = []
