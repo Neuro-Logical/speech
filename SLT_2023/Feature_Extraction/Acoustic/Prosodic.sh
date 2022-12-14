@@ -12,7 +12,6 @@ python prosody.py "/export/b15/afavaro/Frontiers/ADR_2021/audio_16k/" "/export/b
 
 # Pause-related features extraction using DigiPsych Prosody: https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody
 
-
 python featurize.py -a  /export/c12/afavaro/NLS_Data_Set_16k -f 20
 
 python featurize.py -a  /export/b15/afavaro/Frontiers/ADR_2021/audio_16k/ -f 20
