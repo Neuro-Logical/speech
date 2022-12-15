@@ -13,8 +13,6 @@ def uncertanty(text):
         cont_con = cont_con + 1
     if "may" in text:
         cont_con = cont_con + 1
-    if "um" in text:
-        cont_con = cont_con + 1
     if "uhm" in text:
         cont_con = cont_con + 1
     if "ah" in text:
@@ -28,13 +26,12 @@ def uncertanty(text):
 
 
 def repetitions(text):
+
     """ Function design to capture the redundancy in the code.  To operationalize
     redundancy I chose to count the repetitions """
 
     stopwords = list(stopwords.words('english'))
-
     repetition = 0
-
     text = text.split()
     d = dict()
 
@@ -58,6 +55,7 @@ def repetitions(text):
 
 
 def informational_verb(text):
+
     """ Informativeness of the narratives represented by
     counting how many (if any) salient events (verbs) are mentioned"""
 
@@ -106,6 +104,7 @@ def informational_verb(text):
 
 
 def informational_content(text):
+
     """ Informativeness of the description represented by
     counting how many (if any) salient object (nouns) are mentioned"""
 
@@ -147,7 +146,6 @@ def informational_content(text):
         cont_con = cont_con + 1
 
     return cont_con
-
 
 def ratio_info_rep_plus_uncert(df_):
     """ Ratio between informativeness and uncertanty,
