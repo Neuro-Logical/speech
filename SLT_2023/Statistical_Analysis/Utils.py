@@ -4,6 +4,13 @@ from sklearn import metrics
 import numpy as np
 import statsmodels
 
+'''Functions used to perform:
+
+1 - Kruskal-Wallis pairwise t-tests.
+2 - FDR corrections.
+3 - Compute the AUROC associated to each biomarker.
+4 -  Compute the eta squared effect size. '''
+
 
 def delete_multiple_element(list_object, indices):
 
@@ -15,11 +22,10 @@ def delete_multiple_element(list_object, indices):
     return list_object
 
 
-def kruskal(f, biomarker, c, p, c_name, p_name):
-
-    """Function perform Kruskal-Wallis t-tests. """
-
-    for i, title in enumerate(biomarker):
+def kruskal(f, biomarkers, c, p, c_name, p_name):
+    """ Function that performs pair-wise kruskal wallis t-tests given in input
+    1) f = : """
+    for i, title in enumerate(biomarkers):
         nome = title
         f.write(('\n' + f'kruskal results for {title} {c_name} {p_name} {stats.kruskal(c[i], p[i]).pvalue} \n\n'))
 
@@ -39,16 +45,13 @@ def compute_auc(array_1, array_2):
 
 
 def compute_eta_squared(H, n_of_grp, n_of_observ):
-
-    """Compute eta squared effect size"""
-
     return (H - n_of_grp + 1) / (n_of_observ - n_of_grp)
+
 
 
 def holm_correction(kruskal):
 
-    """'Holm correction to apply after Kruskal-Wallis t-test"""
-
+    """ Holm correction to apply after Kruskal wallis test """
     line_to_remove = []
     values = []
     corrected = []
@@ -78,7 +81,7 @@ def holm_correction(kruskal):
 
 def read_stats_test(file):
 
-    """ Read the statistics from .txt files"""
+    """ Read the statistics from .txt files """
 
     with open(file, 'r') as f:
         lista = []
@@ -94,11 +97,9 @@ def read_stats_test(file):
     return lista
 
 
-
-
 def compute_best_scores(lista):
 
-    """ Extract only p-values < 0.0.5 from saved statistics"""
+    """Extract only p-values < 0.0.5 from saved statistics"""
 
     values = []
     critical = []

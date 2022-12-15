@@ -1,4 +1,4 @@
-Code associated to the paper entittled:
+Code associated to the paper entitled:
 
 ## "Multilingual Evaluation of Interpretable Biomarkers to Represent Language and Speech Patterns in Parkinson’s Disease (2023)"
 
