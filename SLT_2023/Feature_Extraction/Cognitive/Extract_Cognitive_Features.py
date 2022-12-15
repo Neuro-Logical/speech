@@ -159,7 +159,6 @@ def ratio_info_rep_plus_uncert(df_):
 
     return df_
 
-
 def ratio_rep_certanty(df_):
     """ Function designed to measure the ratio between repetitions and uncertanty"""
 
