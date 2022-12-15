@@ -3,6 +3,8 @@ export PATH=$PATH:$KALDI_ROOT/src/featbin/
 
 #prosodic features extraction using Disvoice: https://github.com/jcvasquezc/DisVoice/tree/master/disvoice/prosody
 
+# The script saves a feature matrix in csv format.
+
 python prosody.py "/export/b15/afavaro/Frontiers/Czech_PD/All_16k/" "/export/b15/afavaro/Frontiers/Czech_PD/prosody.csv" "true" "false" "csv"
 
 python prosody.py  "/export/b15/afavaro/Frontiers/German_PD/All/" "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GERMAN/Acoustic/Prosody/prosody.csv" "true" "false" "csv"

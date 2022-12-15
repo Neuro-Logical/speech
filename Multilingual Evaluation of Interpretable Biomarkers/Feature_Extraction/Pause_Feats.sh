@@ -5,7 +5,9 @@ export PATH=$PATH:$KALDI_ROOT/src/featbin/
 
 # Pause related features extracted with: https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody
 
-
+# f = frame length, namely the length of the frame used by the VAD adopted for the feature extraction.
+# f can be 10, 20, 30 ms.
+# -a is the path of folder containing the recordings from which
 
 python featurize.py -a  /export/b15/afavaro/Frontiers/Czech_PD/All_16k/ -f 20 
 
