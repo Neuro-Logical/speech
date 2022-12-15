@@ -6,11 +6,14 @@ the authors of this study at Johns Hopkins Hospital and contains spoken response
 object naming) from participants with varying NDs organized into categories and CN participants. Among the different NDs contained in the data
 set, in this work we focused on three main types of NDs, namely, Parkinson's Disease (PD), Parkinson’s disease mimics (PDM), and Alzheimer's Disease.
 To validate the results obtained for the  AD group, the same analysis was repeated using **ADReSSo
-(ADR) 2021** challenge data set, obtained from the DementiaBank, including recordings from a CTP description
+(ADR) 2021** challenge data set (Luz et al., 2020), obtained from the DementiaBank, including recordings from a CTP description
 task. Only the training subset containing recordings and transcriptions from 87 AD participants and 79 CN participants
 was adopted.
 
-Detailed description of the ADR data set can be found at: 
+Detailed description of the ADR data set can be found at: Saturnino Luz, Fasih Haider, Sofia de la Fuente, Davida
+Fromm, and Brian MacWhinney, “Alzheimer’s dementia
+recognition through spontaneous speech: The adress
+challenge,” arXiv preprint arXiv:2004.06833, 2020.
 
 Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R. D., Villalba, J., Dehak, N., Moro-
 Velazquez, L. A Multi-Modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different
@@ -41,3 +44,9 @@ We report an example of the statistical analysis that we perform in order to ass
 ### Reproducibility
 
 Due to the licensing of the used data sets, we are not allowed to publish the recordings, the extracted features, nor the labels. However, we provided the source code to perform the feature extraction, and the statistical reported in the paper. 
+
+
+#### References 
+
+Saturnino Luz, Fasih Haider, Sofia de la Fuente, Davida Fromm, and Brian MacWhinney, “Alzheimer’s dementia
+recognition through spontaneous speech: The adress challenge,” arXiv preprint arXiv:2004.06833, 2020.
