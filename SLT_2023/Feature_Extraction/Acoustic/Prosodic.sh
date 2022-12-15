@@ -14,7 +14,7 @@ python prosody.py "/export/b15/afavaro/Frontiers/ADR_2021/audio_16k/" "/export/b
 
 # f = frame length, namely the length of the frame used by the VAD adopted for the feature extraction.
 # f can be 10, 20, 30 ms.
-# -a is the path of folder containing the recordings.
+# -a is the path to the  folder containing the recordings.
 
 python featurize.py -a  /export/c12/afavaro/NLS_Data_Set_16k -f 20
 
