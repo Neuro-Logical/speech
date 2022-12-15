@@ -7,7 +7,7 @@ export PATH=$PATH:$KALDI_ROOT/src/featbin/
 
 # f = frame length, namely the length of the frame used by the VAD adopted for the feature extraction.
 # f can be 10, 20, 30 ms.
-# -a is the path to the  folder containing the recordings.
+# -a is the path to the folder containing the recordings.
 
 python featurize.py -a  /export/b15/afavaro/Frontiers/Czech_PD/All_16k/ -f 20 
 
