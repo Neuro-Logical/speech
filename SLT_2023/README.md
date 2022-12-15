@@ -1,4 +1,4 @@
-
+# A Multi-modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders
 
 In this project, we analyzed cognitive, linguistic, and acoustic patterns from the speech of different individuals with varying neurological disorders. 
 The original recordings belong to two different data sets. The first, **NeuroLogical Signal (NLS)** is a private data set collected by
