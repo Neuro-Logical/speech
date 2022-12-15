@@ -5,7 +5,7 @@ Code associated to the paper:
 
 Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R. D., Villalba, J., Dehak, N., Moro-
 Velazquez, L. A Multi-Modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different
-Neurological Disorders in The 2022 IEEE Spoken Language Technology Workshop (SLT 2022) 
+Neurological Disorders in The 2022 IEEE Spoken Language Technology Workshop (SLT 2023) 
 
 This repository is a public open-source implementation that supports the extraction of cognitive, linguistic and acoustic features from speech recordings. This project has the aim of designing, extracting and analyzing speech and language production of subjects with different neurological disorders. 
 In this repository we report the code that supports both the **feature extraction** and the the **statistical analysis** that we perform to evaluate the significance of the features between experimental groups.
