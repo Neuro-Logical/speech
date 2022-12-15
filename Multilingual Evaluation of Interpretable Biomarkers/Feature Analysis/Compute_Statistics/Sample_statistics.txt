@@ -1,0 +1,33 @@
+
+kruskal results for Word_Count_No_stop_words controls vs. parkinson KruskalResult(statistic=10.997124624157841, pvalue=0.0009125334630060481) 
+
+
+kruskal results for Word_Count controls vs. parkinson KruskalResult(statistic=4.291925364355255, pvalue=0.038293777015049976) 
+
+
+kruskal results for Avg_Word_Length controls vs. parkinson KruskalResult(statistic=0.8097053355269164, pvalue=0.36820738266994235) 
+
+
+kruskal results for Sentence_Count controls vs. parkinson KruskalResult(statistic=0.15955006333929436, pvalue=0.6895711006512153) 
+
+
+kruskal results for Avg_Sentence_Length_in_Words controls vs. parkinson KruskalResult(statistic=0.7550025388735202, pvalue=0.3848970045042668) 
+
+
+kruskal results for Noun_Count controls vs. parkinson KruskalResult(statistic=2.926056831537883, pvalue=0.08716013724305101) 
+
+
+kruskal results for Verb_Count controls vs. parkinson KruskalResult(statistic=0.22625148851970978, pvalue=0.6343173316775663) 
+
+
+kruskal results for Adverb_Count controls vs. parkinson KruskalResult(statistic=2.926056831537883, pvalue=0.08716013724305101) 
+
+
+kruskal results for Numeral Count controls vs. parkinson KruskalResult(statistic=1.3164775603799748, pvalue=0.2512251981990114) 
+
+
+kruskal results for Auxiliary_Count controls vs. parkinson KruskalResult(statistic=2.7780918800563423, pvalue=0.09556195895003634) 
+
+
+kruskal results for Adjective_Count controls vs. parkinson KruskalResult(statistic=4.226451152981876, pvalue=0.039798573096557724) 
+
