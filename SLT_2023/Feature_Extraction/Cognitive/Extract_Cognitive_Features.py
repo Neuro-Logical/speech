@@ -27,8 +27,7 @@ def uncertanty(text):
 
 def repetitions(text):
 
-    """ Function design to capture the redundancy in the code.  To operationalize
-    redundancy I chose to count the repetitions """
+    """ Function that counts the numner of repetions in each recording, after stop word removal """
 
     stopwords = list(stopwords.words('english'))
     repetition = 0
@@ -56,7 +55,7 @@ def repetitions(text):
 
 def informational_verb(text):
 
-    """ Informativeness of the narratives represented by
+    """ Function that computes the informativeness of the narratives represented by
     counting how many (if any) salient events (verbs) are mentioned"""
 
     cont_con = 0
