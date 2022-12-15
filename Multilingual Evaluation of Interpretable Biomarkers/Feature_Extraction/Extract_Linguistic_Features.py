@@ -1,60 +1,25 @@
-from lexicalrichness import LexicalRichness
-import pandas as pd
-import numpy as np
 from nltk.corpus import stopwords
-import re
 import spacy
 from spacy.matcher import Matcher
-
-
-def compute_lexical_diversity(transcript):
-    """Function to compute different metrics for lexical diversity"""
-
-    lex = LexicalRichness(transcript)
-    # word_count = lex.words
-    unique_word_count = lex.terms
-    type_token_ratio = lex.ttr
-    # root_type_token_ratio = lex.rttr
-    corrected_type_token_ratio = lex.cttr
-    # mean_segmental_type_token_ratio = lex.msttr(segment_window=12) #25
-    moving_average_type_token_ratio = lex.mattr(window_size=13)  # 25
-    # measure_textual_lexical_diversity= lex.mtld(threshold=0.72)
-    # hypergeometric_distribution_diversity = lex.hdd(draws=13)
-    # herdan_lexical_diversity_measure = lex.Herdan
-    summer_lexical_diversity_measure = lex.Summer
-    dugast_lexical_diversity_measure = lex.Dugast
-    # maas_lexical_diversity_measure = lex.Maas
-
-    return unique_word_count, type_token_ratio, corrected_type_token_ratio, moving_average_type_token_ratio, summer_lexical_diversity_measure, dugast_lexical_diversity_measure
-
-
-def load_files(data):
-    """Apply lexical richness function defined above to a dataframe."""
-
-    speakers = data['idx'].tolist()
-    sentences = data['sentence'].tolist()
-    labels = data['label'].tolist()
-    lex_vals = np.array([compute_lexical_diversity(sent) for sent in sentences])
-    names = ["unique_word_count", "type_token_ratio", "corrected_type_token_ratio", "moving_average_type_token_ratio",
-             "summer_lexical_diversity_measure", "dugast_lexical_diversity_measure"]
-    frame = pd.DataFrame({"speakers": speakers, "labels": labels, "sentences": sentences,
-                          **{name: val for name, val in zip(names, lex_vals.T)}})
-
-    return frame
-
 
 # Load the pretrained pipeline for English
 
 nlp = spacy.load('en_core_web_sm')
 
+#Model for the other languages:
+
+# nlp = spacy.load("es_core_news_sm") --> Spanish
+# nlp = spacy.load("de_core_news_sm") --> German
 # Create a function to preprocess the text
 
 # List of stopwords for english
 stopwords = list(stopwords.words('english'))
 
-#stopwords = list(stopwords.words('spanish')) for Spanish
-#stopwords = list(stopwords.words('german')) for German
-##stopwords = list(stopwords.words('italian')) for Italian
+# For the other languages:
+
+#stopwords = list(stopwords.words('spanish'))
+#stopwords = list(stopwords.words('german'))
+##stopwords = list(stopwords.words('italian'))
 
 def preprocess(text):
     '''This is a function to perform tokenization, lemmatization, removal of non-alphabetic characters
