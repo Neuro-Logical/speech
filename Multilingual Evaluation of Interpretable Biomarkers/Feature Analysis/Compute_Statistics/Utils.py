@@ -6,14 +6,12 @@ import numpy as np
 from sklearn import metrics
 import sklearn
 
-'''Functions used to perform:
-
-1 - Pair-wise Kruskal-Wallis H-tests.
-2 - FDR corrections.
-3 - Compute the AUROC associated to each biomarker.
-4 - Compute the eta squared effect size. 
-
-Example of output from kruskal function saved as txt is provided in '''
+(' Functions used to perform:\n'
+ '\n'
+ '1 - Pair-wise Kruskal-Wallis H-tests.\n'
+ '2 - FDR corrections.\n'
+ '3 - Compute the AUROC associated to each biomarker.\n'
+ '4 - Compute the eta squared effect size. ')
 
 
 
