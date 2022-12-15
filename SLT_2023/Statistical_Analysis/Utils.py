@@ -1,15 +1,15 @@
 
 from scipy import stats
-from sklearn import metrics
-import numpy as np
 import statsmodels
+import numpy as np
+from sklearn import metrics
 
-'''Functions used to perform:
+# Functions used to perform:
+#    '1 - Pair-wise Kruskal-Wallis H-tests.
+#    '2 - FDR corrections.\n'
+#    '3 - Compute the AUROC associated to each biomarker.
+#    '4 - Compute the eta squared effect size.
 
-1 - Kruskal-Wallis pairwise t-tests.
-2 - FDR corrections.
-3 - Compute the AUROC associated to each biomarker.
-4 -  Compute the eta squared effect size. '''
 
 
 def delete_multiple_element(list_object, indices):
@@ -22,17 +22,26 @@ def delete_multiple_element(list_object, indices):
     return list_object
 
 
-def kruskal(f, biomarkers, c, p, c_name, p_name):
-    """ Function that performs pair-wise kruskal wallis t-tests given in input
-    1) f = : """
-    for i, title in enumerate(biomarkers):
+def kruskal(output_path, biomarkers_name, c, p, c_name, p_name):
+
+    """ Function that perform pair-wise Kruskal-Wallis H-test from each pair of biomarkers/features.
+    f: output path where to save the statistics.
+    biomarkers_name: list of biomarkers' name.
+    c: matrix of features from the control group.
+    p: matrix of features from the parkinson's group.
+    c_name: control group name (e.g., "CN")
+    p_name: Parkinson's group name (e.g., "PD")
+    """
+
+    for i, title in enumerate(biomarkers_name):
         nome = title
-        f.write(('\n' + f'kruskal results for {title} {c_name} {p_name} {stats.kruskal(c[i], p[i]).pvalue} \n\n'))
+        output_path.write(('\n' + f'kruskal results for {title} {c_name} {p_name} {stats.kruskal(c[i], p[i]).pvalue} \n\n'))
 
 
 def compute_auc(array_1, array_2):
 
-    """ Compute AUROC for each pair of biomarkes."""
+    """ Function that computes AUROC in each pair-wise comparison.
+    The function takes as input the two arrays of biomarkers from the two experimental group under analysis (e.g., controls vs Parkinson's."""
 
     xs = np.concatenate([array_1, array_2], axis=1)
     y = np.concatenate([array_1.shape[1] * [2], array_2.shape[1] * [1]])
@@ -45,13 +54,22 @@ def compute_auc(array_1, array_2):
 
 
 def compute_eta_squared(H, n_of_grp, n_of_observ):
+
+    """ Function that computes the eta squared effect size.
+    H: is the value of the Kruskal Wallis H-test.
+    n_of_grp: is the number of experimental group considered.
+    n_of_observ: is the total number of samples considered."""
+
+
     return (H - n_of_grp + 1) / (n_of_observ - n_of_grp)
 
 
 
 def holm_correction(kruskal):
 
-    """ Holm correction to apply after Kruskal wallis test """
+    """Holm correction to apply after Kruskal wallis test.
+    Thr function takes as input the .txt containing the results of the Kruskal-Wallis test."""
+
     line_to_remove = []
     values = []
     corrected = []
@@ -81,7 +99,7 @@ def holm_correction(kruskal):
 
 def read_stats_test(file):
 
-    """ Read the statistics from .txt files """
+    """ Read the results of the statistical analysis saved as .txt files. '"""
 
     with open(file, 'r') as f:
         lista = []
@@ -99,7 +117,7 @@ def read_stats_test(file):
 
 def compute_best_scores(lista):
 
-    """Extract only p-values < 0.0.5 from saved statistics"""
+    """ Extract only p-values < 0.0.5 from saved statistics. """
 
     values = []
     critical = []
