@@ -9,4 +9,4 @@ Even though motor speech problems represent an early sign of Parkinson's Disease
 
 ### Reproducibility
 
-Due to the licensing of the used data sets, we are not allowed to publish the recordings, the features, nor the labels. However, we provide the source code to perform the feature extraction, the statistical and the correlation analysis reported in the paper. 
+Due to the licensing of the used data sets, we are not allowed to publish the recordings, the features, nor the labels. However, we provide the source code to perform the feature extraction, the statistical, and the correlation analysis reported in the paper. 
