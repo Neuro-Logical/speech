@@ -19,7 +19,7 @@ def compute_correlation_updrs(dataframe):
     p_vals = []
 
     for fea in feats:
-        data = atx[fea].tolist()
+        data = biomarkers[fea].tolist()
         corr, _ = spearmanr(data, updrs_pd)
         p_vals.append(_)
         file.append((f'Spearm correlation for feats {fea}: p_value {_} and correlation coeff is {corr}'))
@@ -50,7 +50,7 @@ def compute_correlation_updrs_speech(dataframe):
     p_vals = []
 
     for fea in feats:
-        data = atx[fea].tolist()
+        data = biomarkers[fea].tolist()
         corr, _ = spearmanr(data, updrs_pd)
         p_vals.append(_)
         file.append((f'Spearm correlation for feats {fea}: p_value {_} and correlation coeff is {corr}'))
@@ -83,7 +83,7 @@ def compute_correlation_hoehn_yahr(dataframe):
     p_vals = []
 
     for fea in feats:
-        data = atx[fea].tolist()
+        data = biomarkers[fea].tolist()
         corr, _ = spearmanr(data, updrs_pd)
         p_vals.append(_)
         file.append((f'Spearm correlation for feats {fea}: p_value {_} and correlation coeff is {corr}'))
