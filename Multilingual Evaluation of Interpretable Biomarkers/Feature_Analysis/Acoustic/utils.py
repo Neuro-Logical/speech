@@ -1,8 +1,9 @@
 
-from scipy import stats
-import statsmodels
 import numpy as np
+import statsmodels
+from scipy import stats
 from sklearn import metrics
+
 
 # Functions used to perform:
 #    '1 - Pair-wise Kruskal-Wallis H-tests.

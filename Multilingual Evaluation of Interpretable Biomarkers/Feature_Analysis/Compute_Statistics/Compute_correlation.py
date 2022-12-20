@@ -1,10 +1,9 @@
 import numpy as np
-from scipy.stats import spearmanr
 import statsmodels.api
+from scipy.stats import spearmanr
 
 
 def compute_correlation_updrs(dataframe):
-
     """Compute correlation between biomarker values and UPDRS scores.
     dataframe: pandas dataframe where the columns represent the features,
     each row corresponds to a different subject and a single column contains the UPDRS score
@@ -22,8 +21,8 @@ def compute_correlation_updrs(dataframe):
         p_vals.append(_)
         file.append((f'Spearm correlation for feats {fea}: p_value {_} and correlation coeff is {corr}'))
         # print spearman's correlation values and respective p-value
-       # if _ < 0.05:
-         #   print(f'p_value pearson correlation for feats {fea} is {_} \n and value is {corr}')
+    # if _ < 0.05:
+    #   print(f'p_value pearson correlation for feats {fea} is {_} \n and value is {corr}')
 
     # Apply FDR correction
     res = statsmodels.stats.multitest.fdrcorrection(p_vals, alpha=0.05, method='indep', is_sorted=False)
@@ -35,7 +34,6 @@ def compute_correlation_updrs(dataframe):
 
 
 def compute_correlation_updrs_speech(dataframe):
-
     """Compute correlation between biomarker values and UPDRS part III.I (speech evaluation) .
     dataframe: pandas dataframe where the columns represent the features,
     each row corresponds to a different subject and a single column contains the UPDRS III.I score
@@ -53,8 +51,8 @@ def compute_correlation_updrs_speech(dataframe):
         p_vals.append(_)
         file.append((f'Spearm correlation for feats {fea}: p_value {_} and correlation coeff is {corr}'))
         # print spearman's correlation values and respective p-value
-       # if _ < 0.05:
-         #   print(f'p_value pearson correlation for feats {fea} is {_} \n and value is {corr}')
+    # if _ < 0.05:
+    #   print(f'p_value pearson correlation for feats {fea} is {_} \n and value is {corr}')
 
     # Apply FDR correction
     res = statsmodels.stats.multitest.fdrcorrection(p_vals, alpha=0.05, method='indep', is_sorted=False)
@@ -65,10 +63,7 @@ def compute_correlation_updrs_speech(dataframe):
         print(m, feats[m[0]])
 
 
-
-
 def compute_correlation_hoehn_yahr(dataframe):
-
     """Compute correlation between biomarker values and UPDRS part III.I (speech evaluation) .
     dataframe: pandas dataframe where the columns represent the features,
     each row corresponds to a different subject and a single column contains the Hoenh & Yahr score
@@ -86,8 +81,8 @@ def compute_correlation_hoehn_yahr(dataframe):
         p_vals.append(_)
         file.append((f'Spearm correlation for feats {fea}: p_value {_} and correlation coeff is {corr}'))
         # print spearman's correlation values and respective p-value
-       # if _ < 0.05:
-         #   print(f'p_value pearson correlation for feats {fea} is {_} \n and value is {corr}')
+    # if _ < 0.05:
+    #   print(f'p_value pearson correlation for feats {fea} is {_} \n and value is {corr}')
 
     # Apply FDR correction
     res = statsmodels.stats.multitest.fdrcorrection(p_vals, alpha=0.05, method='indep', is_sorted=False)
@@ -96,4 +91,3 @@ def compute_correlation_hoehn_yahr(dataframe):
     values = res[1][l]
     for m in zip(l, values):
         print(m, feats[m[0]])
-

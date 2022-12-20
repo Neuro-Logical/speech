@@ -1,8 +1,8 @@
-
-from scipy import stats
-import statsmodels
 import numpy as np
+import statsmodels
+from scipy import stats
 from sklearn import metrics
+
 
 # Functions used to perform:
 #    '1 - Pair-wise Kruskal-Wallis H-tests.
@@ -11,9 +11,7 @@ from sklearn import metrics
 #    '4 - Compute the eta squared effect size.
 
 
-
 def delete_multiple_element(list_object, indices):
-
     indices = sorted(indices, reverse=True)
     for idx in indices:
         if idx < len(list_object):
@@ -23,7 +21,6 @@ def delete_multiple_element(list_object, indices):
 
 
 def kruskal(output_path, biomarkers_name, c, p, c_name, p_name):
-
     """ Function that perform pair-wise Kruskal-Wallis H-test from each pair of biomarkers/features.
     f: output path where to save the statistics.
     biomarkers_name: list of biomarkers' name.
@@ -35,11 +32,11 @@ def kruskal(output_path, biomarkers_name, c, p, c_name, p_name):
 
     for i, title in enumerate(biomarkers_name):
         nome = title
-        output_path.write(('\n' + f'kruskal results for {title} {c_name} {p_name} {stats.kruskal(c[i], p[i]).pvalue} \n\n'))
+        output_path.write(
+            ('\n' + f'kruskal results for {title} {c_name} {p_name} {stats.kruskal(c[i], p[i]).pvalue} \n\n'))
 
 
 def compute_auc(array_1, array_2):
-
     """ Function that computes AUROC in each pair-wise comparison.
     The function takes as input the two arrays of biomarkers from the two experimental group under analysis (e.g., controls vs Parkinson's."""
 
@@ -54,19 +51,15 @@ def compute_auc(array_1, array_2):
 
 
 def compute_eta_squared(H, n_of_grp, n_of_observ):
-
     """ Function that computes the eta squared effect size.
     H: is the value of the Kruskal Wallis H-test.
     n_of_grp: is the number of experimental group considered.
     n_of_observ: is the total number of samples considered."""
 
-
     return (H - n_of_grp + 1) / (n_of_observ - n_of_grp)
 
 
-
 def holm_correction(kruskal):
-
     """Holm correction to apply after Kruskal wallis test.
     Thr function takes as input the .txt containing the results of the Kruskal-Wallis test."""
 
@@ -98,7 +91,6 @@ def holm_correction(kruskal):
 
 
 def read_stats_test(file):
-
     """ Read the results of the statistical analysis saved as .txt files. '"""
 
     with open(file, 'r') as f:
@@ -116,7 +108,6 @@ def read_stats_test(file):
 
 
 def compute_best_scores(lista):
-
     """ Extract only p-values < 0.0.5 from saved statistics"""
 
     values = []
