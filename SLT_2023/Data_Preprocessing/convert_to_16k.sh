@@ -1,3 +1,5 @@
+#Resample directory containing audio files to 16 kHZ using sox."""
+
 in_dir=/export/c12/afavaro/NLS_Data_Set
 out_dir=/export/c12/afavaro/NLS_Data_Set_16k
 
