@@ -81,15 +81,11 @@ def informational_verb(text):
         cont_con = cont_con + 1
     if "falling" in text:
         cont_con = cont_con + 1
-    if "wearing" in text:
-        cont_con = cont_con + 1
-    if "running" in text:
-        cont_con = cont_con + 1
     if "wobbling" in text:
         cont_con = cont_con + 1
     if "drying" in text:
         cont_con = cont_con + 1
-    if "paying attention" in text:
+    if "ignoring" in text:
         cont_con = cont_con + 1
     if "reaching" in text:
         cont_con = cont_con + 1
