@@ -73,41 +73,33 @@ def informational_verb(text):
 
     if "washing" in text:
         cont_con = cont_con + 1
-    if "wash" in text:
-        cont_con = cont_con + 1
     if "overflowing" in text:
-        cont_con = cont_con + 1
-    if "overflow" in text:
         cont_con = cont_con + 1
     if "hanging" in text:
         cont_con = cont_con + 1
-    if "hang" in text:
+    if "trying to help" in text:
         cont_con = cont_con + 1
     if "falling" in text:
         cont_con = cont_con + 1
-    if "fall" in text:
-        cont_con = cont_con + 1
     if "wearing" in text:
-        cont_con = cont_con + 1
-    if "wear" in text:
         cont_con = cont_con + 1
     if "running" in text:
         cont_con = cont_con + 1
-    if "run" in text:
+    if "wobbling" in text:
         cont_con = cont_con + 1
     if "drying" in text:
-        cont_con = cont_con + 1
-    if "dry" in text:
         cont_con = cont_con + 1
     if "paying attention" in text:
         cont_con = cont_con + 1
     if "reaching" in text:
         cont_con = cont_con + 1
-    if "reach" in text:
+    if "reaching up" in text:
         cont_con = cont_con + 1
-    if "tipping" in text:
+    if "asking for cookie" in text:
         cont_con = cont_con + 1
-    if "tipp" in text:
+    if "laughing" in text:
+        cont_con = cont_con + 1
+    if "standing" in text:
         cont_con = cont_con + 1
 
     return cont_con
