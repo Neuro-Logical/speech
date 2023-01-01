@@ -1,0 +1,1 @@
+This code is for the paper entitled: "A Cross-lingual Evaluation of Interpretable and Non-interpretable Approaches for Automatic Detection of Parkinson's Disease from Language and Speech".
