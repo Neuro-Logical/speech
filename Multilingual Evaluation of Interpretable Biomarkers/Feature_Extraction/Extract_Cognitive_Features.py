@@ -37,8 +37,7 @@ def uncertanty(text):
 
 
 def repetitions(text):
-
-    """ Function that counts the numner of repetions in each recording, after stop word removal """
+    """ Count the number of repetitions in each recording, after stop word removal """
 
     stopwords = list(stopwords.words('english'))
     repetition = 0
@@ -66,8 +65,8 @@ def repetitions(text):
 
 def informational_verb(text):
 
-    """ Function that computes the informativeness of the narratives represented by
-    counting how many (if any) salient events (verbs) are mentioned"""
+    """ Compute the informativeness of the narratives by
+    counting how many (if any) salient events (verbs) are mentioned. """
 
     cont_con = 0
 
@@ -103,8 +102,7 @@ def informational_verb(text):
 
 def informational_content(text):
 
-    """ Informativeness of the description represented by
-    counting how many (if any) salient object (nouns) are mentioned"""
+    """ Count how many (if any) salient object (nouns) are mentioned in the description"""
 
     cont_con = 0
 
@@ -147,8 +145,8 @@ def informational_content(text):
 
 def ratio_info_rep_plus_uncert(df):
 
-    """ Ratio between informativeness and uncertanty,
-    where uncertainty is represented as repetition + uncertanty"""
+    """ Compute ratio between informativeness and uncertanty,
+    where uncertainty is represented as repetition + uncertainty"""
 
     summation = df['repetition'] + df["uncertanty"]
     ratio = df['informational'] / summation  # info / rep + uncertanty
@@ -157,7 +155,8 @@ def ratio_info_rep_plus_uncert(df):
     return df
 
 def ratio_rep_certanty(df):
-    """ Function designed to measure the ratio between repetitions and uncertanty"""
+
+    """ Compute the ratio between repetitions and uncertainty """
 
     division = df['repetition'] / df["uncertanty"]  # repetition / uncertainty
     df["ratio_rep_certanty"] = division

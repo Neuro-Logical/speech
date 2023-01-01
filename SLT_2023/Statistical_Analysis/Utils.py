@@ -98,7 +98,6 @@ def holm_correction(kruskal):
 
 
 def read_stats_test(file):
-
     """ Read the results of the statistical analysis saved as .txt files. '"""
 
     with open(file, 'r') as f:
@@ -115,15 +114,14 @@ def read_stats_test(file):
     return lista
 
 
-def compute_best_scores(lista):
-
+def compute_best_scores(list_results):
     """ Extract only p-values < 0.0.5 from saved statistics. """
 
     values = []
     critical = []
     final = []
 
-    for l in lista:
+    for l in list_results:
         ok = l.split('vs.')[1]
         num = ok.split(" ")[2]
         values.append(num)

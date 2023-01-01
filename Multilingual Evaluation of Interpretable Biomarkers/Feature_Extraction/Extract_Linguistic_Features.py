@@ -22,8 +22,8 @@ stopwords = list(stopwords.words('english'))
 ##stopwords = list(stopwords.words('italian'))
 
 def preprocess(text):
-    '''This is a function to perform tokenization, lemmatization, removal of non-alphabetic characters
-    and stopword removal'''
+    """This function performs tokenization, lemmatization, removal of non-alphabetic characters
+    and stopword removal"""
     # Create Doc object
     doc = nlp(text, disable=['ner'])
     # Generate lemmas
@@ -35,7 +35,7 @@ def preprocess(text):
 
 
 def count_words(string):
-    '''This function returns the number of words in a string'''
+    """This function returns the number of words in a string"""
     # Split the string into words
     words = string.split()
     # Return the number of words
@@ -43,7 +43,7 @@ def count_words(string):
 
 
 def word_length(string):
-    '''This function returns the average word length in characters for the words in an item'''
+    """This function returns the average word length in characters for the words in an item"""
     # Get the length of the full text in characters
     chars = len(string)
     # Split the string into words
@@ -69,7 +69,7 @@ def sentence_counter(text):
 # Note that this function is applied to the raw text in order to identify sentence boundaries
 
 def avg_sent_length(text):
-    """ This function returns the average sentence length in words."""
+    """This function returns the average sentence length in words."""
 
     doc = nlp(text)
     # Initialize a counter variable

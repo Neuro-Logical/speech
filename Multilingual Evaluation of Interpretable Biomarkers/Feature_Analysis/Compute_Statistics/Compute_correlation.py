@@ -9,7 +9,7 @@ def compute_correlation_updrs(dataframe):
     each row corresponds to a different subject and a single column contains the UPDRS score
     for each of the subject"""
 
-    biomarkers = dataframe.iloc[:, :-7].dropna()
+    biomarkers = dataframe.iloc[:, :-7].dropna() #select only columns in the data frame containing feature values.
     updrs_pd = biomarkers['updrs'].tolist()
     feats = biomarkers.columns.values.tolist()
     file = []
