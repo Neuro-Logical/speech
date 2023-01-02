@@ -21,7 +21,7 @@ for i in files:
     result = model.transcribe(i)
     test = result['text']
     base = os.path.basename(i).split(".wav")[0]
-    total = os.path.join(output_folder, base +  ".txt")
+    total = os.path.join(output_folder, base + ".txt")
     text_file = open(total, "wt")
     n = text_file.write(test)
     text_file.close()
