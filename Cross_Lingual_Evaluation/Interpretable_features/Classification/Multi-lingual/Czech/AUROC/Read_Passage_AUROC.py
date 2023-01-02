@@ -13,7 +13,6 @@ from sklearn.neighbors import KNeighborsClassifier
 from Cross_Validation_Multi_Lingual.Utils_RP import *
 from Cross_Validation_Multi_Lingual.Data_Prep_RP import *
 from sklearn.metrics import roc_auc_score
-
 random.seed(10)
 
 nls, nls_cols = nls_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NLS/Data_frame_RP.csv")
