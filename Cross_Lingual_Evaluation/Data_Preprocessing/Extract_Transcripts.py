@@ -7,12 +7,14 @@ repo = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/'
 output_folder = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Transcripts_2'
 paths = [os.path.join(repo, base) for base in os.listdir(repo)]
 
+# keep non empty recordings
 files = []
 for m in paths:
     size = os.stat(m).st_size/1000
     if size > 56:
         files.append(m)
 
+# extract transcripts and saved them
 for i in files:
     #print(i)
     model = whisper.load_model("medium")
