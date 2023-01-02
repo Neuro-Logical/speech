@@ -1,4 +1,3 @@
-from sklearn.metrics import classification_report, confusion_matrix
 import sys
 sys.path.append("/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Lingual_Evaluation/")
 import numpy as np
