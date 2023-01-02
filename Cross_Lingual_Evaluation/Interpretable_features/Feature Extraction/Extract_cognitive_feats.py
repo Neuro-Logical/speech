@@ -55,24 +55,23 @@ access to the predicted timestamp tokens of each word (token) without needing ad
  
 """
 
-german_repo = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k'
+repo = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k'
 output_folder = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment/'
-path_german = [os.path.join(german_repo, base) for base in os.listdir(german_repo)]
+paths = [os.path.join(repo, base) for base in os.listdir(repo)]
 
 #remove empty recordings
 
 files = []
-for m in path_german:
+for m in paths:
     size = os.stat(m).st_size/1000
     if size > 56:
         files.append(m)
 
 model = load_model('medium')
 modify_model(model)
-ind = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/PEC_014_ses01_Poem.wav")
+#ind = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/PEC_014_ses01_Poem.wav")
 
-for recording in files[ind:]:
-
+for recording in files:
     whole_tokens = []
     whole_time_stamps = []
     base_name = recording.split('/')[-1].split(".wav")[0]
