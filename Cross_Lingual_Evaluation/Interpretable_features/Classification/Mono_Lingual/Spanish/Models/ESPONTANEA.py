@@ -1,19 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
-from sklearn.metrics import classification_report, confusion_matrix
 import sys
-sys.path.append("/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Multi_Lingual_PD/")
-from sklearn.datasets import load_iris
-import pandas as pd
-from sklearn.model_selection import train_test_split
+sys.path.append("/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Lingual_Evaluation/")
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.tree import DecisionTreeClassifier
-import matplotlib.pyplot as plt
-from sklearn.datasets import load_iris
-from sklearn.linear_model import LogisticRegression
-from sklearn.inspection import DecisionBoundaryDisplay
-from sklearn.utils import shuffle
 import random
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -22,28 +9,10 @@ from sklearn.svm import SVC
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.feature_selection import SelectKBest, f_regression, f_classif
-from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LinearRegression
-from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import mean_squared_error
-from sklearn.pipeline import Pipeline
-from sklearn.datasets import make_classification
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.feature_selection import SelectKBest, mutual_info_classif
 from Cross_Validation.Utils import *
 from Cross_Validation.Data_Prep_monologue import *
-from sklearn.metrics import roc_curve
-from sklearn.metrics import roc_auc_score
 random.seed(10)
 
 spain = neurovoz_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NEUROVOZ/tot_data_experiments.csv")
