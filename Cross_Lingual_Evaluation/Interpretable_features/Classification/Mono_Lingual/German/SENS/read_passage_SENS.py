@@ -26,7 +26,6 @@ random.shuffle(arrayOfSpeaker_cn)
 arrayOfSpeaker_pd = pd_['names'].unique()
 random.shuffle(arrayOfSpeaker_pd)
 
-
 cn_sps = get_n_folds(arrayOfSpeaker_cn)
 pd_sps = get_n_folds(arrayOfSpeaker_pd)
 
