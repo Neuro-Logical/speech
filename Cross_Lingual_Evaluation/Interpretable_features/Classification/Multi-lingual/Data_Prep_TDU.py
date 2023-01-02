@@ -1,6 +1,4 @@
 import pandas as pd
-import numpy as np
-
 
 def gita_prep(path_to_dataframe):
 
