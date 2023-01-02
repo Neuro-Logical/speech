@@ -16,7 +16,6 @@ nlp = spacy.load('en_core_web_sm')
 stopwords = list(stopwords.words('english'))
 
 # For the other languages:
-
 #stopwords = list(stopwords.words('spanish'))
 #stopwords = list(stopwords.words('german'))
 ##stopwords = list(stopwords.words('italian'))
