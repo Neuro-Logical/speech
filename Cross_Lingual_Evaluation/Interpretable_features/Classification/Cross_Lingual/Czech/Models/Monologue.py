@@ -39,8 +39,8 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_selection import SelectKBest, mutual_info_classif
-from Cross_Validation_Cross_Mean.Utils_monologue import *
-from Cross_Validation_Cross_Mean.Data_Prep_monologue import *
+from Cross_Lingual.Utils_monologue import *
+from Cross_Lingual.Data_Prep_monologue import *
 from sklearn.metrics import roc_curve
 from sklearn.metrics import roc_auc_score
 np.random.seed(20)

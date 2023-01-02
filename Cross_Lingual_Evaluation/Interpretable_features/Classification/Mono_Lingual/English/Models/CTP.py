@@ -12,8 +12,8 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-from Cross_Validation.Utils import *
-from Cross_Validation.Data_Prep_monologue import *
+from Mono_Lingual.Utils import *
+from Mono_Lingual.Data_Prep_monologue import *
 random.seed(10)
 
 #nls = pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NLS/total_new_training.csv")
