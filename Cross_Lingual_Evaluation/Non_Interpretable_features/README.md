@@ -1,1 +1,1 @@
-Pipeline for non-interpetable approaches.
+Pipeline for non-interpretable approaches.
