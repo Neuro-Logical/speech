@@ -1,5 +1,5 @@
-import sys
-sys.path.append("/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Multi_Lingual_PD/")
+BASE_DIR = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/"
+
 import numpy as np
 import os
 from sklearn.ensemble import ExtraTreesClassifier
