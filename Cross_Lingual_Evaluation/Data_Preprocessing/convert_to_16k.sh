@@ -1,7 +1,7 @@
 in_dir=/export/c12/afavaro/NLS_Data_Set
 out_dir=/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/
 
-# Resampling of recordings to 16 kHz.
+# Resampling recordings to 16 kHz.
 
 for audio_File in $in_dir/*.wav
 do
