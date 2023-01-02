@@ -1,6 +1,5 @@
 BASE_DIR = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
 
-
 from Cross_Lingual_Evaluation.Interpretable_features.Classification.Cross_Lingual.Data_Prep_RP import *
 from Cross_Lingual_Evaluation.Interpretable_features.Classification.Cross_Lingual.Utils_RP import *
 import numpy as np
@@ -14,11 +13,10 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from Cross_Lingual.Utils_RP import *
 from Cross_Lingual.Data_Prep_RP import *
-from sklearn.metrics import roc_auc_score
 np.random.seed(20)
 
 nls, nls_cols = nls_prep(os.path.join(BASE_DIR, "/NLS/Data_frame_RP.csv"))
-colombian, colombian_cols = gita_prep((os.path.join(BASE_DIR, "/GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
+colombian, colombian_cols = gita_prep(os.path.join(BASE_DIR, "/GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
 german, german_cols = german_prep(os.path.join(BASE_DIR, "/GERMAN/final_data_frame_with_intensity.csv"))
 czech, czech_clols = czech_prep(os.path.join(BASE_DIR, "/Czech/final_data_experiments_updated.csv"))
 italian, italian_cols = italian_prep(os.path.join(BASE_DIR, "/ITALIAN_PD/RP_data_frame.csv"))
