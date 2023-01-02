@@ -1,5 +1,7 @@
-import sys
-sys.path.append("/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Multi_Lingual_PD/")
+BASE_DIR = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Cross_Lingual.Data_Prep_TDU import *
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Cross_Lingual.Utils_TDU import *
 import numpy as np
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -10,15 +12,13 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-from Cross_Lingual.Data_Prep_TDU import *
-from Cross_Lingual.Utils_TDU import *
 np.random.seed(20)
 
-colombian, colombian_cols = gita_prep(
-    "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GITA/total_data_frame_novel_task_combined_ling_tot.csv")
-spain, spain_cols = neurovoz_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NEUROVOZ/tot_data_experiments.csv")
-german, german_cols = german_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GERMAN/final_data_frame_with_intensity.csv")
-italian, italian_cols = italian_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/ITALIAN_PD/tot_experiments_ling_fin.csv")
+
+colombian, colombian_cols = gita_prep(os.path.join(BASE_DIR, "GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
+spain, spain_cols = neurovoz_prep(os.path.join(BASE_DIR, "/NEUROVOZ/tot_data_experiments.csv"))
+german, german_cols = german_prep(os.path.join(BASE_DIR, "/GERMAN/final_data_frame_with_intensity.csv"))
+italian, italian_cols = italian_prep(os.path.join(BASE_DIR, "/ITALIAN_PD/tot_experiments_ling_fin.csv"))
 
 one_inter = IntersecOftwo(german_cols, italian_cols)
 lista_to_keep = IntersecOfSets(one_inter, colombian_cols,spain_cols)
