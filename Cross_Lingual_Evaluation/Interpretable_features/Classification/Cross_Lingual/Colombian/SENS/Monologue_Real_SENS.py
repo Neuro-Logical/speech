@@ -1,6 +1,7 @@
-from sklearn.metrics import classification_report, confusion_matrix
-import sys
-sys.path.append("/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Lingual/")
+BASE_DIR = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Cross_Lingual.Data_Prep_monologue import *
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Cross_Lingual.Utils_monologue import *
 import numpy as np
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -15,20 +16,20 @@ from Cross_Lingual.Utils_monologue import *
 from Cross_Lingual.Data_Prep_monologue import *
 np.random.seed(20)
 
-nls, nls_cols = nls_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NLS/total_new_training.csv")
-colombian, colombian_cols = gita_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GITA/total_data_frame_novel_task_combined_ling_tot.csv")
-spain, spain_cols = neurovoz_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NEUROVOZ/tot_data_experiments.csv")
-german, german_cols = german_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GERMAN/final_data_frame_with_intensity.csv")
-czech, czech_clols = czech_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/Czech/final_data_experiments_updated.csv")
+nls, nls_cols = nls_prep(os.path.join(BASE_DIR, "/NLS/total_new_training.csv"))
+colombian, colombian_cols = gita_prep(os.path.join(BASE_DIR, "/GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
+spain, spain_cols = neurovoz_prep(os.path.join(BASE_DIR, "/NEUROVOZ/tot_data_experiments.csv"))
+german, german_cols = german_prep(os.path.join(BASE_DIR, "/GERMAN/final_data_frame_with_intensity.csv"))
+czech, czech_clols = czech_prep(os.path.join(BASE_DIR, "/Czech/final_data_experiments_updated.csv"))
 
 one_inter = IntersecOfSets(german_cols, nls_cols, spain_cols)
-lista_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_clols)
+list_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_clols)
 
-nls = nls[nls.columns.intersection(lista_to_keep)]
-czech = czech[czech.columns.intersection(lista_to_keep)]
-colombian = colombian[colombian.columns.intersection(lista_to_keep)]
-german = german[german.columns.intersection(lista_to_keep)]
-spain = spain[spain.columns.intersection(lista_to_keep)]
+nls = nls[nls.columns.intersection(list_to_keep)]
+czech = czech[czech.columns.intersection(list_to_keep)]
+colombian = colombian[colombian.columns.intersection(list_to_keep)]
+german = german[german.columns.intersection(list_to_keep)]
+spain = spain[spain.columns.intersection(list_to_keep)]
 
 colombian = colombian.reindex(sorted(colombian.columns), axis=1)
 german = german.reindex(sorted(german.columns), axis=1)

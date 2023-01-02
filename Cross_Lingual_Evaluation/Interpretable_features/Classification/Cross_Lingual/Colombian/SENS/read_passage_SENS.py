@@ -1,5 +1,6 @@
-import sys
-sys.path.append("/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Lingual/")
+
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Cross_Lingual.Data_Prep_RP import *
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Cross_Lingual.Utils_RP import *
 import numpy as np
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -10,8 +11,7 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-from Cross_Lingual.Utils_RP import *
-from Cross_Lingual.Data_Prep_RP import *
+
 np.random.seed(20)
 
 nls, nls_cols = nls_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NLS/Data_frame_RP.csv")
