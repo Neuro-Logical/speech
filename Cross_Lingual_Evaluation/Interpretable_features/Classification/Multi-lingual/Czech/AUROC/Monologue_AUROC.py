@@ -12,7 +12,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from Cross_Validation_Multi_Lingual.Utils_monologue import *
 from Cross_Validation_Multi_Lingual.Data_Prep_Monologue import *
-from sklearn.metrics import roc_curve
 from sklearn.metrics import roc_auc_score
 
 random.seed(10)
