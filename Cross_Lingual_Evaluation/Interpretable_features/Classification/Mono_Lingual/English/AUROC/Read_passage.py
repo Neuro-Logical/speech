@@ -1,6 +1,7 @@
-from sklearn.metrics import classification_report, confusion_matrix
-import sys
-sys.path.append("/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Lingual_Evaluation/")
+BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Data_Prep_RP import *
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Utils import *
 import numpy as np
 import random
 import os
@@ -11,13 +12,11 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
-from Cross_Validation.Utils import *
-from Cross_Validation.Data_Prep_RP import *
 from sklearn.metrics import roc_auc_score
 random.seed(10)
 
-test = nls_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NLS/Data_frame_RP.csv")
-gr = test.groupby('label')
+english = nls_prep(os.path.join(BASE, "/NLS/Data_frame_RP.csv"))
+gr = english.groupby('label')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
 
@@ -37,7 +36,7 @@ n_folds = sorted(data, key=len, reverse=True)
 
 folds = []
 for i in n_folds:
-    data_i = test[test["id"].isin(i)]
+    data_i = english[english["id"].isin(i)]
     data_i = data_i.drop(columns=['AudioFile', 'id'])
     folds.append((data_i).to_numpy())
 
@@ -70,7 +69,6 @@ data_test_9 = np.concatenate(folds[7:8])
 
 data_train_10 = np.concatenate(folds[9:] + folds[:8])
 data_test_10 = np.concatenate(folds[8:9])
-
 
 
 for i in range(1, 11):
