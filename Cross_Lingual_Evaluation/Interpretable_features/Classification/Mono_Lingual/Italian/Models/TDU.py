@@ -1,6 +1,7 @@
-from sklearn.metrics import classification_report, confusion_matrix
-import sys
-sys.path.append("/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Lingual_Evaluation/")
+BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Data_Prep_TDU import *
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Utils import *
 import numpy as np
 import random
 import os
@@ -12,11 +13,9 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-from Cross_Validation.Utils import *
-from Cross_Validation.Data_Prep_TDU import *
 random.seed(10)
 
-italian = italian_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/ITALIAN_PD/tot_experiments_ling_fin.csv")
+italian = italian_prep(os.path.join(BASE, "/ITALIAN_PD/tot_experiments_ling_fin.csv"))
 gr = italian.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
