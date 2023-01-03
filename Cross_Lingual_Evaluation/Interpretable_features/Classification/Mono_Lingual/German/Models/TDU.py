@@ -1,6 +1,7 @@
+BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
 
-import sys
-sys.path.append("/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Lingual_Evaluation/")
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Data_Prep_TDU import *
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Utils import *
 import numpy as np
 import random
 import os
@@ -16,8 +17,8 @@ from Cross_Validation.Utils import *
 from Cross_Validation.Data_Prep_TDU import *
 random.seed(10)
 
-spain = german_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GERMAN/final_data_frame_with_intensity.csv")
-gr = spain.groupby('labels')
+german = german_prep(os.path.join(BASE, "/GERMAN/final_data_frame_with_intensity.csv"))
+gr = german.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
 
@@ -36,7 +37,7 @@ n_folds = sorted(data, key=len, reverse=True)
 
 folds = []
 for i in n_folds:
-    data_i = spain[spain["names"].isin(i)]
+    data_i = german[german["names"].isin(i)]
     data_i = data_i.drop(columns=['names'])
     folds.append((data_i).to_numpy())
 
