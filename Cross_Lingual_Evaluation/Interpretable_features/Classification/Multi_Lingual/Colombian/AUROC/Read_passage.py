@@ -5,7 +5,6 @@ from Cross_Lingual_Evaluation.Interpretable_features.Classification.Multi_Lingua
 import numpy as np
 import random
 import os
-from Cross_Validation_Multi_Lingual.Data_Prep_RP import *
 from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.feature_selection import SelectFromModel
 from sklearn.svm import SVC
