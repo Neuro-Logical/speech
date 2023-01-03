@@ -128,6 +128,7 @@ def test_split(czech, czech_lab):
 
 
 def create_split_train_test(folds):
+
     data_train_1 = np.concatenate(folds[:9])
     data_test_1 = np.concatenate(folds[-1:])
 
