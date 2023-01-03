@@ -31,6 +31,7 @@ def normalize(train_split, test_split):
 
     return normalized_train_X, normalized_test_X, y_train, y_test
 
+
 def create_split_train_test(folds):
 
     data_train_1 = np.concatenate(folds[:9])
