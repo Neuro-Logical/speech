@@ -39,177 +39,52 @@ italian = italian.reindex(sorted(italian.columns), axis=1)
 nls = preprocess_data_frame(nls)
 nls_folds = create_n_folds(nls)
 
-data_train_1_nls = np.concatenate(nls_folds[:9])
-data_test_1_nls = np.concatenate(nls_folds[-1:])
-
-data_train_2_nls = np.concatenate(nls_folds[1:])
-data_test_2_nls = np.concatenate(nls_folds[:1])
-
-data_train_3_nls = np.concatenate(nls_folds[2:] + nls_folds[:1])
-data_test_3_nls = np.concatenate(nls_folds[1:2])
-
-data_train_4_nls = np.concatenate(nls_folds[3:] + nls_folds[:2])
-data_test_4_nls = np.concatenate(nls_folds[2:3])
-
-data_train_5_nls = np.concatenate(nls_folds[4:] + nls_folds[:3])
-data_test_5_nls = np.concatenate(nls_folds[3:4])
-
-data_train_6_nls = np.concatenate(nls_folds[5:] + nls_folds[:4])
-data_test_6_nls = np.concatenate(nls_folds[4:5])
-
-data_train_7_nls = np.concatenate(nls_folds[6:] + nls_folds[:5])
-data_test_7_nls = np.concatenate(nls_folds[5:6])
-
-data_train_8_nls = np.concatenate(nls_folds[7:] + nls_folds[:6])
-data_test_8_nls = np.concatenate(nls_folds[6:7])
-
-data_train_9_nls = np.concatenate(nls_folds[8:] + nls_folds[:7])
-data_test_9_nls = np.concatenate(nls_folds[7:8])
-
-data_train_10_nls = np.concatenate(nls_folds[9:] + nls_folds[:8])
-data_test_10_nls = np.concatenate(nls_folds[8:9])
-
-
+data_train_1_nls, data_test_1_nls, data_train_2_nls, data_test_2_nls, \
+data_train_3_nls, data_test_3_nls, data_train_4_nls, data_test_4_nls , data_train_5_nls, \
+data_test_5_nls, data_train_6_nls, data_test_6_nls, data_train_7_nls,data_test_7_nls , \
+data_train_8_nls, data_test_8_nls , data_train_9_nls, data_test_9_nls , data_train_10_nl, \
+data_test_10_nls = create_split_train_test(nls_folds)
 
 german = preprocess_data_frame(german)
 german_folds = create_n_folds(german)
 
-data_train_1_german = np.concatenate(german_folds[:9])
-data_test_1_german = np.concatenate(german_folds[-1:])
-
-data_train_2_german = np.concatenate(german_folds[1:])
-data_test_2_german = np.concatenate(german_folds[:1])
-
-data_train_3_german = np.concatenate(german_folds[2:] + german_folds[:1])
-data_test_3_german = np.concatenate(german_folds[1:2])
-
-data_train_4_german = np.concatenate(german_folds[3:] + german_folds[:2])
-data_test_4_german = np.concatenate(german_folds[2:3])
-
-data_train_5_german = np.concatenate(german_folds[4:] + german_folds[:3])
-data_test_5_german = np.concatenate(german_folds[3:4])
-
-data_train_6_german = np.concatenate(german_folds[5:] + german_folds[:4])
-data_test_6_german = np.concatenate(german_folds[4:5])
-
-data_train_7_german = np.concatenate(german_folds[6:] + german_folds[:5])
-data_test_7_german = np.concatenate(german_folds[5:6])
-
-data_train_8_german = np.concatenate(german_folds[7:] + german_folds[:6])
-data_test_8_german = np.concatenate(german_folds[6:7])
-
-data_train_9_german = np.concatenate(german_folds[8:] + german_folds[:7])
-data_test_9_german = np.concatenate(german_folds[7:8])
-
-data_train_10_german = np.concatenate(german_folds[9:] + german_folds[:8])
-data_test_10_german = np.concatenate(german_folds[8:9])
-
+data_train_1_german, data_test_1_german, data_train_2_german, data_test_2_german, \
+data_train_3_german, data_test_3_german, data_train_4_german, data_test_4_german , \
+data_train_5_german, data_test_5_german, data_train_6_german, data_test_6_german, \
+data_train_7_german, data_test_7_german, data_train_8_german, data_test_8_german, \
+data_train_9_german, data_test_9_german, data_train_10_german, \
+data_test_10_german = create_split_train_test(german_folds)
 
 czech = preprocess_data_frame(czech)
 czech_folds = create_n_folds(czech)
 
-data_train_1_czech = np.concatenate(czech_folds[:9])
-data_test_1_czech = np.concatenate(czech_folds[-1:])
-
-data_train_2_czech = np.concatenate(czech_folds[1:])
-data_test_2_czech = np.concatenate(czech_folds[:1])
-
-data_train_3_czech = np.concatenate(czech_folds[2:] + czech_folds[:1])
-data_test_3_czech = np.concatenate(czech_folds[1:2])
-
-data_train_4_czech = np.concatenate(czech_folds[3:] + czech_folds[:2])
-data_test_4_czech = np.concatenate(czech_folds[2:3])
-
-data_train_5_czech = np.concatenate(czech_folds[4:] + czech_folds[:3])
-data_test_5_czech = np.concatenate(czech_folds[3:4])
-
-data_train_6_czech = np.concatenate(czech_folds[5:] + czech_folds[:4])
-data_test_6_czech = np.concatenate(czech_folds[4:5])
-
-data_train_7_czech = np.concatenate(czech_folds[6:] + czech_folds[:5])
-data_test_7_czech = np.concatenate(czech_folds[5:6])
-
-data_train_8_czech = np.concatenate(czech_folds[7:] + czech_folds[:6])
-data_test_8_czech = np.concatenate(czech_folds[6:7])
-
-data_train_9_czech = np.concatenate(czech_folds[8:] + czech_folds[:7])
-data_test_9_czech = np.concatenate(czech_folds[7:8])
-
-data_train_10_czech = np.concatenate(czech_folds[9:] + czech_folds[:8])
-data_test_10_czech = np.concatenate(czech_folds[8:9])
-
-
+data_train_1_czech, data_test_1_czech, data_train_2_czech, data_test_2_czech, \
+data_train_3_czech, data_test_3_czech,  data_train_4_czech, data_test_4_czech, \
+data_train_5_czech, data_test_5_czech,data_train_6_czech, data_test_6_czech , \
+data_train_7_czech, data_test_7_czech, data_train_8_czech, data_test_8_czech , \
+data_train_9_czech, data_test_9_czech, data_train_10_czech,\
+data_test_10_czech  = create_split_train_test(czech_folds)
 
 colombian = preprocess_data_frame(colombian)
 colombian_folds = create_n_folds(colombian)
 
-data_train_1_colombian = np.concatenate(colombian_folds[:9])
-data_test_1_colombian = np.concatenate(colombian_folds[-1:])
+data_train_1_colombian, data_test_1_colombian, data_train_2_colombian, \
+data_test_2_colombian, data_train_3_colombian, data_test_3_colombian , \
+data_train_4_colombian, data_test_4_colombian , data_train_5_colombian, \
+data_test_5_colombian, data_train_6_colombian, data_test_6_colombian, \
+data_train_7_colombian, data_test_7_colombian, data_train_8_colombian, \
+data_test_8_colombian, data_train_9_colombian, data_test_9_colombian, \
+data_train_10_colombian, data_test_10_colombian = create_split_train_test(colombian_folds)
 
-data_train_2_colombian = np.concatenate(colombian_folds[1:])
-data_test_2_colombian = np.concatenate(colombian_folds[:1])
-
-data_train_3_colombian = np.concatenate(colombian_folds[2:] + colombian_folds[:1])
-data_test_3_colombian = np.concatenate(colombian_folds[1:2])
-
-data_train_4_colombian = np.concatenate(colombian_folds[3:] + colombian_folds[:2])
-data_test_4_colombian = np.concatenate(colombian_folds[2:3])
-
-data_train_5_colombian = np.concatenate(colombian_folds[4:] + colombian_folds[:3])
-data_test_5_colombian = np.concatenate(colombian_folds[3:4])
-
-data_train_6_colombian = np.concatenate(colombian_folds[5:] + colombian_folds[:4])
-data_test_6_colombian = np.concatenate(colombian_folds[4:5])
-
-data_train_7_colombian = np.concatenate(colombian_folds[6:] + colombian_folds[:5])
-data_test_7_colombian = np.concatenate(colombian_folds[5:6])
-
-data_train_8_colombian = np.concatenate(colombian_folds[7:] + colombian_folds[:6])
-data_test_8_colombian = np.concatenate(colombian_folds[6:7])
-
-data_train_9_colombian = np.concatenate(colombian_folds[8:] + colombian_folds[:7])
-data_test_9_colombian = np.concatenate(colombian_folds[7:8])
-
-data_train_10_colombian = np.concatenate(colombian_folds[9:] + colombian_folds[:8])
-data_test_10_colombian = np.concatenate(colombian_folds[8:9])
-
-
-
+# italian
 italian = preprocess_data_frame(italian)
 italian_folds = create_n_folds(italian)
 
-data_train_1_italian = np.concatenate(italian_folds[:9])
-data_test_1_italian = np.concatenate(italian_folds[-1:])
-
-data_train_2_italian = np.concatenate(italian_folds[1:])
-data_test_2_italian = np.concatenate(italian_folds[:1])
-
-data_train_3_italian = np.concatenate(italian_folds[2:] + italian_folds[:1])
-data_test_3_italian = np.concatenate(italian_folds[1:2])
-
-data_train_4_italian = np.concatenate(italian_folds[3:] + italian_folds[:2])
-data_test_4_italian = np.concatenate(italian_folds[2:3])
-
-data_train_5_italian = np.concatenate(italian_folds[4:] + italian_folds[:3])
-data_test_5_italian = np.concatenate(italian_folds[3:4])
-
-data_train_6_italian = np.concatenate(italian_folds[5:] + italian_folds[:4])
-data_test_6_italian = np.concatenate(italian_folds[4:5])
-
-data_train_7_italian = np.concatenate(italian_folds[6:] + italian_folds[:5])
-data_test_7_italian = np.concatenate(italian_folds[5:6])
-
-data_train_8_italian = np.concatenate(italian_folds[7:] + italian_folds[:6])
-data_test_8_italian = np.concatenate(italian_folds[6:7])
-
-data_train_9_italian = np.concatenate(italian_folds[8:] + italian_folds[:7])
-data_test_9_italian = np.concatenate(italian_folds[7:8])
-
-data_train_10_italian = np.concatenate(italian_folds[9:] + italian_folds[:8])
-data_test_10_italian = np.concatenate(italian_folds[8:9])
-
-
-
+data_train_1_italian, data_test_1_italian, data_train_2_italian, data_test_2_italian, \
+data_train_3_italian, data_test_3_italian, data_train_4_italian, data_test_4_italian, data_train_5_italian,\
+data_test_5_italian, data_train_6_italian, data_test_6_italian,  data_train_7_italian, data_test_7_italian, \
+data_train_8_italian, data_test_8_italian, data_train_9_italian, data_test_9_italian, data_train_10_italian, \
+data_test_10_italian = create_split_train_test(italian_folds)
 
 for i in range(1, 11):
 
