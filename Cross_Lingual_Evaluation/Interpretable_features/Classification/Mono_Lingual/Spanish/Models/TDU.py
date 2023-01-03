@@ -1,5 +1,7 @@
-import sys
-sys.path.append("/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Lingual_Evaluation/")
+BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Data_Prep_TDU import *
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Utils import *
 import numpy as np
 import random
 import os
@@ -11,12 +13,10 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-from Cross_Validation.Utils import *
-from Cross_Validation.Data_Prep_TDU import *
 random.seed(10)
 
-spain = neurovoz_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NEUROVOZ/tot_data_experiments.csv")
-gr = spain.groupby('labels')
+spanish = neurovoz_prep(os.path.join(BAE, "/NEUROVOZ/tot_data_experiments.csv"))
+gr = spanish.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
 
@@ -36,7 +36,7 @@ n_folds = sorted(data, key=len, reverse=True)
 
 folds = []
 for i in n_folds:
-    data_i = spain[spain["id"].isin(i)]
+    data_i = spanish[spanish["id"].isin(i)]
     data_i = data_i.drop(columns=['id'])
     folds.append((data_i).to_numpy())
 
@@ -75,7 +75,6 @@ for i in range(1, 11):
     print(i)
 
     normalized_train_X, normalized_test_X, y_train, y_test = normalize(eval(f"data_train_{i}"), eval(f"data_test_{i}"))
-
     clf = ExtraTreesClassifier(n_estimators=50)
     clf = clf.fit(normalized_train_X, y_train)
     model = SelectFromModel(clf, prefit=True, max_features=30)
@@ -83,95 +82,86 @@ for i in range(1, 11):
     cols = model.get_support(indices=True)
     X_test = normalized_test_X[:, cols]
 
-    # SVM
     model = SVC(C=1.0, gamma=0.01, kernel='sigmoid')
-    #model = SVC(C=50, gamma=0.001, kernel='sigmoid')
+   # model = SVC(C=50, gamma=0.001, kernel='sigmoid')
     grid_result = model.fit(X_train, y_train)
     grid_predictions = grid_result.predict(X_test)
-    cm = (confusion_matrix(y_test, grid_predictions))
-    sensitivity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
-    print('Sensitivity : ', sensitivity)
-    specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
-    print('spec : ', specificity)
-    SPEC = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/SPANISH/TDU/SPEC/'
-    SENS = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/SPANISH/TDU/SENS/'
+    print(classification_report(y_test, grid_predictions, output_dict=False))
+    report = classification_report(y_test, grid_predictions, output_dict=True)
+    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/SPANISH/TDU/SVM/'
+    f_1 = report['1']['f1-score']
+    acc = report['accuracy']
 
-    with open(os.path.join(SPEC, f"SVM_spec_{i}.txt"), 'w') as f:
-        f.writelines(str(specificity))
-    #
-    with open(os.path.join(SENS, f"SVM_sens_{i}.txt"), 'w') as f:
-        f.writelines(str(sensitivity))
-
+    with open(os.path.join(SVM, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+    with open(os.path.join(SVM, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
+#
     # KNeighborsClassifier
     model = KNeighborsClassifier(metric='euclidean', n_neighbors=9, weights='distance')
-    #model = KNeighborsClassifier(metric='manhattan', n_neighbors= 19, weights= 'distance')
+   # model = KNeighborsClassifier(metric='manhattan', n_neighbors= 19, weights= 'distance')
     grid_result = model.fit(X_train, y_train)
     grid_predictions = grid_result.predict(X_test)
-    cm = (confusion_matrix(y_test, grid_predictions))
-    sensitivity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
-    print('Sensitivity : ', sensitivity)
-    specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
-    print('spec : ', specificity)
+    print(classification_report(y_test, grid_predictions, output_dict=False))
+    report = classification_report(y_test, grid_predictions, output_dict=True)
+    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/SPANISH/TDU/KNN/'
+    f_1 = report['1']['f1-score']
+    acc = report['accuracy']
 
-    with open(os.path.join(SPEC, f"KNN_spec_{i}.txt"), 'w') as f:
-        f.writelines(str(specificity))
+    with open(os.path.join(SVM, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
 
-    with open(os.path.join(SENS, f"KNN_sens_{i}.txt"), 'w') as f:
-        f.writelines(str(sensitivity))
+    with open(os.path.join(SVM, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
     # RandomForestClassifier
     model = RandomForestClassifier(max_features='sqrt', n_estimators=1000)
-   # model = RandomForestClassifier(max_features='log2', n_estimators=1000)
+    #model = RandomForestClassifier(max_features='log2', n_estimators=1000)
     grid_result = model.fit(X_train, y_train)
     grid_predictions = grid_result.predict(X_test)
-    cm = (confusion_matrix(y_test, grid_predictions))
-    sensitivity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
-    print('Sensitivity : ', sensitivity)
-    specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
-    print('spec : ', specificity)
+    print(classification_report(y_test, grid_predictions, output_dict=False))
+    report = classification_report(y_test, grid_predictions, output_dict=True)
+    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/SPANISH/TDU/RF/'
+    f_1 = report['1']['f1-score']
+    acc = report['accuracy']
 
-    with open(os.path.join(SPEC, f"RF_spec_{i}.txt"), 'w') as f:
-        f.writelines(str(specificity))
+    with open(os.path.join(SVM, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
 
-    with open(os.path.join(SENS, f"RF_sens_{i}.txt"), 'w') as f:
-        f.writelines(str(sensitivity))
+    with open(os.path.join(SVM, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
     # GradientBoostingClassifier
     model = GradientBoostingClassifier(learning_rate=0.001, max_depth=9, n_estimators=1000, subsample=0.7)
     #model = GradientBoostingClassifier(learning_rate=0.01, max_depth=9, n_estimators=100, subsample=0.5)
     grid_result = model.fit(X_train, y_train)
     grid_predictions = grid_result.predict(X_test)
-    cm = (confusion_matrix(y_test, grid_predictions))
-    sensitivity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
-    print('Sensitivity : ', sensitivity)
-    specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
-    print('spec : ', specificity)
+    print(classification_report(y_test, grid_predictions, output_dict=False))
+    report = classification_report(y_test, grid_predictions, output_dict=True)
+    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/SPANISH/TDU/XG/'
+    f_1 = report['1']['f1-score']
+    acc = report['accuracy']
 
-    with open(os.path.join(SPEC, f"XG_spec_{i}.txt"), 'w') as f:
-        f.writelines(str(specificity))
-    #
-    with open(os.path.join(SENS, f"XG_sens_{i}.txt"), 'w') as f:
-        f.writelines(str(sensitivity))
+    with open(os.path.join(SVM, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
 
+    with open(os.path.join(SVM, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
     # BaggingClassifier
     model = BaggingClassifier(max_samples=0.5, n_estimators=1000)
     #model = BaggingClassifier(max_samples=0.1, n_estimators=1000)
     grid_result = model.fit(X_train, y_train)
     grid_predictions = grid_result.predict(X_test)
-    cm = (confusion_matrix(y_test, grid_predictions))
-    sensitivity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
-    print('Sensitivity : ', sensitivity)
-    specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
-    print('spec : ', specificity)
+    print(classification_report(y_test, grid_predictions, output_dict=False))
+    report = classification_report(y_test, grid_predictions, output_dict=True)
+    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/SPANISH/TDU/BAGG/'
+    f_1 = report['1']['f1-score']
+    acc = report['accuracy']
 
-    with open(os.path.join(SPEC, f"BAGG_spec_{i}.txt"), 'w') as f:
-        f.writelines(str(specificity))
-    #
-    with open(os.path.join(SENS, f"BAGG_sens_{i}.txt"), 'w') as f:
-        f.writelines(str(sensitivity))
+    with open(os.path.join(SVM, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
 
-
-
-
+    with open(os.path.join(SVM, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
