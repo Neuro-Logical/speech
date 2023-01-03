@@ -1,7 +1,7 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
 
-#from Cross_Lingual_Evaluation.Interpretable_features.Classification.Multi
-from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Utils import *
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Multi_Lingual.Data_Prep_Monologue import *
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Multi_Lingual.Utils_monologue import *
 import numpy as np
 import random
 import os
@@ -13,21 +13,13 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-from Cross_Validation_Multi_Lingual.Utils_monologue import *
-from Cross_Validation_Multi_Lingual.Data_Prep_Monologue import *
-
-
 random.seed(10)
 
-nls, nls_cols = nls_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NLS/total_new_training.csv")
-colombian, colombian_cols = gita_prep(
-    "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GITA/total_data_frame_novel_task_combined_ling_tot.csv")
-spain, spain_cols = neurovoz_prep(
-    "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NEUROVOZ/tot_data_experiments.csv")
-czech, czech_clols = czech_prep(
-    "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/Czech/final_data_experiments_updated.csv")
-german, german_cols = german_prep(
-    "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GERMAN/final_data_frame_with_intensity.csv")
+nls, nls_cols = nls_prep(os.path.join(BASE, "/NLS/total_new_training.csv"))
+colombian, colombian_cols = gita_prep(os.path.join(BASE, "/GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
+spain, spain_cols = neurovoz_prep(os.path.join(BASE,  "/NEUROVOZ/tot_data_experiments.csv"))
+czech, czech_clols = czech_prep(os.path.join(BASE, "/Czech/final_data_experiments_updated.csv"))
+german, german_cols = german_prep(os.path.join(BASE, "/GERMAN/final_data_frame_with_intensity.csv"))
 
 one_inter = IntersecOftwo(german_cols, nls_cols)
 lista_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_clols)
