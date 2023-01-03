@@ -1,5 +1,7 @@
-import sys
-sys.path.append("/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Lingual_Evaluation/")
+BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Multi_Lingual.Data_Prep_Monologue import *
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Multi_Lingual.Utils_monologue import *
 import numpy as np
 import random
 import os
@@ -9,22 +11,15 @@ from sklearn.svm import SVC
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-from Cross_Validation_Multi_Lingual.Utils_monologue import *
-from Cross_Validation_Multi_Lingual.Data_Prep_Monologue import *
-from sklearn.metrics import roc_auc_score
-
 random.seed(10)
 
-nls, nls_cols = nls_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NLS/total_new_training.csv")
-colombian, colombian_cols = gita_prep(
-    "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GITA/total_data_frame_novel_task_combined_ling_tot.csv")
-spain, spain_cols = neurovoz_prep(
-    "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NEUROVOZ/tot_data_experiments.csv")
-czech, czech_clols = czech_prep(
-    "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/Czech/final_data_experiments_updated.csv")
-german, german_cols = german_prep(
-    "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GERMAN/final_data_frame_with_intensity.csv")
+nls, nls_cols = nls_prep(os.path.join(BASE, "/NLS/total_new_training.csv"))
+colombian, colombian_cols = gita_prep(os.path.join(BASE, "/GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
+spain, spain_cols = neurovoz_prep(os.path.join(BASE,  "/NEUROVOZ/tot_data_experiments.csv"))
+czech, czech_clols = czech_prep(os.path.join(BASE, "/Czech/final_data_experiments_updated.csv"))
+german, german_cols = german_prep(os.path.join(BASE, "/GERMAN/final_data_frame_with_intensity.csv"))
 
 one_inter = IntersecOftwo(german_cols, nls_cols)
 lista_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_clols)
@@ -74,6 +69,7 @@ data_test_9_nls = np.concatenate(nls_folds[7:8])
 data_train_10_nls = np.concatenate(nls_folds[9:] + nls_folds[:8])
 data_test_10_nls = np.concatenate(nls_folds[8:9])
 
+
 spain = preprocess_data_frame(spain)
 spain_folds = create_n_folds(spain)
 
@@ -106,6 +102,7 @@ data_test_9_spain = np.concatenate(spain_folds[7:8])
 
 data_train_10_spain = np.concatenate(spain_folds[9:] + spain_folds[:8])
 data_test_10_spain = np.concatenate(spain_folds[8:9])
+
 
 german = preprocess_data_frame(german)
 german_folds = create_n_folds(german)
@@ -207,6 +204,7 @@ data_test_9_colombian = np.concatenate(colombian_folds[7:8])
 data_train_10_colombian = np.concatenate(colombian_folds[9:] + colombian_folds[:8])
 data_test_10_colombian = np.concatenate(colombian_folds[8:9])
 
+
 for i in range(1, 11):
 
     print(i)
@@ -220,6 +218,7 @@ for i in range(1, 11):
     training_data, training_labels = train_split(normalized_train_X_colombian, y_train_colombian,normalized_train_X_czech, y_train_czech, normalized_train_X_german,
                                                   y_train_german, normalized_train_X_spain, y_train_spain, normalized_train_X_nls, y_train_nls)
 
+
     test_data, test_labels  = normalized_test_X_spain, y_test_spain
 
     clf = ExtraTreesClassifier(n_estimators=50)
@@ -230,52 +229,80 @@ for i in range(1, 11):
     X_test = test_data[:, cols]
 
     # SVC
-    model = SVC(C=1.0, gamma=0.01, kernel='rbf', probability=True)
+    model = SVC(C=1.0, gamma=0.01, kernel='rbf')
     grid_result = model.fit(X_train, training_labels)
-    grid_predictions = grid_result.predict_proba(X_test)
-    grid_predictions = grid_predictions[:, 1]
-    lr_auc = roc_auc_score(test_labels, grid_predictions)
-    print(f"auroc is {lr_auc}")
-    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/SPANISH/SS/AUROC'
-    with open(os.path.join(SVM, f"SVM_AUROC_{i}.txt"), 'w') as f:
-        f.writelines(str(lr_auc))
+    grid_predictions = grid_result.predict(X_test)
+    print(classification_report(test_labels, grid_predictions, output_dict=False))
+    report = classification_report(test_labels, grid_predictions, output_dict=True)
+    print(report)
+    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/SPANISH/SS/SVM/'
+    f_1 = report['1.0']['f1-score']
+    acc = report['accuracy']
+    with open(os.path.join(SVM, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+    with open(os.path.join(SVM, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
     # KNeighborsClassifier
     model = KNeighborsClassifier(metric='euclidean', n_neighbors=19, weights='distance')
     grid_result = model.fit(X_train, training_labels)
-    grid_predictions = grid_result.predict_proba(X_test)
-    grid_predictions = grid_predictions[:, 1]
-    lr_auc = roc_auc_score(test_labels, grid_predictions)
-    with open(os.path.join(SVM, f"KNN_AUROC_{i}.txt"), 'w') as f:
-        f.writelines(str(lr_auc))
+    grid_predictions = grid_result.predict(X_test)
+    print(classification_report(test_labels, grid_predictions, output_dict=False))
+    report = classification_report(test_labels, grid_predictions, output_dict=True)
+    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/SPANISH/SS/KNN/'
+    f_1 = report['1.0']['f1-score']
+    acc = report['accuracy']
+
+    with open(os.path.join(SVM, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+
+    with open(os.path.join(SVM, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
     # RandomForestClassifier
     model = RandomForestClassifier(max_features= 'log2', n_estimators= 1000)
     grid_result = model.fit(X_train, training_labels)
-    grid_predictions = grid_result.predict_proba(X_test)
-    grid_predictions = grid_predictions[:, 1]
-    lr_auc = roc_auc_score(test_labels, grid_predictions)
-    with open(os.path.join(SVM, f"RF_AUROC_{i}.txt"), 'w') as f:
-        f.writelines(str(lr_auc))
+    grid_predictions = grid_result.predict(X_test)
+    print(classification_report(test_labels, grid_predictions, output_dict=False))
+    report = classification_report(test_labels, grid_predictions, output_dict=True)
+    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/SPANISH/SS/RF/'
+    f_1 = report['1.0']['f1-score']
+    acc = report['accuracy']
 
-   # GradientBoostingClassifier
+    with open(os.path.join(SVM, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+
+    with open(os.path.join(SVM, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
+
+    # GradientBoostingClassifier
     model = GradientBoostingClassifier(learning_rate=0.01, max_depth=9, n_estimators=1000, subsample=0.5)
-    #model = GradientBoostingClassifier(learning_rate= 0.1, max_depth= 9, n_estimators=100, subsample= 0.5)
     grid_result = model.fit(X_train, training_labels)
-    grid_predictions = grid_result.predict_proba(X_test)
-    grid_predictions = grid_predictions[:, 1]
-    lr_auc = roc_auc_score(test_labels, grid_predictions)
-    print(f"auroc is {lr_auc}")
+    grid_predictions = grid_result.predict(X_test)
+    print(classification_report(test_labels, grid_predictions, output_dict=False))
+    report = classification_report(test_labels, grid_predictions, output_dict=True)
+    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/SPANISH/SS/XG/'
+    f_1 = report['1.0']['f1-score']
+    acc = report['accuracy']
 
-    with open(os.path.join(SVM, f"XGBoost_AUROC_{i}.txt"), 'w') as f:
-        f.writelines(str(lr_auc))
+    with open(os.path.join(SVM, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+    with open(os.path.join(SVM, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
     # BaggingClassifier
-    model = BaggingClassifier(max_samples=0.5, n_estimators=1000)
+    model = BaggingClassifier(n_estimators=1000, max_samples=0.5)
     grid_result = model.fit(X_train, training_labels)
-    grid_predictions = grid_result.predict_proba(X_test)
-    grid_predictions = grid_predictions[:, 1]
-    lr_auc = roc_auc_score(test_labels, grid_predictions)
-    print(f"auroc is {lr_auc}")
-    with open(os.path.join(SVM, f"Bagging_AUROC_{i}.txt"), 'w') as f:
-        f.writelines(str(lr_auc))
+    grid_predictions = grid_result.predict(X_test)
+    print(classification_report(test_labels, grid_predictions, output_dict=False))
+    report = classification_report(test_labels, grid_predictions, output_dict=True)
+    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/SPANISH/SS/BAGG/'
+    f_1 = report['1.0']['f1-score']
+    acc = report['accuracy']
+
+    with open(os.path.join(SVM, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+
+    with open(os.path.join(SVM, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
+
