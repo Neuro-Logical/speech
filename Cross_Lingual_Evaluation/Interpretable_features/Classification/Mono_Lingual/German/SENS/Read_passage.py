@@ -1,5 +1,7 @@
-import sys
-sys.path.append("/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Lingual_Evaluation/")
+BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Data_Prep_RP import *
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Utils import *
 import numpy as np
 import random
 import os
@@ -11,13 +13,10 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-from Cross_Validation.Utils import *
-from Cross_Validation.Data_Prep_monologue import *
 random.seed(10)
 
-spain = german_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GERMAN/final_data_frame_with_intensity.csv")
-
-gr = spain.groupby('labels')
+german = german_prep(os.path.join(BASE, "/GERMAN/final_data_frame_with_intensity.csv"))
+gr = german.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
 
@@ -35,11 +34,13 @@ for cn_sp, pd_sp in zip(sorted(cn_sps, key=len), sorted(pd_sps, key=len, reverse
     data.append(cn_sp + pd_sp)
 n_folds = sorted(data, key=len, reverse=True)
 
+
 folds = []
 for i in n_folds:
-    data_i = spain[spain["names"].isin(i)]
+    data_i = german[german["names"].isin(i)]
     data_i = data_i.drop(columns=['names'])
     folds.append((data_i).to_numpy())
+
 
 data_train_1 = np.concatenate(folds[:9])
 data_test_1 = np.concatenate(folds[-1:])
@@ -71,6 +72,8 @@ data_test_9 = np.concatenate(folds[7:8])
 data_train_10 = np.concatenate(folds[9:] + folds[:8])
 data_test_10 = np.concatenate(folds[8:9])
 
+
+
 for i in range(1, 11):
 
     print(i)
@@ -83,8 +86,9 @@ for i in range(1, 11):
     cols = model.get_support(indices=True)
     X_test = normalized_test_X[:, cols]
 
-    # SVM
-    model = SVC(C=1.0, gamma=0.01, kernel='poly')
+    # SVC
+    model = SVC(C=1.0, gamma=0.001, kernel='rbf')
+   # model = SVC(C=10, gamma= 0.01, kernel= 'rbf')
     grid_result = model.fit(X_train, y_train)
     grid_predictions = grid_result.predict(X_test)
     cm = (confusion_matrix(y_test, grid_predictions))
@@ -92,17 +96,17 @@ for i in range(1, 11):
     print('Sensitivity : ', sensitivity)
     specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
     print('spec : ', specificity)
-    SPEC = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/SS/SPEC/'
-    SENS = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/SS/SENS/'
+    SPEC = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/RP/SPEC/'
+    SENS = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/RP/SENS/'
 
     with open(os.path.join(SPEC, f"SVM_spec_{i}.txt"), 'w') as f:
         f.writelines(str(specificity))
-    #
+
     with open(os.path.join(SENS, f"SVM_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
 
     # KNeighborsClassifier
-    model = KNeighborsClassifier(metric='manhattan', n_neighbors=19, weights='uniform')
+    model = KNeighborsClassifier(metric='manhattan', n_neighbors=9, weights='distance')
     grid_result = model.fit(X_train, y_train)
     grid_predictions = grid_result.predict(X_test)
     cm = (confusion_matrix(y_test, grid_predictions))
@@ -113,7 +117,7 @@ for i in range(1, 11):
 
     with open(os.path.join(SPEC, f"KNN_spec_{i}.txt"), 'w') as f:
         f.writelines(str(specificity))
-    #
+
     with open(os.path.join(SENS, f"KNN_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
 
@@ -129,13 +133,13 @@ for i in range(1, 11):
 
     with open(os.path.join(SPEC, f"RF_spec_{i}.txt"), 'w') as f:
         f.writelines(str(specificity))
-
+    #
     with open(os.path.join(SENS, f"RF_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
 
     # GradientBoostingClassifier
-    model = GradientBoostingClassifier(learning_rate=0.01, max_depth=9, n_estimators=1000, subsample=0.5)
-   # model = GradientBoostingClassifier(learning_rate= 0.001, max_depth= 9, n_estimators=1000, subsample= 0.5)
+    model = GradientBoostingClassifier(learning_rate=0.1, max_depth=3, n_estimators=1000, subsample=0.5)
+    #model = GradientBoostingClassifier(learning_rate=0.01, max_depth=7, n_estimators=1000, subsample=0.5)
     grid_result = model.fit(X_train, y_train)
     grid_predictions = grid_result.predict(X_test)
     cm = (confusion_matrix(y_test, grid_predictions))
@@ -146,13 +150,13 @@ for i in range(1, 11):
 
     with open(os.path.join(SPEC, f"XG_spec_{i}.txt"), 'w') as f:
         f.writelines(str(specificity))
-
+    #
     with open(os.path.join(SENS, f"XG_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
 
     # BaggingClassifier
     model = BaggingClassifier(max_samples=0.1, n_estimators=1000)
-    #model = BaggingClassifier(max_samples = 0.2, n_estimators=1000)
+    #model = BaggingClassifier(max_samples=0.2, n_estimators=1000)
     grid_result = model.fit(X_train, y_train)
     grid_predictions = grid_result.predict(X_test)
     cm = (confusion_matrix(y_test, grid_predictions))
@@ -169,6 +173,3 @@ for i in range(1, 11):
 
 
 
-
-
-# cd_rf

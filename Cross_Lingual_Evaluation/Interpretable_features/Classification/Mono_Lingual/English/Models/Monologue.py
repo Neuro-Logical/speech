@@ -1,6 +1,7 @@
-from sklearn.metrics import classification_report, confusion_matrix
-import sys
-sys.path.append("/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Lingual_Evaluation/")
+BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Data_Prep_monologue import *
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Utils import *
 import numpy as np
 import random
 import os
@@ -12,14 +13,10 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-from Mono_Lingual.Utils import *
-from Mono_Lingual.Data_Prep_monologue import *
 random.seed(10)
 
-#nls = pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NLS/total_new_training.csv")
-test = nls_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NLS/total_new_training.csv")
-
-gr = test.groupby('label')
+english = nls_prep(os.path.join(BASE, "/NLS/total_new_training.csv"))
+gr = english.groupby('label')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
 
@@ -39,7 +36,7 @@ n_folds = sorted(data, key=len, reverse=True)
 
 folds = []
 for i in n_folds:
-    data_i = test[test["id"].isin(i)]
+    data_i = english[english["id"].isin(i)]
     data_i = data_i.drop(columns=['names', 'id', 'task'])
     folds.append((data_i).to_numpy())
 
