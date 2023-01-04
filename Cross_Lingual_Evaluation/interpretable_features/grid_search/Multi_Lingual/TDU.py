@@ -1,9 +1,9 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameters_Multi/GITA/TDU/SVM/SS.txt'
-KNN = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameters_Multi/GITA/TDU/KNN/SS.txt'
-RF = '//export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameters_Multi/GITA/TDU/RF/SS.txt'
-XG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameters_Multi/GITA/TDU/XG/SS.txt'
-BAGG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameters_Multi/GITA/TDU/BAGG/SS.txt'
+SVM_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameters_Multi/GITA/TDU/SVM/SS.txt'
+KNN_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameters_Multi/GITA/TDU/KNN/SS.txt'
+RF_OUT_PATH = '//export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameters_Multi/GITA/TDU/RF/SS.txt'
+XG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameters_Multi/GITA/TDU/XG/SS.txt'
+BAGG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameters_Multi/GITA/TDU/BAGG/SS.txt'
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Data_Prep_TDU import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Utils_TDU import *
@@ -253,26 +253,23 @@ for k in xg_paramters.keys():
 for k in bagg_paramters.keys():
     bagg_paramters[k] = np.array(bagg_paramters[k]).mean()
 
-
-
-
-fo = open(SVM, "w")
+fo = open(SVM_OUT_PATH, "w")
 for k, v in svm_parameters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-fo = open(KNN, "w")
+fo = open(KNN_OUT_PATH, "w")
 for k, v in knn_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-fo = open(RF, "w")
+fo = open(RF_OUT_PATH, "w")
 for k, v in rf_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-fo = open(XG, "w")
+fo = open(XG_OUT_PATH, "w")
 for k, v in xg_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-fo = open(BAGG, "w")
+fo = open(BAGG_OUT_PATH, "w")
 for k, v in bagg_paramters.items():
     fo.write(str(k) + ' >>> ' + str(v) + '\n\n')
 
