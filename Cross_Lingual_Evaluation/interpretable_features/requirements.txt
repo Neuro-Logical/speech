@@ -1,3 +1,5 @@
+#requirements for interpretable feature pipeline.
+
 en-core-web-sm==3.2.0
 es-core-news-sm==3.2.0
 de-core-news-sm==3.2.0
