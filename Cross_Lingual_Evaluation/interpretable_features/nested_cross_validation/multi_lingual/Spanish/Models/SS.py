@@ -1,8 +1,12 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+SVM_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/SPANISH/SS/SVM/'
+KNN_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/SPANISH/SS/KNN/'
+RF_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/SPANISH/SS/RF/'
+XGBOOST_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/SPANISH/SS/XG/'
+BAGGING_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/SPANISH/SS/BAGG/'
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Data_Prep_Monologue import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Utils_monologue import *
-import numpy as np
 import random
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -84,7 +88,6 @@ data_train_7_colombian, data_test_7_colombian, data_train_8_colombian, \
 data_test_8_colombian, data_train_9_colombian, data_test_9_colombian, \
 data_train_10_colombian, data_test_10_colombian = create_split_train_test(colombian_folds)
 
-
 for i in range(1, 11):
 
     print(i)
@@ -108,89 +111,69 @@ for i in range(1, 11):
     cols = model.get_support(indices=True)
     X_test = test_data[:, cols]
 
+    # SVC
     model = SVC(C=1.0, gamma=0.01, kernel='rbf')
-    grid_result = model.fit(X_train,training_labels)
+    grid_result = model.fit(X_train, training_labels)
     grid_predictions = grid_result.predict(X_test)
-    cm = (confusion_matrix(test_labels, grid_predictions))
-    sensitivity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
-    print('Sensitivity : ', sensitivity)
-    specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
-    print('spec : ', specificity)
-    SPEC = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/SPANISH/SS/SPEC/'
-    SENS = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/SPANISH/SS/SENS/'
+    print(classification_report(test_labels, grid_predictions, output_dict=False))
+    report = classification_report(test_labels, grid_predictions, output_dict=True)
+    print(report)
+    f_1 = report['1.0']['f1-score']
+    acc = report['accuracy']
+    with open(os.path.join(SVM_OUT_PATH, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+    with open(os.path.join(SVM_OUT_PATH, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
-    with open(os.path.join(SPEC, f"SVM_spec_{i}.txt"), 'w') as f:
-        f.writelines(str(specificity))
-
-    with open(os.path.join(SENS, f"SVM_sens_{i}.txt"), 'w') as f:
-        f.writelines(str(sensitivity))
-
-
+    # KNeighborsClassifier
     model = KNeighborsClassifier(metric='euclidean', n_neighbors=19, weights='distance')
     grid_result = model.fit(X_train, training_labels)
     grid_predictions = grid_result.predict(X_test)
-    cm = (confusion_matrix(test_labels, grid_predictions))
-    sensitivity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
-    print('Sensitivity : ', sensitivity)
-    specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
-    print('spec : ', specificity)
+    print(classification_report(test_labels, grid_predictions, output_dict=False))
+    report = classification_report(test_labels, grid_predictions, output_dict=True)
+    f_1 = report['1.0']['f1-score']
+    acc = report['accuracy']
+    with open(os.path.join(KNN_OUT_PATH, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+    with open(os.path.join(KNN_OUT_PATH, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
-    with open(os.path.join(SPEC, f"KNN_spec_{i}.txt"), 'w') as f:
-        f.writelines(str(specificity))
-    #
-    with open(os.path.join(SENS, f"KNN_sens_{i}.txt"), 'w') as f:
-        f.writelines(str(sensitivity))
-
-    # define dataset
+    # RandomForestClassifier
     model = RandomForestClassifier(max_features= 'log2', n_estimators= 1000)
     grid_result = model.fit(X_train, training_labels)
     grid_predictions = grid_result.predict(X_test)
-    cm = (confusion_matrix(test_labels, grid_predictions))
-    sensitivity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
-    print('Sensitivity : ', sensitivity)
-    specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
-    print('spec : ', specificity)
+    print(classification_report(test_labels, grid_predictions, output_dict=False))
+    report = classification_report(test_labels, grid_predictions, output_dict=True)
+    f_1 = report['1.0']['f1-score']
+    acc = report['accuracy']
+    with open(os.path.join(RF_OUT_PATH, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+    with open(os.path.join(RF_OUT_PATH, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
-    with open(os.path.join(SPEC, f"RF_spec_{i}.txt"), 'w') as f:
-        f.writelines(str(specificity))
-    #
-    with open(os.path.join(SENS, f"RF_sens_{i}.txt"), 'w') as f:
-        f.writelines(str(sensitivity))
-
-
+    # GradientBoostingClassifier
     model = GradientBoostingClassifier(learning_rate=0.01, max_depth=9, n_estimators=1000, subsample=0.5)
-    #model = GradientBoostingClassifier(learning_rate=0.1, max_depth=9, n_estimators=100, subsample=0.5)
     grid_result = model.fit(X_train, training_labels)
     grid_predictions = grid_result.predict(X_test)
-    cm = (confusion_matrix(test_labels, grid_predictions))
-    sensitivity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
-    print('Sensitivity : ', sensitivity)
-    specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
-    print('spec : ', specificity)
+    print(classification_report(test_labels, grid_predictions, output_dict=False))
+    report = classification_report(test_labels, grid_predictions, output_dict=True)
+    f_1 = report['1.0']['f1-score']
+    acc = report['accuracy']
+    with open(os.path.join(XGBOOST_OUT_PATH, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+    with open(os.path.join(XGBOOST_OUT_PATH, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
-    with open(os.path.join(SPEC, f"XG_spec_{i}.txt"), 'w') as f:
-        f.writelines(str(specificity))
-    #
-    with open(os.path.join(SENS, f"XG_sens_{i}.txt"), 'w') as f:
-        f.writelines(str(sensitivity))
-
-
-    model = BaggingClassifier(max_samples=0.5, n_estimators=1000)
+    # BaggingClassifier
+    model = BaggingClassifier(n_estimators=1000, max_samples=0.5)
     grid_result = model.fit(X_train, training_labels)
     grid_predictions = grid_result.predict(X_test)
-    cm = (confusion_matrix(test_labels, grid_predictions))
-    sensitivity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
-    print('Sensitivity : ', sensitivity)
-    specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
-    print('spec : ', specificity)
-
-    with open(os.path.join(SPEC, f"BAGG_spec_{i}.txt"), 'w') as f:
-        f.writelines(str(specificity))
-    #
-    with open(os.path.join(SENS, f"BAGG_sens_{i}.txt"), 'w') as f:
-        f.writelines(str(sensitivity))
-
-
-
-
+    print(classification_report(test_labels, grid_predictions, output_dict=False))
+    report = classification_report(test_labels, grid_predictions, output_dict=True)
+    f_1 = report['1.0']['f1-score']
+    acc = report['accuracy']
+    with open(os.path.join(BAGGING_OUT_PATH, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+    with open(os.path.join(BAGGING_OUT_PATH, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
