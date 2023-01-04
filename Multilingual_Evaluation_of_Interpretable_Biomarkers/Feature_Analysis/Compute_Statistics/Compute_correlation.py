@@ -20,9 +20,6 @@ def compute_correlation_updrs(dataframe):
         corr, _ = spearmanr(data, updrs_pd)
         p_vals.append(_)
         file.append((f'Spearm correlation for feats {fea}: p_value {_} and correlation coeff is {corr}'))
-        # print spearman's correlation values and respective p-value
-    # if _ < 0.05:
-    #   print(f'p_value pearson correlation for feats {fea} is {_} \n and value is {corr}')
 
     # Apply FDR correction
     res = statsmodels.stats.multitest.fdrcorrection(p_vals, alpha=0.05, method='indep', is_sorted=False)
@@ -50,9 +47,6 @@ def compute_correlation_updrs_speech(dataframe):
         corr, _ = spearmanr(data, updrs_pd)
         p_vals.append(_)
         file.append((f'Spearm correlation for feats {fea}: p_value {_} and correlation coeff is {corr}'))
-        # print spearman's correlation values and respective p-value
-    # if _ < 0.05:
-    #   print(f'p_value pearson correlation for feats {fea} is {_} \n and value is {corr}')
 
     # Apply FDR correction
     res = statsmodels.stats.multitest.fdrcorrection(p_vals, alpha=0.05, method='indep', is_sorted=False)
@@ -80,9 +74,6 @@ def compute_correlation_hoehn_yahr(dataframe):
         corr, _ = spearmanr(data, updrs_pd)
         p_vals.append(_)
         file.append((f'Spearm correlation for feats {fea}: p_value {_} and correlation coeff is {corr}'))
-        # print spearman's correlation values and respective p-value
-    # if _ < 0.05:
-    #   print(f'p_value pearson correlation for feats {fea} is {_} \n and value is {corr}')
 
     # Apply FDR correction
     res = statsmodels.stats.multitest.fdrcorrection(p_vals, alpha=0.05, method='indep', is_sorted=False)

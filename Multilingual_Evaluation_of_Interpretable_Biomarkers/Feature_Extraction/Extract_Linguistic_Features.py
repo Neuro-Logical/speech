@@ -21,6 +21,7 @@ stopwords = list(stopwords.words('english'))
 #stopwords = list(stopwords.words('german'))
 ##stopwords = list(stopwords.words('italian'))
 
+
 def preprocess(text):
     """This function performs tokenization, lemmatization, removal of non-alphabetic characters
     and stopword removal"""
@@ -65,8 +66,6 @@ def sentence_counter(text):
         counter = counter + 1
     return counter
 
-
-# Note that this function is applied to the raw text in order to identify sentence boundaries
 
 def avg_sent_length(text):
     """This function returns the average sentence length in words."""

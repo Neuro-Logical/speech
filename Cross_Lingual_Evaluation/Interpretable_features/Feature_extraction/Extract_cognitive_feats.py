@@ -45,47 +45,43 @@ def informational_verb(text):
 
 #########################################################################################################
 
-""" 
-Code to extract word starting timestamps using Whisper.
-This code uses an existing script that modifies methods of Whisper's model to gain
-access to the predicted timestamp tokens of each word (token) without needing additional inference.
- It also stabilizes the timestamps down to the word (token) level to ensure chronology.
- Additionally, it can suppress gaps in speech for more accurate timestamps.
- Original code can be found at: https://github.com/jianfch/stable-ts.
- 
-"""
 
-repo = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k'
-output_folder = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment/'
-paths = [os.path.join(repo, base) for base in os.listdir(repo)]
+def extract_word_timestamp(path_recordings, output_folder):
+    """
+    Code to extract word starting timestamps using Whisper.
+    This code uses an existing script that modifies methods of Whisper's model to gain
+    access to the predicted timestamp tokens of each word (token) without needing additional inference.
+     It also stabilizes the timestamps down to the word (token) level to ensure chronology.
+     Additionally, it can suppress gaps in speech for more accurate timestamps.
+     Original code can be found at: https://github.com/jianfch/stable-ts.
 
-#remove empty recordings
+    """
+    paths = [os.path.join(path_recordings, base) for base in os.listdir(path_recordings)]
 
-files = []
-for m in paths:
-    size = os.stat(m).st_size/1000
-    if size > 56:
-        files.append(m)
+    #remove empty recordings
+    files = []
+    for m in paths:
+        size = os.stat(m).st_size/1000
+        if size > 56:
+            files.append(m)
 
-model = load_model('medium')
-modify_model(model)
-#ind = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/PEC_014_ses01_Poem.wav")
-
-for recording in files:
-    whole_tokens = []
-    whole_time_stamps = []
-    base_name = recording.split('/')[-1].split(".wav")[0]
-    print(base_name)
-    with torch.no_grad():
-        results = model.transcribe(recording)
-    stab_segments = stabilize_timestamps(results, top_focus=True)
-    for i in range(len(stab_segments)):
-        chunk = (stab_segments[i]['whole_word_timestamps'])
-        for index in range(len(chunk)):
-            whole_tokens.append(chunk[index]['word'])
-            whole_time_stamps.append(chunk[index]['timestamp'])
-            dict = {'token': whole_tokens, 'time_stamp': whole_time_stamps}
-            df = pd.DataFrame(dict)
-            df.to_csv(f"{output_folder}/{base_name}.csv")
-#
+    model = load_model('medium')
+    modify_model(model)
+    for recording in files:
+        whole_tokens = []
+        whole_time_stamps = []
+        base_name = recording.split('/')[-1].split(".wav")[0]
+        print(base_name)
+        with torch.no_grad():
+            results = model.transcribe(recording)
+        stab_segments = stabilize_timestamps(results, top_focus=True)
+        for i in range(len(stab_segments)):
+            chunk = (stab_segments[i]['whole_word_timestamps'])
+            for index in range(len(chunk)):
+                whole_tokens.append(chunk[index]['word'])
+                whole_time_stamps.append(chunk[index]['timestamp'])
+                dict = {'token': whole_tokens, 'time_stamp': whole_time_stamps}
+                df = pd.DataFrame(dict)
+                df.to_csv(f"{output_folder}/{base_name}.csv")
+    #
 

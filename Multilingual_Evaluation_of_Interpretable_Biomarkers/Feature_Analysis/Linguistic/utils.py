@@ -11,8 +11,6 @@ from sklearn import metrics
 #    '3 - Compute the AUROC associated to each biomarker.
 #    '4 - Compute the eta squared effect size.
 
-
-
 def delete_multiple_element(list_object, indices):
 
     indices = sorted(indices, reverse=True)

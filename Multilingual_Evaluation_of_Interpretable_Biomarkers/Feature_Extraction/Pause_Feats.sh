@@ -1,8 +1,6 @@
 KALDI_ROOT=/home/afavaro/kaldi
 export PATH=$PATH:$KALDI_ROOT/src/featbin/
 
-
-
 # Pause related features extracted with: https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody
 
 # f = frame length, namely the length of the frame used by the VAD adopted for the feature extraction.
