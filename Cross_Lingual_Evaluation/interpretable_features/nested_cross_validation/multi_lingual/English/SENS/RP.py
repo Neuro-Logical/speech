@@ -1,8 +1,9 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+SPEC_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/ENGLISH/RP/SPEC/'
+SENS_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/ENGLISH/RP/SENS/'
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Data_Prep_RP import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Utils_RP import *
-import numpy as np
 import random
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -119,12 +120,9 @@ for i in range(1, 11):
     print('Sensitivity : ', sensitivity)
     specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
     print('spec : ', specificity)
-    SPEC = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/ENGLISH/RP/SPEC/'
-    SENS = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/ENGLISH/RP/SENS/'
-
-    with open(os.path.join(SPEC, f"SVM_spec_{i}.txt"), 'w') as f:
+    with open(os.path.join(SPEC_OUT_PATH, f"SVM_spec_{i}.txt"), 'w') as f:
         f.writelines(str(specificity))
-    with open(os.path.join(SENS, f"SVM_sens_{i}.txt"), 'w') as f:
+    with open(os.path.join(SENS_OUT_PATH, f"SVM_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
 
     # KNeighborsClassifier
@@ -136,11 +134,9 @@ for i in range(1, 11):
     print('Sensitivity : ', sensitivity)
     specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
     print('spec : ', specificity)
-
-    with open(os.path.join(SPEC, f"KNN_spec_{i}.txt"), 'w') as f:
+    with open(os.path.join(SPEC_OUT_PATH, f"KNN_spec_{i}.txt"), 'w') as f:
         f.writelines(str(specificity))
-
-    with open(os.path.join(SENS, f"KNN_sens_{i}.txt"), 'w') as f:
+    with open(os.path.join(SENS_OUT_PATH, f"KNN_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
 
     # RandomForestClassifier
@@ -152,11 +148,9 @@ for i in range(1, 11):
     print('Sensitivity : ', sensitivity)
     specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
     print('spec : ', specificity)
-
-    with open(os.path.join(SPEC, f"RF_spec_{i}.txt"), 'w') as f:
+    with open(os.path.join(SPEC_OUT_PATH, f"RF_spec_{i}.txt"), 'w') as f:
         f.writelines(str(specificity))
-
-    with open(os.path.join(SENS, f"RF_sens_{i}.txt"), 'w') as f:
+    with open(os.path.join(SENS_OUT_PATH, f"RF_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
 
     # GradientBoostingClassifier
@@ -168,11 +162,9 @@ for i in range(1, 11):
     print('Sensitivity : ', sensitivity)
     specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
     print('spec : ', specificity)
-
-    with open(os.path.join(SPEC, f"XG_spec_{i}.txt"), 'w') as f:
+    with open(os.path.join(SPEC_OUT_PATH, f"XG_spec_{i}.txt"), 'w') as f:
         f.writelines(str(specificity))
-
-    with open(os.path.join(SENS, f"XG_sens_{i}.txt"), 'w') as f:
+    with open(os.path.join(SENS_OUT_PATH, f"XG_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
 
     # BaggingClassifier
@@ -184,11 +176,9 @@ for i in range(1, 11):
     print('Sensitivity : ', sensitivity)
     specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
     print('spec : ', specificity)
-
-    with open(os.path.join(SPEC, f"BAGG_spec_{i}.txt"), 'w') as f:
+    with open(os.path.join(SPEC_OUT_PATH, f"BAGG_spec_{i}.txt"), 'w') as f:
         f.writelines(str(specificity))
-
-    with open(os.path.join(SENS, f"BAGG_sens_{i}.txt"), 'w') as f:
+    with open(os.path.join(SENS_OUT_PATH, f"BAGG_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
 
 
