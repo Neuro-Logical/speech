@@ -6,8 +6,8 @@ RF_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feat
 XG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters/ENGLISH/mono_lingual/XG/mono_lingual.txt'
 BAGG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters/ENGLISH/mono_lingual/BAGG/mono_lingual.txt'
 
-from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.mono_lingual.Data_Prep_SS import *
-from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.mono_lingual.Utils import *
+from Cross_Lingual_Evaluation.interpretable_features.classification.mono_lingual.Data_Prep_SS import *
+from Cross_Lingual_Evaluation.interpretable_features.classification.mono_lingual.Utils import *
 import numpy as np
 import random
 import os

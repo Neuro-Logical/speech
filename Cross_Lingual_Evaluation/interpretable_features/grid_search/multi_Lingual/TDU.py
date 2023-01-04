@@ -5,8 +5,8 @@ RF_OUT_PATH = '//export/b15/afavaro/Frontiers/submission/Classification_With_Fea
 XG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameters_Multi/GITA/TDU/XG/SS.txt'
 BAGG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameters_Multi/GITA/TDU/BAGG/SS.txt'
 
-from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Data_Prep_TDU import *
-from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Utils_TDU import *
+from Cross_Lingual_Evaluation.interpretable_features.classification.multi_lingual.Data_Prep_TDU import *
+from Cross_Lingual_Evaluation.interpretable_features.classification.multi_lingual.Utils_TDU import *
 import numpy as np
 import random
 import os
