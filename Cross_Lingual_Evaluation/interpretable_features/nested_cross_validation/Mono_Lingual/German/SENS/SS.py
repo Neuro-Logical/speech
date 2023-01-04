@@ -1,8 +1,9 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+SPEC_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/SS/SPEC/'
+SENS_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/SS/SENS/'
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.Mono_Lingual.Data_Prep_monologue import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.Mono_Lingual.Utils import *
-import numpy as np
 import random
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -15,7 +16,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
 random.seed(10)
 
-german = german_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GERMAN/final_data_frame_with_intensity.csv")
+german = german_prep(os.path.join(BASE, "/GERMAN/final_data_frame_with_intensity.csv"))
 gr = german.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
@@ -40,35 +41,9 @@ for i in n_folds:
     data_i = data_i.drop(columns=['names'])
     folds.append((data_i).to_numpy())
 
-data_train_1 = np.concatenate(folds[:9])
-data_test_1 = np.concatenate(folds[-1:])
-
-data_train_2 = np.concatenate(folds[1:])
-data_test_2 = np.concatenate(folds[:1])
-
-data_train_3 = np.concatenate(folds[2:] + folds[:1])
-data_test_3 = np.concatenate(folds[1:2])
-
-data_train_4 = np.concatenate(folds[3:] + folds[:2])
-data_test_4 = np.concatenate(folds[2:3])
-
-data_train_5 = np.concatenate(folds[4:] + folds[:3])
-data_test_5 = np.concatenate(folds[3:4])
-
-data_train_6 = np.concatenate(folds[5:] + folds[:4])
-data_test_6 = np.concatenate(folds[4:5])
-
-data_train_7 = np.concatenate(folds[6:] + folds[:5])
-data_test_7 = np.concatenate(folds[5:6])
-
-data_train_8 = np.concatenate(folds[7:] + folds[:6])
-data_test_8 = np.concatenate(folds[6:7])
-
-data_train_9 = np.concatenate(folds[8:] + folds[:7])
-data_test_9 = np.concatenate(folds[7:8])
-
-data_train_10 = np.concatenate(folds[9:] + folds[:8])
-data_test_10 = np.concatenate(folds[8:9])
+data_train_1, data_test_1, data_train_2, data_test_2, data_train_3, data_test_3, data_train_4, data_test_4, \
+data_train_5, data_test_5,  data_train_6, data_test_6, data_train_7, data_test_7 , data_train_8, data_test_8, \
+data_train_9, data_test_9, data_train_10, data_test_10 = create_split_train_test(folds)
 
 for i in range(1, 11):
 
@@ -91,13 +66,9 @@ for i in range(1, 11):
     print('Sensitivity : ', sensitivity)
     specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
     print('spec : ', specificity)
-    SPEC = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/SS/SPEC/'
-    SENS = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/SS/SENS/'
-
-    with open(os.path.join(SPEC, f"SVM_spec_{i}.txt"), 'w') as f:
+    with open(os.path.join(SPEC_OUT_PATH, f"SVM_spec_{i}.txt"), 'w') as f:
         f.writelines(str(specificity))
-    #
-    with open(os.path.join(SENS, f"SVM_sens_{i}.txt"), 'w') as f:
+    with open(os.path.join(SENS_OUT_PATH, f"SVM_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
 
     # KNeighborsClassifier
@@ -109,11 +80,9 @@ for i in range(1, 11):
     print('Sensitivity : ', sensitivity)
     specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
     print('spec : ', specificity)
-
-    with open(os.path.join(SPEC, f"KNN_spec_{i}.txt"), 'w') as f:
+    with open(os.path.join(SPEC_OUT_PATH, f"KNN_spec_{i}.txt"), 'w') as f:
         f.writelines(str(specificity))
-    #
-    with open(os.path.join(SENS, f"KNN_sens_{i}.txt"), 'w') as f:
+    with open(os.path.join(SENS_OUT_PATH, f"KNN_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
 
     # define dataset
@@ -125,10 +94,8 @@ for i in range(1, 11):
     print('Sensitivity : ', sensitivity)
     specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
     print('spec : ', specificity)
-
-    with open(os.path.join(SPEC, f"RF_spec_{i}.txt"), 'w') as f:
+    with open(os.path.join(SPEC_OUT_PATH, f"RF_spec_{i}.txt"), 'w') as f:
         f.writelines(str(specificity))
-
     with open(os.path.join(SENS, f"RF_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
 
@@ -142,11 +109,9 @@ for i in range(1, 11):
     print('Sensitivity : ', sensitivity)
     specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
     print('spec : ', specificity)
-
-    with open(os.path.join(SPEC, f"XG_spec_{i}.txt"), 'w') as f:
+    with open(os.path.join(SPEC_OUT_PATH, f"XG_spec_{i}.txt"), 'w') as f:
         f.writelines(str(specificity))
-
-    with open(os.path.join(SENS, f"XG_sens_{i}.txt"), 'w') as f:
+    with open(os.path.join(SENS_OUT_PATH, f"XG_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
 
     # BaggingClassifier
@@ -159,15 +124,7 @@ for i in range(1, 11):
     print('Sensitivity : ', sensitivity)
     specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
     print('spec : ', specificity)
-
-    with open(os.path.join(SPEC, f"BAGG_spec_{i}.txt"), 'w') as f:
+    with open(os.path.join(SPEC_OUT_PATH, f"BAGG_spec_{i}.txt"), 'w') as f:
         f.writelines(str(specificity))
-
-    with open(os.path.join(SENS, f"BAGG_sens_{i}.txt"), 'w') as f:
+    with open(os.path.join(SENS_OUT_PATH, f"BAGG_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
-
-
-
-
-
-# cd_rf
