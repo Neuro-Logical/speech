@@ -11,7 +11,7 @@ The pipeline goes as follows:
     - To extract the cognitive features described in the paper run ```extract_cognitive_feats.py```
    
 3) Grid search
-    - To identify the best hyperparameters for each models within the mono-lingual and cross-lingual experiments run ```run_gridsearch.sh```
+    - To identify the best hyperparameters for each models within the mono-lingual and multi-lingual experiments run ```run_gridsearch.sh```
    
 4) Classification 
    - run_```monolingual_experiments.sh``` for mono-lingual experiments
