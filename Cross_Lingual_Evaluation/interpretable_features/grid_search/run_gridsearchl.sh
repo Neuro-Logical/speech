@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# change to the full path of where the Non_Interpretable_features folder is
+# change to the full path of where the Interpretable_features folder is
 cd '/speech/Cross_Lingual_Evaluation/interpretable_features/'
 
 #  Mono-Lingual experiments
