@@ -1,8 +1,8 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/RP/AUROC/'
 
-from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.Mono_Lingual.Data_Prep_monologue import *
+from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.Mono_Lingual.Data_Prep_RP import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.Mono_Lingual.Utils import *
-import numpy as np
 import random
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -15,7 +15,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import roc_auc_score
 random.seed(10)
 
-german = german_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GERMAN/final_data_frame_with_intensity.csv")
+german = german_prep(os.path.join(BASE, "/GERMAN/final_data_frame_with_intensity.csv"))
 gr = german.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
@@ -49,6 +49,7 @@ for i in range(1, 11):
     print(i)
 
     normalized_train_X, normalized_test_X, y_train, y_test = normalize(eval(f"data_train_{i}"), eval(f"data_test_{i}"))
+
     clf = ExtraTreesClassifier(n_estimators=50)
     clf = clf.fit(normalized_train_X, y_train)
     model = SelectFromModel(clf, prefit=True, max_features=30)
@@ -56,20 +57,20 @@ for i in range(1, 11):
     cols = model.get_support(indices=True)
     X_test = normalized_test_X[:, cols]
 
-    # SVM
-    model = SVC(C=1.0, gamma=0.01, kernel='poly', probability=True)
+    model = SVC(C=1.0, gamma=0.001, kernel='rbf', probability=True)
+    #model = SVC(C=1.0, gamma= 0.01, kernel= 'rbf', probability=True)
     grid_result = model.fit(X_train, y_train)
     grid_predictions = grid_result.predict_proba(X_test)
     grid_predictions = grid_predictions[:, 1]
     lr_auc = roc_auc_score(y_test, grid_predictions)
     print(f"auroc is {lr_auc}")
-    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/SS/AUROC'
+    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/RP/AUROC'
 
     with open(os.path.join(SVM, f"SVM_AUROC_{i}.txt"), 'w') as f:
         f.writelines(str(lr_auc))
 
     # KNeighborsClassifier
-    model = KNeighborsClassifier(metric='manhattan', n_neighbors=19, weights='uniform')
+    model = KNeighborsClassifier(metric='manhattan', n_neighbors=9, weights='distance')
     grid_result = model.fit(X_train, y_train)
     grid_predictions = grid_result.predict_proba(X_test)
     grid_predictions = grid_predictions[:, 1]
@@ -88,9 +89,9 @@ for i in range(1, 11):
     with open(os.path.join(SVM, f"RF_AUROC_{i}.txt"), 'w') as f:
         f.writelines(str(lr_auc))
 
-    # XGBOOST
-    model = GradientBoostingClassifier(learning_rate=0.01, max_depth=9, n_estimators=1000, subsample=0.5)
-    #model = GradientBoostingClassifier(learning_rate= 0.001, max_depth= 9, n_estimators=1000, subsample= 0.5)
+    # GradientBoostingClassifier
+    model = GradientBoostingClassifier(learning_rate=0.1, max_depth=3, n_estimators=1000, subsample=0.5)
+   # model = GradientBoostingClassifier(learning_rate=0.01, max_depth=7, n_estimators=1000, subsample=0.5)
     grid_result = model.fit(X_train, y_train)
     grid_predictions = grid_result.predict_proba(X_test)
     grid_predictions = grid_predictions[:, 1]
