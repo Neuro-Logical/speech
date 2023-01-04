@@ -21,8 +21,8 @@ from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
 random.seed(10)
 
-czech = czech_prep(os.path.join(BASE, "/czech/final_data_experiments_updated.csv"))
-gr = czech.groupby('labels')
+czech_data = czech_prep(os.path.join(BASE, "/czech/final_data_experiments_updated.csv"))
+gr = czech_data.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
 
@@ -42,21 +42,18 @@ n_folds = sorted(data, key=len, reverse=True)
 
 folds = []
 for i in n_folds:
-    data_i = czech[czech["names"].isin(i)]
+    data_i = czech_data[czech_data["names"].isin(i)]
     data_i = data_i.drop(columns=['names'])
-    folds.append((data_i).to_numpy())
+    folds.append(data_i.to_numpy())
 
 data_train_1, data_test_1, data_train_2, data_test_2, data_train_3, data_test_3, data_train_4, data_test_4, \
 data_train_5, data_test_5,  data_train_6, data_test_6, data_train_7, data_test_7 , data_train_8, data_test_8, \
 data_train_9, data_test_9, data_train_10, data_test_10 = create_split_train_test(folds)
+
 svm_parameters = {}
-
 rf_paramters = {}
-
 knn_paramters = {}
-
 xg_paramters = {}
-
 bagg_paramters = {}
 
 

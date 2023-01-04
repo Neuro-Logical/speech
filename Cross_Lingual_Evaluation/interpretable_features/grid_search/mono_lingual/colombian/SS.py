@@ -20,8 +20,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 random.seed(10)
 
-spain = gita_prep(os.path.join(BASE, "/GITA/total_data_frame_novel_task_combined_ling.csv"))
-gr = spain.groupby('labels')
+spain_data = gita_prep(os.path.join(BASE, "/GITA/total_data_frame_novel_task_combined_ling.csv"))
+gr = spain_data.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
 
@@ -41,7 +41,7 @@ n_folds = sorted(data, key=len, reverse=True)
 
 folds = []
 for i in n_folds:
-    data_i = spain[spain["names"].isin(i)]
+    data_i = spain_data[spain_data["names"].isin(i)]
     data_i = data_i.drop(columns=['names', 'AudioFile'])
     folds.append(data_i.to_numpy())
 

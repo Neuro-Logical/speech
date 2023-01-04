@@ -19,8 +19,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 random.seed(10)
 
-italian = italian_prep(os.path.join(BASE, "/ITALIAN_PD/tot_experiments_ling_fin.csv"))
-gr = italian.groupby('labels')
+italian_data = italian_prep(os.path.join(BASE, "/ITALIAN_PD/tot_experiments_ling_fin.csv"))
+gr = italian_data.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
 arrayOfSpeaker_cn = ctrl_['id'].unique()
@@ -39,7 +39,7 @@ n_folds = sorted(data, key=len, reverse=True)
 
 folds = []
 for i in n_folds:
-    data_i = italian[italian["id"].isin(i)]
+    data_i = italian_data[italian_data["id"].isin(i)]
     data_i = data_i.drop(columns=['id'])
     folds.append((data_i).to_numpy())
 

@@ -22,10 +22,10 @@ nls, nls_cols = nls_prep("/export/b15/afavaro/Frontiers/submission/Statistical_A
 colombian, colombian_cols = gita_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GITA/total_data_frame_novel_task_combined_ling_tot.csv")
 spain, spain_cols = neurovoz_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NEUROVOZ/tot_data_experiments.csv")
 german, german_cols = german_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GERMAN/final_data_frame_with_intensity.csv")
-czech, czech_clols = czech_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/czech/final_data_experiments_updated.csv")
+czech, czech_cols = czech_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/czech/final_data_experiments_updated.csv")
 
 one_inter = IntersecOfSets(german_cols, nls_cols, spain_cols)
-lista_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_clols)
+lista_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_cols)
 
 nls = nls[nls.columns.intersection(lista_to_keep)]
 czech = czech[czech.columns.intersection(lista_to_keep)]

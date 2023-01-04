@@ -19,8 +19,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 random.seed(10)
 
-czech = czech_prep(os.path.join(BASE, "/czech/final_data_experiments_updated.csv"))
-gr = czech.groupby('labels')
+czech_data = czech_prep(os.path.join(BASE, "/czech/final_data_experiments_updated.csv"))
+gr = czech_data.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
 
@@ -40,7 +40,7 @@ n_folds = sorted(data, key=len, reverse=True)
 
 folds = []
 for i in n_folds:
-    data_i = czech[czech["names"].isin(i)]
+    data_i = czech_data[czech_data["names"].isin(i)]
     data_i = data_i.drop(columns=['names'])
     folds.append((data_i).to_numpy())
 

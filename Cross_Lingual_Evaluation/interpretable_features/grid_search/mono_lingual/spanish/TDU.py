@@ -6,7 +6,6 @@ RF_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feat
 XG_OUT_PATH= '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/SPANISH/TDU/XG/TDU.txt'
 BAGG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/SPANISH/TDU/BAGG/TDU.txt'
 
-
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.mono_lingual.Data_Prep_TDU import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.mono_lingual.Utils import *
 import numpy as np
@@ -19,11 +18,10 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import roc_auc_score
 random.seed(10)
 
-spanish = neurovoz_prep(os.path.join(BAE, "/NEUROVOZ/tot_data_experiments.csv"))
-gr = spanish.groupby('labels')
+spanish_data = neurovoz_prep(os.path.join(BAE, "/NEUROVOZ/tot_data_experiments.csv"))
+gr = spanish_data.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
 
@@ -42,9 +40,9 @@ n_folds = sorted(data, key=len, reverse=True)
 
 folds = []
 for i in n_folds:
-    data_i = spanish[spanish["id"].isin(i)]
+    data_i = spanish_data[spanish_data["id"].isin(i)]
     data_i = data_i.drop(columns=['id'])
-    folds.append((data_i).to_numpy())
+    folds.append(data_i.to_numpy())
 
 data_train_1, data_test_1, data_train_2, data_test_2, data_train_3, data_test_3, data_train_4, data_test_4, \
 data_train_5, data_test_5,  data_train_6, data_test_6, data_train_7, data_test_7 , data_train_8, data_test_8, \

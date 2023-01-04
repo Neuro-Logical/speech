@@ -20,8 +20,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import roc_auc_score
 random.seed(10)
 
-spanish = neurovoz_prep(os.path.join(BASE, "/NEUROVOZ/tot_data_experiments.csv"))
-gr = spanish.groupby('labels')
+spanish_data = neurovoz_prep(os.path.join(BASE, "/NEUROVOZ/tot_data_experiments.csv"))
+gr = spanish_data.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
 
@@ -41,7 +41,7 @@ n_folds = sorted(data, key=len, reverse=True)
 
 folds = []
 for i in n_folds:
-    data_i = spanish[spanish["id"].isin(i)]
+    data_i = spanish_data[spanish_data["id"].isin(i)]
     data_i = data_i.drop(columns=['id'])
     folds.append((data_i).to_numpy())
 
@@ -50,13 +50,9 @@ data_train_5, data_test_5,  data_train_6, data_test_6, data_train_7, data_test_7
 data_train_9, data_test_9, data_train_10, data_test_10 = create_split_train_test(folds)
 
 svm_parameters = {}
-
 rf_paramters = {}
-
 knn_paramters = {}
-
 xg_paramters = {}
-
 bagg_paramters = {}
 
 
@@ -115,15 +111,11 @@ for i in range(1, 11):
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
-
-
     print(grid_result.best_params_)
     means = grid_result.cv_results_['mean_test_score']
     print(means)
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in knn_paramters:
@@ -146,8 +138,6 @@ for i in range(1, 11):
     print(means)
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in rf_paramters:
@@ -170,12 +160,10 @@ for i in range(1, 11):
     grid_result = grid_search.fit(normalized_train_X, y_train)
     # summarize results
   #  print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
-
     means = grid_result.cv_results_['mean_test_score']
     print(means)
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in xg_paramters:
@@ -196,12 +184,10 @@ for i in range(1, 11):
    # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     print(grid_result.best_params_)
   #  path = os.path.join(store_parameters, f"{i}.txt")
-
     means = grid_result.cv_results_['mean_test_score']
     print(means)
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in bagg_paramters:

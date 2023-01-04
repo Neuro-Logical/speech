@@ -20,8 +20,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 random.seed(10)
 
-english = nls_prep(os.path.join(BASE, "/NLS/total_new_training.csv"))
-gr = english.groupby('label')
+english_data = nls_prep(os.path.join(BASE, "/NLS/total_new_training.csv"))
+gr = english_data.groupby('label')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
 
@@ -41,7 +41,7 @@ n_folds = sorted(data, key=len, reverse=True)
 
 folds = []
 for i in n_folds:
-    data_i = english[english["id"].isin(i)]
+    data_i = english_data[english_data["id"].isin(i)]
     data_i = data_i.drop(columns=['names', 'id', 'task'])
     folds.append((data_i).to_numpy())
 

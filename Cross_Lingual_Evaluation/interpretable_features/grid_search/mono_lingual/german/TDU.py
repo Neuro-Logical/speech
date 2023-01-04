@@ -23,8 +23,8 @@ from Cross_Validation.Utils import *
 from Cross_Validation.Data_Prep_TDU import *
 random.seed(10)
 
-german = german_prep(os.path.join(BASE, "/GERMAN/final_data_frame_with_intensity.csv"))
-gr = german.groupby('labels')
+german_data = german_prep(os.path.join(BASE, "/GERMAN/final_data_frame_with_intensity.csv"))
+gr = german_data.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
 
@@ -44,7 +44,7 @@ n_folds = sorted(data, key=len, reverse=True)
 
 folds = []
 for i in n_folds:
-    data_i = german[german["names"].isin(i)]
+    data_i = german_data[german_data["names"].isin(i)]
     data_i = data_i.drop(columns=[ 'names'])
     folds.append((data_i).to_numpy())
 
