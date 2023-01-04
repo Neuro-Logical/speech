@@ -1,90 +1,28 @@
-#!/usr/bin/env python
-# coding: utf-8
-from sklearn.datasets import make_blobs
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.model_selection import GridSearchCV
-from sklearn.ensemble import GradientBoostingClassifier
-from sklearn.datasets import make_blobs
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.model_selection import GridSearchCV
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.feature_selection import SelectFromModel
-from sklearn.datasets import make_blobs
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.model_selection import GridSearchCV
-from sklearn.svm import SVC
+BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/SPANISH/SS/SVM/SS.txt'
+KNN = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/SPANISH/SS/KNN/SS.txt'
+RF = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/SPANISH/SS/RF/SS.txt'
+XG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/SPANISH/SS/XG/SS.txt'
+BAGG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/SPANISH/SS/BAGG/SS.txt'
 
-from sklearn.datasets import make_blobs
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.model_selection import GridSearchCV
-from sklearn.ensemble import BaggingClassifier
-from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.feature_selection import SelectFromModel
-from sklearn.datasets import make_blobs
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.model_selection import GridSearchCV
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.feature_selection import SelectFromModel
-import random
-import os
-from sklearn.inspection import plot_partial_dependence
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Data_Prep_monologue import *
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Utils import *
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.datasets import load_iris
-from sklearn.tree import DecisionTreeClassifier
-import matplotlib.pyplot as plt
-from sklearn.datasets import load_iris
-from sklearn.linear_model import LogisticRegression
-from sklearn.inspection import DecisionBoundaryDisplay
-from sklearn.utils import shuffle
 import random
 import os
-from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.feature_selection import SelectKBest, f_regression, f_classif
-from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LinearRegression
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import mean_squared_error
-from sklearn.pipeline import Pipeline
-from sklearn.datasets import make_classification
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import GridSearchCV
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.feature_selection import SelectFromModel
+from sklearn.svm import SVC
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.feature_selection import SelectKBest, mutual_info_classif
-import pandas as pd
-from Utils import *
-
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import roc_auc_score
 random.seed(10)
 
-spain = pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NEUROVOZ/tot_data_experiments.csv")
-spain['labels'] = [elem.split("_")[0] for elem in spain['AudioFile'].tolist()]
-spain['task'] = [elem.split("_")[1] for elem in spain['AudioFile'].tolist()]
-spain['id'] = [elem.split("_")[2] for elem in spain['AudioFile'].tolist()]
-task = ['ESPONTANEA']
-spain = spain[spain['task'].isin(task)]
-spain=spain.drop(columns=['Unnamed: 0', 'AudioFile', 'task'])
-
-lab = []
-for m in spain['labels'].tolist():
-    if m == 'PD':
-        lab.append(1)
-    if m == 'HC':
-        lab.append(0)
-spain['labels'] = lab
-
-gr = spain.groupby('labels')
-
+spanish = neurovoz_prep(os.path.join(BASE, "/NEUROVOZ/tot_data_experiments.csv"))
+gr = spanish.groupby('labels')
 ctrl_ = gr.get_group(0)
-
 pd_ = gr.get_group(1)
 
 arrayOfSpeaker_cn = ctrl_['id'].unique()
@@ -93,50 +31,23 @@ random.shuffle(arrayOfSpeaker_cn)
 arrayOfSpeaker_pd = pd_['id'].unique()
 random.shuffle(arrayOfSpeaker_pd)
 
-
 cn_sps = get_n_folds(arrayOfSpeaker_cn)
 pd_sps = get_n_folds(arrayOfSpeaker_pd)
+
 data = []
 for cn_sp, pd_sp in zip(sorted(cn_sps, key=len), sorted(pd_sps, key=len, reverse=True)):
     data.append(cn_sp + pd_sp)
 n_folds = sorted(data, key=len, reverse=True)
+
 folds = []
 for i in n_folds:
-    data_i = spain[spain["id"].isin(i)]
+    data_i = spanish[spanish["id"].isin(i)]
     data_i = data_i.drop(columns=['id'])
-   # data_i = data_i.drop(columns=['id', 'events'])
     folds.append((data_i).to_numpy())
 
-data_train_1 = np.concatenate(folds[:9])
-data_test_1 = np.concatenate(folds[-1:])
-
-data_train_2 = np.concatenate(folds[1:])
-data_test_2 = np.concatenate(folds[:1])
-
-data_train_3 = np.concatenate(folds[2:] + folds[:1])
-data_test_3 = np.concatenate(folds[1:2])
-
-data_train_4 = np.concatenate(folds[3:] + folds[:2])
-data_test_4 = np.concatenate(folds[2:3])
-
-data_train_5 = np.concatenate(folds[4:] + folds[:3])
-data_test_5 = np.concatenate(folds[3:4])
-
-data_train_6 = np.concatenate(folds[5:] + folds[:4])
-data_test_6 = np.concatenate(folds[4:5])
-
-data_train_7 = np.concatenate(folds[6:] + folds[:5])
-data_test_7 = np.concatenate(folds[5:6])
-
-data_train_8 = np.concatenate(folds[7:] + folds[:6])
-data_test_8 = np.concatenate(folds[6:7])
-
-data_train_9 = np.concatenate(folds[8:] + folds[:7])
-data_test_9 = np.concatenate(folds[7:8])
-
-data_train_10 = np.concatenate(folds[9:] + folds[:8])
-data_test_10 = np.concatenate(folds[8:9])
-
+data_train_1, data_test_1, data_train_2, data_test_2, data_train_3, data_test_3, data_train_4, data_test_4, \
+data_train_5, data_test_5,  data_train_6, data_test_6, data_train_7, data_test_7 , data_train_8, data_test_8, \
+data_train_9, data_test_9, data_train_10, data_test_10 = create_split_train_test(folds)
 
 svm_parameters = {}
 
@@ -299,22 +210,8 @@ for i in range(1, 11):
             bagg_paramters[config] = [mean]
 
 
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/SPANISH/SS/SVM/SS.txt'
-
-KNN = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/SPANISH/SS/KNN/SS.txt'
-
-RF = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/SPANISH/SS/RF/SS.txt'
-
-XG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/SPANISH/SS/XG/SS.txt'
-
-BAGG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/SPANISH/SS/BAGG/SS.txt'
-
-
-
 for k in svm_parameters.keys():
     svm_parameters[k] = np.array(svm_parameters[k]).mean()
-
-
 
 for k in knn_paramters.keys():
     knn_paramters[k] = np.array(knn_paramters[k]).mean()
@@ -327,10 +224,8 @@ for k in rf_paramters.keys():
 for k in xg_paramters.keys():
     xg_paramters[k] = np.array(xg_paramters[k]).mean()
 
-
 for k in bagg_paramters.keys():
     bagg_paramters[k] = np.array(bagg_paramters[k]).mean()
-
 
 
 
