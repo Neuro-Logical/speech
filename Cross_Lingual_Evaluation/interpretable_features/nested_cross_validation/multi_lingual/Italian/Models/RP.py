@@ -1,8 +1,12 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+SVM_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/ITALIAN/RP/SVM/'
+KNN_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/ITALIAN/RP/KNN/'
+RF_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/ITALIAN/RP/RF/'
+XGBOOST_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/ITALIAN/RP/XG/'
+BAGGING_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/ITALIAN/RP/BAGG/'
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Data_Prep_RP import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Utils_RP import *
-import numpy as np
 import random
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -11,8 +15,8 @@ from sklearn.svm import SVC
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import roc_auc_score
 random.seed(10)
 
 nls, nls_cols = nls_prep(os.path.join(BASE, "/NLS/Data_frame_RP.csv"))
@@ -101,66 +105,77 @@ for i in range(1, 11):
                                                  normalized_train_X_czech, y_train_czech, normalized_train_X_german,
                                                   y_train_german, normalized_train_X_nls, y_train_nls)
 
-
     test_data, test_labels  = normalized_test_X_italian, y_test_italian
 
     clf = ExtraTreesClassifier(n_estimators=30)
     clf = clf.fit(training_data, training_labels)
-    model = SelectFromModel(clf, prefit=True, max_features=35)
+    model = SelectFromModel(clf, prefit=True, max_features=40)
     X_train = model.transform(training_data)
     cols = model.get_support(indices=True)
     X_test = test_data[:, cols]
-
-    model = SVC(C=1.0, gamma=0.01, kernel='rbf', probability=True)
+    model = SVC(C=1.0, gamma=0.01, kernel='rbf')
     grid_result = model.fit(X_train, training_labels)
-    grid_predictions = grid_result.predict_proba(X_test)
-    grid_predictions = grid_predictions[:, 1]
-    lr_auc = roc_auc_score(test_labels, grid_predictions)
-    print(f"auroc is {lr_auc}")
-    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/ITALIAN/RP/AUROC'
+    grid_predictions = grid_result.predict(X_test)
+    print(classification_report(test_labels, grid_predictions, output_dict=False))
+    report = classification_report(test_labels, grid_predictions, output_dict=True)
+    print(report)
+    f_1 = report['1.0']['f1-score']
+    acc = report['accuracy']
+    with open(os.path.join(SVM_OUT_PATH, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+    with open(os.path.join(SVM_OUT_PATH, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
-    with open(os.path.join(SVM, f"SVM_AUROC_{i}.txt"), 'w') as f:
-        f.writelines(str(lr_auc))
-
+    # KNeighborsClassifier
     model = KNeighborsClassifier(metric='euclidean', n_neighbors=11, weights='distance')
     grid_result = model.fit(X_train, training_labels)
-    grid_predictions = grid_result.predict_proba(X_test)
-    grid_predictions = grid_predictions[:, 1]
-    lr_auc = roc_auc_score(test_labels, grid_predictions)
+    grid_predictions = grid_result.predict(X_test)
+    print(classification_report(test_labels, grid_predictions, output_dict=False))
+    report = classification_report(test_labels, grid_predictions, output_dict=True)
+    f_1 = report['1.0']['f1-score']
+    acc = report['accuracy']
+    with open(os.path.join(KNN_OUT_PATH, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+    with open(os.path.join(KNN_OUT_PATH, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
-    with open(os.path.join(SVM, f"KNN_AUROC_{i}.txt"), 'w') as f:
-        f.writelines(str(lr_auc))
-
-    # define dataset
-    model = RandomForestClassifier(max_features='sqrt', n_estimators=1000)
+    # RandomForestClassifier
+    model = RandomForestClassifier(max_features= 'sqrt', n_estimators= 1000)
     grid_result = model.fit(X_train, training_labels)
-    grid_predictions = grid_result.predict_proba(X_test)
-    grid_predictions = grid_predictions[:, 1]
-    lr_auc = roc_auc_score(test_labels, grid_predictions)
+    grid_predictions = grid_result.predict(X_test)
+    print(classification_report(test_labels, grid_predictions, output_dict=False))
+    report = classification_report(test_labels, grid_predictions, output_dict=True)
+    f_1 = report['1.0']['f1-score']
+    acc = report['accuracy']
+    with open(os.path.join(RF_OUT_PATH, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+    with open(os.path.join(RF_OUT_PATH, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
-    with open(os.path.join(SVM, f"RF_AUROC_{i}.txt"), 'w') as f:
-        f.writelines(str(lr_auc))
-
-    # XGBOOST
+    # GradientBoostingClassifier
     model = GradientBoostingClassifier(learning_rate=0.01, max_depth=3, n_estimators=1000, subsample=0.7)
     grid_result = model.fit(X_train, training_labels)
-    grid_predictions = grid_result.predict_proba(X_test)
-    grid_predictions = grid_predictions[:, 1]
-    lr_auc = roc_auc_score(test_labels, grid_predictions)
-    print(f"auroc is {lr_auc}")
+    grid_predictions = grid_result.predict(X_test)
+    print(classification_report(test_labels, grid_predictions, output_dict=False))
+    report = classification_report(test_labels, grid_predictions, output_dict=True)
+    f_1 = report['1.0']['f1-score']
+    acc = report['accuracy']
+    with open(os.path.join(XGBOOST_OUT_PATH, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+    with open(os.path.join(XGBOOST_OUT_PATH, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
-    with open(os.path.join(SVM, f"XGBoost_AUROC_{i}.txt"), 'w') as f:
-        f.writelines(str(lr_auc))
-
-
-    model = BaggingClassifier(max_samples=0.5, n_estimators=1000)
-    #model = BaggingClassifier(max_samples=0.2, n_estimators=1000)
+    # BaggingClassifier
+    model = BaggingClassifier(n_estimators=1000, max_samples=0.5)
     grid_result = model.fit(X_train, training_labels)
-    grid_predictions = grid_result.predict_proba(X_test)
-    grid_predictions = grid_predictions[:, 1]
-    lr_auc = roc_auc_score(test_labels, grid_predictions)
-    print(f"auroc is {lr_auc}")
+    grid_predictions = grid_result.predict(X_test)
+    print(classification_report(test_labels, grid_predictions, output_dict=False))
+    report = classification_report(test_labels, grid_predictions, output_dict=True)
+    f_1 = report['1.0']['f1-score']
+    acc = report['accuracy']
 
+    with open(os.path.join(BAGGING_OUT_PATH, f"all_f1_{i}.txt"), 'w') as f:
+        f.writelines(str(f_1))
+    with open(os.path.join(BAGGING_OUT_PATH, f"all_acc_{i}.txt"), 'w') as f:
+        f.writelines(str(acc))
 
-    with open(os.path.join(SVM, f"Bagging_AUROC_{i}.txt"), 'w') as f:
-        f.writelines(str(lr_auc))

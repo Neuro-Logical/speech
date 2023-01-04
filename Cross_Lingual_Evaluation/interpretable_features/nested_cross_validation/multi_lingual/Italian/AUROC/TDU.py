@@ -1,8 +1,8 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+OUT_PATH ='/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/ITALIAN/TDU/AUROC/'
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Data_Prep_TDU import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Utils_TDU import *
-import numpy as np
 import random
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -70,8 +70,6 @@ data_test_10_italian = create_split_train_test(italian_folds)
 
 for i in range(1, 11):
 
-    print(i)
-
     normalized_train_X_spain, normalized_test_X_spain, y_train_spain, y_test_spain = normalize(
         eval(f"data_train_{i}_spain"), eval(f"data_test_{i}_spain"))
     normalized_train_X_italian, normalized_test_X_italian, y_train_italian, y_test_italian = normalize(
@@ -94,16 +92,13 @@ for i in range(1, 11):
     cols = model.get_support(indices=True)
     X_test = test_data[:, cols]
 
-
     model = SVC(C=1.0, gamma=0.01, kernel='rbf', probability=True)
     grid_result = model.fit(X_train, training_labels)
     grid_predictions = grid_result.predict_proba(X_test)
     grid_predictions = grid_predictions[:, 1]
     lr_auc = roc_auc_score(test_labels, grid_predictions)
     print(f"auroc is {lr_auc}")
-    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/ITALIAN/TDU/AUROC'
-
-    with open(os.path.join(SVM, f"SVM_AUROC_{i}.txt"), 'w') as f:
+    with open(os.path.join(OUT_PATH, f"SVM_AUROC_{i}.txt"), 'w') as f:
         f.writelines(str(lr_auc))
 
     model = KNeighborsClassifier(metric='manhattan', n_neighbors=15, weights='uniform')
@@ -111,10 +106,8 @@ for i in range(1, 11):
     grid_predictions = grid_result.predict_proba(X_test)
     grid_predictions = grid_predictions[:, 1]
     lr_auc = roc_auc_score(test_labels, grid_predictions)
-
-    with open(os.path.join(SVM, f"KNN_AUROC_{i}.txt"), 'w') as f:
+    with open(os.path.join(OUT_PATH, f"KNN_AUROC_{i}.txt"), 'w') as f:
         f.writelines(str(lr_auc))
-
 
     # RandomForestClassifier
     model = RandomForestClassifier(max_features='log2', n_estimators=1000)
@@ -122,8 +115,7 @@ for i in range(1, 11):
     grid_predictions = grid_result.predict_proba(X_test)
     grid_predictions = grid_predictions[:, 1]
     lr_auc = roc_auc_score(test_labels, grid_predictions)
-
-    with open(os.path.join(SVM, f"RF_AUROC_{i}.txt"), 'w') as f:
+    with open(os.path.join(OUT_PATH, f"RF_AUROC_{i}.txt"), 'w') as f:
         f.writelines(str(lr_auc))
 
     # GradientBoostingClassifier
@@ -133,8 +125,7 @@ for i in range(1, 11):
     grid_predictions = grid_predictions[:, 1]
     lr_auc = roc_auc_score(test_labels, grid_predictions)
     print(f"auroc is {lr_auc}")
-
-    with open(os.path.join(SVM, f"XGBoost_AUROC_{i}.txt"), 'w') as f:
+    with open(os.path.join(OUT_PATH, f"XGBoost_AUROC_{i}.txt"), 'w') as f:
         f.writelines(str(lr_auc))
 
     # BaggingClassifier
@@ -144,6 +135,5 @@ for i in range(1, 11):
     grid_predictions = grid_predictions[:, 1]
     lr_auc = roc_auc_score(test_labels, grid_predictions)
     print(f"auroc is {lr_auc}")
-
-    with open(os.path.join(SVM, f"Bagging_AUROC_{i}.txt"), 'w') as f:
+    with open(os.path.join(OUT_PATH, f"Bagging_AUROC_{i}.txt"), 'w') as f:
         f.writelines(str(lr_auc))
