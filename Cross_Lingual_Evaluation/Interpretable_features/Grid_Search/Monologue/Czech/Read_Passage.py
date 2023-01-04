@@ -132,9 +132,7 @@ for i in range(1, 11):
         else:
             knn_paramters[config] = [mean]
 
-
     # RandomForestClassifier
-
     model = RandomForestClassifier()
     n_estimators = [10, 100, 1000]
     max_features = ['sqrt', 'log2']
