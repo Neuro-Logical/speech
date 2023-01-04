@@ -1,4 +1,7 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+SPEC_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/ENGLISH/RP/SPEC/'
+SENS_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/ENGLISH/RP/SENS/'
+
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.Mono_Lingual.Data_Prep_RP import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.Mono_Lingual.Utils import *

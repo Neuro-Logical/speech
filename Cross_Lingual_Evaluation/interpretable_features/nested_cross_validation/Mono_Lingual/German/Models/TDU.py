@@ -1,8 +1,12 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+SVM_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/TDU/SVM/'
+KNN_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/TDU/KNN/'
+RF_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/TDU/RF/'
+XG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/TDU/XG/'
+BAGG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/TDU/BAGG/'
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.Mono_Lingual.Data_Prep_TDU import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.Mono_Lingual.Utils import *
-import numpy as np
 import random
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -62,13 +66,11 @@ for i in range(1, 11):
     grid_predictions = grid_result.predict(X_test)
     print(classification_report(y_test, grid_predictions, output_dict=False))
     report = classification_report(y_test, grid_predictions, output_dict=True)
-    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/TDU/SVM/'
     f_1 = report['1']['f1-score']
     acc = report['accuracy']
-
-    with open(os.path.join(SVM, f"all_f1_{i}.txt"), 'w') as f:
+    with open(os.path.join(SVM_OUT_PATH, f"all_f1_{i}.txt"), 'w') as f:
         f.writelines(str(f_1))
-    with open(os.path.join(SVM, f"all_acc_{i}.txt"), 'w') as f:
+    with open(os.path.join(SVM_OUT_PATH, f"all_acc_{i}.txt"), 'w') as f:
         f.writelines(str(acc))
 
     # KNeighborsClassifier
@@ -77,14 +79,11 @@ for i in range(1, 11):
     grid_predictions = grid_result.predict(X_test)
     print(classification_report(y_test, grid_predictions, output_dict=False))
     report = classification_report(y_test, grid_predictions, output_dict=True)
-    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/TDU/KNN/'
     f_1 = report['1']['f1-score']
     acc = report['accuracy']
-
-    with open(os.path.join(SVM, f"all_f1_{i}.txt"), 'w') as f:
+    with open(os.path.join(KNN_OUT_PATH, f"all_f1_{i}.txt"), 'w') as f:
         f.writelines(str(f_1))
-
-    with open(os.path.join(SVM, f"all_acc_{i}.txt"), 'w') as f:
+    with open(os.path.join(KNN_OUT_PATH, f"all_acc_{i}.txt"), 'w') as f:
         f.writelines(str(acc))
 
     # RandomForestClassifier
@@ -93,14 +92,11 @@ for i in range(1, 11):
     grid_predictions = grid_result.predict(X_test)
     print(classification_report(y_test, grid_predictions, output_dict=False))
     report = classification_report(y_test, grid_predictions, output_dict=True)
-    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/TDU/RF/'
     f_1 = report['1']['f1-score']
     acc = report['accuracy']
-
-    with open(os.path.join(SVM, f"all_f1_{i}.txt"), 'w') as f:
+    with open(os.path.join(RF_OUT_PATH, f"all_f1_{i}.txt"), 'w') as f:
         f.writelines(str(f_1))
-
-    with open(os.path.join(SVM, f"all_acc_{i}.txt"), 'w') as f:
+    with open(os.path.join(RF_OUT_PATH, f"all_acc_{i}.txt"), 'w') as f:
         f.writelines(str(acc))
 
     # GradientBoostingClassifier
@@ -109,14 +105,11 @@ for i in range(1, 11):
     grid_predictions = grid_result.predict(X_test)
     print(classification_report(y_test, grid_predictions, output_dict=False))
     report = classification_report(y_test, grid_predictions, output_dict=True)
-    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/TDU/XG/'
     f_1 = report['1']['f1-score']
     acc = report['accuracy']
-
-    with open(os.path.join(SVM, f"all_f1_{i}.txt"), 'w') as f:
+    with open(os.path.join(XG_OUT_PATH, f"all_f1_{i}.txt"), 'w') as f:
         f.writelines(str(f_1))
-
-    with open(os.path.join(SVM, f"all_acc_{i}.txt"), 'w') as f:
+    with open(os.path.join(XG_OUT_PATH, f"all_acc_{i}.txt"), 'w') as f:
         f.writelines(str(acc))
 
     # BaggingClassifier
@@ -125,12 +118,9 @@ for i in range(1, 11):
     grid_predictions = grid_result.predict(X_test)
     print(classification_report(y_test, grid_predictions, output_dict=False))
     report = classification_report(y_test, grid_predictions, output_dict=True)
-    SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/TDU/BAGG/'
     f_1 = report['1']['f1-score']
     acc = report['accuracy']
-
-    with open(os.path.join(SVM, f"all_f1_{i}.txt"), 'w') as f:
+    with open(os.path.join(BAGG_OUT_PATH, f"all_f1_{i}.txt"), 'w') as f:
         f.writelines(str(f_1))
-
-    with open(os.path.join(SVM, f"all_acc_{i}.txt"), 'w') as f:
+    with open(os.path.join(BAGG_OUT_PATH, f"all_acc_{i}.txt"), 'w') as f:
         f.writelines(str(acc))
