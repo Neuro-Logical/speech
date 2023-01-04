@@ -1,4 +1,9 @@
 BASE_DIR = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+SVM_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/ITALIAN/RP/SVM/'
+KNN_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/ITALIAN/RP/KNN/'
+RF_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/ITALIAN/RP/RF/'
+XGBOOST_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/ITALIAN/RP/XG/'
+BAGGING_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/ITALIAN/RP/BAGG/'
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.cross_lingual.Data_Prep_RP import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.cross_lingual.Utils_RP import *
@@ -19,7 +24,6 @@ colombian, colombian_cols = gita_prep(os.path.join(BASE_DIR,"/GITA/total_data_fr
 german, german_cols = german_prep(os.path.join(BASE_DIR, "/GERMAN/final_data_frame_with_intensity.csv"))
 czech, czech_clols = czech_prep(os.path.join(BASE_DIR, "/Czech/final_data_experiments_updated.csv"))
 italian, italian_cols = italian_prep(os.path.join(BASE_DIR, "/ITALIAN_PD/RP_data_frame.csv"))
-
 
 one_inter = IntersecOfSets(german_cols, nls_cols, italian_cols)
 lista_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_clols)
@@ -51,12 +55,10 @@ means = np.mean(np.stack([mean_german, mean_nls, mean_colombian, mean_czech], ax
 stds = np.mean(np.stack([std_german, std_nls, std_colombian, std_czech], axis=1), axis=1)
 
 normalized_train_X_italian, y_train_italian = normalize_test(italian, means, stds)
-
 training_data, training_labels = train_split(normalized_train_X_german, y_train_german, normalized_train_X_czech,
                                              y_train_czech,
                                              normalized_train_X_nls, y_train_nls, normalized_train_X_colombian,
                                              y_train_colombian)
-
 test_data, test_labels = test_split(normalized_train_X_italian, y_train_italian)
 
 clf = ExtraTreesClassifier(n_estimators=30)
@@ -73,12 +75,11 @@ grid_predictions = grid_result.predict(X_test)
 print(classification_report(test_labels, grid_predictions, output_dict=False))
 report = classification_report(test_labels, grid_predictions, output_dict=True)
 print(report)
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/ITALIAN/RP/SVM/'
 f_1 = report['1.0']['f1-score']
 acc = report['accuracy']
-with open(os.path.join(SVM, f"all_f1.txt"), 'w') as f:
+with open(os.path.join(SVM_OUT_PATH, f"all_f1.txt"), 'w') as f:
     f.writelines(str(f_1))
-with open(os.path.join(SVM, f"all_acc.txt"), 'w') as f:
+with open(os.path.join(SVM_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
 # define dataset
@@ -87,13 +88,11 @@ grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
 print(classification_report(test_labels, grid_predictions, output_dict=False))
 report = classification_report(test_labels, grid_predictions, output_dict=True)
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/ITALIAN/RP/KNN/'
 f_1 = report['1.0']['f1-score']
 acc = report['accuracy']
-with open(os.path.join(SVM, f"all_f1.txt"), 'w') as f:
+with open(os.path.join(KNN_OUT_PATH, f"all_f1.txt"), 'w') as f:
     f.writelines(str(f_1))
-
-with open(os.path.join(SVM, f"all_acc.txt"), 'w') as f:
+with open(os.path.join(KNN_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
 #model = RandomForestClassifier()
@@ -102,30 +101,23 @@ grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
 print(classification_report(test_labels, grid_predictions, output_dict=False))
 report = classification_report(test_labels, grid_predictions, output_dict=True)
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/ITALIAN/RP/RF/'
 f_1 = report['1.0']['f1-score']
 acc = report['accuracy']
-
-with open(os.path.join(SVM, f"all_f1.txt"), 'w') as f:
+with open(os.path.join(RF_OUT_PATH, f"all_f1.txt"), 'w') as f:
     f.writelines(str(f_1))
-
-with open(os.path.join(SVM, f"all_acc.txt"), 'w') as f:
+with open(os.path.join(RF_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
-
 
 model = GradientBoostingClassifier(learning_rate=0.01, max_depth=3, n_estimators=1000, subsample=0.7)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
 print(classification_report(test_labels, grid_predictions, output_dict=False))
 report = classification_report(test_labels, grid_predictions, output_dict=True)
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/ITALIAN/RP/XG/'
 f_1 = report['1.0']['f1-score']
 acc = report['accuracy']
-
-with open(os.path.join(SVM, f"all_f1.txt"), 'w') as f:
+with open(os.path.join(XGBOOST_OUT_PATH, f"all_f1.txt"), 'w') as f:
     f.writelines(str(f_1))
-
-with open(os.path.join(SVM, f"all_acc.txt"), 'w') as f:
+with open(os.path.join(XGBOOST_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
 model = BaggingClassifier(n_estimators=1000, max_samples=0.5)
@@ -133,12 +125,9 @@ grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
 print(classification_report(test_labels, grid_predictions, output_dict=False))
 report = classification_report(test_labels, grid_predictions, output_dict=True)
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/ITALIAN/RP/BAGG/'
 f_1 = report['1.0']['f1-score']
 acc = report['accuracy']
-
-with open(os.path.join(SVM, f"all_f1.txt"), 'w') as f:
+with open(os.path.join(BAGGING_OUT_PATH, f"all_f1.txt"), 'w') as f:
     f.writelines(str(f_1))
-
-with open(os.path.join(SVM, f"all_acc.txt"), 'w') as f:
+with open(os.path.join(BAGGING_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
