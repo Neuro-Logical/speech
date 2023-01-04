@@ -72,7 +72,7 @@ for feat_used in ['xvector','trill']:
 
     # {'monologue', 'readtext'}
     # get dataframe of all recordings with labels
-    spain =pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/Czech/final_data_experiments_updated.csv")
+    spain =pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/czech/final_data_experiments_updated.csv")
     spain['names'] =  [elem.split("_")[1] for elem in spain.AudioFile.tolist()]
     spain['task'] = [elem.split("_")[2] for elem in spain['AudioFile'].tolist()]
     spain['labels'] = [elem.split("_")[0] for elem in spain.AudioFile.tolist()]

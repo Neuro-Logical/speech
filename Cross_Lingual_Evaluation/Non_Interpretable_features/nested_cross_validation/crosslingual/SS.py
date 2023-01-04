@@ -292,9 +292,9 @@ for feat_used in ['xvector','trill']:
     german_cols = german.columns.tolist()
 
     # ----------------
-    # spain =pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/Czech/final_data_experiments.csv")
+    # spain =pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/czech/final_data_experiments.csv")
     czech = pd.read_csv(
-        "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/Czech/final_data_experiments_updated.csv")
+        "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/czech/final_data_experiments_updated.csv")
     czech['filename'] = czech['AudioFile'] #%
     czech['names'] = [elem.split("_")[1] for elem in czech.AudioFile.tolist()]
     czech['task'] = [elem.split("_")[2] for elem in czech['AudioFile'].tolist()]
@@ -347,7 +347,7 @@ for feat_used in ['xvector','trill']:
     normalized_train_X_czech, y_train_czech, mean_czech, std_czech = normalize(czech)
     normalized_train_X_german, y_train_german, mean_german, std_german = normalize(german)
 
-    # 1- German test ---------------------------------
+    # 1- german test ---------------------------------
     means = np.mean(np.stack([mean_spain, mean_nls, mean_colombian, mean_czech], axis=1), axis=1)
     stds = np.mean(np.stack([std_spain, std_nls, std_colombian, std_czech], axis=1), axis=1)
 
@@ -388,7 +388,7 @@ for feat_used in ['xvector','trill']:
     test_scores = grid_test_scores[:,0].tolist()
 
     # report
-    print('German:')
+    print('german:')
     print(classification_report(y_test, grid_predictions, output_dict=False))
     print(confusion_matrix(y_test, grid_predictions))
 
@@ -560,7 +560,7 @@ for feat_used in ['xvector','trill']:
     test_scores = grid_test_scores[:,0].tolist()
 
     # report
-    print('Czech:')
+    print('czech:')
     print(classification_report(y_test, grid_predictions, output_dict=False))
     print(confusion_matrix(test_labels, grid_predictions))
 

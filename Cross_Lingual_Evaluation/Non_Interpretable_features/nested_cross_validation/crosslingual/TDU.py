@@ -255,7 +255,7 @@ for feat_used in ['xvector','trill']:
     normalized_train_X_spain, y_train_spain, mean_spain, std_spain = normalize(spain)
     normalized_train_X_colombian, y_train_colombian, mean_colombian, std_colombian = normalize(colombian)
 
-    # 1- German test ---------------------------------
+    # 1- german test ---------------------------------
     means = np.mean(np.stack([mean_italian, mean_spain, mean_colombian], axis=1), axis=1)
     stds = np.mean(np.stack([std_italian, std_spain, std_colombian], axis=1), axis=1)
 
@@ -295,7 +295,7 @@ for feat_used in ['xvector','trill']:
     test_scores = grid_test_scores[:,0].tolist()
 
     # report
-    print('German:')
+    print('german:')
     print(classification_report(y_test, grid_predictions, output_dict=False))
     print(confusion_matrix(y_test, grid_predictions))
 
@@ -407,7 +407,7 @@ for feat_used in ['xvector','trill']:
     test_scores = grid_test_scores[:,0].tolist()
 
     # report
-    print('Italian:')
+    print('italian:')
     print(classification_report(y_test, grid_predictions, output_dict=False))
     print(confusion_matrix(test_labels, grid_predictions))
 

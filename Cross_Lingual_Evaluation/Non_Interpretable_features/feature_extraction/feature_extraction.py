@@ -459,15 +459,15 @@ with open("nls_id_label_dict.pkl", "rb") as input_file:
     
 # extract x-vectors
 features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_ita_extra(sdir=rec_path+'Italian_PD', task_files=['B1','B2','FBR1','PR1'], id_inds=[1,2], out_dir=feat_path+'xvector/', db_name='italian', trill=0)
-features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_extra(sdir=rec_path+'Czech_PD/All_16k', task_inds=[2], id_inds=[1], out_dir=feat_path+'xvector/', db_name='Czech', trill=0)
-features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_extra(sdir=rec_path+'German_PD/All', task_inds=[2], id_inds=[1], out_dir=feat_path+'xvector/', db_name='German', trill=0)
+features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_extra(sdir=rec_path+'Czech_PD/All_16k', task_inds=[2], id_inds=[1], out_dir=feat_path+'xvector/', db_name='czech', trill=0)
+features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_extra(sdir=rec_path+'German_PD/All', task_inds=[2], id_inds=[1], out_dir=feat_path+'xvector/', db_name='german', trill=0)
 features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_extra(sdir=rec_path+'GITA_NEW_TASKS/Gita_Novel_resampled', task_inds=[2], id_inds=[1], out_dir=feat_path+'xvector/', db_name='GITA', trill=0)
 features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_extra(sdir=rec_path+'Neurovoz_data/Neurovoz_rec', task_inds=[1], id_inds=[-1], out_dir=feat_path+'xvector/', db_name='neurovoz', trill=0)
 features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_extra(sdir=rec_path+'NLS/NLS_RESAMPLED', task_inds=[3], id_inds=[0,1], out_dir=feat_path+'xvector/', db_name='nls', trill=0, nls_labels=nls_labels)
 # extract trillsson representations
 features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_ita_extra(sdir=rec_path+'Italian_PD', task_files=['B1','B2','FBR1','PR1'], id_inds=[1,2], out_dir=feat_path+'trill/', db_name='italian', trill=1)
-features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_extra(sdir=rec_path+'Czech_PD/All_16k', task_inds=[2], id_inds=[1], out_dir=feat_path+'trill/', db_name='Czech', trill=1)
-features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_extra(sdir=rec_path+'German_PD/All', task_inds=[2], id_inds=[1], out_dir=feat_path+'trill/', db_name='German', trill=1)
+features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_extra(sdir=rec_path+'Czech_PD/All_16k', task_inds=[2], id_inds=[1], out_dir=feat_path+'trill/', db_name='czech', trill=1)
+features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_extra(sdir=rec_path+'German_PD/All', task_inds=[2], id_inds=[1], out_dir=feat_path+'trill/', db_name='german', trill=1)
 features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_extra(sdir=rec_path+'GITA_NEW_TASKS/Gita_Novel_resampled', task_inds=[2], id_inds=[1], out_dir=feat_path+'trill/', db_name='GITA', trill=1)
 features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_extra(sdir=rec_path+'Neurovoz_data/Neurovoz_rec', task_inds=[1], id_inds=[-1], out_dir=feat_path+'trill/', db_name='neurovoz', trill=1)
 features, cats, tasks, feats_PD, feats_CTRL = feature_extraction_db_extra(sdir=rec_path+'NLS/NLS_RESAMPLED', task_inds=[3], id_inds=[0,1], out_dir=feat_path+'trill/', db_name='nls', trill=1, nls_labels=nls_labels)

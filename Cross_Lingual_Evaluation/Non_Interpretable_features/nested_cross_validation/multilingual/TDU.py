@@ -527,7 +527,7 @@ for feat_used in ['xvector','trill']:
         test_scores += grid_test_scores[:,0].tolist()
 
     # report
-    print('Italian:')
+    print('italian:')
     print(classification_report(truth, predictions, output_dict=False))
     print(confusion_matrix(truth, predictions))
 
@@ -543,7 +543,7 @@ for feat_used in ['xvector','trill']:
     print('----------')
 
 
-    # Test - German -----------------------
+    # Test - german -----------------------
     predictions = []
     truth = []
     test_scores = []
@@ -568,7 +568,7 @@ for feat_used in ['xvector','trill']:
         test_scores += grid_test_scores[:,0].tolist()
 
     # report
-    print('German:')
+    print('german:')
     print(classification_report(truth, predictions, output_dict=False))
     print(confusion_matrix(truth, predictions))
 

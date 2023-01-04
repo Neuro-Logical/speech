@@ -6,7 +6,7 @@ XG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feat
 BAGG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters/CZECH/SS/BAGG/mono_lingual.txt'
 
 
-from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.mono_lingual.Data_Prep_monologue import *
+from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.mono_lingual.Data_Prep_SS import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.mono_lingual.Utils import *
 import numpy as np
 import random
@@ -21,7 +21,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
 random.seed(10)
 
-czech = czech_prep(os.path.join(BASE, "/Czech/final_data_experiments_updated.csv"))
+czech = czech_prep(os.path.join(BASE, "/czech/final_data_experiments_updated.csv"))
 gr = czech.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)

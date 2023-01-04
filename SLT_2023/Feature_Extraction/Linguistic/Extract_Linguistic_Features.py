@@ -43,7 +43,7 @@ def load_files(data):
     return frame
 
 
-# Load the pretrained pipeline for English
+# Load the pretrained pipeline for english
 
 nlp = spacy.load('en_core_web_sm')
 

@@ -310,7 +310,7 @@ for feat_used in ['xvector','trill']:
     #german
 
     # ----------------
-    czech =pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/Czech/final_data_experiments_updated.csv")
+    czech =pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/czech/final_data_experiments_updated.csv")
     czech['filename'] = czech['AudioFile'] #%
     czech['names'] =  [elem.split("_")[1] for elem in czech.AudioFile.tolist()]
     czech['task'] = [elem.split("_")[2] for elem in czech['AudioFile'].tolist()]
@@ -613,7 +613,7 @@ for feat_used in ['xvector','trill']:
         test_scores += grid_test_scores[:,0].tolist()
 
     # report
-    print('Czech:')
+    print('czech:')
     print(classification_report(truth, predictions, output_dict=False))
     print(confusion_matrix(truth, predictions))
 
@@ -697,7 +697,7 @@ for feat_used in ['xvector','trill']:
         test_scores += grid_test_scores[:,0].tolist()
 
     # report
-    print('Italian:')
+    print('italian:')
     print(classification_report(truth, predictions, output_dict=False))
     print(confusion_matrix(truth, predictions))
 
@@ -712,7 +712,7 @@ for feat_used in ['xvector','trill']:
     print(roc_auc_score(truth,test_scores))
     print('----------')
 
-    # Test - German -----------------------
+    # Test - german -----------------------
     predictions = []
     truth = []
     test_scores = []
@@ -739,7 +739,7 @@ for feat_used in ['xvector','trill']:
         test_scores += grid_test_scores[:,0].tolist()
 
     # report
-    print('German:')
+    print('german:')
     print(classification_report(truth, predictions, output_dict=False))
     print(confusion_matrix(truth, predictions))
 

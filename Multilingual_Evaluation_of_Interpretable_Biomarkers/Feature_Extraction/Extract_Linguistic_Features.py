@@ -2,14 +2,14 @@ from nltk.corpus import stopwords
 import spacy
 from spacy.matcher import Matcher
 
-# Load the pretrained pipeline for English
+# Load the pretrained pipeline for english
 
 nlp = spacy.load('en_core_web_sm')
 
 #Model for the other languages:
 
-# nlp = spacy.load("es_core_news_sm") --> Spanish
-# nlp = spacy.load("de_core_news_sm") --> German
+# nlp = spacy.load("es_core_news_sm") --> spanish
+# nlp = spacy.load("de_core_news_sm") --> german
 # Create a function to preprocess the text
 
 # List of stopwords for english

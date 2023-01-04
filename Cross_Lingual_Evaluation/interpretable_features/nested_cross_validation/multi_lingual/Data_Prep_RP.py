@@ -141,7 +141,7 @@ def czech_prep(path_to_dataframe):
 
     """Pre-processing function CzechPD data set."""
 
-    #path_to_dataframe = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/Czech/final_data_experiments_updated.csv"
+    #path_to_dataframe = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/czech/final_data_experiments_updated.csv"
     czech = pd.read_csv(path_to_dataframe)
     czech['names'] = [elem.split("_")[1] for elem in czech.AudioFile.tolist()]
     czech['task'] = [elem.split("_")[2] for elem in czech['AudioFile'].tolist()]
