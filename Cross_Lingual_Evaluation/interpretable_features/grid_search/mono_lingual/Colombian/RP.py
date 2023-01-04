@@ -1,17 +1,9 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
-
-# Path where to save hyperparameters
-
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/RP/SVM/RP.txt'
-
-KNN = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/RP/KNN/RP.txt'
-
-RF = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/RP/RF/RP.txt'
-
-XG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/RP/XG/RP.txt'
-
-BAGG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/RP/BAGG/RP.txt'
-
+SVM_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/RP/SVM/RP.txt'
+KNN_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/RP/KNN/RP.txt'
+RF_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/RP/RF/RP.txt'
+XG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/RP/XG/RP.txt'
+BAGG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/RP/BAGG/RP.txt'
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.mono_lingual.Data_Prep_RP import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.mono_lingual.Utils import *
@@ -78,7 +70,6 @@ for i in range(1, 11):
     X_test = normalized_test_X[:, cols]
     reduced_data = data_i.iloc[:, :-1]
     selected_features = reduced_data.columns[model.get_support()].to_list()
-
 
     model = SVC()
     kernel = ['poly', 'rbf', 'sigmoid']
@@ -203,23 +194,23 @@ for k in xg_paramters.keys():
 for k in bagg_paramters.keys():
     bagg_paramters[k] = np.array(bagg_paramters[k]).mean()
 
-fo = open(SVM, "w")
+fo = open(SVM_OUT_PATH, "w")
 for k, v in svm_parameters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-fo = open(KNN, "w")
+fo = open(KNN_OUT_PATH, "w")
 for k, v in knn_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-fo = open(RF, "w")
+fo = open(RF_OUT_PATH, "w")
 for k, v in rf_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-fo = open(XG, "w")
+fo = open(XG_OUT_PATH, "w")
 for k, v in xg_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-fo = open(BAGG, "w")
+fo = open(BAGG_OUT_PATH, "w")
 for k, v in bagg_paramters.items():
     fo.write(str(k) + ' >>> ' + str(v) + '\n\n')
 
