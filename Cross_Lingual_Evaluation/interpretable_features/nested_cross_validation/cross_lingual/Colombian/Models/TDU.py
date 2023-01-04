@@ -1,4 +1,9 @@
 BASE_DIR = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+SVM_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GITA/TDU/SVM/'
+KNN_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GITA/TDU/KNN/'
+RF_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GITA/TDU/RF/'
+XGBOOST_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GITA/TDU/XG/'
+BAGGING_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GITA/TDU/BAGG/'
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.cross_lingual.Data_Prep_TDU import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.cross_lingual.Utils_TDU import *
@@ -12,8 +17,6 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-from Cross_Linguall.Utils_TDU import *
-from Cross_Linguall.Data_Prep_TDU import *
 np.random.seed(20)
 
 colombian, colombian_cols = gita_prep(os.path.join(BASE_DIR, "GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
@@ -68,13 +71,11 @@ grid_predictions = grid_result.predict(X_test)
 print(classification_report(test_labels, grid_predictions, output_dict=False))
 report = classification_report(test_labels, grid_predictions, output_dict=True)
 print(report)
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GITA/TDU/SVM/'
 f_1 = report['1.0']['f1-score']
 acc = report['accuracy']
-
-with open(os.path.join(SVM, f"all_f1.txt"), 'w') as f:
+with open(os.path.join(SVM_OUT_PATH, f"all_f1.txt"), 'w') as f:
     f.writelines(str(f_1))
-with open(os.path.join(SVM, f"all_acc.txt"), 'w') as f:
+with open(os.path.join(SVM_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
 #model = KNeighborsClassifier()
@@ -83,14 +84,11 @@ grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
 print(classification_report(test_labels, grid_predictions, output_dict=False))
 report = classification_report(test_labels, grid_predictions, output_dict=True)
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GITA/TDU/KNN/'
 f_1 = report['1.0']['f1-score']
 acc = report['accuracy']
-
-with open(os.path.join(SVM, f"all_f1.txt"), 'w') as f:
+with open(os.path.join(KNN_OUT_PATH, f"all_f1.txt"), 'w') as f:
     f.writelines(str(f_1))
-
-with open(os.path.join(SVM, f"all_acc.txt"), 'w') as f:
+with open(os.path.join(KNN_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
 #model = RandomForestClassifier()
@@ -99,14 +97,11 @@ grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
 print(classification_report(test_labels, grid_predictions, output_dict=False))
 report = classification_report(test_labels, grid_predictions, output_dict=True)
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GITA/TDU/RF/'
 f_1 = report['1.0']['f1-score']
 acc = report['accuracy']
-
-with open(os.path.join(SVM, f"all_f1.txt"), 'w') as f:
+with open(os.path.join(RF_OUT_PATH, f"all_f1.txt"), 'w') as f:
     f.writelines(str(f_1))
-
-with open(os.path.join(SVM, f"all_acc.txt"), 'w') as f:
+with open(os.path.join(RF_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
 #model = GradientBoostingClassifier()
@@ -115,14 +110,11 @@ grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
 print(classification_report(test_labels, grid_predictions, output_dict=False))
 report = classification_report(test_labels, grid_predictions, output_dict=True)
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GITA/TDU/XG/'
 f_1 = report['1.0']['f1-score']
 acc = report['accuracy']
-
-with open(os.path.join(SVM, f"all_f1.txt"), 'w') as f:
+with open(os.path.join(XGBOOST_OUT_PATH, f"all_f1.txt"), 'w') as f:
     f.writelines(str(f_1))
-
-with open(os.path.join(SVM, f"all_acc.txt"), 'w') as f:
+with open(os.path.join(XGBOOST_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
 #model = BaggingClassifier()
@@ -131,12 +123,9 @@ grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
 print(classification_report(test_labels, grid_predictions, output_dict=False))
 report = classification_report(test_labels, grid_predictions, output_dict=True)
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GITA/TDU/BAGG/'
 f_1 = report['1.0']['f1-score']
 acc = report['accuracy']
-
-with open(os.path.join(SVM, f"all_f1.txt"), 'w') as f:
+with open(os.path.join(BAGGING_OUT_PATH, f"all_f1.txt"), 'w') as f:
     f.writelines(str(f_1))
-
-with open(os.path.join(SVM, f"all_acc.txt"), 'w') as f:
+with open(os.path.join(BAGGING_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
