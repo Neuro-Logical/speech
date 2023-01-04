@@ -1,4 +1,4 @@
-Code to reproduce the experiments related to the interpretable features. Interpretable features include: prosodic, linguistic and cognitive descriptors.
+Code to reproduce the experiments related with interpretable features. Interpretable features include: prosodic, linguistic and cognitive descriptors.
 The pipeline goes as follows:
 
 1) Data pre-processing
