@@ -3,7 +3,6 @@ BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
 #path where to save hyperparameters
 
 SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/SS/SVM/SS.txt'
-
 KNN = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/SS/KNN/SS.txt'
 
 RF = '//export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/SS/RF/SS.txt'
