@@ -10,8 +10,8 @@ XG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selecti
 
 BAGG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/ENGLISH/RP/BAGG/RP.txt'
 
-from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.Mono_Lingual.Data_Prep_RP import *
-from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.Mono_Lingual.Utils import *
+from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.mono_lingual.Data_Prep_RP import *
+from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.mono_lingual.Utils import *
 import numpy as np
 import random
 import os

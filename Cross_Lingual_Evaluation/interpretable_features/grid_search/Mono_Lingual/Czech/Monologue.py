@@ -1,18 +1,18 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
 
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters/CZECH/SS/SVM/Mono_Lingual.txt'
+SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters/CZECH/SS/SVM/mono_lingual.txt'
 
-KNN = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters/CZECH/SS/KNN/Mono_Lingual.txt'
+KNN = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters/CZECH/SS/KNN/mono_lingual.txt'
 
-RF = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters/CZECH/SS/RF/Mono_Lingual.txt'
+RF = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters/CZECH/SS/RF/mono_lingual.txt'
 
-XG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters/CZECH/SS/XG/Mono_Lingual.txt'
+XG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters/CZECH/SS/XG/mono_lingual.txt'
 
-BAGG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters/CZECH/SS/BAGG/Mono_Lingual.txt'
+BAGG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters/CZECH/SS/BAGG/mono_lingual.txt'
 
 
-from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.Mono_Lingual.Data_Prep_monologue import *
-from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.Mono_Lingual.Utils import *
+from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.mono_lingual.Data_Prep_monologue import *
+from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.mono_lingual.Utils import *
 import numpy as np
 import random
 import os
