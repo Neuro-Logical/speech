@@ -12,6 +12,7 @@ python grid_search/mono_lingual/colombian/SS.py
 python grid_search/mono_lingual/colombian/TDU.py
 
 # Czech
+
 python grid_search/mono_lingual/czech/SS.py
 python grid_search/mono_lingual/czech/rp.py
 
@@ -26,6 +27,7 @@ python grid_search/mono_lingual/german/RP.py
 python grid_search/mono_lingual/german/TDU.py
 
 # Italian
+
 python grid_search/mono_lingual/italian/RP.py
 python grid_search/mono_lingual/italian/TDU.py
 
