@@ -1,4 +1,5 @@
 BASE_DIR = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GITA/TDU/AUROC/'
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.cross_lingual.Data_Prep_TDU import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.cross_lingual.Utils_TDU import *
@@ -11,8 +12,6 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
-from Cross_Lingual.Utils_TDU import *
-from Cross_Lingual.Data_Prep_TDU import *
 from sklearn.metrics import roc_auc_score
 np.random.seed(20)
 
@@ -64,9 +63,7 @@ grid_predictions = grid_result.predict_proba(X_test)
 grid_predictions = grid_predictions[:, 1]
 lr_auc = roc_auc_score(test_labels, grid_predictions)
 print(f"auroc is {lr_auc}")
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GITA/TDU/AUROC/'
-
-with open(os.path.join(SVM, f"SVM_AUROC.txt"), 'w') as f:
+with open(os.path.join(OUT_PATH, f"SVM_AUROC.txt"), 'w') as f:
     f.writelines(str(lr_auc))
 
 # KNeighborsClassifier
@@ -76,8 +73,7 @@ grid_predictions = grid_result.predict_proba(X_test)
 grid_predictions = grid_predictions[:, 1]
 lr_auc = roc_auc_score(test_labels, grid_predictions)
 print(f"auroc is {lr_auc}")
-
-with open(os.path.join(SVM, f"KNN_AUROC.txt"), 'w') as f:
+with open(os.path.join(OUT_PATH, f"KNN_AUROC.txt"), 'w') as f:
     f.writelines(str(lr_auc))
 
 # RandomForestClassifier
@@ -87,8 +83,7 @@ grid_predictions = grid_result.predict_proba(X_test)
 grid_predictions = grid_predictions[:, 1]
 lr_auc = roc_auc_score(test_labels, grid_predictions)
 print(f"auroc is {lr_auc}")
-
-with open(os.path.join(SVM, f"RF_AUROC.txt"), 'w') as f:
+with open(os.path.join(OUT_PATH, f"RF_AUROC.txt"), 'w') as f:
     f.writelines(str(lr_auc))
 
 #model = GradientBoostingClassifier()
@@ -98,8 +93,7 @@ grid_predictions = grid_result.predict_proba(X_test)
 grid_predictions = grid_predictions[:, 1]
 lr_auc = roc_auc_score(test_labels, grid_predictions)
 print(f"auroc is {lr_auc}")
-
-with open(os.path.join(SVM, f"XGBoost_AUROC.txt"), 'w') as f:
+with open(os.path.join(OUT_PATH, f"XGBoost_AUROC.txt"), 'w') as f:
     f.writelines(str(lr_auc))
 
 #model = BaggingClassifier()
@@ -109,6 +103,5 @@ grid_predictions = grid_result.predict_proba(X_test)
 grid_predictions = grid_predictions[:, 1]
 lr_auc = roc_auc_score(test_labels, grid_predictions)
 print(f"auroc is {lr_auc}")
-
-with open(os.path.join(SVM, f"Bagging_AUROC.txt"), 'w') as f:
+with open(os.path.join(OUT_PATH, f"Bagging_AUROC.txt"), 'w') as f:
     f.writelines(str(lr_auc))
