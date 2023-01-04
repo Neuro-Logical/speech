@@ -1,5 +1,5 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
-OUT_PATH '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/GITA/RP/AUROC/''
+OUT_PATH= '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/GITA/RP/AUROC/''
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Data_Prep_RP import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Utils_RP import *
