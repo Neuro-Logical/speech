@@ -5,8 +5,8 @@ RF = '//export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Select
 XG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameteers_Multi/GITA/RP/XG/SS.txt'
 BAGG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameteers_Multi/GITA/RP/BAGG/SS.txt'
 
-from Cross_Lingual_Evaluation.Interpretable_features.Classification.Multi_Lingual.Data_Prep_RP import *
-from Cross_Lingual_Evaluation.Interpretable_features.Classification.Multi_Lingual.Utils_RP import *
+from Cross_Lingual_Evaluation.Interpretable_features.nested_cross_validation.Multi_Lingual.Data_Prep_RP import *
+from Cross_Lingual_Evaluation.Interpretable_features.nested_cross_validation.Multi_Lingual.Utils_RP import *
 import numpy as np
 import random
 import os
