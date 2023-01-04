@@ -3,7 +3,7 @@ The pipeline goes as follows:
 
 1) Data pre-processing
   - To resample the speech recordings to 16 kHz run the script ```convert_to_16k.sh```
-  - To extract speech transcripts from speech recordings using Whisper run ```*extract_transcripts.py```
+  - To extract speech transcripts from speech recordings using Whisper run ```/extract_transcripts.py```
 
 2) Features extraction 
     - To extract the acoustic features described in the paper run ```extract_acoustic_feats.sh```
