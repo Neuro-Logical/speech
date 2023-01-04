@@ -3,7 +3,6 @@ OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_S
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.Mono_Lingual.Data_Prep_monologue import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.Mono_Lingual.Utils import *
-import numpy as np
 import random
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -23,7 +22,6 @@ pd_ = gr.get_group(1)
 
 arrayOfSpeaker_cn = ctrl_['names'].unique()
 random.shuffle(arrayOfSpeaker_cn)
-
 arrayOfSpeaker_pd = pd_['names'].unique()
 random.shuffle(arrayOfSpeaker_pd)
 
