@@ -78,9 +78,9 @@ report = classification_report(test_labels, grid_predictions, output_dict=True)
 print(report)
 f_1 = report['1.0']['f1-score']
 acc = report['accuracy']
-with open(os.path.join(SVM, f"all_f1.txt"), 'w') as f:
+with open(os.path.join(SVM_OUT_PATH, f"all_f1.txt"), 'w') as f:
     f.writelines(str(f_1))
-with open(os.path.join(SVM, f"all_acc.txt"), 'w') as f:
+with open(os.path.join(SVM_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
 #model= KNeighborsClassifier()
@@ -91,11 +91,9 @@ print(classification_report(test_labels, grid_predictions, output_dict=False))
 report = classification_report(test_labels, grid_predictions, output_dict=True)
 f_1 = report['1.0']['f1-score']
 acc = report['accuracy']
-
-with open(os.path.join(SVM, f"all_f1.txt"), 'w') as f:
+with open(os.path.join(KNN_OUT_PATH, f"all_f1.txt"), 'w') as f:
     f.writelines(str(f_1))
-
-with open(os.path.join(SVM, f"all_acc.txt"), 'w') as f:
+with open(os.path.join(KNN_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
 #model = RandomForestClassifier()
@@ -106,9 +104,9 @@ print(classification_report(test_labels, grid_predictions, output_dict=False))
 report = classification_report(test_labels, grid_predictions, output_dict=True)
 f_1 = report['1.0']['f1-score']
 acc = report['accuracy']
-with open(os.path.join(SVM, f"all_f1.txt"), 'w') as f:
+with open(os.path.join(RF_OUT_PATH, f"all_f1.txt"), 'w') as f:
     f.writelines(str(f_1))
-with open(os.path.join(SVM, f"all_acc.txt"), 'w') as f:
+with open(os.path.join(RF_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
 #model = GradientBoostingClassifier()
@@ -119,9 +117,9 @@ print(classification_report(test_labels, grid_predictions, output_dict=False))
 report = classification_report(test_labels, grid_predictions, output_dict=True)
 f_1 = report['1.0']['f1-score']
 acc = report['accuracy']
-with open(os.path.join(SVM, f"all_f1.txt"), 'w') as f:
+with open(os.path.join(XGBOOST_OUT_PATH, f"all_f1.txt"), 'w') as f:
     f.writelines(str(f_1))
-with open(os.path.join(SVM, f"all_acc.txt"), 'w') as f:
+with open(os.path.join(XGBOOST_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
 model = BaggingClassifier(n_estimators=1000, max_samples=0.5)
@@ -131,7 +129,7 @@ print(classification_report(test_labels, grid_predictions, output_dict=False))
 report = classification_report(test_labels, grid_predictions, output_dict=True)
 f_1 = report['1.0']['f1-score']
 acc = report['accuracy']
-with open(os.path.join(SVM, f"all_f1.txt"), 'w') as f:
+with open(os.path.join(BAGGING_OUT_PATH, f"all_f1.txt"), 'w') as f:
     f.writelines(str(f_1))
-with open(os.path.join(SVM, f"all_acc.txt"), 'w') as f:
+with open(os.path.join(BAGGING_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
