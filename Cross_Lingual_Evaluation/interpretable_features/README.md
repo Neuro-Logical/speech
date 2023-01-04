@@ -14,7 +14,7 @@ The pipeline goes as follows:
     - To identify the best hyperparameters for each models within the mono-lingual and multi-lingual experiments run ```run_gridsearch.sh```
    
 4) Classification 
-   - run_```monolingual_experiments.sh``` for mono-lingual experiments
+   - run ```monolingual_experiments.sh``` for mono-lingual experiments
    - run ```multilingual_experiments.sh``` for cross-lingual experiments 
    - run ```crosslingual_experiments.sh``` for cross-lingual experiments
 
