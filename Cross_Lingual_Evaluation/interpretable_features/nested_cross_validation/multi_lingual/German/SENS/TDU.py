@@ -1,8 +1,9 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+SPEC_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/GERMAN/TDU/SPEC/'
+SENS_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/GERMAN/TDU/SENS/'
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Data_Prep_TDU import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Utils_TDU import *
-import numpy as np
 import random
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -69,8 +70,6 @@ data_test_10_italian = create_split_train_test(italian_folds)
 
 for i in range(1, 11):
 
-    print(i)
-
     normalized_train_X_spain, normalized_test_X_spain, y_train_spain, y_test_spain = normalize(
         eval(f"data_train_{i}_spain"), eval(f"data_test_{i}_spain"))
     normalized_train_X_italian, normalized_test_X_italian, y_train_italian, y_test_italian = normalize(
@@ -85,7 +84,6 @@ for i in range(1, 11):
                                                  y_train_german, normalized_train_X_italian, y_train_italian)
 
     test_data, test_labels = normalized_test_X_german, y_test_german
-
     clf = ExtraTreesClassifier(n_estimators=30)
     clf = clf.fit(training_data, training_labels)
     model = SelectFromModel(clf, prefit=True, max_features=35)
