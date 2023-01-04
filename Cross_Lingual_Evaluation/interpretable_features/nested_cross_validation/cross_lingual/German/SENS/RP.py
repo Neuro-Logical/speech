@@ -1,4 +1,6 @@
 BASE_DIR = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+SPEC_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GERMAN/RP/SPEC/'
+SENS_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GERMAN/RP/SENS/'
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.cross_lingual.Data_Prep_RP import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.cross_lingual.Utils_RP import *
@@ -71,13 +73,9 @@ sensitivity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
 print('Sensitivity : ', sensitivity)
 specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
 print('spec : ', specificity)
-SPEC = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GERMAN/RP/SPEC/'
-SENS = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GERMAN/RP/SENS/'
-
-with open(os.path.join(SPEC, f"SVM_spec.txt"), 'w') as f:
+with open(os.path.join(SPEC_OUT_PATH, f"SVM_spec.txt"), 'w') as f:
     f.writelines(str(specificity))
-
-with open(os.path.join(SENS, f"SVM_sens.txt"), 'w') as f:
+with open(os.path.join(SENS_OUT_PATH, f"SVM_sens.txt"), 'w') as f:
     f.writelines(str(sensitivity))
 
 # KNeighborsClassifier
@@ -89,11 +87,9 @@ sensitivity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
 print('Sensitivity : ', sensitivity)
 specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
 print('spec : ', specificity)
-
-with open(os.path.join(SPEC, f"KNN_spec.txt"), 'w') as f:
+with open(os.path.join(SPEC_OUT_PATH, f"KNN_spec.txt"), 'w') as f:
     f.writelines(str(specificity))
-#
-with open(os.path.join(SENS, f"KNN_sens.txt"), 'w') as f:
+with open(os.path.join(SENS_OUT_PATH, f"KNN_sens.txt"), 'w') as f:
     f.writelines(str(sensitivity))
 
 # define dataset
@@ -105,11 +101,9 @@ sensitivity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
 print('Sensitivity : ', sensitivity)
 specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
 print('spec : ', specificity)
-
-with open(os.path.join(SPEC, f"RF_spec.txt"), 'w') as f:
+with open(os.path.join(SPEC_OUT_PATH, f"RF_spec.txt"), 'w') as f:
     f.writelines(str(specificity))
-
-with open(os.path.join(SENS, f"RF_sens.txt"), 'w') as f:
+with open(os.path.join(SENS_OUT_PATH, f"RF_sens.txt"), 'w') as f:
     f.writelines(str(sensitivity))
 
 # GradientBoostingClassifier
@@ -121,11 +115,9 @@ sensitivity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
 print('Sensitivity : ', sensitivity)
 specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
 print('spec : ', specificity)
-
-with open(os.path.join(SPEC, f"XG_spec.txt"), 'w') as f:
+with open(os.path.join(SPEC_OUT_PATH, f"XG_spec.txt"), 'w') as f:
     f.writelines(str(specificity))
-#
-with open(os.path.join(SENS, f"XG_sens.txt"), 'w') as f:
+with open(os.path.join(SENS_OUT_PATH, f"XG_sens.txt"), 'w') as f:
     f.writelines(str(sensitivity))
 
 # BaggingClassifier
@@ -137,9 +129,7 @@ sensitivity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
 print('Sensitivity : ', sensitivity)
 specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
 print('spec : ', specificity)
-
-with open(os.path.join(SPEC, f"BAGG_spec.txt"), 'w') as f:
+with open(os.path.join(SPEC_OUT_PATH, f"BAGG_spec.txt"), 'w') as f:
     f.writelines(str(specificity))
-#
-with open(os.path.join(SENS, f"BAGG_sens.txt"), 'w') as f:
+with open(os.path.join(SENS_OUT_PATH, f"BAGG_sens.txt"), 'w') as f:
     f.writelines(str(sensitivity))
