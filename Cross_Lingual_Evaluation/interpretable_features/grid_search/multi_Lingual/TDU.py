@@ -86,9 +86,7 @@ for i in range(1, 11):
     normalized_train_X_spain, normalized_test_X_spain, y_train_spain, y_test_spain = normalize(eval(f"data_train_{i}_spain"), eval(f"data_test_{i}_spain"))
     normalized_train_X_italian, normalized_test_X_italian, y_train_italian, y_test_italian = normalize(eval(f"data_train_{i}_italian"), eval(f"data_test_{i}_italian"))
     normalized_train_X_german, normalized_test_X_german, y_train_german, y_test_german = normalize(eval(f"data_train_{i}_german"), eval(f"data_test_{i}_german"))
-
     normalized_train_X_colombian, normalized_test_X_colombian, y_train_colombian, y_test_colombian = normalize(eval(f"data_train_{i}_colombian"), eval(f"data_test_{i}_colombian"))
-
     training_data, training_labels = train_split(normalized_train_X_colombian, y_train_colombian, normalized_train_X_spain, y_train_spain, normalized_train_X_german,
                                                   y_train_german, normalized_train_X_italian, y_train_italian)
     test_data, test_labels = normalized_test_X_colombian, y_test_colombian
@@ -139,17 +137,11 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(X_train, training_labels)
     # summarize results
-
     print(grid_result.best_params_)
-
- #   path = os.path.join(store_parameters, f"{i}.txt")
-
     means = grid_result.cv_results_['mean_test_score']
     print(max(means))
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in knn_paramters:
@@ -183,8 +175,6 @@ for i in range(1, 11):
             rf_paramters[config].append(mean)
         else:
             rf_paramters[config] = [mean]
-
-
     # define models and parameters
     model = GradientBoostingClassifier()
     n_estimators = [10, 100, 1000]
@@ -208,7 +198,6 @@ for i in range(1, 11):
             xg_paramters[config].append(mean)
         else:
             xg_paramters[config] = [mean]
-
 
 
     model = BaggingClassifier()

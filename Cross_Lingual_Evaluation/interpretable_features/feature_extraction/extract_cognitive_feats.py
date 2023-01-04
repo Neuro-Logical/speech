@@ -7,6 +7,7 @@ import pandas as pd
 from stable_whisper import load_model
 import torch
 
+
 def informational_verb(text):
     """ Compute the informativeness of the narratives by
     counting how many (if any) salient events (verbs) are mentioned. """
@@ -43,7 +44,6 @@ def informational_verb(text):
     return cont_con
 
 #########################################################################################################
-
 
 def extract_word_timestamp(path_recordings, output_folder):
     """

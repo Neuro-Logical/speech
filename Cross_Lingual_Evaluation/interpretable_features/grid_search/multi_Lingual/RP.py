@@ -141,7 +141,6 @@ for i in range(1, 11):
             svm_parameters[config] = [mean]
 
 
-    X, y = make_blobs(n_samples=1000, centers=2, n_features=100, cluster_std=20)
     # define models and parameters
     model = KNeighborsClassifier()
     n_neighbors = range(1, 21, 2)
@@ -166,7 +165,7 @@ for i in range(1, 11):
         else:
             knn_paramters[config] = [mean]
 
-    X, y = make_blobs(n_samples=1000, centers=2, n_features=100, cluster_std=20)
+
     model = RandomForestClassifier()
     n_estimators = [10, 100, 1000]
     max_features = ['sqrt', 'log2']
