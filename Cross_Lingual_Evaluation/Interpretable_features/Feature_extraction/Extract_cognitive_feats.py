@@ -8,7 +8,6 @@ from stable_whisper import load_model
 import torch
 
 def informational_verb(text):
-
     """ Compute the informativeness of the narratives by
     counting how many (if any) salient events (verbs) are mentioned. """
 
