@@ -1,8 +1,8 @@
 BASE_DIR = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/"
 OUT_PATH ='/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GERMAN/SS/AUROC/'
 
-from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.cross_lingual.Data_Prep_monologue import *
-from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.cross_lingual.Utils_monologue import *
+from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.cross_lingual.Data_Prep_SS import *
+from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.cross_lingual.Utils_SS import *
 import numpy as np
 import os
 from sklearn.ensemble import ExtraTreesClassifier
