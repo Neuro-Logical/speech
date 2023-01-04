@@ -17,3 +17,5 @@ The pipeline goes as follows:
    - run_```monolingual_experiments.sh``` for mono-lingual experiments
    - run ```multilingual_experiments.sh``` for cross-lingual experiments 
    - run ```crosslingual_experiments.sh``` for cross-lingual experiments
+
+   All the experiments are conducted separately for each language. In doing so, we also evaluate different tasks separately. The three tasks evaluated were a reading passage (RP), a spontaneous speech (SS) task, and text dependent utterances (TDU).

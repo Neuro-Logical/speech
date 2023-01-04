@@ -3,9 +3,11 @@
 # change to the full path of where the Non_Interpretable_features folder is
 cd '/export/afavaro/git_code_version/speech/Cross_Lingual_Evaluation/interpretable_features/'
 
-# to change the input/output directory used in each script, please change the input/outout path located at the beginning of each Python script.
+# To change the input/output directory used in each script, please change the input/output path located at the beginning of each Python script.
+
+
 #  Mono-Lingual experiments
-# colombian
+# Colombian
 
 python nested_cross_validation/cross_lingual/colombian/AUROC/RP.py
 python nested_cross_validation/cross_lingual/colombian/Models/RP.py
@@ -19,7 +21,7 @@ python nested_cross_validation/cross_lingual/colombian/AUROC/TDU.py
 python nested_cross_validation/cross_lingual/colombian/Models/TDU.py
 python nested_cross_validation/cross_lingual/colombian/SENS/SS.py
 
-# czech
+# Czech
 
 python nested_cross_validation/cross_lingual/czech/AUROC/RP.py
 python nested_cross_validation/cross_lingual/czech/Models/RP.py
@@ -29,7 +31,7 @@ python nested_cross_validation/cross_lingual/czech/AUROC/SS.py
 python nested_cross_validation/cross_lingual/czech/Models/SS.py
 python nested_cross_validation/cross_lingual/czech/SENS/SS.py
 
-# American english
+# American English
 
 python nested_cross_validation/cross_lingual/english/AUROC/RP.py
 python nested_cross_validation/cross_lingual/english/Models/RP.py
@@ -40,7 +42,7 @@ python nested_cross_validation/cross_lingual/english/Models/SS.py
 python nested_cross_validation/cross_lingual/english/SENS/SS.py
 
 
-# german
+# German
 
 python nested_cross_validation/cross_lingual/german/AUROC/RP.py
 python nested_cross_validation/cross_lingual/german/Models/RP.py
@@ -55,7 +57,7 @@ python nested_cross_validation/cross_lingual/german/Models/TDU.py
 python nested_cross_validation/cross_lingual/german/SENS/TDU.py
 
 
-# italian
+# Italian
 
 python nested_cross_validation/cross_lingual/italian/AUROC/RP.py
 python nested_cross_validation/cross_lingual/italian/Models/RP.py

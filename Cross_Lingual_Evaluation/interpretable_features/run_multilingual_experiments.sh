@@ -3,8 +3,10 @@
 # change to the full path of where the Non_Interpretable_features folder is
 cd '/export/afavaro/git_code_version/speech/Cross_Lingual_Evaluation/interpretable_features/'
 
-#  Mono-Lingual experiments
+# To change the input/output directory used in each script, please change the input/output path located at the beginning of each Python script.
 
+
+#  Mono-Lingual experiments
 # colombian
 
 python nested_cross_validation/multi_lingual/colombian/AUROC/RP.py
