@@ -5,7 +5,7 @@ cd '/export/afavaro/git_code_version/speech/Cross_Lingual_Evaluation/interpretab
 
 #  Mono-Lingual experiments
 
-# colombian
+# Colombian Spanish
 
 python nested_cross_validation/mono_lingual/colombian/AUROC/RP.py
 python nested_cross_validation/mono_lingual/colombian/Models/RP.py
@@ -19,7 +19,7 @@ python nested_cross_validation/mono_lingual/colombian/AUROC/TDU.py
 python nested_cross_validation/mono_lingual/colombian/Models/TDU.py
 python nested_cross_validation/mono_lingual/colombian/SENS/SS.py
 
-# czech
+# Czech
 
 python nested_cross_validation/mono_lingual/czech/AUROC/RP.py
 python nested_cross_validation/mono_lingual/czech/Models/RP.py
@@ -40,7 +40,7 @@ python nested_cross_validation/mono_lingual/english/Models/SS.py
 python nested_cross_validation/mono_lingual/english/SENS/SS.py
 
 
-# german
+# German
 
 python nested_cross_validation/mono_lingual/german/AUROC/RP.py
 python nested_cross_validation/mono_lingual/german/Models/RP.py
@@ -55,7 +55,7 @@ python nested_cross_validation/mono_lingual/german/Models/TDU.py
 python nested_cross_validation/mono_lingual/german/SENS/TDU.py
 
 
-# italian
+# Italian
 
 python nested_cross_validation/mono_lingual/italian/AUROC/RP.py
 python nested_cross_validation/mono_lingual/italian/Models/RP.py
