@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # change to the full path of where the Interpretable_features folder is
-cd '/speech/Cross_Lingual_Evaluation/interpretable_features/'
+cd '/export/afavaro/git_code_version/speech/Cross_Lingual_Evaluation/interpretable_features/'
 
 #  Mono-Lingual experiments
 
