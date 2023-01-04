@@ -2,7 +2,6 @@ BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
 
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Data_Prep_RP import *
 from Cross_Lingual_Evaluation.interpretable_features.nested_cross_validation.multi_lingual.Utils_RP import *
-import numpy as np
 import random
 import os
 from sklearn.ensemble import ExtraTreesClassifier
