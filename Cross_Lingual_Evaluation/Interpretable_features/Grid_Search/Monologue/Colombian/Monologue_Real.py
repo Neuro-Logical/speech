@@ -1,144 +1,59 @@
-#!/usr/bin/env python
-# coding: utf-8
+BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
 
+#path where to save hyperparameters
 
-from sklearn.datasets import make_blobs
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.model_selection import GridSearchCV
-from sklearn.ensemble import BaggingClassifier
-from sklearn.datasets import make_blobs
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.model_selection import GridSearchCV
-from sklearn.ensemble import GradientBoostingClassifier
-from sklearn.datasets import make_blobs
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.model_selection import GridSearchCV
-from sklearn.svm import SVC
-from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.feature_selection import SelectFromModel
-from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.feature_selection import SelectFromModel
-from sklearn.datasets import load_iris
-import pandas as pd
-from sklearn.model_selection import train_test_split
-import os
-from sklearn.datasets import make_blobs
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.model_selection import GridSearchCV
-from sklearn.ensemble import RandomForestClassifier
+SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/SS/SVM/SS.txt'
+
+KNN = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/SS/KNN/SS.txt'
+
+RF = '//export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/SS/RF/SS.txt'
+
+XG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/SS/XG/SS.txt'
+
+BAGG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/SS/BAGG/SS.txt'
+
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Data_Prep_monologue import *
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Utils import *
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.datasets import load_iris
-from sklearn.tree import DecisionTreeClassifier
-import matplotlib.pyplot as plt
-from sklearn.datasets import load_iris
-from sklearn.linear_model import LogisticRegression
-from sklearn.inspection import DecisionBoundaryDisplay
-from sklearn.utils import shuffle
 import random
 import os
-from sklearn.datasets import make_blobs
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.model_selection import GridSearchCV
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.feature_selection import SelectKBest, f_regression, f_classif
-from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LinearRegression
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import mean_squared_error
-from sklearn.pipeline import Pipeline
-from sklearn.datasets import make_classification
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import GridSearchCV
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.feature_selection import SelectFromModel
+from sklearn.svm import SVC
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.feature_selection import SelectKBest, mutual_info_classif
-import pandas as pd
-from Utils import *
+from sklearn.neighbors import KNeighborsClassifier
+random.seed(10)
 
-# Prepare Colombian dataframe
-spain = pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GITA/total_data_frame_novel_task_combined_ling.csv")
-spain = spain.dropna()
-spain['names'] = [elem.split("_")[1] for elem in spain.AudioFile.tolist()]
-spain['labels'] = [elem.split("_")[0] for elem in spain.AudioFile.tolist()]
-spain = spain.drop(columns=['Unnamed: 0' ])
-
-# Convert labels in 1 or 0.
-new_lab = []
-for lab in spain['labels'].tolist():
-    if lab == "PD":
-        new_lab.append(1)
-    if lab == "CN":
-        new_lab.append(0)
-    if lab == "HC":
-        new_lab.append(0)
-
-spain['labels'] = new_lab
-spain['names'] = [elem.split("_")[1] for elem in spain['AudioFile'].tolist()]
-
+spain = gita_prep(os.path.join(BASE, "/GITA/total_data_frame_novel_task_combined_ling.csv"))
 gr = spain.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
 
 arrayOfSpeaker_cn = ctrl_['names'].unique()
 random.shuffle(arrayOfSpeaker_cn)
+
 arrayOfSpeaker_pd = pd_['names'].unique()
 random.shuffle(arrayOfSpeaker_pd)
 
 cn_sps = get_n_folds(arrayOfSpeaker_cn)
 pd_sps = get_n_folds(arrayOfSpeaker_pd)
 
-
 data = []
 for cn_sp, pd_sp in zip(sorted(cn_sps, key=len), sorted(pd_sps, key=len, reverse=True)):
     data.append(cn_sp + pd_sp)
 n_folds = sorted(data, key=len, reverse=True)
 
-
 folds = []
 for i in n_folds:
     data_i = spain[spain["names"].isin(i)]
     data_i = data_i.drop(columns=['names', 'AudioFile'])
-   # data_i = data_i.drop(columns=['names', 'AudioFile', 'task'])
-    folds.append((data_i).to_numpy())
+    folds.append(data_i.to_numpy())
 
-data_train_1 = np.concatenate(folds[:9])
-data_test_1 = np.concatenate(folds[-1:])
-
-data_train_2 = np.concatenate(folds[1:])
-data_test_2 = np.concatenate(folds[:1])
-
-data_train_3 = np.concatenate(folds[2:] + folds[:1])
-data_test_3 = np.concatenate(folds[1:2])
-
-data_train_4 = np.concatenate(folds[3:] + folds[:2])
-data_test_4 = np.concatenate(folds[2:3])
-
-data_train_5 = np.concatenate(folds[4:] + folds[:3])
-data_test_5 = np.concatenate(folds[3:4])
-
-data_train_6 = np.concatenate(folds[5:] + folds[:4])
-data_test_6 = np.concatenate(folds[4:5])
-
-data_train_7 = np.concatenate(folds[6:] + folds[:5])
-data_test_7 = np.concatenate(folds[5:6])
-
-data_train_8 = np.concatenate(folds[7:] + folds[:6])
-data_test_8 = np.concatenate(folds[6:7])
-
-data_train_9 = np.concatenate(folds[8:] + folds[:7])
-data_test_9 = np.concatenate(folds[7:8])
-
-data_train_10 = np.concatenate(folds[9:] + folds[:8])
-data_test_10 = np.concatenate(folds[8:9])
-
+data_train_1, data_test_1, data_train_2, data_test_2, data_train_3, data_test_3, data_train_4, data_test_4, \
+data_train_5, data_test_5,  data_train_6, data_test_6, data_train_7, data_test_7 , data_train_8, data_test_8, \
+data_train_9, data_test_9, data_train_10, data_test_10 = create_split_train_test(folds)
 
 svm_parameters = {}
 
@@ -178,18 +93,15 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     print(grid_result.best_params_)
-
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in svm_parameters:
             svm_parameters[config].append(mean)
         else:
             svm_parameters[config] = [mean]
-
 
     # KNeighborsClassifier
 
@@ -207,15 +119,12 @@ for i in range(1, 11):
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in knn_paramters:
             knn_paramters[config].append(mean)
         else:
             knn_paramters[config] = [mean]
-
 
    # RandomForestClassifier
     model = RandomForestClassifier()
@@ -227,21 +136,15 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     print(grid_result.best_params_)
-
-
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in rf_paramters:
             rf_paramters[config].append(mean)
         else:
             rf_paramters[config] = [mean]
-
-
 
     # GradientBoostingClassifier
 
@@ -255,19 +158,15 @@ for i in range(1, 11):
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
-    # summarize results
-
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in xg_paramters:
             xg_paramters[config].append(mean)
         else:
             xg_paramters[config] = [mean]
-
 
    # BaggingClassifier
     model = BaggingClassifier()
@@ -278,11 +177,7 @@ for i in range(1, 11):
     cv = RepeatedStratifiedKFold(n_splits=9, n_repeats=3, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
-    # summarize results
-   # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     print(grid_result.best_params_)
-  #  path = os.path.join(store_parameters, f"{i}.txt")
-
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
@@ -294,60 +189,33 @@ for i in range(1, 11):
         else:
             bagg_paramters[config] = [mean]
 
-
-
-
-
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/SS/SVM/SS.txt'
-
-KNN = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/SS/KNN/SS.txt'
-
-RF = '//export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/SS/RF/SS.txt'
-
-XG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/SS/XG/SS.txt'
-
-BAGG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/SS/BAGG/SS.txt'
-
-
-
-
 for k in svm_parameters.keys():
     svm_parameters[k] = np.array(svm_parameters[k]).mean()
-
-
 
 for k in knn_paramters.keys():
     knn_paramters[k] = np.array(knn_paramters[k]).mean()
 
-
 for k in rf_paramters.keys():
     rf_paramters[k] = np.array(rf_paramters[k]).mean()
-
 
 for k in xg_paramters.keys():
     xg_paramters[k] = np.array(xg_paramters[k]).mean()
 
-
 for k in bagg_paramters.keys():
     bagg_paramters[k] = np.array(bagg_paramters[k]).mean()
-
-
 
 
 fo = open(SVM, "w")
 for k, v in svm_parameters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-
 fo = open(KNN, "w")
 for k, v in knn_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-
 fo = open(RF, "w")
 for k, v in rf_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
-
 
 fo = open(XG, "w")
 for k, v in xg_paramters.items():

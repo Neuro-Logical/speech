@@ -1,92 +1,44 @@
-#!/usr/bin/env python
-# coding: utf-8
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.model_selection import GridSearchCV
-from sklearn.ensemble import GradientBoostingClassifier
-from sklearn.model_selection import train_test_split
-import os
+BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
+
+# path where to store hyperparameters
+SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/TDU/SVM/TDU.txt'
+
+KNN = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/TDU/KNN/TDU.txt'
+
+RF = '//export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/TDU/RF/TDU.txt'
+
+XG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/TDU/XG/TDU.txt'
+
+BAGG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/TDU/BAGG/TDU.txt'
+
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Data_Prep_TDU import *
+from Cross_Lingual_Evaluation.Interpretable_features.Classification.Mono_Lingual.Utils import *
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.datasets import load_iris
-from sklearn.tree import DecisionTreeClassifier
-import matplotlib.pyplot as plt
-from sklearn.datasets import load_iris
-from sklearn.linear_model import LogisticRegression
-from sklearn.inspection import DecisionBoundaryDisplay
-from sklearn.utils import shuffle
 import random
-from sklearn.datasets import make_blobs
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.model_selection import GridSearchCV
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.datasets import make_blobs
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.model_selection import GridSearchCV
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.datasets import make_blobs
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.model_selection import GridSearchCV
+import os
+from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.feature_selection import SelectFromModel
 from sklearn.svm import SVC
-from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.feature_selection import SelectFromModel
-from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.feature_selection import SelectFromModel
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.feature_selection import SelectKBest, f_regression, f_classif
-from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LinearRegression
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import mean_squared_error
-from sklearn.pipeline import Pipeline
-from sklearn.datasets import make_classification
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import GridSearchCV
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.feature_selection import SelectKBest, mutual_info_classif
-from Utils import *
-import pandas as pd
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import roc_auc_score
 random.seed(10)
 
-spain = pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GITA/total_data_frame_novel_task_combined_ling_tot.csv")
-spain = spain.dropna()
-spain['task'] = [elem.split("_")[2] for elem in spain['AudioFile'].tolist()]
-task = ['TDU']
-spain = spain[spain['task'].isin(task)]
-spain = spain.drop(columns=['Unnamed: 0'])
-spain['labels'] = [elem.split("_")[0] for elem in spain['AudioFile'].tolist()]
-# spain['task'].tolist()
-
-new_lab = []
-for lab in spain['labels'].tolist():
-    if lab == "PD":
-        new_lab.append(1)
-    if lab == "CN":
-        new_lab.append(0)
-    if lab == "HC":
-        new_lab.append(0)
-
-spain['labels'] = new_lab
-spain['names'] = [elem.split("_")[1] for elem in spain['AudioFile'].tolist()]
-
-
+spain = gita_prep(os.path.join(BASE, "/GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
 gr = spain.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
 
 arrayOfSpeaker_cn = ctrl_['names'].unique()
 random.shuffle(arrayOfSpeaker_cn)
+
 arrayOfSpeaker_pd = pd_['names'].unique()
 random.shuffle(arrayOfSpeaker_pd)
+
 cn_sps = get_n_folds(arrayOfSpeaker_cn)
 pd_sps = get_n_folds(arrayOfSpeaker_pd)
-
 
 data = []
 for cn_sp, pd_sp in zip(sorted(cn_sps, key=len), sorted(pd_sps, key=len, reverse=True)):
@@ -100,36 +52,9 @@ for i in n_folds:
     data_i = data_i.drop(columns=['names', 'AudioFile', 'task'])
     folds.append((data_i).to_numpy())
 
-
-data_train_1 = np.concatenate(folds[:9])
-data_test_1 = np.concatenate(folds[-1:])
-
-data_train_2 = np.concatenate(folds[1:])
-data_test_2 = np.concatenate(folds[:1])
-
-data_train_3 = np.concatenate(folds[2:] + folds[:1])
-data_test_3 = np.concatenate(folds[1:2])
-
-data_train_4 = np.concatenate(folds[3:] + folds[:2])
-data_test_4 = np.concatenate(folds[2:3])
-
-data_train_5 = np.concatenate(folds[4:] + folds[:3])
-data_test_5 = np.concatenate(folds[3:4])
-
-data_train_6 = np.concatenate(folds[5:] + folds[:4])
-data_test_6 = np.concatenate(folds[4:5])
-
-data_train_7 = np.concatenate(folds[6:] + folds[:5])
-data_test_7 = np.concatenate(folds[5:6])
-
-data_train_8 = np.concatenate(folds[7:] + folds[:6])
-data_test_8 = np.concatenate(folds[6:7])
-
-data_train_9 = np.concatenate(folds[8:] + folds[:7])
-data_test_9 = np.concatenate(folds[7:8])
-
-data_train_10 = np.concatenate(folds[9:] + folds[:8])
-data_test_10 = np.concatenate(folds[8:9])
+data_train_1, data_test_1, data_train_2, data_test_2, data_train_3, data_test_3, data_train_4, data_test_4, \
+data_train_5, data_test_5,  data_train_6, data_test_6, data_train_7, data_test_7 , data_train_8, data_test_8, \
+data_train_9, data_test_9, data_train_10, data_test_10 = create_split_train_test(folds)
 
 svm_parameters = {}
 
@@ -211,7 +136,6 @@ for i in range(1, 11):
 
 
     # Random Forest
-
     model = RandomForestClassifier()
     n_estimators = [10, 100, 1000]
     max_features = ['sqrt', 'log2']
@@ -224,8 +148,6 @@ for i in range(1, 11):
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in rf_paramters:
@@ -248,7 +170,6 @@ for i in range(1, 11):
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in xg_paramters:
@@ -270,11 +191,9 @@ for i in range(1, 11):
    # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     print(grid_result.best_params_)
   #  path = os.path.join(store_parameters, f"{i}.txt")
-
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in bagg_paramters:
@@ -283,59 +202,33 @@ for i in range(1, 11):
             bagg_paramters[config] = [mean]
 
 
-
-
-
-SVM = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/TDU/SVM/TDU.txt'
-
-KNN = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/TDU/KNN/TDU.txt'
-
-RF = '//export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/TDU/RF/TDU.txt'
-
-XG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/TDU/XG/TDU.txt'
-
-BAGG = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GITA/TDU/BAGG/TDU.txt'
-
-
-
-
 for k in svm_parameters.keys():
     svm_parameters[k] = np.array(svm_parameters[k]).mean()
-
-
 
 for k in knn_paramters.keys():
     knn_paramters[k] = np.array(knn_paramters[k]).mean()
 
-
 for k in rf_paramters.keys():
     rf_paramters[k] = np.array(rf_paramters[k]).mean()
-
 
 for k in xg_paramters.keys():
     xg_paramters[k] = np.array(xg_paramters[k]).mean()
 
-
 for k in bagg_paramters.keys():
     bagg_paramters[k] = np.array(bagg_paramters[k]).mean()
-
-
 
 
 fo = open(SVM, "w")
 for k, v in svm_parameters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-
 fo = open(KNN, "w")
 for k, v in knn_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-
 fo = open(RF, "w")
 for k, v in rf_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
-
 
 fo = open(XG, "w")
 for k, v in xg_paramters.items():
