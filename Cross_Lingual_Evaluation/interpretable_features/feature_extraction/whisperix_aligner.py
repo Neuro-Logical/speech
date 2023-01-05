@@ -15,6 +15,7 @@ for audio in audios:
     text =[]
     time_stamps = []
     base_name = os.path.basename(audio_file).split("wav")
+    print(base_name)
     result = model.transcribe(audio_file)
     model_a, metadata = whisperx.load_align_model(language_code=result["language"], device=device)
     result_aligned = whisperx.align(result["segments"], model_a, metadata, audio_file, device)
