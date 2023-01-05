@@ -1,4 +1,4 @@
-BASE = "sftp://login.clsp.jhu.edu/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED"
+BASE = "/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED"
 OUT_PATH = "/export/b15/afavaro/Frontiers/NLS/alignment_whisperx"
 
 import sys
