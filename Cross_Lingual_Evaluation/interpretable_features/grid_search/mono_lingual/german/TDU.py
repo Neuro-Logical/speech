@@ -6,7 +6,8 @@ RF_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feat
 XG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GERMAN/TDU/XG/TDU.txt'
 BAGG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/GERMAN/TDU/BAGG/TDU.txt'
 
-
+import sys
+sys.path.append("/export/b15/afavaro/git_code_version/speech")
 from Cross_Lingual_Evaluation.interpretable_features.classification.mono_lingual.Data_Prep_TDU import *
 from Cross_Lingual_Evaluation.interpretable_features.classification.mono_lingual.Utils import *
 import numpy as np
@@ -19,8 +20,8 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
-from Cross_Validation.Utils import *
-from Cross_Validation.Data_Prep_TDU import *
+from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import RepeatedStratifiedKFold
 random.seed(10)
 
 german_data = german_prep(os.path.join(BASE, "/GERMAN/final_data_frame_with_intensity.csv"))

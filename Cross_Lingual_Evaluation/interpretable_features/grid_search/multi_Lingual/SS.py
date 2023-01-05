@@ -5,6 +5,8 @@ RF_OUT_PATH = '//export/b15/afavaro/Frontiers/submission/Classification_With_Fea
 XG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameters_Multi/GITA/SS/XG/SS.txt'
 BAGG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperparameters_Multi/GITA/SS/BAGG/SS.txt'
 
+import sys
+sys.path.append("/export/b15/afavaro/git_code_version/speech")
 from Cross_Lingual_Evaluation.interpretable_features.classification.multi_lingual.Data_Prep_SS import *
 from Cross_Lingual_Evaluation.interpretable_features.classification.multi_lingual.Utils_SS import *
 import numpy as np
@@ -13,6 +15,8 @@ import os
 from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.feature_selection import SelectFromModel
 from sklearn.svm import SVC
+from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import RepeatedStratifiedKFold
 random.seed(10)
 
 nls, nls_cols = nls_prep(os.path.join(BASE, "/NLS/total_new_training.csv"))

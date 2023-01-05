@@ -5,6 +5,10 @@ RF_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feat
 XG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/ITALIAN/RP/XG/RP.txt'
 BAGG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters_2/ITALIAN/RP/BAGG/RP.txt'
 
+import sys
+sys.path.append("/export/b15/afavaro/git_code_version/speech")
+from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import RepeatedStratifiedKFold
 from Cross_Lingual_Evaluation.interpretable_features.classification.mono_lingual.Data_Prep_RP import *
 from Cross_Lingual_Evaluation.interpretable_features.classification.mono_lingual.Utils import *
 import numpy as np
@@ -17,7 +21,6 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import roc_auc_score
 random.seed(10)
 
 italian_data = italian_prep(os.path.join(BASE, "/ITALIAN_PD/RP_data_frame.csv"))
