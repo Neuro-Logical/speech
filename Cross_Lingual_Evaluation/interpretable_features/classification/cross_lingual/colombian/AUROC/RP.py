@@ -16,7 +16,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 np.random.seed(20)
 
-path = os.path.join(BASE_DIR, "/NLS/Data_frame_RP.csv")
+path = os.path.join(BASE_DIR, "NLS/Data_frame_RP.csv")
 print(path)
 
 nls, nls_cols = nls_prep(path)
