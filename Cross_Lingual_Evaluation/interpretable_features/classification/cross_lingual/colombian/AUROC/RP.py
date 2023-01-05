@@ -14,6 +14,7 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import roc_auc_score
 np.random.seed(20)
 
 nls, nls_cols = nls_prep(os.path.join(BASE_DIR, "NLS/Data_frame_RP.csv"))
