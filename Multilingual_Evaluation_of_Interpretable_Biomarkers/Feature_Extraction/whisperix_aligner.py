@@ -1,8 +1,11 @@
-import os.path
-
-import whisperx
 BASE = "/export/b15/afavaro/Frontiers/Italian_PD/Audio_Whole_Italian/"
 OUT_PATH = "/export/b15/afavaro/Frontiers/Italian_PD/alignment_whisperix"
+import sys
+sys.path.append("/export/c07/afavaro/whisperX")
+import whisperx
+import os
+
+
 device = "cpu"
 model = whisperx.load_model("medium", device)
 
