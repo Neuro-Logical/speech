@@ -23,7 +23,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import RepeatedStratifiedKFold
 random.seed(10)
 
-czech_data = czech_prep(os.path.join(BASE, "/czech/final_data_experiments_updated.csv"))
+czech_data = czech_prep(os.path.join(BASE, "Czech/final_data_experiments_updated.csv"))
 gr = czech_data.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)

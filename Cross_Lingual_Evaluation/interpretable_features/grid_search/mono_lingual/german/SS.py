@@ -22,7 +22,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import RepeatedStratifiedKFold
 random.seed(10)
 
-german_data = german_prep("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GERMAN/final_data_frame_with_intensity.csv")
+german_data = german_prep(os.path.join(BASE, "GERMAN/final_data_frame_with_intensity.csv"))
 gr = german_data.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
@@ -147,8 +147,6 @@ for i in range(1, 11):
             rf_paramters[config].append(mean)
         else:
             rf_paramters[config] = [mean]
-
-
 
     # define models and parameters
     model = GradientBoostingClassifier()

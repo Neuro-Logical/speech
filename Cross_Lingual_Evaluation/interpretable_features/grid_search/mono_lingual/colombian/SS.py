@@ -25,7 +25,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import RepeatedStratifiedKFold
 random.seed(10)
 
-spain_data = gita_prep(os.path.join(BASE, "/GITA/total_data_frame_novel_task_combined_ling.csv"))
+spain_data = gita_prep(os.path.join(BASE, "GITA/total_data_frame_novel_task_combined_ling.csv"))
 gr = spain_data.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)

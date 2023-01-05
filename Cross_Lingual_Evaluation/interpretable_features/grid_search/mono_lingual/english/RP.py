@@ -23,7 +23,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 random.seed(10)
 
-english_data = nls_prep(os.path.join(BASE, "/NLS/Data_frame_RP.csv"))
+english_data = nls_prep(os.path.join(BASE, "NLS/Data_frame_RP.csv"))
 gr = english_data.groupby('label')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)

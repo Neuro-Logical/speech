@@ -23,11 +23,11 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import RepeatedStratifiedKFold
 random.seed(10)
 
-english, english_cols = nls_prep(os.path.join(BASE, "/NLS/Data_frame_RP.csv"))
-colombian, colombian_cols = gita_prep(os.path.join(BASE, "/GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
-czech,  czech_cols = czech_prep(os.path.join(BASE, "/czech/final_data_experiments_updated.csv"))
-german, german_cols = german_prep(os.path.join(BASE, "/GERMAN/final_data_frame_with_intensity.csv"))
-italian, italian_cols = italian_prep(os.path.join(BASE, "/ITALIAN_PD/RP_data_frame.csv"))
+english, english_cols = nls_prep(os.path.join(BASE, "NLS/Data_frame_RP.csv"))
+colombian, colombian_cols = gita_prep(os.path.join(BASE, "GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
+czech,  czech_cols = czech_prep(os.path.join(BASE, "Czech/final_data_experiments_updated.csv"))
+german, german_cols = german_prep(os.path.join(BASE, "GERMAN/final_data_frame_with_intensity.csv"))
+italian, italian_cols = italian_prep(os.path.join(BASE, "ITALIAN_PD/RP_data_frame.csv"))
 
 one_inter = IntersecOfSets(german_cols, english_cols, italian_cols)
 list_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_cols)

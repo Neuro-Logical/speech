@@ -52,14 +52,11 @@ for i in n_folds:
 data_train_1, data_test_1, data_train_2, data_test_2, data_train_3, data_test_3, data_train_4, data_test_4, \
 data_train_5, data_test_5,  data_train_6, data_test_6, data_train_7, data_test_7 , data_train_8, data_test_8, \
 data_train_9, data_test_9, data_train_10, data_test_10 = create_split_train_test(folds)
+
 svm_parameters = {}
-
 rf_paramters = {}
-
 knn_paramters = {}
-
 xg_paramters = {}
-
 bagg_paramters = {}
 
 for i in range(1, 11):

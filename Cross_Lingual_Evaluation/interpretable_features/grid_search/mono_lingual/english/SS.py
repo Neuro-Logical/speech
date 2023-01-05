@@ -24,7 +24,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import RepeatedStratifiedKFold
 random.seed(10)
 
-english_data = nls_prep(os.path.join(BASE, "/NLS/total_new_training.csv"))
+english_data = nls_prep(os.path.join(BASE, "NLS/total_new_training.csv"))
 gr = english_data.groupby('label')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
