@@ -14,9 +14,9 @@ audios = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
 for audio in audios:
     text =[]
     time_stamps = []
-    base_name = os.path.basename(audio_file).split("wav")
+    base_name = os.path.basename(audio).split("wav")
     print(base_name)
-    result = model.transcribe(audio_file)
+    result = model.transcribe(audio)
     model_a, metadata = whisperx.load_align_model(language_code=result["language"], device=device)
     result_aligned = whisperx.align(result["segments"], model_a, metadata, audio_file, device)
     out = (result_aligned["word_segments"]) # after alignment
