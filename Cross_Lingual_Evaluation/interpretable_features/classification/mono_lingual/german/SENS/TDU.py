@@ -2,9 +2,10 @@ BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
 SPEC_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/TDU/SPEC/'
 SENS_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GERMAN/TDU/SENS/'
 
+import sys
+sys.path.append("/export/b15/afavaro/git_code_version/speech")
 from Cross_Lingual_Evaluation.interpretable_features.classification.mono_lingual.Data_Prep_TDU import *
 from Cross_Lingual_Evaluation.interpretable_features.classification.mono_lingual.Utils import *
-import numpy as np
 import random
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -15,8 +16,6 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-from Cross_Validation.Utils import *
-from Cross_Validation.Data_Prep_TDU import *
 random.seed(10)
 
 german = german_prep(os.path.join(BASE, "/GERMAN/final_data_frame_with_intensity.csv"))

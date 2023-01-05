@@ -1,6 +1,6 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
-SPEC_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/ITALIAN/RP/SPEC/'
-SENS_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/ITALIAN/RP/SENS/'
+SPEC_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/ITALIAN/TDU/SPEC/'
+SENS_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/ITALIAN/TDU/SENS/'
 
 from Cross_Lingual_Evaluation.interpretable_features.classification.mono_lingual.Data_Prep_TDU import *
 from Cross_Lingual_Evaluation.interpretable_features.classification.mono_lingual.Utils import *
