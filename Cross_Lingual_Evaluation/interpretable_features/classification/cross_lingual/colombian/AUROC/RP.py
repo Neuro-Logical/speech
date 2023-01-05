@@ -1,6 +1,8 @@
 BASE_DIR = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
 OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/GITA/RP/AUROC/'
 
+import sys
+sys.path.append("/export/b15/afavaro/git_code_version/speech")
 from Cross_Lingual_Evaluation.interpretable_features.classification.cross_lingual.Data_Prep_RP import *
 from Cross_Lingual_Evaluation.interpretable_features.classification.cross_lingual.Utils_RP import *
 import numpy as np
@@ -17,11 +19,11 @@ np.random.seed(20)
 nls, nls_cols = nls_prep(os.path.join(BASE_DIR, "/NLS/Data_frame_RP.csv"))
 colombian, colombian_cols = gita_prep(os.path.join(BASE_DIR, "/GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
 german, german_cols = german_prep(os.path.join(BASE_DIR, "/GERMAN/final_data_frame_with_intensity.csv"))
-czech, czech_clols = czech_prep(os.path.join(BASE_DIR, "/czech/final_data_experiments_updated.csv"))
+czech, czech_cols = czech_prep(os.path.join(BASE_DIR, "/czech/final_data_experiments_updated.csv"))
 italian, italian_cols = italian_prep(os.path.join(BASE_DIR, "/ITALIAN_PD/RP_data_frame.csv"))
 
 one_inter = IntersecOfSets(german_cols, nls_cols, italian_cols)
-lista_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_clols)
+lista_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_cols)
 
 nls = nls[nls.columns.intersection(lista_to_keep)]
 czech = czech[czech.columns.intersection(lista_to_keep)]
