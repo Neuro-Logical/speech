@@ -22,7 +22,7 @@ random.seed(10)
 nls, nls_cols = nls_prep(os.path.join(BASE, "NLS/total_new_training.csv"))
 colombian, colombian_cols = gita_prep(os.path.join(BASE, "GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
 spain, spain_cols = neurovoz_prep(os.path.join(BASE,  "NEUROVOZ/tot_data_experiments.csv"))
-czech, czech_cols = czech_prep(os.path.join(BASE, "czech/final_data_experiments_updated.csv"))
+czech, czech_cols = czech_prep(os.path.join(BASE, "Czech/final_data_experiments_updated.csv"))
 german, german_cols = german_prep(os.path.join(BASE, "GERMAN/final_data_frame_with_intensity.csv"))
 
 one_inter = IntersecOftwo(german_cols, nls_cols)

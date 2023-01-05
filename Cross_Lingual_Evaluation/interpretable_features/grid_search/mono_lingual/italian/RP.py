@@ -23,7 +23,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 random.seed(10)
 
-italian_data = italian_prep(os.path.join(BASE, "/ITALIAN_PD/RP_data_frame.csv"))
+italian_data = italian_prep(os.path.join(BASE, "ITALIAN_PD/RP_data_frame.csv"))
 gr = italian_data.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)

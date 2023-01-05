@@ -23,7 +23,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import RepeatedStratifiedKFold
 random.seed(10)
 
-italian_data = italian_prep(os.path.join(BASE, "/ITALIAN_PD/tot_experiments_ling_fin.csv"))
+italian_data = italian_prep(os.path.join(BASE, "ITALIAN_PD/tot_experiments_ling_fin.csv"))
 gr = italian_data.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)

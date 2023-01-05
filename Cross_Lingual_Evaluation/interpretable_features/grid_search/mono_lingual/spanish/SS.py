@@ -23,7 +23,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import RepeatedStratifiedKFold
 random.seed(10)
 
-spanish_data = neurovoz_prep(os.path.join(BASE, "/NEUROVOZ/tot_data_experiments.csv"))
+spanish_data = neurovoz_prep(os.path.join(BASE, "NEUROVOZ/tot_data_experiments.csv"))
 gr = spanish_data.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
