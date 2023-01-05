@@ -17,9 +17,9 @@ from sklearn.metrics import roc_auc_score
 np.random.seed(20)
 
 colombian, colombian_cols = gita_prep(os.path.join(BASE_DIR, "GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
-spain, spain_cols = neurovoz_prep(os.path.join(BASE_DIR, "/NEUROVOZ/tot_data_experiments.csv"))
-german, german_cols = german_prep(os.path.join(BASE_DIR, "/GERMAN/final_data_frame_with_intensity.csv"))
-italian, italian_cols = italian_prep(os.path.join(BASE_DIR, "/ITALIAN_PD/tot_experiments_ling_fin.csv"))
+spain, spain_cols = neurovoz_prep(os.path.join(BASE_DIR, "NEUROVOZ/tot_data_experiments.csv"))
+german, german_cols = german_prep(os.path.join(BASE_DIR, "GERMAN/final_data_frame_with_intensity.csv"))
+italian, italian_cols = italian_prep(os.path.join(BASE_DIR, "ITALIAN_PD/tot_experiments_ling_fin.csv"))
 
 one_inter = IntersecOftwo(german_cols, italian_cols)
 lista_to_keep = IntersecOfSets(one_inter, colombian_cols,spain_cols)

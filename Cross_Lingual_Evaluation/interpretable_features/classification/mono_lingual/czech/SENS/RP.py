@@ -18,7 +18,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
 random.seed(10)
 
-czech = czech_prep(os.path.join(BASE, "/czech/final_data_experiments_updated.csv"))
+czech = czech_prep(os.path.join(BASE, "Czech/final_data_experiments_updated.csv"))
 gr = czech.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)

@@ -25,7 +25,7 @@ nls, nls_cols = nls_prep(os.path.join(BASE_DIR, "NLS/total_new_training.csv"))
 colombian, colombian_cols = gita_prep(os.path.join(BASE_DIR, "GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
 spain, spain_cols = neurovoz_prep(os.path.join(BASE_DIR,"NEUROVOZ/tot_data_experiments.csv"))
 german, german_cols = german_prep(os.path.join(BASE_DIR, "GERMAN/final_data_frame_with_intensity.csv"))
-czech, czech_cols = czech_prep(os.path.join(BASE_DIR,"czech/final_data_experiments_updated.csv"))
+czech, czech_cols = czech_prep(os.path.join(BASE_DIR,"Czech/final_data_experiments_updated.csv"))
 
 one_inter = IntersecOfSets(german_cols, nls_cols, spain_cols)
 lista_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_cols)

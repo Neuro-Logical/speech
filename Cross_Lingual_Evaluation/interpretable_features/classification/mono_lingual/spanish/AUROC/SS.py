@@ -17,7 +17,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import roc_auc_score
 random.seed(10)
 
-spanish = neurovoz_prep(os.path.join(BASE, "/NEUROVOZ/tot_data_experiments.csv"))
+spanish = neurovoz_prep(os.path.join(BASE, "NEUROVOZ/tot_data_experiments.csv"))
 gr = spanish.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)

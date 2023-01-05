@@ -21,7 +21,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
 random.seed(10)
 
-german = german_prep(os.path.join(BASE, "/GERMAN/final_data_frame_with_intensity.csv"))
+german = german_prep(os.path.join(BASE, "GERMAN/final_data_frame_with_intensity.csv"))
 gr = german.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)

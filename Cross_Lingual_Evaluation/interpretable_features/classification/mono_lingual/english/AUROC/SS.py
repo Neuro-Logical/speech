@@ -17,7 +17,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import roc_auc_score
 random.seed(10)
 
-english = nls_prep(os.path.join(BASE, "/NLS/total_new_training.csv"))
+english = nls_prep(os.path.join(BASE, "NLS/total_new_training.csv"))
 gr = english.groupby('label')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)

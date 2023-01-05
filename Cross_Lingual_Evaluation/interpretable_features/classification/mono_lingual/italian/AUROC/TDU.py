@@ -17,7 +17,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import roc_auc_score
 random.seed(10)
 
-italian = italian_prep(os.path.join(BASE, "/ITALIAN_PD/tot_experiments_ling_fin.csv"))
+italian = italian_prep(os.path.join(BASE, "ITALIAN_PD/tot_experiments_ling_fin.csv"))
 gr = italian.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)

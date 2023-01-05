@@ -17,7 +17,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import roc_auc_score
 random.seed(10)
 
-czech = czech_prep(os.path.join(BASE, "/czech/final_data_experiments_updated.csv"))
+czech = czech_prep(os.path.join(BASE, "Czech/final_data_experiments_updated.csv"))
 gr = czech.groupby('labels')
 ctrl_ = gr.get_group(0)
 pd_ = gr.get_group(1)
