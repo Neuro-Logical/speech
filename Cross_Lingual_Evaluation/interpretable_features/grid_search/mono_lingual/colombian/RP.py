@@ -14,11 +14,12 @@ import os
 from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.feature_selection import SelectFromModel
 from sklearn.svm import SVC
-from sklearn.model_selection import RepeatedStratifiedKFold
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import RepeatedStratifiedKFold
 random.seed(10)
 
 spain_data = gita_prep(os.path.join(BASE, "GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
