@@ -17,6 +17,7 @@ from sklearn.neighbors import KNeighborsClassifier
 np.random.seed(20)
 
 path = os.path.join(BASE_DIR, "/NLS/Data_frame_RP.csv")
+print(path)
 
 nls, nls_cols = nls_prep(path)
 colombian, colombian_cols = gita_prep(os.path.join(BASE_DIR, "/GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
