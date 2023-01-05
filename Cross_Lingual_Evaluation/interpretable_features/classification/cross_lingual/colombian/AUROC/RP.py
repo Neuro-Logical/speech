@@ -16,14 +16,11 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 np.random.seed(20)
 
-path = os.path.join(BASE_DIR, "NLS/Data_frame_RP.csv")
-print(path)
-
-nls, nls_cols = nls_prep(path)
-colombian, colombian_cols = gita_prep(os.path.join(BASE_DIR, "/GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
-german, german_cols = german_prep(os.path.join(BASE_DIR, "/GERMAN/final_data_frame_with_intensity.csv"))
-czech, czech_cols = czech_prep(os.path.join(BASE_DIR, "/czech/final_data_experiments_updated.csv"))
-italian, italian_cols = italian_prep(os.path.join(BASE_DIR, "/ITALIAN_PD/RP_data_frame.csv"))
+nls, nls_cols = nls_prep(os.path.join(BASE_DIR, "NLS/Data_frame_RP.csv"))
+colombian, colombian_cols = gita_prep(os.path.join(BASE_DIR, "GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
+german, german_cols = german_prep(os.path.join(BASE_DIR, "GERMAN/final_data_frame_with_intensity.csv"))
+czech, czech_cols = czech_prep(os.path.join(BASE_DIR, "czech/final_data_experiments_updated.csv"))
+italian, italian_cols = italian_prep(os.path.join(BASE_DIR, "ITALIAN_PD/RP_data_frame.csv"))
 
 one_inter = IntersecOfSets(german_cols, nls_cols, italian_cols)
 lista_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_cols)
