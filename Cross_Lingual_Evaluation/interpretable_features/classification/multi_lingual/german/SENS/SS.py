@@ -2,6 +2,8 @@ BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
 SPEC_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/GERMAN/SS/SPEC/'
 SENS_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/GERMAN/SS/SENS/'
 
+import sys
+sys.path.append("/export/b15/afavaro/git_code_version/speech")
 from Cross_Lingual_Evaluation.interpretable_features.classification.multi_lingual.Data_Prep_SS import *
 from Cross_Lingual_Evaluation.interpretable_features.classification.multi_lingual.Utils_SS import *
 import random
@@ -16,11 +18,11 @@ from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
 random.seed(10)
 
-nls, nls_cols = nls_prep(os.path.join(BASE, "/NLS/total_new_training.csv"))
-colombian, colombian_cols = gita_prep(os.path.join(BASE, "/GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
-spain, spain_cols = neurovoz_prep(os.path.join(BASE,  "/NEUROVOZ/tot_data_experiments.csv"))
-czech, czech_clols = czech_prep(os.path.join(BASE, "/czech/final_data_experiments_updated.csv"))
-german, german_cols = german_prep(os.path.join(BASE, "/GERMAN/final_data_frame_with_intensity.csv"))
+nls, nls_cols = nls_prep(os.path.join(BASE, "NLS/total_new_training.csv"))
+colombian, colombian_cols = gita_prep(os.path.join(BASE, "GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
+spain, spain_cols = neurovoz_prep(os.path.join(BASE,  "NEUROVOZ/tot_data_experiments.csv"))
+czech, czech_clols = czech_prep(os.path.join(BASE, "Czech/final_data_experiments_updated.csv"))
+german, german_cols = german_prep(os.path.join(BASE, "GERMAN/final_data_frame_with_intensity.csv"))
 
 one_inter = IntersecOftwo(german_cols, nls_cols)
 lista_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_clols)

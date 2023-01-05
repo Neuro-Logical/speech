@@ -1,6 +1,8 @@
 BASE = "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis"
 OUT_PATH ='/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/ITALIAN/RP/AUROC/'
 
+import sys
+sys.path.append("/export/b15/afavaro/git_code_version/speech")
 from Cross_Lingual_Evaluation.interpretable_features.classification.multi_lingual.Data_Prep_RP import *
 from Cross_Lingual_Evaluation.interpretable_features.classification.multi_lingual.Utils_RP import *
 import random
@@ -15,11 +17,11 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import roc_auc_score
 random.seed(10)
 
-nls, nls_cols = nls_prep(os.path.join(BASE, "/NLS/Data_frame_RP.csv"))
-colombian, colombian_cols = gita_prep(os.path.join(BASE, "/GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
-czech,  czech_cols = czech_prep(os.path.join(BASE, "/czech/final_data_experiments_updated.csv"))
-german, german_cols = german_prep(os.path.join(BASE, "/GERMAN/final_data_frame_with_intensity.csv"))
-italian, italian_cols = italian_prep(os.path.join(BASE, "/ITALIAN_PD/RP_data_frame.csv"))
+nls, nls_cols = nls_prep(os.path.join(BASE, "NLS/Data_frame_RP.csv"))
+colombian, colombian_cols = gita_prep(os.path.join(BASE, "GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
+czech,  czech_cols = czech_prep(os.path.join(BASE, "Czech/final_data_experiments_updated.csv"))
+german, german_cols = german_prep(os.path.join(BASE, "GERMAN/final_data_frame_with_intensity.csv"))
+italian, italian_cols = italian_prep(os.path.join(BASE, "ITALIAN_PD/RP_data_frame.csv"))
 
 one_inter = IntersecOfSets(german_cols, nls_cols, italian_cols)
 lista_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_clols)

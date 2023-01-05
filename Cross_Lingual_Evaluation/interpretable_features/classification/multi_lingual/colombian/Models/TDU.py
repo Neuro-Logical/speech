@@ -5,9 +5,10 @@ RF_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feat
 XGBOOST_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/GITA/TDU/XG/'
 BAGGING_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Multi/GITA/TDU/BAGG/'
 
+import sys
+sys.path.append("/export/b15/afavaro/git_code_version/speech")
 from Cross_Lingual_Evaluation.interpretable_features.classification.multi_lingual.Data_Prep_TDU import *
 from Cross_Lingual_Evaluation.interpretable_features.classification.multi_lingual.Utils_TDU import *
-import numpy as np
 import random
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -18,14 +19,12 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-from Cross_Validation_Multi_Lingual.Utils_TDU import *
-from Cross_Validation_Multi_Lingual.Data_Prep_TDU import *
 random.seed(10)
 
-colombian, colombian_cols = gita_prep(os.path.join(BASE, "/GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
-german, german_cols = german_prep(os.path.join(BASE, "/GERMAN/final_data_frame_with_intensity.csv"))
-italian, italian_cols = italian_prep(os.path.join(BASE, "/ITALIAN_PD/tot_experiments_ling_fin.csv"))
-spain, spain_cols = neurovoz_prep(os.path.join(BASE, "/NEUROVOZ/tot_data_experiments.csv"))
+colombian, colombian_cols = gita_prep(os.path.join(BASE, "GITA/total_data_frame_novel_task_combined_ling_tot.csv"))
+german, german_cols = german_prep(os.path.join(BASE, "GERMAN/final_data_frame_with_intensity.csv"))
+italian, italian_cols = italian_prep(os.path.join(BASE, "ITALIAN_PD/tot_experiments_ling_fin.csv"))
+spain, spain_cols = neurovoz_prep(os.path.join(BASE, "NEUROVOZ/tot_data_experiments.csv"))
 
 one_inter = IntersecOftwo(german_cols, italian_cols)
 lista_to_keep = IntersecOfSets(one_inter, colombian_cols, spain_cols)
