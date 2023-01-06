@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import subprocess
+import whisper
 pd.options.display.max_rows = 100
 pd.options.display.max_colwidth = 1000
 
