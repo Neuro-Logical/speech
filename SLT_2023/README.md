@@ -19,23 +19,29 @@ Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R
 
 ## Data Pre-processing:
 
-* Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. The script to resample the recordings is ****convert_to_16k.sh****.
+* Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. The script to resample the recordings is ```Data_Preprocessing/convert_to_16k.sh```.
 * Spoken responses collected in the Cookie Theft task were automatically transcribed using a pre-trained conformer CTC  model (https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09) for the Librispeech data set built on top of icefall (https://github.com/k2-fsa/icefall). Transcriptions were manually supervised and corrected when needed,  
 ## Feature Extraction 
 
 ### Cognitive Features
-For the extraction of part of the the cognitive features we use a pre-trained conformer CTC model for the librispeech dataset built on top of icefall (https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09). 
+For the extraction of part of the cognitive features we use a pre-trained conformer CTC model for the librispeech dataset built on top of icefall (https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09). 
+To extract the cognitive features based on speech trascripts only, run ```Cognitive/Extract_Cognitive_Features.py```
 
 ### Acoustic Features
 
 * For the extraction of the acoustic features related to pause and speech time we use DigiPsych Prosody Repository (<https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody>).
 * For the extraction of the acoustic features related F0 and energy contour we use Disvoice Repository (<https://github.com/jcvasquezc/DisVoice/tree/master/prosody>).
 
+To extract the acoustic features reported in the paper, run ```Acoustic/Extract_Acoustic_Features.py```
+
+
 
 ### Linguistic Features
 
 * For the extraction of the linguistic features related to Part-of-Speech and Syntactic Complexity we use Spacy Python Library(<https://spacy.io/models>).
 * For the extraction of the linguistic features related to Vocabulary Richness we use <https://pypi.org/project/lexicalrichness/>. 
+
+To extract the linguistic features reported in the paper, run ```Linguistic/Extract_Linguistic_Features.py```
 
 ## Statistical Analysis 
 
