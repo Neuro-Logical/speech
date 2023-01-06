@@ -162,13 +162,3 @@ def ratio_rep_certanty(df):
 
     return df
 
-
-def extract_word_timestamp(path_recordings, output_folder):
-
-    """  Code to extract word starting timestamps using Whisper.
-    This code uses an existing script that modifies methods of Whisper's model to gain
-    access to the predicted timestamp tokens of each word (token) without needing additional inference.
-     It also stabilizes the timestamps down to the word (token) level to ensure chronology.
-     Additionally, it can suppress gaps in speech for more accurate timestamps.
-
-
