@@ -15,6 +15,17 @@ The experimental pipeline followed in our papar goes as follow:
   - To resample the speech recordings to 16 kHz run the script ```convert_to_16k.sh```
   - To extract speech transcripts from speech recordings using Whisper run ```get_speech_transcripts.py```
 
+2) Feature extraction:
+
+  - To extract the ***cognitive*** features from speech transcripts run the script named ```extract_cognitive_features.py```
+  - To extract the ***cognitive*** features from speech transcripts run the script named ```extract_linguistic_features.py```
+  - To extract the ***prosodic*** features from speech transcripts run the script named  ```extract_prosodic_features```
+
+3) Statistical and correlation analysis
+
+  - To perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker use the functions in ```compute_statistics/utils.py``
+  - To perform the correlation analysis between the feature and the clinical scores (UDRS III, UPDRS III part I (speech assessment), and Hoen and Yahr (H\&Y) scale), use the functions in  ```compute_statistics/compute_correlation.py`
+  
 
 ### Reproducibility
 

@@ -6,7 +6,7 @@ from sklearn import metrics
 
 # Functions used to perform:
 #    '1 - Pair-wise Kruskal-Wallis H-tests.
-#    '2 - FDR corrections.\n'
+#    '2 - FDR corrections.
 #    '3 - Compute the AUROC associated to each biomarker.
 #    '4 - Compute the eta squared effect size.
 
