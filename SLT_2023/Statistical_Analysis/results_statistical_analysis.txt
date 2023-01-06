@@ -1,3 +1,5 @@
+# An example of text file generated using the kruskal function contained in utils.py
+
 kruskal results for Reaction Time (ms) CTP task controls vs. parkinson 0.7730684385566526
 
 kruskal results for Reaction Time (ms) CTP task parkinson vs. others 0.7558066380940909

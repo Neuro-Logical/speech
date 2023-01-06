@@ -30,6 +30,9 @@ def kruskal(output_path, biomarkers_name, c, p, c_name, p_name):
     p: matrix of features from the parkinson's group.
     c_name: control group name (e.g., "CN")
     p_name: Parkinson's group name (e.g., "PD")
+
+    Output: text file saving the significant p-value in correspondence to each pair-wise comparison between two distributions of a given biomarker. .
+    An example of text file generated using this function can be found in Statistical_Analysis/results_statistical_analysis.txt
     """
 
     for i, title in enumerate(biomarkers_name):
