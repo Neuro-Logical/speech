@@ -1,11 +1,4 @@
-import os
-import sys
-sys.path.append("/export/b15/afavaro/stable-ts")
-from stable_whisper import modify_model
-from stable_whisper import stabilize_timestamps
-import pandas as pd
-from stable_whisper import load_model
-import torch
+
 
 def uncertainty(text):
     """ Function design to capture the level of certainty of patients of participants when delivering  the description

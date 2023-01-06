@@ -21,7 +21,6 @@ def extract_word_starting_timestamps(BASE, OUT_PATH):
 
     device = "cpu"
     model = whisperx.load_model("medium", device)
-
     audios = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
 
     for audio in audios:
