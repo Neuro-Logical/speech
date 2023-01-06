@@ -8,7 +8,9 @@ from spacy.matcher import Matcher
 
 
 def compute_lexical_diversity(transcript):
-    """Function to compute different metrics for lexical diversity"""
+
+    """Function to compute different metrics for lexical diversity.
+    transcript: text file containing speech transcipt."""
 
     lex = LexicalRichness(transcript)
     # word_count = lex.words
@@ -18,9 +20,6 @@ def compute_lexical_diversity(transcript):
     corrected_type_token_ratio = lex.cttr
     # mean_segmental_type_token_ratio = lex.msttr(segment_window=12) #25
     moving_average_type_token_ratio = lex.mattr(window_size=13)  # 25
-    # measure_textual_lexical_diversity= lex.mtld(threshold=0.72)
-    # hypergeometric_distribution_diversity = lex.hdd(draws=13)
-    # herdan_lexical_diversity_measure = lex.Herdan
     summer_lexical_diversity_measure = lex.Summer
     dugast_lexical_diversity_measure = lex.Dugast
     # maas_lexical_diversity_measure = lex.Maas
@@ -29,7 +28,14 @@ def compute_lexical_diversity(transcript):
 
 
 def load_files(data):
-    """Apply lexical richness function defined above to a dataframe."""
+
+    """Apply lexical richness function defined above to a dataframe.
+    data: pandas data frame having as columns:
+    1 - speaker-ID;
+    2 - speech transcripts;
+    3 - labels indicating the disorder.
+
+    This function returns the same dataframe given as input with lexical richness metrics for each subject, computed from the transcripts."""
 
     speakers = data['idx'].tolist()
     sentences = data['sentence'].tolist()
@@ -37,8 +43,7 @@ def load_files(data):
     lex_vals = np.array([compute_lexical_diversity(sent) for sent in sentences])
     names = ["unique_word_count", "type_token_ratio", "corrected_type_token_ratio", "moving_average_type_token_ratio",
              "summer_lexical_diversity_measure", "dugast_lexical_diversity_measure"]
-    frame = pd.DataFrame({"speakers": speakers, "labels": labels, "sentences": sentences,
-                          **{name: val for name, val in zip(names, lex_vals.T)}})
+    frame = pd.DataFrame({"speakers": speakers, "labels": labels, "sentences": sentences, **{name: val for name, val in zip(names, lex_vals.T)}})
 
     return frame
 
@@ -54,8 +59,11 @@ stopwords = list(stopwords.words('english'))
 
 
 def preprocess(text):
-    '''This is a function to perform tokenization, lemmatization, removal of non-alphabetic characters
-    and stopword removal'''
+
+    """This is a function to perform tokenization, lemmatization, removal of non-alphabetic characters
+    and stopword removal.
+    text: text file containing the speech transcripts.
+    """
     # Create Doc object
     doc = nlp(text, disable=['ner'])
     # Generate lemmas
@@ -67,7 +75,9 @@ def preprocess(text):
 
 
 def count_words(string):
-    '''This function returns the number of words in a string'''
+
+    """This function returns the number of words in a string.
+     text: text file containing the speech transcripts."""
     # Split the string into words
     words = string.split()
     # Return the number of words
@@ -75,7 +85,8 @@ def count_words(string):
 
 
 def word_length(string):
-    '''This function returns the average word length in characters for the words in an item'''
+    """This function returns the average word length in characters for the words in an item.
+     text: text file containing the speech transcripts."""
     # Get the length of the full text in characters
     chars = len(string)
     # Split the string into words
@@ -88,7 +99,8 @@ def word_length(string):
 
 
 def sentence_counter(text):
-    """This function returns the number of sentences in an item"""
+    """This function returns the number of sentences in an item.
+     text: text file containing the speech transcripts."""
     doc = nlp(text)
     # Initialize a counter variable
     counter = 0
@@ -101,8 +113,8 @@ def sentence_counter(text):
 # Note that this function is applied to the raw text in order to identify sentence boundaries
 
 def avg_sent_length(text):
-    """ This function returns the average sentence length in words."""
-
+    """ This function returns the average sentence length in words.
+     text: text file containing the speech transcripts."""
     doc = nlp(text)
     # Initialize a counter variable
     sent_number = 0
@@ -117,7 +129,8 @@ def avg_sent_length(text):
 
 
 def nouns(text, model=nlp):
-    """ This function returns the number of nouns in an item. """
+    """ This function returns the number of nouns in an item.
+     text: text file containing the speech transcripts."""
     # Create doc object
     doc = model(text)
     # Generate list of POS tags
@@ -127,7 +140,8 @@ def nouns(text, model=nlp):
 
 
 def verbs(text, model=nlp):
-    """This function returns the number of verbs in an item"""
+    """This function returns the number of verbs in an item.
+     text: text file containing the speech transcripts."""
     # Create doc object
     doc = model(text)
     # Generate list of POS tags
@@ -137,7 +151,8 @@ def verbs(text, model=nlp):
 
 
 def adjectives(text, model=nlp):
-    """This function returns the number of adjectives in an item"""
+    """This function returns the number of adjectives in an item.
+     text: text file containing the speech transcripts."""
     # Create doc object
     doc = model(text)
     # Generate list of POS tags
@@ -147,7 +162,8 @@ def adjectives(text, model=nlp):
 
 
 def adverbs(text, model=nlp):
-    """This function returns the number of adverbs in an item"""
+    """This function returns the number of adverbs in an item.
+     text: text file containing the speech transcripts."""
     # Create doc object
     doc = model(text)
     # Generate list of POS tags
@@ -179,7 +195,8 @@ def aux(text, model=nlp):
 
 
 def get_nps(text):
-    """This is a function that outputs the number of noun phrases in an item"""
+    """This is a function that outputs the number of noun phrases in an item.
+     text: text file containing the speech transcripts."""
     doc = nlp(text)
     NP_count = 0
     for np in doc.noun_chunks:
@@ -189,7 +206,8 @@ def get_nps(text):
 
 
 def get_pps(text):
-    """This is a function that outputs the number of prepositional phrases in an item"""
+    """This is a function that outputs the number of prepositional phrases in an item.
+     text: text file containing the speech transcripts."""
     doc = nlp(text)
     pps = 0
     for token in doc:
@@ -207,7 +225,8 @@ pattern = [{'POS': 'VERB', 'OP': '?'},
 
 
 def get_vps(text):
-    """This function returns the number of verb phrases in an item"""
+    """This function returns the number of verb phrases in an item.
+      text: text file containing the speech transcripts."""
     doc = nlp(text)
     vps = 0
     # instantiate a Matcher instance
@@ -250,7 +269,8 @@ contrastive_connectives = ['alternatively', 'anyway', 'but', 'by contrast', 'dif
 
 
 def temporal_connectives_count(text):
-    """This function counts the number of temporal connectives in a text"""
+    """This function counts the number of temporal connectives in a text.
+      text: text file containing the speech transcripts."""
     count = 0
     for string in temporal_connectives:
         for match in re.finditer(string, text):
@@ -259,7 +279,8 @@ def temporal_connectives_count(text):
 
 
 def causal_connectives_count(text):
-    """This function counts the number of causal connectives in a text"""
+    """This function counts the number of causal connectives in a text.
+      text: text file containing the speech transcripts."""
     count = 0
     for string in causal_connectives:
         for match in re.finditer(string, text):
@@ -268,7 +289,8 @@ def causal_connectives_count(text):
 
 
 def exemplifying_connectives_count(text):
-    """This function counts the number of exemplifying connectives in a text"""
+    """This function counts the number of exemplifying connectives in a text.
+      text: text file containing the speech transcripts."""
     count = 0
     for string in exemplifying_connectives:
         for match in re.finditer(string, text):
@@ -277,7 +299,8 @@ def exemplifying_connectives_count(text):
 
 
 def additive_connectives_count(text):
-    """This function counts the number of additive connectives in a text"""
+    """This function counts the number of additive connectives in a text.
+      text: text file containing the speech transcripts."""
     count = 0
     for string in additive_connectives:
         for match in re.finditer(string, text):
@@ -286,7 +309,8 @@ def additive_connectives_count(text):
 
 
 def contrastive_connectives_count(text):
-    """This function counts the number of contrastive connectives in a text"""
+    """This function counts the number of contrastive connectives in a text.
+      text: text file containing the speech transcripts."""
     cont_con = 0
     for string in contrastive_connectives:
         if string in text:
@@ -294,14 +318,3 @@ def contrastive_connectives_count(text):
     return cont_con
 
 
-def filled_pauses(text):
-    filled_pause = ["uhm"]
-
-    cont_pauses = 0
-    for string in filled_pause:
-        for match in re.finditer(string, text):
-            cont_pauses += 1
-    return cont_pauses
-
-
-df['Filled_Pauses'] = df['sentence'].apply(filled_pauses)

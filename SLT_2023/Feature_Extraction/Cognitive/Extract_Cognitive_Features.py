@@ -1,4 +1,3 @@
-from sklearn import metrics
 import spacy
 import seaborn as sns
 import os
@@ -9,9 +8,12 @@ from spacy.matcher import Matcher
 import statsmodels
 from nltk.corpus import stopwords
 
-def uncertanty(text):
+
+def uncertainty(text):
+
     """ Function design to capture the level of certainty of patients of participants when delivering  the description
-    of the image"""
+    of the image.
+    text: txt file containing speech transcripts."""
 
     cont_con = 0
     if "?" in text:
@@ -38,7 +40,8 @@ def uncertanty(text):
 
 def repetitions(text):
 
-    """ Function that counts the numner of repetions in each recording, after stop word removal """
+    """ Function that counts the numner of repetions in each recording, after stop word removal.
+     text: txt file containing speech transcripts."""
 
     stopwords = list(stopwords.words('english'))
     repetition = 0
@@ -67,7 +70,9 @@ def repetitions(text):
 def informational_verb(text):
 
     """ Function that computes the informativeness of the narratives represented by
-    counting how many (if any) salient events (verbs) are mentioned"""
+    counting how many (if any) salient events (verbs) are mentioned.
+    text: txt file containing speech transcripts.
+    """
 
     cont_con = 0
 
@@ -146,25 +151,6 @@ def informational_content(text):
     return cont_con
 
 
-def ratio_info_rep_plus_uncert(df):
-
-    """ Ratio between informativeness and uncertanty,
-    where uncertainty is represented as repetition + uncertanty"""
-
-    summation = df['repetition'] + df["uncertanty"]
-    ratio = df['informational'] / summation  # info / rep + uncertanty
-    df["ratio_info_rep_plus_uncert"] = ratio
-
-    return df
-
-
-def ratio_rep_certanty(df):
-    """ Function designed to measure the ratio between repetitions and uncertanty"""
-
-    division = df['repetition'] / df["uncertanty"]  # repetition / uncertainty
-    df["ratio_rep_certanty"] = division
-
-    return df
 
 
 

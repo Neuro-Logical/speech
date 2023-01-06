@@ -11,7 +11,6 @@ from sklearn import metrics
 #    '4 - Compute the eta squared effect size.
 
 
-
 def delete_multiple_element(list_object, indices):
 
     indices = sorted(indices, reverse=True)
@@ -52,7 +51,7 @@ def compute_auc(array_1, array_2):
         print(round(max(m, 1 - m), 2))
 
 
-def compute_eta_squared(H, n_of_grp, n_of_observ):
+def compute_eta_squared(H, n_of_grp, n_of_observations):
 
     """ Function that computes the eta squared effect size.
     H: is the value of the Kruskal Wallis H-test.
@@ -60,14 +59,13 @@ def compute_eta_squared(H, n_of_grp, n_of_observ):
     n_of_observ: is the total number of samples considered."""
 
 
-    return (H - n_of_grp + 1) / (n_of_observ - n_of_grp)
-
+    return (H - n_of_grp + 1) / (n_of_observations - n_of_grp)
 
 
 def holm_correction(kruskal):
 
     """Holm correction to apply after Kruskal wallis test.
-    Thr function takes as input the .txt containing the results of the Kruskal-Wallis test."""
+    This function takes as input the .txt containing the results of the Kruskal-Wallis test."""
 
     line_to_remove = []
     values = []
