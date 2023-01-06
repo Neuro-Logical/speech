@@ -19,7 +19,7 @@ for audio in audios:
     base_name = os.path.basename(audio).split(".wav")[0]
     print(base_name)
     result = model.transcribe(audio)
-    model_a, metadata = whisperx.load_align_model(language_code='es', device=device)
+    model_a, metadata = whisperx.load_align_model(language_code='en', device=device)
     result_aligned = whisperx.align(result["segments"], model_a, metadata, audio, device)
     out = (result_aligned["word_segments"])
     for element in out:
