@@ -46,7 +46,7 @@ We report an example of the statistical analysis that we perform in order to ass
 Due to the licensing of the used data sets, we are not allowed to publish the recordings, the extracted features, nor the labels. However, we provided the source code to perform the feature extraction, and the statistical reported in the paper. 
 
 
-## References 
+## Further references 
 
 Saturnino Luz, Fasih Haider, Sofia de la Fuente, Davida Fromm, and Brian MacWhinney, “Alzheimer’s dementia
 recognition through spontaneous speech: The adress challenge,” arXiv preprint arXiv:2004.06833, 2020.
