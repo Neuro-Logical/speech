@@ -1,5 +1,6 @@
 # A Multi-modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders
 
+## Research Aim 
 In this project, we analyzed cognitive, linguistic, and acoustic patterns from the speech of different individuals with varying neurological disorders. 
 The original recordings belong to two different data sets. The first, **NeuroLogical Signal (NLS)** is a private data set collected by
 the authors of this study at Johns Hopkins Hospital and contains spoken responses to several tasks (i.e., reading passage,
@@ -11,15 +12,6 @@ task. Only the training subset containing recordings and transcriptions from 87 
 was adopted. This repository is a public open-source implementation that supports the extraction of cognitive, linguistic and acoustic features from speech recordings. This project has the aim of designing, extracting and analyzing speech and language production of subjects with different neurological disorders. 
 In this repository we report the code that supports both the **feature extraction**, and the **statistical analysis** that we perform to evaluate the significance of the features between experimental groups.
 
-
-## Research Article: 
-
-In case you will use this code or take inspiration from it, plese cite out work: 
-```
-
-Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R. D., Villalba, J., Dehak, N., Moro-Velazquez, L. A Multi-Modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders. 2022 IEEE Spoken Language Technology Workshop (SLT). IEEE, 2022
-
-```
 ## Data Pre-processing:
 
 * Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz, run the script: ```Data_Preprocessing/convert_to_16k.sh```.
@@ -54,6 +46,15 @@ In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, comp
 
 Due to the licensing of the used data sets, we are not allowed to publish the recordings, the extracted features, nor the labels. However, we provided the source code to perform the feature extraction, and the statistical analysis reported in the paper. 
 
+
+## Research Article: 
+
+In case you will use this code or take inspiration from it, plese cite out work: 
+```
+
+Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R. D., Villalba, J., Dehak, N., Moro-Velazquez, L. A Multi-Modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders. 2022 IEEE Spoken Language Technology Workshop (SLT). IEEE, 2022
+
+```
 
 ## Further references 
 
