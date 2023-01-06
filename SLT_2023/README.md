@@ -45,7 +45,9 @@ To extract the linguistic features reported in the paper, run ```Linguistic/Extr
 
 ## Statistical Analysis 
 
-We report an example of the statistical analysis that we perform in order to assess the significance of the features between experimental groups.
+We report the main functions used to perform the statistical analysis to assess the significance of the features between experimental groups. 
+In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker use the script ```Statistical_Analysis/utils.py```
+
 
 ## Reproducibility
 
