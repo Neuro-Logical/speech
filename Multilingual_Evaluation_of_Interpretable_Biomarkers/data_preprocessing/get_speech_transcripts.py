@@ -10,7 +10,8 @@ def extract_transcripts(path_recordings, language):
     """ Function to extract transcription from speech recordings using Whisper: https://openai.com/blog/whisper/.
     Path_recordings: path to the folder containing the recordings to transcribe.
     Language: the language of the speech recordings.
-    This function outputs a transcription for each recording, with the same name of the original file but with a different extension (.txt)."""
+    This function outputs in the same folder where the script is located a text file containing the
+    transcriptions for each recording contained in the input folder."""
 
     path_recordings_all = [os.path.join(path_recordings, base) for base in os.listdir(path_recordings)]
     for path in path_recordings_all:

@@ -1,17 +1,18 @@
-import numpy as np
-import statsmodels
-from scipy import stats
-from sklearn import metrics
 
+from scipy import stats
+import statsmodels
+import numpy as np
+from sklearn import metrics
 
 # Functions used to perform:
 #    '1 - Pair-wise Kruskal-Wallis H-tests.
-#    '2 - FDR corrections.
+#    '2 - FDR corrections.\n'
 #    '3 - Compute the AUROC associated to each biomarker.
 #    '4 - Compute the eta squared effect size.
 
 
 def delete_multiple_element(list_object, indices):
+
     indices = sorted(indices, reverse=True)
     for idx in indices:
         if idx < len(list_object):
@@ -21,6 +22,7 @@ def delete_multiple_element(list_object, indices):
 
 
 def kruskal(output_path, biomarkers_name, c, p, c_name, p_name):
+
     """ Function that perform pair-wise Kruskal-Wallis H-test from each pair of biomarkers/features.
     f: output path where to save the statistics.
     biomarkers_name: list of biomarkers' name.
@@ -28,15 +30,18 @@ def kruskal(output_path, biomarkers_name, c, p, c_name, p_name):
     p: matrix of features from the parkinson's group.
     c_name: control group name (e.g., "CN")
     p_name: Parkinson's group name (e.g., "PD")
+
+    Output: text file saving the significant p-value in correspondence to each pair-wise comparison between two distributions of a given biomarker. .
+    An example of text file generated using this function can be found in compute_statistcs/utils/results.txt
     """
 
     for i, title in enumerate(biomarkers_name):
         nome = title
-        output_path.write(
-            ('\n' + f'kruskal results for {title} {c_name} {p_name} {stats.kruskal(c[i], p[i]).pvalue} \n\n'))
+        output_path.write(('\n' + f'kruskal results for {title} {c_name} {p_name} {stats.kruskal(c[i], p[i]).pvalue} \n\n'))
 
 
 def compute_auc(array_1, array_2):
+
     """ Function that computes AUROC in each pair-wise comparison.
     The function takes as input the two arrays of biomarkers from the two experimental group under analysis (e.g., controls vs Parkinson's."""
 
@@ -45,23 +50,25 @@ def compute_auc(array_1, array_2):
 
     for i, x in enumerate(xs):
         fpr, tpr, thresholds = metrics.roc_curve(y, x, pos_label=2)
-        # print(i, metrics.auc(fpr, tpr))
         m = metrics.roc_auc_score(y, x)
         print(round(max(m, 1 - m), 2))
 
 
-def compute_eta_squared(H, n_of_grp, n_of_observ):
+def compute_eta_squared(H, n_of_grp, n_of_observations):
+
     """ Function that computes the eta squared effect size.
     H: is the value of the Kruskal Wallis H-test.
     n_of_grp: is the number of experimental group considered.
     n_of_observ: is the total number of samples considered."""
 
-    return (H - n_of_grp + 1) / (n_of_observ - n_of_grp)
+
+    return (H - n_of_grp + 1) / (n_of_observations - n_of_grp)
 
 
 def holm_correction(kruskal):
+
     """Holm correction to apply after Kruskal wallis test.
-    Thr function takes as input the .txt containing the results of the Kruskal-Wallis test."""
+    This function takes as input the .txt containing the results of the Kruskal-Wallis test."""
 
     line_to_remove = []
     values = []
@@ -90,42 +97,4 @@ def holm_correction(kruskal):
     return final, corrected
 
 
-def read_stats_test(file):
-    """ Read the results of the statistical analysis saved as .txt files. '"""
 
-    with open(file, 'r') as f:
-        lista = []
-        testo = f.readlines()
-        testo = [line.strip("\n") for line in testo]
-
-        for line in testo:
-            if line == "":
-                pass
-            else:
-                lista.append(line)
-
-    return lista
-
-
-def compute_best_scores(lista):
-    """ Extract only p-values < 0.0.5 from saved statistics"""
-
-    values = []
-    critical = []
-    final = []
-
-    for l in lista:
-        ok = l.split('vs.')[1]
-        num = ok.split(" ")[2]
-        values.append(num)
-
-    for value in values:
-        if float(value) < 0.05:
-            critical.append(value)
-
-    for li in lista:
-        for cri in critical:
-            if cri in li:
-                final.append(li)
-
-    return final

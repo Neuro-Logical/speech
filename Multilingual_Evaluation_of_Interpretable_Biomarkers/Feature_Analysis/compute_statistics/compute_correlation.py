@@ -4,10 +4,11 @@ from scipy.stats import spearmanr
 
 
 def compute_correlation_updrs(dataframe):
+
     """Compute correlation between biomarker values and UPDRS scores.
     dataframe: pandas dataframe where the columns represent the features,
     each row corresponds to a different subject and a single column contains the UPDRS score
-    for each of the subject"""
+    for each of the subject. """
 
     biomarkers = dataframe.iloc[:, :-7].dropna() #select only columns in the data frame containing feature values.
     updrs_pd = biomarkers['updrs'].tolist()
@@ -31,10 +32,11 @@ def compute_correlation_updrs(dataframe):
 
 
 def compute_correlation_updrs_speech(dataframe):
+
     """Compute correlation between biomarker values and UPDRS part III.I (speech evaluation) .
     dataframe: pandas dataframe where the columns represent the features,
     each row corresponds to a different subject and a single column contains the UPDRS III.I score
-    for each of the subject"""
+    for each of the subject."""
 
     biomarkers = dataframe.iloc[:, :-7].dropna()
     updrs_pd = biomarkers['updrs_speech'].tolist()
@@ -58,10 +60,11 @@ def compute_correlation_updrs_speech(dataframe):
 
 
 def compute_correlation_hoehn_yahr(dataframe):
+
     """Compute correlation between biomarker values and UPDRS part III.I (speech evaluation) .
     dataframe: pandas dataframe where the columns represent the features,
     each row corresponds to a different subject and a single column contains the Hoenh & Yahr score
-    for each of the subject"""
+    for each of the subject. """
 
     biomarkers = dataframe.iloc[:, :-7].dropna()
     updrs_pd = biomarkers['hoenh_yahr'].tolist()
