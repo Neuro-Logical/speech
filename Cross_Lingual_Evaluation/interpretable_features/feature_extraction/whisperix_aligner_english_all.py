@@ -13,7 +13,13 @@ model = whisperx.load_model("medium", device)
 
 audios = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
 
-for audio in audios:
+files = []
+for m in audios:
+    size = os.stat(m).st_size / 1000
+    if size > 56:
+        files.append(m)
+
+for audio in files:
     text =[]
     time_stamps = []
     base_name = os.path.basename(audio).split(".wav")[0]
