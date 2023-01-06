@@ -47,7 +47,7 @@ In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, comp
 Due to the licensing of the used data sets, we are not allowed to publish the recordings, the extracted features, nor the labels. However, we provided the source code to perform the feature extraction, and the statistical analysis reported in the paper. 
 
 
-## Research Article: 
+## Research Article
 
 In case you will use this code or take inspiration from it, plese cite out work: 
 ```
