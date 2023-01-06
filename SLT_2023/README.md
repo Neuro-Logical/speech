@@ -22,14 +22,13 @@ Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R
 ```
 ## Data Pre-processing:
 
-* Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz run the script:
-  ```Data_Preprocessing/convert_to_16k.sh```.
+* Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz, run the script: ```Data_Preprocessing/convert_to_16k.sh```.
 * Spoken responses collected in the Cookie Theft task were automatically transcribed using a pre-trained conformer CTC  model (https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09) for the Librispeech data set built on top of icefall (https://github.com/k2-fsa/icefall). Transcriptions were manually supervised and corrected when needed,  
 ## Feature Extraction 
 
 ### Cognitive Features
-For the extraction of part of the cognitive features we use a pre-trained conformer CTC model for the librispeech dataset built on top of icefall (https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09). 
-To extract the cognitive features based on speech trascripts only, run the script```Cognitive/Extract_Cognitive_Features.py```
+
+* To extract the cognitive features based on speech transcripts only, run the script```Cognitive/Extract_Cognitive_Features.py```
 
 ### Acoustic Features
 
@@ -37,7 +36,6 @@ To extract the cognitive features based on speech trascripts only, run the scrip
 * For the extraction of the acoustic features related F0 and energy contour we use Disvoice Repository (<https://github.com/jcvasquezc/DisVoice/tree/master/prosody>).
 
 To extract the acoustic features reported in the paper, run the script ```Acoustic/Extract_Acoustic_Features.py```
-
 
 
 ### Linguistic Features
@@ -51,7 +49,6 @@ To extract the linguistic features reported in the paper, run the script ```Ling
 
 We report the main functions used to perform the statistical analysis to assess the significance of the features between experimental groups. 
 In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker run the script ```Statistical_Analysis/utils.py```
-
 
 ## Reproducibility
 
