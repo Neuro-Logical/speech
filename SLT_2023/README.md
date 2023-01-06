@@ -43,7 +43,7 @@ We report an example of the statistical analysis that we perform in order to ass
 
 ## Reproducibility
 
-Due to the licensing of the used data sets, we are not allowed to publish the recordings, the extracted features, nor the labels. However, we provided the source code to perform the feature extraction, and the statistical reported in the paper. 
+Due to the licensing of the used data sets, we are not allowed to publish the recordings, the extracted features, nor the labels. However, we provided the source code to perform the feature extraction, and the statistical analysis reported in the paper. 
 
 
 ## Further references 
