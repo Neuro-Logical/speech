@@ -11,7 +11,7 @@ def extract_transcripts(path_recordings, language):
     Path_recordings: path to the folder containing the recordings to transcribe.
     Language: the language of the speech recordings.
     This function outputs in the same folder where the script is located a text file containing the
-    transcriptions for each recording contained in the input folder."""
+    transcriptions for each recording."""
 
     path_recordings_all = [os.path.join(path_recordings, base) for base in os.listdir(path_recordings)]
     for path in path_recordings_all:
