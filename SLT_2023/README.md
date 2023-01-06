@@ -22,7 +22,8 @@ Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R
 ```
 ## Data Pre-processing:
 
-* Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. The script to resample the recordings is ```Data_Preprocessing/convert_to_16k.sh```.
+* Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz run the script:
+  * ```Data_Preprocessing/convert_to_16k.sh```.
 * Spoken responses collected in the Cookie Theft task were automatically transcribed using a pre-trained conformer CTC  model (https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09) for the Librispeech data set built on top of icefall (https://github.com/k2-fsa/icefall). Transcriptions were manually supervised and corrected when needed,  
 ## Feature Extraction 
 
