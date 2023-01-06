@@ -12,11 +12,11 @@ task. Only the training subset containing recordings and transcriptions from 87 
 was adopted. This repository is a public open-source implementation that supports the extraction of cognitive, linguistic and acoustic features from speech recordings. This project has the aim of designing, extracting and analyzing speech and language production of subjects with different neurological disorders. 
 In this repository we report the code that supports both the **feature extraction**, and the **statistical analysis** that we perform to evaluate the significance of the features between experimental groups.
 
-## Data Pre-processing:
+## 1) Data Pre-processing:
 
 * Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz, run the script: ```Data_Preprocessing/convert_to_16k.sh```.
 * Spoken responses collected in the Cookie Theft task were automatically transcribed using a pre-trained conformer CTC  model (https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09) for the Librispeech data set built on top of icefall (https://github.com/k2-fsa/icefall). Transcriptions were manually supervised and corrected when needed,  
-## Feature Extraction 
+## 2) Feature Extraction 
 
 ### Cognitive Features
 
@@ -37,7 +37,7 @@ To extract the acoustic features reported in the paper, run the script ```Acoust
 
 To extract the linguistic features reported in the paper, run the script ```Linguistic/Extract_Linguistic_Features.sh```
 
-## Statistical Analysis 
+## 3) Statistical Analysis 
 
 We report the main functions used to perform the statistical analysis to assess the significance of the features between experimental groups. 
 In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker run the script ```Statistical_Analysis/utils.py```
