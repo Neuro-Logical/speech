@@ -25,14 +25,14 @@ Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R
 
 ### Cognitive Features
 For the extraction of part of the cognitive features we use a pre-trained conformer CTC model for the librispeech dataset built on top of icefall (https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09). 
-To extract the cognitive features based on speech trascripts only, run ```Cognitive/Extract_Cognitive_Features.py```
+To extract the cognitive features based on speech trascripts only, run the script```Cognitive/Extract_Cognitive_Features.py```
 
 ### Acoustic Features
 
 * For the extraction of the acoustic features related to pause and speech time we use DigiPsych Prosody Repository (<https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody>).
 * For the extraction of the acoustic features related F0 and energy contour we use Disvoice Repository (<https://github.com/jcvasquezc/DisVoice/tree/master/prosody>).
 
-To extract the acoustic features reported in the paper, run ```Acoustic/Extract_Acoustic_Features.py```
+To extract the acoustic features reported in the paper, run the script ```Acoustic/Extract_Acoustic_Features.py```
 
 
 
@@ -41,12 +41,12 @@ To extract the acoustic features reported in the paper, run ```Acoustic/Extract_
 * For the extraction of the linguistic features related to Part-of-Speech and Syntactic Complexity we use Spacy Python Library(<https://spacy.io/models>).
 * For the extraction of the linguistic features related to Vocabulary Richness we use <https://pypi.org/project/lexicalrichness/>. 
 
-To extract the linguistic features reported in the paper, run ```Linguistic/Extract_Linguistic_Features.py```
+To extract the linguistic features reported in the paper, run the script ```Linguistic/Extract_Linguistic_Features.py```
 
 ## Statistical Analysis 
 
 We report the main functions used to perform the statistical analysis to assess the significance of the features between experimental groups. 
-In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker use the script ```Statistical_Analysis/utils.py```
+In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker run the script ```Statistical_Analysis/utils.py```
 
 
 ## Reproducibility
