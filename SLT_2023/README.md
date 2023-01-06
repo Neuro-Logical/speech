@@ -48,5 +48,9 @@ Due to the licensing of the used data sets, we are not allowed to publish the re
 
 ## Further references 
 
-Saturnino Luz, Fasih Haider, Sofia de la Fuente, Davida Fromm, and Brian MacWhinney, “Alzheimer’s dementia
-recognition through spontaneous speech: The adress challenge,” arXiv preprint arXiv:2004.06833, 2020.
+[1] Laureano Moro-Velazquez and Najim Dehak, “A review of the use of prosodic aspects of speech for the automatic detection and assessment of parkinson’s disease,” in Automatic Assessment of Parkinsonian Speech Workshop. Springer, 2019, pp. 42–59.”​
+
+[2] Saturnino Luz, Fasih Haider, Sofia de la Fuente, Davida Fromm, and Brian MacWhinney, “Alzheimer’s dementia recognition through spontaneous speech: The address challenge,” arXiv preprint arXiv:2004.06833, 2020. ​
+
+[3] Laureano Moro-Velazquez, Jorge A Gomez-Garcia, Juan Godino-Llorente, Francisco Grandas-Perez, Stefanie Shattuck-Hufnagel, Virginia Yagüe-Jimenez, and Najim Dehak, “Phonetic relevance and phonemic grouping of speech in the automatic detection of parkinson’s disease,” Scientific reports, vol. 9, no. 1, pp. 1–16, 2019​
+​
