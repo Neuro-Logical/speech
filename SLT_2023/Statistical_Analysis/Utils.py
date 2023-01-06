@@ -48,7 +48,6 @@ def compute_auc(array_1, array_2):
 
     for i, x in enumerate(xs):
         fpr, tpr, thresholds = metrics.roc_curve(y, x, pos_label=2)
-        # print(i, metrics.auc(fpr, tpr))
         m = metrics.roc_auc_score(y, x)
         print(round(max(m, 1 - m), 2))
 
@@ -97,42 +96,4 @@ def holm_correction(kruskal):
     return final, corrected
 
 
-def read_stats_test(file):
-    """ Read the results of the statistical analysis saved as .txt files. '"""
 
-    with open(file, 'r') as f:
-        lista = []
-        testo = f.readlines()
-        testo = [line.strip("\n") for line in testo]
-
-        for line in testo:
-            if line == "":
-                pass
-            else:
-                lista.append(line)
-
-    return lista
-
-
-def compute_best_scores(list_results):
-    """ Extract only p-values < 0.0.5 from saved statistics. """
-
-    values = []
-    critical = []
-    final = []
-
-    for l in list_results:
-        ok = l.split('vs.')[1]
-        num = ok.split(" ")[2]
-        values.append(num)
-
-    for value in values:
-        if float(value) < 0.05:
-            critical.append(value)
-
-    for li in lista:
-        for cri in critical:
-            if cri in li:
-                final.append(li)
-
-    return final

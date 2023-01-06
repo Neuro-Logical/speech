@@ -145,6 +145,7 @@ def informational_content(text):
 
     return cont_con
 
+
 def ratio_info_rep_plus_uncert(df):
 
     """ Ratio between informativeness and uncertanty,
@@ -155,6 +156,7 @@ def ratio_info_rep_plus_uncert(df):
     df["ratio_info_rep_plus_uncert"] = ratio
 
     return df
+
 
 def ratio_rep_certanty(df):
     """ Function designed to measure the ratio between repetitions and uncertanty"""

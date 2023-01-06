@@ -42,7 +42,7 @@ For the extraction of part of the the cognitive features we use a pre-trained co
 
 ## Statistical Analysis 
 
-We report an example of the statistical analysis that we perform in order to asses the significance of the features between experimental groups.
+We report an example of the statistical analysis that we perform in order to assess the significance of the features between experimental groups.
 
 ## Reproducibility
 
