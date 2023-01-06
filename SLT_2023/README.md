@@ -41,7 +41,7 @@ To extract the acoustic features reported in the paper, run the script ```Acoust
 * For the extraction of the linguistic features related to Part-of-Speech and Syntactic Complexity we use Spacy Python Library(<https://spacy.io/models>).
 * For the extraction of the linguistic features related to Vocabulary Richness we use <https://pypi.org/project/lexicalrichness/>. 
 
-To extract the linguistic features reported in the paper, run the script ```Linguistic/Extract_Linguistic_Features.py```
+To extract the linguistic features reported in the paper, run the script ```Linguistic/Extract_Linguistic_Features.sh```
 
 ## Statistical Analysis 
 
