@@ -13,9 +13,12 @@ In this repository we report the code that supports both the **feature extractio
 
 
 ## Research Article: 
-```
+
 In case you will use this code or take inspiration from it, plese cite out work: 
+```
+
 Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R. D., Villalba, J., Dehak, N., Moro-Velazquez, L. A Multi-Modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders. 2022 IEEE Spoken Language Technology Workshop (SLT). IEEE, 2022
+
 ```
 ## Data Pre-processing:
 
