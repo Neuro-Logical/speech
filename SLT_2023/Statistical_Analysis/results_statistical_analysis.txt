@@ -1,0 +1,21 @@
+
+kruskal results for Reaction Time (ms) CTP task controls vs. parkinson 0.7730684385566526
+
+kruskal results for Reaction Time (ms) CTP task parkinson vs. others 0.7558066380940909
+
+kruskal results for Reaction Time (ms) CTP task controls vs. others 0.4352722667326787
+
+kruskal results for Reaction Time (ms) CTP task alzheimers vs. others 0.08267651400435007
+
+kruskal results for Reaction Time (ms) CTP task alzheimers vs. controls 0.018663323562766905
+
+kruskal results for Reaction Time (ms) CTP task alzheimers vs. parkinson 0.07661390334588652
+
+kruskal results for Reaction Time (ms) CTP task alzheimers vs. ataxia 0.7321492424193179
+
+kruskal results for Reaction Time (ms)  CTP task ataxia vs. controls 0.005518290542605983
+
+kruskal results for Reaction Time (ms) CTP task ataxia vs. parkinson 0.023806757930795914
+
+kruskal results for Reaction Time (ms) CTP task ataxia vs. others 0.02054363135626392
+
