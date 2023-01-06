@@ -1,5 +1,3 @@
-#requirements for interpretable feature pipeline.
-
 en-core-web-sm==3.2.0
 nltk==3.6.6
 numpy==1.21.5
