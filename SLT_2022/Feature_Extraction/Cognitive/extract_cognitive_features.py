@@ -11,9 +11,8 @@ from nltk.corpus import stopwords
 
 def uncertainty(text):
 
-    """ Function design to capture the level of certainty of patients of participants when delivering  the description
-    of the image.
-    text: txt file containing speech transcripts."""
+    """ Compute the level of certainty of the subjects in delivering the image description during the CTP task.
+     text: txt file containing speech transcripts."""
 
     cont_con = 0
     if "?" in text:
@@ -40,7 +39,7 @@ def uncertainty(text):
 
 def repetitions(text):
 
-    """ Function that counts the numner of repetions in each recording, after stop word removal.
+    """ Compute the number of repetitions of content words. Stop words are removed.
      text: txt file containing speech transcripts."""
 
     stopwords = list(stopwords.words('english'))
@@ -69,7 +68,7 @@ def repetitions(text):
 
 def informational_verb(text):
 
-    """ Function that computes the informativeness of the narratives represented by
+    """ Compute the informativeness of the narratives by
     counting how many (if any) salient events (verbs) are mentioned.
     text: txt file containing speech transcripts.
     """
@@ -108,7 +107,7 @@ def informational_verb(text):
 
 def informational_content(text):
 
-    """ Informativeness of the description represented by
+    """ Compute the informativeness of the narratives by
     counting how many (if any) salient object (nouns) are mentioned"""
 
     cont_con = 0

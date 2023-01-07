@@ -6,7 +6,7 @@ from sklearn import metrics
 
 # Functions used to perform:
 #    '1 - Pair-wise Kruskal-Wallis H-tests.
-#    '2 - FDR corrections.\n'
+#    '2 - FDR corrections.'
 #    '3 - Compute the AUROC associated to each biomarker.
 #    '4 - Compute the eta squared effect size.
 
@@ -59,15 +59,14 @@ def compute_eta_squared(H, n_of_grp, n_of_observations):
     """ Function that computes the eta squared effect size.
     H: is the value of the Kruskal Wallis H-test.
     n_of_grp: is the number of experimental group considered.
-    n_of_observ: is the total number of samples considered."""
-
+    n_of_observations: is the total number of samples considered."""
 
     return (H - n_of_grp + 1) / (n_of_observations - n_of_grp)
 
 
 def holm_correction(kruskal):
 
-    """Holm correction to apply after Kruskal wallis test.
+    """ Holm correction to apply after Kruskal wallis test.
     This function takes as input the .txt containing the results of the Kruskal-Wallis test."""
 
     line_to_remove = []
