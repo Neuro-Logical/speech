@@ -4,7 +4,6 @@ import whisper
 
 base = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k'
 output_folder = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Transcripts/'
-
 paths = [os.path.join(path_to_recordings, base) for base in os.listdir(path_to_recordings)]
 
 # keep only non-empty recordings (> 56 Bytes)
