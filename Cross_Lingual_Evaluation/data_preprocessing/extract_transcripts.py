@@ -9,7 +9,7 @@ def extract_speech_transcripts(path_to_recordings, output_folder):
     output_folder: path to the folder where the transcripts of each recording will be stored.
     This function outputs a text file for each recording containing the transcriptions. """
 
-    paths = [os.path.join(path_to_recordings, base) for base in os.listdir(path_to_recordings)]
+    paths = [os.path.join(path_to_recordings, elem) for elem in os.listdir(path_to_recordings)]
 
     # keep only non-empty recordings (> 56 Bytes)
     files = []
