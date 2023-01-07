@@ -15,7 +15,8 @@ In this repository we report the code that supports both the **feature extractio
 ## 1) Data Pre-processing:
 
 * Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz, run the script: ```Data_Preprocessing/convert_to_16k.sh```.
-* Spoken responses collected in the Cookie Theft task were automatically transcribed using a pre-trained conformer CTC  model (https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09) for the Librispeech data set built on top of icefall (https://github.com/k2-fsa/icefall). Transcriptions were manually supervised and corrected when needed. An interactive notebook that can be used to extract speech transcript can be found in ```Data_Preprocessing/generate_transcripts.ipynb```
+* Spoken responses collected in the Cookie Theft task were automatically transcribed using a pre-trained conformer CTC  model (https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09) for the Librispeech data set built on top of icefall (https://github.com/k2-fsa/icefall). Transcriptions were manually supervised and corrected when needed. An interactive notebook that can be used to extract speech transcript can be found in ```Data_Preprocessing/generate_transcripts.ipynb```.
+For each recording a transcription is generated in capital letters without punctuation marks.
 ## 2) Feature Extraction 
 
 ### Cognitive Features
