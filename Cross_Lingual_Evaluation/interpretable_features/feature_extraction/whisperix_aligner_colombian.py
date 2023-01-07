@@ -12,8 +12,9 @@ device = "cpu"
 model = whisperx.load_model("medium", device)
 
 audios = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
-ind = audios.index( "/export/b15/afavaro/Frontiers/GITA_NEW_TASKS/All_Recordings_Correct_Naming/CN_AVPEPUDEAC0030_monologue.wav")
-for audio in audios[ind:]:
+#ind = audios.index( "/export/b15/afavaro/Frontiers/GITA_NEW_TASKS/All_Recordings_Correct_Naming/CN_AVPEPUDEAC0030_monologue.wav")
+
+for audio in audios:
     text =[]
     time_stamps = []
     base_name = os.path.basename(audio).split(".wav")[0]

@@ -1,5 +1,6 @@
 BASE = "/export/b15/afavaro/Frontiers/Italian_PD/Audio_Whole_Italian/"
 OUT_PATH = "/export/b15/afavaro/Frontiers/Italian_PD/alignment_whisperix"
+
 import sys
 sys.path.append("/export/c07/afavaro/whisperX")
 import whisperx
@@ -7,12 +8,12 @@ import os
 import pandas as pd
 
 
-device = "cpu"
+device = "cpu" #"cuda"
 model = whisperx.load_model("medium", device)
 
 audios = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
-ind = audios.index("/export/b15/afavaro/Frontiers/Italian_PD/Audio_Whole_Italian/CN_MICHELE_G_B2MGIACTHT49M210320170850.wav")
-for audio in audios[ind:]:
+#ind = audios.index("/export/b15/afavaro/Frontiers/Italian_PD/Audio_Whole_Italian/CN_MICHELE_G_B2MGIACTHT49M210320170850.wav")
+for audio in audios:
     text =[]
     time_stamps = []
     base_name = os.path.basename(audio).split(".wav")[0]

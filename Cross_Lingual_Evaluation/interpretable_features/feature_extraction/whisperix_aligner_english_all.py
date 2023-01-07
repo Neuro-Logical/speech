@@ -19,9 +19,9 @@ for m in audios:
     if size > 56:
         files.append(m)
 
-indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/AD_001_ses01_Namingobject4.wav")
+#indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/AD_001_ses01_Namingobject4.wav")
 
-for audio in files[indx:]:
+for audio in files:
     text =[]
     time_stamps = []
     base_name = os.path.basename(audio).split(".wav")[0]
