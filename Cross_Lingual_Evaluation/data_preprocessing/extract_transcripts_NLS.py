@@ -14,10 +14,12 @@ for m in paths:
     if size > 56:
         if "AD_006" in m:
             files.append(m)
+        if "AD_014" in m:
+            files.append(m)
 
 # extract and save transcripts.
 for i in files:
-    # print(i)
+    print(i)
     model = whisper.load_model("medium")
     result = model.transcribe(i)
     test = result['text']
