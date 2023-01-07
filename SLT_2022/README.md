@@ -5,7 +5,7 @@ In this project, we analyzed cognitive, linguistic, and acoustic patterns from t
 The original recordings belong to two different data sets. The first, **NeuroLogical Signal (NLS)** is a private data set collected by
 the authors of this study at Johns Hopkins Hospital and contains spoken responses to several tasks (i.e., reading passage,
 object naming) from participants with varying NDs organized into categories and CN participants. Among the different NDs contained in the data
-set, in this work we focused on three main types of NDs, namely, Parkinson's Disease (PD), Parkinson’s disease mimics (PDM), and Alzheimer's Disease.
+set, in this work we focused on three main types of NDs, namely, **Parkinson's Disease**, **Parkinson’s disease mimics**, and **Alzheimer's Disease**.
 To validate the results obtained for the  AD group, the same analysis was repeated using **ADReSSo
 (ADR) 2021** challenge data set (Luz et al., 2020), obtained from the DementiaBank, including recordings from a CTP description
 task. Only the training subset containing recordings and transcriptions from 87 AD participants and 79 CN participants
