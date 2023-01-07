@@ -29,7 +29,7 @@ def compute_lexical_diversity(transcript):
 
 def load_files(data):
 
-    """Apply lexical richness function defined above to a dataframe.
+    """ Apply compute_lexical_diversity function to a dataframe.
     data: pandas data frame having as columns:
     1 - speaker-ID;
     2 - speech transcripts;
@@ -60,7 +60,7 @@ stopwords = list(stopwords.words('english'))
 
 def preprocess(text):
 
-    """This is a function to perform tokenization, lemmatization, removal of non-alphabetic characters
+    """ This is a function to perform tokenization, lemmatization, removal of non-alphabetic characters
     and stopword removal.
     text: text file containing the speech transcripts.
     """
@@ -76,8 +76,8 @@ def preprocess(text):
 
 def count_words(string):
 
-    """This function returns the number of words in a string.
-     text: text file containing the speech transcripts."""
+    """ This function returns the number of words in a string.
+     string: text file containing the speech transcripts."""
     # Split the string into words
     words = string.split()
     # Return the number of words
@@ -85,8 +85,8 @@ def count_words(string):
 
 
 def word_length(string):
-    """This function returns the average word length in characters for the words in an item.
-     text: text file containing the speech transcripts."""
+    """ This function returns the average word length in characters for the words in an item.
+     string: text file containing the speech transcripts."""
     # Get the length of the full text in characters
     chars = len(string)
     # Split the string into words
@@ -140,7 +140,7 @@ def nouns(text, model=nlp):
 
 
 def verbs(text, model=nlp):
-    """This function returns the number of verbs in an item.
+    """ This function returns the number of verbs in an item.
      text: text file containing the speech transcripts."""
     # Create doc object
     doc = model(text)
@@ -162,7 +162,7 @@ def adjectives(text, model=nlp):
 
 
 def adverbs(text, model=nlp):
-    """This function returns the number of adverbs in an item.
+    """ This function returns the number of adverbs in an item.
      text: text file containing the speech transcripts."""
     # Create doc object
     doc = model(text)
@@ -174,7 +174,7 @@ def adverbs(text, model=nlp):
 
 
 def numeral(text, model=nlp):
-    """This function returns the number of numerals (e.g., billion) in an item"""
+    """ This function returns the number of numerals (e.g., billion) in an item"""
 
     # Create doc object
     doc = model(text)
@@ -185,7 +185,7 @@ def numeral(text, model=nlp):
 
 
 def aux(text, model=nlp):
-    """This function returns the number of auxiliary in an item"""
+    """ This function returns the number of auxiliary in an item"""
     # Create doc object
     doc = model(text)
     # Generate list of POS tags
@@ -206,7 +206,7 @@ def get_nps(text):
 
 
 def get_pps(text):
-    """This is a function that outputs the number of prepositional phrases in an item.
+    """ This is a function that outputs the number of prepositional phrases in an item.
      text: text file containing the speech transcripts."""
     doc = nlp(text)
     pps = 0
@@ -225,7 +225,7 @@ pattern = [{'POS': 'VERB', 'OP': '?'},
 
 
 def get_vps(text):
-    """This function returns the number of verb phrases in an item.
+    """ This function returns the number of verb phrases in an item.
       text: text file containing the speech transcripts."""
     doc = nlp(text)
     vps = 0
@@ -269,7 +269,7 @@ contrastive_connectives = ['alternatively', 'anyway', 'but', 'by contrast', 'dif
 
 
 def temporal_connectives_count(text):
-    """This function counts the number of temporal connectives in a text.
+    """ This function counts the number of temporal connectives in a text.
       text: text file containing the speech transcripts."""
     count = 0
     for string in temporal_connectives:
@@ -279,7 +279,7 @@ def temporal_connectives_count(text):
 
 
 def causal_connectives_count(text):
-    """This function counts the number of causal connectives in a text.
+    """ This function counts the number of causal connectives in a text.
       text: text file containing the speech transcripts."""
     count = 0
     for string in causal_connectives:
@@ -289,7 +289,7 @@ def causal_connectives_count(text):
 
 
 def exemplifying_connectives_count(text):
-    """This function counts the number of exemplifying connectives in a text.
+    """ This function counts the number of exemplifying connectives in a text.
       text: text file containing the speech transcripts."""
     count = 0
     for string in exemplifying_connectives:
@@ -299,7 +299,7 @@ def exemplifying_connectives_count(text):
 
 
 def additive_connectives_count(text):
-    """This function counts the number of additive connectives in a text.
+    """ This function counts the number of additive connectives in a text.
       text: text file containing the speech transcripts."""
     count = 0
     for string in additive_connectives:
@@ -309,7 +309,7 @@ def additive_connectives_count(text):
 
 
 def contrastive_connectives_count(text):
-    """This function counts the number of contrastive connectives in a text.
+    """ This function counts the number of contrastive connectives in a text.
       text: text file containing the speech transcripts."""
     cont_con = 0
     for string in contrastive_connectives:
