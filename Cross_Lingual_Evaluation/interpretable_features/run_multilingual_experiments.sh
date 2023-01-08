@@ -5,7 +5,6 @@
 
 cd '/export/afavaro/git_code_version/speech/Cross_Lingual_Evaluation/interpretable_features/'
 
-
 #  Mono-Lingual experiments
 # colombian
 

@@ -87,6 +87,9 @@ data_test_5_colombian, data_train_6_colombian, data_test_6_colombian, \
 data_train_7_colombian, data_test_7_colombian, data_train_8_colombian, \
 data_test_8_colombian, data_train_9_colombian, data_test_9_colombian, \
 data_train_10_colombian, data_test_10_colombian = create_split_train_test(colombian_folds)
+
+#####################################################################################################################
+
 svm_parameters = {}
 
 rf_paramters = {}

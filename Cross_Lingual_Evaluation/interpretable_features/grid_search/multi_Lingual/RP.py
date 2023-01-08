@@ -94,6 +94,8 @@ data_test_5_italian, data_train_6_italian, data_test_6_italian,  data_train_7_it
 data_train_8_italian, data_test_8_italian, data_train_9_italian, data_test_9_italian, data_train_10_italian, \
 data_test_10_italian = create_split_train_test(italian_folds)
 
+#####################################################################################################################
+
 svm_parameters = {}
 rf_paramters = {}
 knn_paramters = {}

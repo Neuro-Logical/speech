@@ -5,10 +5,7 @@
 
 cd '/export/afavaro/git_code_version/speech/Cross_Lingual_Evaluation/interpretable_features/'
 
-# To change the input/output directory used in each script, please change the input/output path located at the beginning of each Python script.
-
 #  Mono-Lingual experiments
-
 # Colombian Spanish
 
 python classification/mono_lingual/colombian/AUROC/RP.py
