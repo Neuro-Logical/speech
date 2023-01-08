@@ -69,11 +69,9 @@ def nls_prep(path_to_dataframe):
     ctrl = ctrl[~ctrl.id.str.contains("PEC_25")]
     ctrl = ctrl[~ctrl.id.str.contains("PEC_29")]
     ctrl = ctrl[~ctrl.id.str.contains("PEC_35")]
-
     test = pd.concat([PD, ctrl])
     test = test.dropna()
     test = test.drop(columns=['age'])
-
     new = []
     for m in test['label'].tolist():
         if m == 'PD':
@@ -87,8 +85,8 @@ def nls_prep(path_to_dataframe):
 def gita_prep(path_to_dataframe):
 
     """GITA data preprocessing.
-        path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
-        This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
+    path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+    This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
 
     spain = pd.read_csv(path_to_dataframe)
     spain = spain.drop(columns=['Unnamed: 0'])
@@ -118,10 +116,9 @@ def gita_prep(path_to_dataframe):
 
 def german_prep(path_to_dataframe):
 
-       """GermanPD data preprocessing.
-       path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
-       This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
-
+    """GermanPD data preprocessing.
+    path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+    This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
 
     spain = pd.read_csv(path_to_dataframe)
     spain = spain.drop(columns=['Unnamed: 0'])
@@ -147,28 +144,26 @@ def german_prep(path_to_dataframe):
 def italian_prep(path_to_dataframe):
 
     """ItalianPVS data preprocessing.
-        path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
-        This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
+    path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+    This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
 
+    lab = []
     italian = pd.read_csv(path_to_dataframe)
     italian = italian.drop(columns=['Unnamed: 0'])
     italian = italian.iloc[:, 11:]
     italian['labels'] = [m.split("_")[0] for m in italian.AudioFile.tolist()]
-    lab = []
     for m in italian['labels']:
         if m == 'PD':
             lab.append(1)
         if m == 'CN':
             lab.append(0)
     italian['labels'] = lab
-
     names = [m.split("_", -1)[1] for m in italian.AudioFile.tolist()]
     surname = [m.split("_", -1)[2] for m in italian.AudioFile.tolist()]
     totale_names = []
     for i in zip(names, surname):
         totale_names.append(i[0] + i[1])
     italian['id'] = totale_names
-
     italian = italian.drop(columns=['AudioFile'])
 
     return italian
@@ -179,6 +174,7 @@ def czech_prep(path_to_dataframe):
     path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
     This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
 
+    lab = []
     spain = pd.read_csv(path_to_dataframe)
     spain['names'] = [elem.split("_")[1] for elem in spain.AudioFile.tolist()]
     spain['task'] = [elem.split("_")[2] for elem in spain['AudioFile'].tolist()]
@@ -186,8 +182,6 @@ def czech_prep(path_to_dataframe):
     task = ['readtext']
     spain = spain[spain['task'].isin(task)]
     spain = spain.drop(columns=['Unnamed: 0', 'AudioFile', 'task'])
-
-    lab = []
     for m in spain['labels'].tolist():
         if m == "PD":
             lab.append(1)

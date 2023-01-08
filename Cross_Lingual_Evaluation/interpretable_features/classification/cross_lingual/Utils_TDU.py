@@ -11,6 +11,7 @@ def test_split(czech, czech_lab):
 
 
 def train_split(colombian, colombian_lab, czech, czech_lab, spain, spain_lab):
+
     train_mat_data_point = np.concatenate([colombian, czech, spain], axis=0)
 
     train_data_label = np.concatenate([colombian_lab, czech_lab, spain_lab],
@@ -36,6 +37,7 @@ def concat_test_data(czech, czech_lab):
 
 
 def preprocess_data_frame(data_frame):
+
     # nomi = data_frame['id'].tolist()
     lab = data_frame['labels'].tolist()
     data_frame = data_frame.drop(columns=['labels', 'id'])
@@ -87,15 +89,18 @@ def IntersecOfSets(arr1, arr2, arr3):
 
 
 def IntersecOftwo(arr1, arr2):
+
     # Converting the arrays into sets
     s1 = set(arr1)
     s2 = set(arr2)
     set1 = s1.intersection(s2)
     final_list = list(set1)
+
     return final_list
 
 
 def create_split_train_test(folds):
+
     data_train_1 = np.concatenate(folds[:9])
     data_test_1 = np.concatenate(folds[-1:])
 

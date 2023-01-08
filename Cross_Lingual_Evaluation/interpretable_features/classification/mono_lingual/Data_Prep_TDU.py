@@ -30,9 +30,9 @@ def gita_prep(path_to_dataframe):
 
 def neurovoz_prep(path_to_dataframe):
 
-       """Neurovoz data preprocessing.
-       path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
-       This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
+    """Neurovoz data preprocessing.
+    path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+    This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
 
     spain = pd.read_csv(path_to_dataframe)
     spain = spain.drop(columns=['Unnamed: 0'])

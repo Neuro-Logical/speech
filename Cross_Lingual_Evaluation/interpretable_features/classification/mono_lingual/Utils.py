@@ -2,15 +2,18 @@ import numpy as np
 
 
 def get_n_folds(arrayOfSpeaker):
+
     data = list(arrayOfSpeaker)  # list(range(len(arrayOfSpeaker)))
     num_of_folds = 10
     n_folds = []
     for i in range(num_of_folds):
         n_folds.append(data[int(i * len(data) / num_of_folds):int((i + 1) * len(data) / num_of_folds)])
+
     return n_folds
 
 
 def normalize(train_split, test_split):
+
     train_set = train_split
     test_set = test_split
     feat_train = train_set[:, :-1]

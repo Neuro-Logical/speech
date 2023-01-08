@@ -80,7 +80,6 @@ def nls_prep(path_to_dataframe):
     test = pd.concat([PD, ctrl])
     test = test.dropna()
     test = test.drop(columns=['age'])
-
     new = []
     for m in test['label'].tolist():
         if m == 'PD':

@@ -60,7 +60,6 @@ training_data, training_labels = train_split(normalized_train_X_spain, y_train_s
                                              y_train_czech,
                                              normalized_train_X_german, y_train_german, normalized_train_X_nls,
                                              y_train_nls)
-
 test_data, test_labels = test_split(normalized_train_X_colombian, y_train_colombian)
 
 clf = ExtraTreesClassifier(n_estimators=60)
