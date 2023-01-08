@@ -3,6 +3,10 @@ import pandas as pd
 
 def gita_prep(path_to_dataframe):
 
+    """GITA data preprocessing.
+        path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+        This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
+
     colombian = pd.read_csv(path_to_dataframe)
     colombian = colombian.dropna()
     colombian['task'] = [elem.split("_")[2] for elem in colombian['AudioFile'].tolist()]
@@ -29,6 +33,10 @@ def gita_prep(path_to_dataframe):
 
 
 def italian_prep(path_to_dataframe):
+
+    """ItalianPVS data preprocessing.
+     path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+    This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
 
     italian = pd.read_csv(path_to_dataframe)
     italian['labels'] = [m.split("_")[0] for m in italian.AudioFile.tolist()]
@@ -58,6 +66,10 @@ def italian_prep(path_to_dataframe):
 
 def german_prep(path_to_dataframe):
 
+    """GermanPD data preprocessing.
+    path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+    This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
+
     german = pd.read_csv(path_to_dataframe)
     german = german.drop(columns=['Unnamed: 0'])
     german['names'] = [elem.split("_")[1] for elem in german['AudioFile'].tolist()]
@@ -81,6 +93,10 @@ def german_prep(path_to_dataframe):
 
 
 def neurovoz_prep(path_to_dataframe):
+
+    """Neurovoz data preprocessing.
+        path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+        This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
 
     spain = pd.read_csv(path_to_dataframe)
     spain = spain.dropna()

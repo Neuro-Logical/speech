@@ -4,6 +4,10 @@ import pandas as pd
 
 def nls_prep(path_to_dataframe):
 
+    """NLS data preprocessing.
+       path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+       This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
+
     #nls = pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/NLS/total_new_training.csv")
     nls = pd.read_csv(path_to_dataframe)
     nls = nls.drop(columns=['Unnamed: 0'])
@@ -99,6 +103,10 @@ def nls_prep(path_to_dataframe):
 
 def gita_prep(path_to_dataframe):
 
+    """GITA data preprocessing.
+    path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+        This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
+
     colombian = pd.read_csv(path_to_dataframe)
     colombian = colombian.dropna()
     colombian['names'] = [elem.split("_")[1] for elem in colombian.AudioFile.tolist()]
@@ -127,6 +135,10 @@ def gita_prep(path_to_dataframe):
 
 def neurovoz_prep(path_to_dataframe):
 
+    """Neurovoz data preprocessing.
+    path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+    This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
+
     spain = pd.read_csv(path_to_dataframe)
     spain = spain.dropna()
     spain['labels'] = [elem.split("_")[0] for elem in spain['AudioFile'].tolist()]
@@ -151,6 +163,10 @@ def neurovoz_prep(path_to_dataframe):
 
 def german_prep(path_to_dataframe):
 
+    """GermanPD data preprocessing.
+    path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+    This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
+
     german = pd.read_csv(path_to_dataframe)
     german = german.drop(columns=['Unnamed: 0'])
     german['names'] = [elem.split("_")[1] for elem in german['AudioFile'].tolist()]
@@ -159,7 +175,6 @@ def german_prep(path_to_dataframe):
     task = ['monologue']
     german = german[german['task'].isin(task)]
     german = german.drop(columns=['AudioFile', 'task'])
-
     lab = []
     for m in german['labels'].tolist():
         if m == "PD":
@@ -168,7 +183,6 @@ def german_prep(path_to_dataframe):
             lab.append(0)
     german['labels'] = lab
     german = german.dropna()
-
     german = german.rename(columns={"names": "id"})
     german_cols = german.columns.tolist()
 
@@ -176,6 +190,10 @@ def german_prep(path_to_dataframe):
 
 
 def czech_prep(path_to_dataframe):
+
+    """CzechPD data preprocessing.
+      path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+      This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
 
     czech = pd.read_csv(path_to_dataframe)
     czech['names'] = [elem.split("_")[1] for elem in czech.AudioFile.tolist()]

@@ -4,6 +4,10 @@ import pandas as pd
 
 def nls_prep(path_to_dataframe):
 
+    """NLS data preprocessing.
+    path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+     This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
+
     nls = pd.read_csv(path_to_dataframe)
     nls = nls.drop(columns=['Unnamed: 0'])
     nls = nls.dropna()
@@ -50,6 +54,7 @@ def nls_prep(path_to_dataframe):
     PD = TOT.get_group('PD')
     ctrl = TOT.get_group('CTRL')
 
+    # remove subjects with probable PD
     PD = PD[~PD.id.str.contains("NLS_116")]
     PD = PD[~PD.id.str.contains("NLS_34")]
     PD = PD[~PD.id.str.contains("NLS_35")]
@@ -59,6 +64,7 @@ def nls_prep(path_to_dataframe):
     PD = PD[~PD.id.str.contains("NLS_20")]
     PD = PD[~PD.id.str.contains("NLS_12")]
 
+    # Remove controls whose MOCA score is lower than 25.
     ctrl = ctrl[~ctrl.id.str.contains("PEC_4")]
     ctrl = ctrl[~ctrl.id.str.contains("PEC_5")]
     ctrl = ctrl[~ctrl.id.str.contains("PEC_9")]
@@ -75,9 +81,7 @@ def nls_prep(path_to_dataframe):
 
     test = pd.concat([PD, ctrl])
     test = test.dropna()
-
     test = test.drop(columns=['age'])
-
     new = []
     for m in test['label'].tolist():
         if m == 'PD':
@@ -94,6 +98,10 @@ def nls_prep(path_to_dataframe):
     return nls, nls_cols
 
 def gita_prep(path_to_dataframe):
+
+    """GITA data preprocessing.
+     path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+     This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
 
     colombian = pd.read_csv(path_to_dataframe)
     colombian = colombian.dropna()
@@ -123,6 +131,10 @@ def gita_prep(path_to_dataframe):
 
 def italian_prep(path_to_dataframe):
 
+    """ItalianPVS data preprocessing.
+        path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+        This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
+
     italian = pd.read_csv(path_to_dataframe)
     italian['labels'] = [m.split("_")[0] for m in italian.AudioFile.tolist()]
     lab = []
@@ -147,8 +159,11 @@ def italian_prep(path_to_dataframe):
     return italian, italian_cols
 
 
-
 def german_prep(path_to_dataframe):
+
+    """GermanPD data preprocessing.
+    path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+    This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
 
     german = pd.read_csv(path_to_dataframe)
     german = german.drop(columns=['Unnamed: 0'])
@@ -171,7 +186,12 @@ def german_prep(path_to_dataframe):
 
     return german, german_cols
 
+
 def czech_prep(path_to_dataframe):
+
+    """CzechPD data preprocessing.
+       path_to_dataframe: path csv dataframe containing the features for classification, speaker ID and labels (i.e., HC vs PD).
+       This function returns a pre-processed pandas data frame and the name of the columns in the dataframe. """
 
     czech = pd.read_csv(path_to_dataframe)
     czech['names'] = [elem.split("_")[1] for elem in czech.AudioFile.tolist()]
