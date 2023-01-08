@@ -27,14 +27,14 @@ For each recording a transcription is generated in capital letters without punct
 
 ### Cognitive Features
 
-* To extract the cognitive features based on speech transcripts only, run the script```Cognitive/extract_cognitive_features.py```
+* To extract the cognitive features based on speech transcripts only, run the script```Feature_Extraction/Cognitive/extract_cognitive_features.py```
 
 ### Acoustic Features
 
 * For the extraction of the acoustic features related to pause and speech time we use DigiPsych Prosody Repository (<https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody>).
 * For the extraction of the acoustic features related F0 and energy contour we use Disvoice Repository (<https://github.com/jcvasquezc/DisVoice/tree/master/prosody>).
 
-To extract the acoustic features reported in the paper, run the script ```Acoustic/extract_acoustic_features.py```
+To extract the acoustic features reported in the paper, run the script ```Feature_Extraction/Acoustic/extract_acoustic_features.py```
 
 
 ### Linguistic Features
@@ -42,7 +42,7 @@ To extract the acoustic features reported in the paper, run the script ```Acoust
 * For the extraction of the linguistic features related to Part-of-Speech and Syntactic Complexity we use Spacy Python Library(<https://spacy.io/models>).
 * For the extraction of the linguistic features related to Vocabulary Richness we use <https://pypi.org/project/lexicalrichness/>. 
 
-To extract the linguistic features reported in the paper, run the script ```Linguistic/extract_linguistic_features.sh```
+To extract the linguistic features reported in the paper, run the script ```Feature_Extraction/Linguistic/extract_linguistic_features.sh```
 
 ## 3) Statistical Analysis 
 
