@@ -1,6 +1,7 @@
 import os
 import whisper
 
+
 def extract_speech_transcripts(path_to_recordings, output_folder):
 
     """ Function that extract speech transcripts using OpenAI's Whisper.

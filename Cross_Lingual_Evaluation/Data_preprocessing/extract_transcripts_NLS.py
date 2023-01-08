@@ -12,12 +12,9 @@ files = []
 for m in paths:
     size = os.stat(m).st_size / 1000
     if size > 56:
-        if "AD_006" in m:
-            files.append(m)
-        if "AD_014" in m:
-            files.append(m)
+        files.append(m)
 
-# extract and save transcripts.
+# extract and save transcripts in text files.
 for i in files:
     print(i)
     model = whisper.load_model("medium")
