@@ -58,7 +58,6 @@ for i in range(1, 11):
     clf = ExtraTreesClassifier(n_estimators=50)
     clf = clf.fit(normalized_train_X, y_train)
     model = SelectFromModel(clf, prefit=True, max_features=30)
-
     X_train = model.transform(normalized_train_X)
     cols = model.get_support(indices=True)
     X_test = normalized_test_X[:, cols]

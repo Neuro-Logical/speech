@@ -6,7 +6,6 @@ import sys
 sys.path.append("/export/b15/afavaro/git_code_version/speech")
 from Cross_Lingual_Evaluation.interpretable_features.classification.mono_lingual.Data_Prep_SS import *
 from Cross_Lingual_Evaluation.interpretable_features.classification.mono_lingual.Utils import *
-import numpy as np
 import random
 import os
 from sklearn.ensemble import ExtraTreesClassifier
@@ -17,7 +16,6 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-
 random.seed(10)
 
 spain = gita_prep(os.path.join(BASE, "GITA/total_data_frame_novel_task_combined_ling.csv"))
@@ -69,8 +67,6 @@ for i in range(1, 11):
     print('Sensitivity : ', sensitivity)
     specificity = cm[1, 1] / (cm[1, 0] + cm[1, 1])
     print('spec : ', specificity)
-    SPEC = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GITA/SS/SPEC/'
-    SENS = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_2/GITA/SS/SENS/'
     with open(os.path.join(SPEC_OUT_PATH, f"SVM_spec_{i}.txt"), 'w') as f:
         f.writelines(str(specificity))
     with open(os.path.join(SENS_OUT_PATH, f"SVM_sens_{i}.txt"), 'w') as f:
@@ -90,7 +86,7 @@ for i in range(1, 11):
     with open(os.path.join(SENS_OUT_PATH, f"KNN_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
 
-    # Random Forest
+    # RandomForestClassifier
     model = RandomForestClassifier(max_features= 'sqrt', n_estimators= 1000)
     grid_result = model.fit(X_train, y_train)
     grid_predictions = grid_result.predict(X_test)
@@ -104,7 +100,7 @@ for i in range(1, 11):
     with open(os.path.join(SENS_OUT_PATH, f"RF_sens_{i}.txt"), 'w') as f:
         f.writelines(str(sensitivity))
 
-    # XGBoost
+    # GradientBoostingClassifier
     model = GradientBoostingClassifier(learning_rate=0.001, max_depth=9, n_estimators=1000, subsample=0.5)
     grid_result = model.fit(X_train, y_train)
     grid_predictions = grid_result.predict(X_test)

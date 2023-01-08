@@ -45,7 +45,6 @@ data_train_5, data_test_5,  data_train_6, data_test_6, data_train_7, data_test_7
 data_train_9, data_test_9, data_train_10, data_test_10 = create_split_train_test(folds)
 
 for i in range(1, 11):
-    print(i)
 
     normalized_train_X, normalized_test_X, y_train, y_test = normalize(eval(f"data_train_{i}"), eval(f"data_test_{i}"))
     clf = ExtraTreesClassifier(n_estimators=50)
