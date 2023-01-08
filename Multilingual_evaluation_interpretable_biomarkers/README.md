@@ -1,4 +1,4 @@
-# Multilingual Evaluation of Interpretable Biomarkers to Represent Language and Speech Patterns in Parkinson’s Disease"
+# Multilingual Evaluation of Interpretable Biomarkers to Represent Language and Speech Patterns in Parkinson’s Disease
 
 ## Research Aim 
 
