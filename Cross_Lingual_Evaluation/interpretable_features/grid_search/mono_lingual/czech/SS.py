@@ -5,7 +5,6 @@ RF_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feat
 XG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters/CZECH/SS/XG/mono_lingual.txt'
 BAGG_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Best_hyperpameters/CZECH/SS/BAGG/mono_lingual.txt'
 
-
 import sys
 sys.path.append("/export/b15/afavaro/git_code_version/speech")
 from Cross_Lingual_Evaluation.interpretable_features.classification.mono_lingual.Data_Prep_SS import *
@@ -84,7 +83,6 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     print(grid_result.best_params_)
-
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
@@ -106,20 +104,16 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     # summarize results
-
     print(grid_result.best_params_)
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in knn_paramters:
             knn_paramters[config].append(mean)
         else:
             knn_paramters[config] = [mean]
-
 
     # Random Forest
     model = RandomForestClassifier()
@@ -141,7 +135,6 @@ for i in range(1, 11):
         else:
             rf_paramters[config] = [mean]
 
-
     # GradientBoostingClassifier
     model = GradientBoostingClassifier()
     n_estimators = [10, 100, 1000]
@@ -156,7 +149,6 @@ for i in range(1, 11):
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in xg_paramters:

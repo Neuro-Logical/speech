@@ -53,6 +53,7 @@ data_train_9, data_test_9, data_train_10, data_test_10 = create_split_train_test
 
 #####################################################################################################################
 
+# dictionary to store hyperparameters for each model
 svm_parameters = {}
 rf_paramters = {}
 knn_paramters = {}
@@ -72,8 +73,6 @@ for i in range(1, 11):
     X_train = model.transform(normalized_train_X)
     cols = model.get_support(indices=True)
     X_test = normalized_test_X[:, cols]
-    reduced_data = data_i.iloc[:, :-1]
-    selected_features = reduced_data.columns[model.get_support()].to_list()
 
     # SVC
     model = SVC()

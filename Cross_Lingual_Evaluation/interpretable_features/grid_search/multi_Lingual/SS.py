@@ -109,8 +109,6 @@ for i in range(1, 11):
 
     training_data, training_labels = train_split(normalized_train_X_colombian, y_train_colombian,normalized_train_X_czech, y_train_czech, normalized_train_X_german,
                                                   y_train_german, normalized_train_X_spain, y_train_spain, normalized_train_X_nls, y_train_nls)
-
-
     test_data, test_labels = normalized_test_X_colombian, y_test_colombian
 
     clf = ExtraTreesClassifier(n_estimators=50)
@@ -120,6 +118,7 @@ for i in range(1, 11):
     cols = model.get_support(indices=True)
     X_test = test_data[:, cols]
 
+    # SVM
     model = SVC()
     kernel = ['poly', 'rbf', 'sigmoid']
     C = [50, 10, 1.0, 0.1, 0.01]
@@ -131,13 +130,10 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(X_train, training_labels)
     print(grid_result.best_params_)
-
     means = grid_result.cv_results_['mean_test_score']
     print(max(means))
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in svm_parameters:
@@ -145,17 +141,7 @@ for i in range(1, 11):
         else:
             svm_parameters[config] = [mean]
 
-#
-
-    from sklearn.datasets import make_blobs
-    from sklearn.model_selection import RepeatedStratifiedKFold
-    from sklearn.model_selection import GridSearchCV
-    from sklearn.neighbors import KNeighborsClassifier
-
-
-    # define dataset
-    X, y = make_blobs(n_samples=1000, centers=2, n_features=100, cluster_std=20)
-    # define models and parameters
+    # KNeighborsClassifier
     model = KNeighborsClassifier()
     n_neighbors = range(1, 21, 2)
     weights = ['uniform', 'distance']
@@ -165,18 +151,10 @@ for i in range(1, 11):
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(X_train, training_labels)
-    # summarize results
-
-    print(grid_result.best_params_)
-
- #   path = os.path.join(store_parameters, f"{i}.txt")
-
     means = grid_result.cv_results_['mean_test_score']
     print(max(means))
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in knn_paramters:
@@ -184,14 +162,7 @@ for i in range(1, 11):
         else:
             knn_paramters[config] = [mean]
 
-    from sklearn.datasets import make_blobs
-    from sklearn.model_selection import RepeatedStratifiedKFold
-    from sklearn.model_selection import GridSearchCV
-    from sklearn.ensemble import RandomForestClassifier
-
-
-    X, y = make_blobs(n_samples=1000, centers=2, n_features=100, cluster_std=20)
-    # define models and parameters
+    # RandomForestClassifier
     model = RandomForestClassifier()
     n_estimators = [10, 100, 1000]
     max_features = ['sqrt', 'log2']
@@ -200,10 +171,6 @@ for i in range(1, 11):
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(X_train, training_labels)
-# summarize results
-   # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
-    print(grid_result.best_params_)
-
     means = grid_result.cv_results_['mean_test_score']
     print(max(means))
     stds = grid_result.cv_results_['std_test_score']
@@ -227,12 +194,9 @@ for i in range(1, 11):
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(X_train, training_labels)
-    # summarize results
-
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in xg_paramters:
@@ -240,10 +204,7 @@ for i in range(1, 11):
         else:
             xg_paramters[config] = [mean]
 
-
-    # define dataset
-    # X, y = make_blobs(n_samples=1000, centers=2, n_features=100, cluster_std=20)
-    # define models and parameters
+    # BaggingClassifier
     model = BaggingClassifier()
     max_samples = [0.05, 0.1, 0.2, 0.5]
     n_estimators = [10, 100, 1000]
@@ -252,16 +213,11 @@ for i in range(1, 11):
     cv = RepeatedStratifiedKFold(n_splits=9, n_repeats=3, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(X_train, training_labels)
-    # summarize results
-   # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     print(grid_result.best_params_)
-
-
     means = grid_result.cv_results_['mean_test_score']
     print(max(means))
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in bagg_paramters:
@@ -269,7 +225,7 @@ for i in range(1, 11):
         else:
             bagg_paramters[config] = [mean]
 
-
+#####################################################################################################################
 
 for k in svm_parameters.keys():
     svm_parameters[k] = np.array(svm_parameters[k]).mean()

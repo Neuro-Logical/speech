@@ -80,8 +80,6 @@ for i in range(1, 11):
     kernel = ['poly', 'rbf', 'sigmoid']
     C = [50, 10, 1.0, 0.1, 0.01]
     gamma = [1, 0.1, 0.01, 0.001]
-    # gamma = ['scale']
-    # define grid search
     grid = dict(kernel=kernel, C=C, gamma=gamma)
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
@@ -135,8 +133,6 @@ for i in range(1, 11):
     print(means)
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in rf_paramters:

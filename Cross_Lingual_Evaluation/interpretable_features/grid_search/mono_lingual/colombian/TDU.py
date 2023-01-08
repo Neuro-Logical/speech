@@ -89,11 +89,9 @@ for i in range(1, 11):
     # summarize result
    # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     print(grid_result.best_params_)
-
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in svm_parameters:
@@ -101,8 +99,7 @@ for i in range(1, 11):
         else:
             svm_parameters[config] = [mean]
 
-    # KNeighbors Classifier
-
+    # KNeighbors
     model = KNeighborsClassifier()
     n_neighbors = range(1, 21, 2)
     weights = ['uniform', 'distance']
@@ -113,13 +110,10 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     # summarize results
-
     print(grid_result.best_params_)
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in knn_paramters:
@@ -127,8 +121,7 @@ for i in range(1, 11):
         else:
             knn_paramters[config] = [mean]
 
-
-    # Random Forest
+    # RandomForest
     model = RandomForestClassifier()
     n_estimators = [10, 100, 1000]
     max_features = ['sqrt', 'log2']
@@ -147,7 +140,6 @@ for i in range(1, 11):
             rf_paramters[config].append(mean)
         else:
             rf_paramters[config] = [mean]
-
 
     # XGBoost
     model = GradientBoostingClassifier()
@@ -170,13 +162,12 @@ for i in range(1, 11):
         else:
             xg_paramters[config] = [mean]
 
-
+    # BaggingClassifier
     model = BaggingClassifier()
     max_samples = [0.05, 0.1, 0.2, 0.5]
     n_estimators = [10, 100, 1000]
     # define grid search
     grid = dict(n_estimators=n_estimators, max_samples=max_samples)
-
     cv = RepeatedStratifiedKFold(n_splits=9, n_repeats=3, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
@@ -194,6 +185,7 @@ for i in range(1, 11):
         else:
             bagg_paramters[config] = [mean]
 
+####################################################################################################################################
 
 for k in svm_parameters.keys():
     svm_parameters[k] = np.array(svm_parameters[k]).mean()
@@ -209,7 +201,6 @@ for k in xg_paramters.keys():
 
 for k in bagg_paramters.keys():
     bagg_paramters[k] = np.array(bagg_paramters[k]).mean()
-
 
 fo = open(SVM_OUT_PATH, "w")
 for k, v in svm_parameters.items():

@@ -86,7 +86,6 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     print(grid_result.best_params_)
-
     means = grid_result.cv_results_['mean_test_score']
     print(means)
     stds = grid_result.cv_results_['std_test_score']
@@ -110,7 +109,6 @@ for i in range(1, 11):
     grid_result = grid_search.fit(normalized_train_X, y_train)
     # summarize results
     print(grid_result.best_params_)
-
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
@@ -131,7 +129,6 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     print(grid_result.best_params_)
-
     means = grid_result.cv_results_['mean_test_score']
     print(means)
     stds = grid_result.cv_results_['std_test_score']
@@ -142,7 +139,6 @@ for i in range(1, 11):
             rf_paramters[config].append(mean)
         else:
             rf_paramters[config] = [mean]
-
 
     # GradientBoostingClassifier
     model = GradientBoostingClassifier()

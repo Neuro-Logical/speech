@@ -118,7 +118,6 @@ for i in range(1, 11):
             knn_paramters[config] = [mean]
 
     # Random Forest
-
     model = RandomForestClassifier()
     n_estimators = [10, 100, 1000]
     max_features = ['sqrt', 'log2']
@@ -170,7 +169,6 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     print(grid_result.best_params_)
-
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
@@ -182,6 +180,7 @@ for i in range(1, 11):
         else:
             bagg_paramters[config] = [mean]
 
+####################################################################################################################################
 
 for k in svm_parameters.keys():
     svm_parameters[k] = np.array(svm_parameters[k]).mean()

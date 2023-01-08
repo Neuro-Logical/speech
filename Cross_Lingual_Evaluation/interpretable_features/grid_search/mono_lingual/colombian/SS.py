@@ -184,6 +184,7 @@ for i in range(1, 11):
             bagg_paramters[config].append(mean)
         else:
             bagg_paramters[config] = [mean]
+####################################################################################################################################
 
 for k in svm_parameters.keys():
     svm_parameters[k] = np.array(svm_parameters[k]).mean()
@@ -199,7 +200,6 @@ for k in xg_paramters.keys():
 
 for k in bagg_paramters.keys():
     bagg_paramters[k] = np.array(bagg_paramters[k]).mean()
-
 
 fo = open(SVM_OUT_PATH, "w")
 for k, v in svm_parameters.items():

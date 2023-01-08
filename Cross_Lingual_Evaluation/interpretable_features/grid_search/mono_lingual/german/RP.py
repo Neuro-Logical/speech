@@ -30,7 +30,6 @@ pd_ = gr.get_group(1)
 
 arrayOfSpeaker_cn = ctrl_['names'].unique()
 random.shuffle(arrayOfSpeaker_cn)
-
 arrayOfSpeaker_pd = pd_['names'].unique()
 random.shuffle(arrayOfSpeaker_pd)
 
@@ -69,15 +68,9 @@ for i in range(1, 11):
     clf = ExtraTreesClassifier(n_estimators=50)
     clf = clf.fit(normalized_train_X, y_train)
     model = SelectFromModel(clf, prefit=True, max_features=30)
-
     X_train = model.transform(normalized_train_X)
     cols = model.get_support(indices=True)
-
     X_test = normalized_test_X[:, cols]
-    reduced_data = data_i.iloc[:, :-1]
-    selected_features = reduced_data.columns[model.get_support()].to_list()
-
-
     # SVC
     model = SVC()
     kernel = ['poly', 'rbf', 'sigmoid']
@@ -129,12 +122,10 @@ for i in range(1, 11):
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
-
     print(grid_result.best_params_)
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in rf_paramters:
@@ -157,14 +148,12 @@ for i in range(1, 11):
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in xg_paramters:
             xg_paramters[config].append(mean)
         else:
             xg_paramters[config] = [mean]
-
 
     # BaggingClassifier
     model = BaggingClassifier()
@@ -205,7 +194,6 @@ for k in xg_paramters.keys():
 
 for k in bagg_paramters.keys():
     bagg_paramters[k] = np.array(bagg_paramters[k]).mean()
-
 
 fo = open(SVM_OUT_PATH, "w")
 for k, v in svm_parameters.items():

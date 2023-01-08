@@ -73,8 +73,6 @@ for i in range(1, 11):
     X_train = model.transform(normalized_train_X)
     cols = model.get_support(indices=True)
     X_test = normalized_test_X[:, cols]
-    reduced_data = data_i.iloc[:, :-1]
-    selected_features = reduced_data.columns[model.get_support()].to_list()
 
     # SVM
     model = SVC()
@@ -87,13 +85,10 @@ for i in range(1, 11):
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
-    # summarize result
-   # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     print(grid_result.best_params_)
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in svm_parameters:
@@ -131,8 +126,6 @@ for i in range(1, 11):
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
-# summarize results
-   # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     print(grid_result.best_params_)
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
@@ -155,12 +148,9 @@ for i in range(1, 11):
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
-    # summarize results
-  #  print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in xg_paramters:
@@ -181,7 +171,6 @@ for i in range(1, 11):
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in bagg_paramters:

@@ -102,6 +102,7 @@ for i in range(1, 11):
     cols = model.get_support(indices=True)
     X_test = test_data[:, cols]
 
+    # SVM
     model = SVC()
     kernel = ['poly', 'rbf', 'sigmoid']
     C = [50, 10, 1.0, 0.1, 0.01]
@@ -113,13 +114,10 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(X_train, training_labels)
     print(grid_result.best_params_)
-
     means = grid_result.cv_results_['mean_test_score']
     print(max(means))
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in svm_parameters:
@@ -127,10 +125,7 @@ for i in range(1, 11):
         else:
             svm_parameters[config] = [mean]
 
-
-    # define dataset
-    X, y = make_blobs(n_samples=1000, centers=2, n_features=100, cluster_std=20)
-    # define models and parameters
+    # KNeighborsClassifier
     model = KNeighborsClassifier()
     n_neighbors = range(1, 21, 2)
     weights = ['uniform', 'distance']
@@ -153,9 +148,7 @@ for i in range(1, 11):
         else:
             knn_paramters[config] = [mean]
 
-
-    X, y = make_blobs(n_samples=1000, centers=2, n_features=100, cluster_std=20)
-    # define models and parameters
+    # RandomForestClassifier
     model = RandomForestClassifier()
     n_estimators = [10, 100, 1000]
     max_features = ['sqrt', 'log2']
@@ -167,8 +160,6 @@ for i in range(1, 11):
 # summarize results
    # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     print(grid_result.best_params_)
-
-
     means = grid_result.cv_results_['mean_test_score']
     print(max(means))
     stds = grid_result.cv_results_['std_test_score']
@@ -179,7 +170,8 @@ for i in range(1, 11):
             rf_paramters[config].append(mean)
         else:
             rf_paramters[config] = [mean]
-    # define models and parameters
+
+    # GradientBoostingClassifier
     model = GradientBoostingClassifier()
     n_estimators = [10, 100, 1000]
     learning_rate = [0.001, 0.01, 0.1]
@@ -195,7 +187,6 @@ for i in range(1, 11):
     print(max(means))
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in xg_paramters:
@@ -203,7 +194,7 @@ for i in range(1, 11):
         else:
             xg_paramters[config] = [mean]
 
-
+    # BaggingClassifier
     model = BaggingClassifier()
     max_samples = [0.05, 0.1, 0.2, 0.5]
     n_estimators = [10, 100, 1000]
@@ -227,7 +218,7 @@ for i in range(1, 11):
         else:
             bagg_paramters[config] = [mean]
 
-
+#####################################################################################################################
 
 for k in svm_parameters.keys():
     svm_parameters[k] = np.array(svm_parameters[k]).mean()

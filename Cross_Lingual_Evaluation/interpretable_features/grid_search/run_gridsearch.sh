@@ -9,7 +9,6 @@ cd '/export/afavaro/git_code_version/speech/Cross_Lingual_Evaluation/interpretab
 
 # Colombian
 
-
 python grid_search/mono_lingual/colombian/RP.py
 python grid_search/mono_lingual/colombian/SS.py
 python grid_search/mono_lingual/colombian/TDU.py

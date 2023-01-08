@@ -69,14 +69,13 @@ for i in range(1, 11):
     clf = ExtraTreesClassifier(n_estimators=50)
     clf = clf.fit(normalized_train_X, y_train)
     model = SelectFromModel(clf, prefit=True, max_features=30)
-
     X_train = model.transform(normalized_train_X)
     cols = model.get_support(indices=True)
-
     X_test = normalized_test_X[:, cols]
     reduced_data = data_i.iloc[:, :-1]
     selected_features = reduced_data.columns[model.get_support()].to_list()
 
+    # SVM
     model = SVC()
     kernel = ['poly', 'rbf', 'sigmoid']
     C = [50, 10, 1.0, 0.1, 0.01]
@@ -90,13 +89,10 @@ for i in range(1, 11):
     # summarize result
    # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     print(grid_result.best_params_)
-
     means = grid_result.cv_results_['mean_test_score']
     print(means)
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in svm_parameters:
@@ -104,8 +100,7 @@ for i in range(1, 11):
         else:
             svm_parameters[config] = [mean]
 
-
-    # define models and parameters
+    # KNeighborsClassifier
     model = KNeighborsClassifier()
     n_neighbors = range(1, 21, 2)
     weights = ['uniform', 'distance']
@@ -127,9 +122,7 @@ for i in range(1, 11):
         else:
             knn_paramters[config] = [mean]
 
-
-    X, y = make_blobs(n_samples=1000, centers=2, n_features=100, cluster_std=20)
-    # define models and parameters
+    # RandomForestClassifier
     model = RandomForestClassifier()
     n_estimators = [10, 100, 1000]
     max_features = ['sqrt', 'log2']
@@ -196,7 +189,6 @@ for i in range(1, 11):
             bagg_paramters[config].append(mean)
         else:
             bagg_paramters[config] = [mean]
-
 
 for k in svm_parameters.keys():
     svm_parameters[k] = np.array(svm_parameters[k]).mean()
