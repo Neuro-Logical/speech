@@ -89,13 +89,9 @@ for i in range(1, 11):
     grid_result = grid_search.fit(normalized_train_X, y_train)
     # summarize result
    # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
-    print(grid_result.best_params_)
-
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in svm_parameters:
@@ -114,7 +110,6 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     # summarize results
-    print(grid_result.best_params_)
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
@@ -126,7 +121,6 @@ for i in range(1, 11):
             knn_paramters[config] = [mean]
 
     # RandomForestClassifier
-
     model = RandomForestClassifier()
     n_estimators = [10, 100, 1000]
     max_features = ['sqrt', 'log2']
@@ -135,15 +129,11 @@ for i in range(1, 11):
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
-# summarize results
-   # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
+
     print(grid_result.best_params_)
-
-
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
 
     for mean, config in zip(means, params):
         config = str(config)
@@ -152,10 +142,7 @@ for i in range(1, 11):
         else:
             rf_paramters[config] = [mean]
 
-
-
     # GradientBoostingClassifier
-
     model = GradientBoostingClassifier()
     n_estimators = [10, 100, 1000]
     learning_rate = [0.001, 0.01, 0.1]
@@ -167,10 +154,7 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     # summarize results
-  #  print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
-
     means = grid_result.cv_results_['mean_test_score']
-    print(means)
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
 
@@ -183,7 +167,6 @@ for i in range(1, 11):
 
 
     # BaggingClassifier
-
     model = BaggingClassifier()
     max_samples = [0.05, 0.1, 0.2, 0.5]
     n_estimators = [10, 100, 1000]
@@ -193,10 +176,7 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     # summarize results
-   # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     print(grid_result.best_params_)
-  #  path = os.path.join(store_parameters, f"{i}.txt")
-
     means = grid_result.cv_results_['mean_test_score']
     print(means)
     stds = grid_result.cv_results_['std_test_score']
@@ -209,22 +189,19 @@ for i in range(1, 11):
         else:
             bagg_paramters[config] = [mean]
 
+################################################################################################################
+
 for k in svm_parameters.keys():
     svm_parameters[k] = np.array(svm_parameters[k]).mean()
-
-
 
 for k in knn_paramters.keys():
     knn_paramters[k] = np.array(knn_paramters[k]).mean()
 
-
 for k in rf_paramters.keys():
     rf_paramters[k] = np.array(rf_paramters[k]).mean()
 
-
 for k in xg_paramters.keys():
     xg_paramters[k] = np.array(xg_paramters[k]).mean()
-
 
 for k in bagg_paramters.keys():
     bagg_paramters[k] = np.array(bagg_paramters[k]).mean()
@@ -234,16 +211,13 @@ fo = open(SVM_OUT_PATH, "w")
 for k, v in svm_parameters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-
 fo = open(KNN_OUT_PATH, "w")
 for k, v in knn_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-
 fo = open(RF_OUT_PATH, "w")
 for k, v in rf_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
-
 
 fo = open(XG_OUT_PATH, "w")
 for k, v in xg_paramters.items():

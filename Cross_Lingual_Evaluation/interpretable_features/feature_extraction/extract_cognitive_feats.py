@@ -9,8 +9,8 @@ import torch
 
 
 def informational_verb(text):
-    """ Compute the informativeness of the narratives by
-    counting how many (if any) salient events (verbs) are mentioned. """
+
+      """ Compute the informativeness of the narratives by counting how many (if any) salient events (verbs) are mentioned. """
 
     cont_con = 0
 

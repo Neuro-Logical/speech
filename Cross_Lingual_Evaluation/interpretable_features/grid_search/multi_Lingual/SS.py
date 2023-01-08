@@ -91,13 +91,9 @@ data_train_10_colombian, data_test_10_colombian = create_split_train_test(colomb
 #####################################################################################################################
 
 svm_parameters = {}
-
 rf_paramters = {}
-
 knn_paramters = {}
-
 xg_paramters = {}
-
 bagg_paramters = {}
 
 

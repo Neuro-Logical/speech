@@ -70,14 +70,11 @@ for i in range(1, 11):
     clf = ExtraTreesClassifier(n_estimators=50)
     clf = clf.fit(normalized_train_X, y_train)
     model = SelectFromModel(clf, prefit=True, max_features=30)
-
     X_train = model.transform(normalized_train_X)
     cols = model.get_support(indices=True)
-
     X_test = normalized_test_X[:, cols]
 
     # SVM
-
     model = SVC()
     kernel = ['poly', 'rbf', 'sigmoid']
     C = [50, 10, 1.0, 0.1, 0.01]
@@ -94,15 +91,12 @@ for i in range(1, 11):
     print(means)
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in svm_parameters:
             svm_parameters[config].append(mean)
         else:
             svm_parameters[config] = [mean]
-
 
     # KNeighborsClassifier
     model = KNeighborsClassifier()
@@ -115,12 +109,11 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     # summarize results
-
     print(grid_result.best_params_)
+
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in knn_paramters:
@@ -128,9 +121,7 @@ for i in range(1, 11):
         else:
             knn_paramters[config] = [mean]
 
-
     # RandomForestClassifier
-
     model = RandomForestClassifier()
     n_estimators = [10, 100, 1000]
     max_features = ['sqrt', 'log2']
@@ -140,6 +131,7 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     print(grid_result.best_params_)
+
     means = grid_result.cv_results_['mean_test_score']
     print(means)
     stds = grid_result.cv_results_['std_test_score']
@@ -164,12 +156,9 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     # summarize results
-
     means = grid_result.cv_results_['mean_test_score']
-    print(means)
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in xg_paramters:
@@ -177,9 +166,7 @@ for i in range(1, 11):
         else:
             xg_paramters[config] = [mean]
 
-
    # BaggingClassifier
-
     model = BaggingClassifier()
     max_samples = [0.05, 0.1, 0.2, 0.5]
     n_estimators = [10, 100, 1000]
@@ -190,7 +177,6 @@ for i in range(1, 11):
     grid_result = grid_search.fit(normalized_train_X, y_train)
     # summarize results
     print(grid_result.best_params_)
-
     means = grid_result.cv_results_['mean_test_score']
     print(means)
     stds = grid_result.cv_results_['std_test_score']
@@ -203,6 +189,7 @@ for i in range(1, 11):
         else:
             rf_paramters[config] = [mean]
 
+################################################################################################################
 
 for k in svm_parameters.keys():
     svm_parameters[k] = np.array(svm_parameters[k]).mean()
@@ -218,7 +205,6 @@ for k in xg_paramters.keys():
 
 for k in bagg_paramters.keys():
     bagg_paramters[k] = np.array(bagg_paramters[k]).mean()
-
 
 fo = open(SVM_OUT_PATH, "w")
 for k, v in svm_parameters.items():
@@ -239,5 +225,3 @@ for k, v in xg_paramters.items():
 fo = open(BAGG_OUT_PATH, "w")
 for k, v in bagg_paramters.items():
     fo.write(str(k) + ' >>> ' + str(v) + '\n\n')
-
-# cd_rf

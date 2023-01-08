@@ -75,8 +75,7 @@ for i in range(1, 11):
     reduced_data = data_i.iloc[:, :-1]
     selected_features = reduced_data.columns[model.get_support()].to_list()
 
-
-
+    # SVM
     model = SVC()
     kernel = ['poly', 'rbf', 'sigmoid']
     C = [50, 10, 1.0, 0.1, 0.01]
@@ -90,12 +89,10 @@ for i in range(1, 11):
     # summarize result
    # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     print(grid_result.best_params_)
-
     means = grid_result.cv_results_['mean_test_score']
     print(max(means))
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
 
     for mean, config in zip(means, params):
         config = str(config)
@@ -104,10 +101,7 @@ for i in range(1, 11):
         else:
             svm_parameters[config] = [mean]
 
-#
-
-    # define dataset
-    X, y = make_blobs(n_samples=1000, centers=2, n_features=100, cluster_std=20)
+    # KNeighborsClassifier
     # define models and parameters
     model = KNeighborsClassifier()
     n_neighbors = range(1, 21, 2)
@@ -119,7 +113,6 @@ for i in range(1, 11):
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     # summarize results
-
     print(grid_result.best_params_)
     means = grid_result.cv_results_['mean_test_score']
     print(max(means))
@@ -132,10 +125,7 @@ for i in range(1, 11):
         else:
             knn_paramters[config] = [mean]
 
-
-
-    X, y = make_blobs(n_samples=1000, centers=2, n_features=100, cluster_std=20)
-    # define models and parameters
+    # RandomForestClassifier
     model = RandomForestClassifier()
     n_estimators = [10, 100, 1000]
     max_features = ['sqrt', 'log2']
@@ -147,21 +137,16 @@ for i in range(1, 11):
 # summarize results
    # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     print(grid_result.best_params_)
-
-
     means = grid_result.cv_results_['mean_test_score']
     print(max(means))
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in rf_paramters:
             rf_paramters[config].append(mean)
         else:
             rf_paramters[config] = [mean]
-
 
     # GradientBoostingClassifier
     model = GradientBoostingClassifier()
@@ -178,7 +163,6 @@ for i in range(1, 11):
   #  print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
 
     means = grid_result.cv_results_['mean_test_score']
-    print(max(means))
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
 
@@ -189,8 +173,7 @@ for i in range(1, 11):
         else:
             xg_paramters[config] = [mean]
 
-
-
+    # BaggingClassifier
     model = BaggingClassifier()
     max_samples = [0.05, 0.1, 0.2, 0.5]
     n_estimators = [10, 100, 1000]
@@ -201,13 +184,9 @@ for i in range(1, 11):
     grid_result = grid_search.fit(normalized_train_X, y_train)
     # summarize results
    # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
-    print(grid_result.best_params_)
-  #  path = os.path.join(store_parameters, f"{i}.txt")
-
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in bagg_paramters:
@@ -215,6 +194,7 @@ for i in range(1, 11):
         else:
             bagg_paramters[config] = [mean]
 
+################################################################################################################
 
 for k in svm_parameters.keys():
     svm_parameters[k] = np.array(svm_parameters[k]).mean()
@@ -230,8 +210,6 @@ for k in xg_paramters.keys():
 
 for k in bagg_paramters.keys():
     bagg_paramters[k] = np.array(bagg_paramters[k]).mean()
-
-
 
 fo = open(SVM_OUT_PATH, "w")
 for k, v in svm_parameters.items():

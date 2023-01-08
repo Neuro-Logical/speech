@@ -55,17 +55,11 @@ data_train_9, data_test_9, data_train_10, data_test_10 = create_split_train_test
 
 #####################################################################################################################
 
-
 svm_parameters = {}
-
 rf_paramters = {}
-
 knn_paramters = {}
-
 xg_paramters = {}
-
 bagg_paramters = {}
-
 
 for i in range(1, 11):
 
@@ -85,19 +79,15 @@ for i in range(1, 11):
     selected_features = reduced_data.columns[model.get_support()].to_list()
 
 
-
     model = SVC()
     kernel = ['poly', 'rbf', 'sigmoid']
     C = [50, 10, 1.0, 0.1, 0.01]
     gamma = [1, 0.1, 0.01, 0.001]
-    # gamma = ['scale']
-    # define grid search
     grid = dict(kernel=kernel, C=C, gamma=gamma)
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=10, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
     # summarize result
-   # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     print(grid_result.best_params_)
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
@@ -109,10 +99,7 @@ for i in range(1, 11):
         else:
             svm_parameters[config] = [mean]
 
-
-    # define dataset
-    X, y = make_blobs(n_samples=1000, centers=2, n_features=100, cluster_std=20)
-    # define models and parameters
+    # KNeighborsClassifier
     model = KNeighborsClassifier()
     n_neighbors = range(1, 21, 2)
     weights = ['uniform', 'distance']
@@ -142,22 +129,16 @@ for i in range(1, 11):
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=10, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
-# summarize results
-   # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     print(grid_result.best_params_)
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
-
-
     for mean, config in zip(means, params):
         config = str(config)
         if config in rf_paramters:
             rf_paramters[config].append(mean)
         else:
             rf_paramters[config] = [mean]
-
-
 
     # GradientBoostingClassifier
     model = GradientBoostingClassifier()
@@ -170,7 +151,6 @@ for i in range(1, 11):
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=10, random_state=1)
     grid_search = GridSearchCV(estimator=model, param_grid=grid, n_jobs=-1, cv=cv, scoring='accuracy', error_score=0)
     grid_result = grid_search.fit(normalized_train_X, y_train)
-
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
@@ -181,7 +161,6 @@ for i in range(1, 11):
             xg_paramters[config].append(mean)
         else:
             xg_paramters[config] = [mean]
-
 
     # BaggingClassifier
     model = BaggingClassifier()
@@ -196,7 +175,6 @@ for i in range(1, 11):
    # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
     print(grid_result.best_params_)
   #  path = os.path.join(store_parameters, f"{i}.txt")
-
     means = grid_result.cv_results_['mean_test_score']
     stds = grid_result.cv_results_['std_test_score']
     params = grid_result.cv_results_['params']
@@ -208,42 +186,34 @@ for i in range(1, 11):
         else:
             bagg_paramters[config] = [mean]
 
+################################################################################################################
 
 for k in svm_parameters.keys():
     svm_parameters[k] = np.array(svm_parameters[k]).mean()
 
-
-
 for k in knn_paramters.keys():
     knn_paramters[k] = np.array(knn_paramters[k]).mean()
-
 
 for k in rf_paramters.keys():
     rf_paramters[k] = np.array(rf_paramters[k]).mean()
 
-
 for k in xg_paramters.keys():
     xg_paramters[k] = np.array(xg_paramters[k]).mean()
 
-
 for k in bagg_paramters.keys():
     bagg_paramters[k] = np.array(bagg_paramters[k]).mean()
-
 
 fo = open(SVM_OUT_PATH, "w")
 for k, v in svm_parameters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-
 fo = open(KNN_OUT_PATH, "w")
 for k, v in knn_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-
 fo = open(RF_OUT_PATH, "w")
 for k, v in rf_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
-
 
 fo = open(XG_OUT_PATH, "w")
 for k, v in xg_paramters.items():

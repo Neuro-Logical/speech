@@ -52,12 +52,13 @@ data_train_1, data_test_1, data_train_2, data_test_2, data_train_3, data_test_3,
 data_train_5, data_test_5,  data_train_6, data_test_6, data_train_7, data_test_7 , data_train_8, data_test_8, \
 data_train_9, data_test_9, data_train_10, data_test_10 = create_split_train_test(folds)
 
+#####################################################################################################################
+
 svm_parameters = {}
 rf_paramters = {}
 knn_paramters = {}
 xg_paramters = {}
 bagg_paramters = {}
-
 
 for i in range(1, 11):
 
@@ -148,8 +149,6 @@ for i in range(1, 11):
         else:
             rf_paramters[config] = [mean]
 
-    # define dataset
-
     # GradientBoostingClassifier
     model = GradientBoostingClassifier()
     n_estimators = [10, 100, 1000]
@@ -174,7 +173,7 @@ for i in range(1, 11):
         else:
             xg_paramters[config] = [mean]
 
-
+    # BaggingClassifier
     model = BaggingClassifier()
     max_samples = [0.05, 0.1, 0.2, 0.5]
     n_estimators = [10, 100, 1000]
@@ -205,10 +204,8 @@ for k in svm_parameters.keys():
 for k in knn_paramters.keys():
     knn_paramters[k] = np.array(knn_paramters[k]).mean()
 
-
 for k in rf_paramters.keys():
     rf_paramters[k] = np.array(rf_paramters[k]).mean()
-
 
 for k in xg_paramters.keys():
     xg_paramters[k] = np.array(xg_paramters[k]).mean()
@@ -216,22 +213,17 @@ for k in xg_paramters.keys():
 for k in bagg_paramters.keys():
     bagg_paramters[k] = np.array(bagg_paramters[k]).mean()
 
-
-
 fo = open(SVM_OUT_PATH, "w")
 for k, v in svm_parameters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
-
 
 fo = open(KNN_OUT_PATH, "w")
 for k, v in knn_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
 
-
 fo = open(RF_OUT_PATH, "w")
 for k, v in rf_paramters.items():
     fo.write(str(k) + ' >>> '+ str(v) + '\n\n')
-
 
 fo = open(XG_OUT_PATH, "w")
 for k, v in xg_paramters.items():
