@@ -9,9 +9,8 @@ Even though motor speech problems represent an early sign of Parkinson's Disease
 The experimental pipeline followed in our papar goes as follows:
 
 1) Data pre-processing 
-
-  - To resample the speech recordings to 16 kHz run the script ```convert_to_16k.sh```
-  - To extract speech transcripts from speech recordings using Whisper run ```get_speech_transcripts.py```
+   - To resample the speech recordings to 16 kHz run the script ```convert_to_16k.sh```
+   - To extract speech transcripts from speech recordings using Whisper run ```get_speech_transcripts.py```
 
 2) Feature extraction:
 
