@@ -84,8 +84,10 @@ def count_words(string):
 
 
 def word_length(string):
+
     """ This function returns the average word length in characters for the words in an item.
      string: text file containing the speech transcripts."""
+
     # Get the length of the full text in characters
     chars = len(string)
     # Split the string into words
@@ -98,8 +100,10 @@ def word_length(string):
 
 
 def sentence_counter(text):
+
     """This function returns the number of sentences in an item.
      text: text file containing the speech transcripts."""
+
     doc = nlp(text)
     # Initialize a counter variable
     counter = 0
@@ -112,8 +116,10 @@ def sentence_counter(text):
 # Note that this function is applied to the raw text in order to identify sentence boundaries
 
 def avg_sent_length(text):
+
     """ This function returns the average sentence length in words.
      text: text file containing the speech transcripts."""
+
     doc = nlp(text)
     # Initialize a counter variable
     sent_number = 0
@@ -128,8 +134,10 @@ def avg_sent_length(text):
 
 
 def nouns(text, model=nlp):
+
     """ This function returns the number of nouns in an item.
      text: text file containing the speech transcripts."""
+
     # Create doc object
     doc = model(text)
     # Generate list of POS tags
@@ -139,8 +147,10 @@ def nouns(text, model=nlp):
 
 
 def verbs(text, model=nlp):
+
     """ This function returns the number of verbs in an item.
      text: text file containing the speech transcripts."""
+
     # Create doc object
     doc = model(text)
     # Generate list of POS tags
@@ -150,8 +160,10 @@ def verbs(text, model=nlp):
 
 
 def adjectives(text, model=nlp):
+
     """This function returns the number of adjectives in an item.
      text: text file containing the speech transcripts."""
+
     # Create doc object
     doc = model(text)
     # Generate list of POS tags
@@ -161,8 +173,10 @@ def adjectives(text, model=nlp):
 
 
 def adverbs(text, model=nlp):
+
     """ This function returns the number of adverbs in an item.
      text: text file containing the speech transcripts."""
+
     # Create doc object
     doc = model(text)
     # Generate list of POS tags
@@ -173,6 +187,7 @@ def adverbs(text, model=nlp):
 
 
 def numeral(text, model=nlp):
+
     """ This function returns the number of numerals (e.g., billion) in an item"""
 
     # Create doc object
@@ -184,6 +199,7 @@ def numeral(text, model=nlp):
 
 
 def aux(text, model=nlp):
+
     """ This function returns the number of auxiliary in an item"""
     # Create doc object
     doc = model(text)
@@ -194,8 +210,10 @@ def aux(text, model=nlp):
 
 
 def get_nps(text):
+
     """This is a function that outputs the number of noun phrases in an item.
      text: text file containing the speech transcripts."""
+
     doc = nlp(text)
     NP_count = 0
     for np in doc.noun_chunks:
@@ -205,8 +223,10 @@ def get_nps(text):
 
 
 def get_pps(text):
+
     """ This is a function that outputs the number of prepositional phrases in an item.
      text: text file containing the speech transcripts."""
+
     doc = nlp(text)
     pps = 0
     for token in doc:
@@ -224,8 +244,10 @@ pattern = [{'POS': 'VERB', 'OP': '?'},
 
 
 def get_vps(text):
+
     """ This function returns the number of verb phrases in an item.
       text: text file containing the speech transcripts."""
+
     doc = nlp(text)
     vps = 0
     # instantiate a Matcher instance
@@ -268,8 +290,10 @@ contrastive_connectives = ['alternatively', 'anyway', 'but', 'by contrast', 'dif
 
 
 def temporal_connectives_count(text):
+
     """ This function counts the number of temporal connectives in a text.
       text: text file containing the speech transcripts."""
+
     count = 0
     for string in temporal_connectives:
         for match in re.finditer(string, text):
@@ -278,8 +302,10 @@ def temporal_connectives_count(text):
 
 
 def causal_connectives_count(text):
+
     """ This function counts the number of causal connectives in a text.
       text: text file containing the speech transcripts."""
+
     count = 0
     for string in causal_connectives:
         for match in re.finditer(string, text):
@@ -288,8 +314,10 @@ def causal_connectives_count(text):
 
 
 def exemplifying_connectives_count(text):
+
     """ This function counts the number of exemplifying connectives in a text.
       text: text file containing the speech transcripts."""
+
     count = 0
     for string in exemplifying_connectives:
         for match in re.finditer(string, text):
@@ -298,8 +326,10 @@ def exemplifying_connectives_count(text):
 
 
 def additive_connectives_count(text):
+
     """ This function counts the number of additive connectives in a text.
       text: text file containing the speech transcripts."""
+
     count = 0
     for string in additive_connectives:
         for match in re.finditer(string, text):
@@ -308,8 +338,10 @@ def additive_connectives_count(text):
 
 
 def contrastive_connectives_count(text):
+
     """ This function counts the number of contrastive connectives in a text.
       text: text file containing the speech transcripts."""
+
     cont_con = 0
     for string in contrastive_connectives:
         if string in text:
