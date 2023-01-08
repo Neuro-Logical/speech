@@ -23,13 +23,13 @@ czech, czech_cols = czech_prep(os.path.join(BASE_DIR, "Czech/final_data_experime
 italian, italian_cols = italian_prep(os.path.join(BASE_DIR, "ITALIAN_PD/RP_data_frame.csv"))
 
 one_inter = IntersecOfSets(german_cols, nls_cols, italian_cols)
-lista_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_cols)
+list_to_keep = IntersecOfSets(one_inter, colombian_cols, czech_cols)
 
-nls = nls[nls.columns.intersection(lista_to_keep)]
-czech = czech[czech.columns.intersection(lista_to_keep)]
-colombian = colombian[colombian.columns.intersection(lista_to_keep)]
-german = german[german.columns.intersection(lista_to_keep)]
-italian = italian[italian.columns.intersection(lista_to_keep)]
+nls = nls[nls.columns.intersection(list_to_keep)]
+czech = czech[czech.columns.intersection(list_to_keep)]
+colombian = colombian[colombian.columns.intersection(list_to_keep)]
+german = german[german.columns.intersection(list_to_keep)]
+italian = italian[italian.columns.intersection(list_to_keep)]
 
 colombian = colombian.reindex(sorted(colombian.columns), axis=1)
 german = german.reindex(sorted(german.columns), axis=1)

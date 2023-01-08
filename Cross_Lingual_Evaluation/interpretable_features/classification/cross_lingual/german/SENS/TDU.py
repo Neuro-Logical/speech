@@ -24,12 +24,12 @@ german, german_cols = german_prep(os.path.join(BASE_DIR, "/GERMAN/final_data_fra
 italian, italian_cols = italian_prep(os.path.join(BASE_DIR, "/ITALIAN_PD/tot_experiments_ling_fin.csv"))
 
 one_inter = IntersecOftwo(german_cols, italian_cols)
-lista_to_keep = IntersecOfSets(one_inter, colombian_cols,spain_cols)
+list_to_keep = IntersecOfSets(one_inter, colombian_cols,spain_cols)
 
-colombian = colombian[colombian.columns.intersection(lista_to_keep)]
-german = german[german.columns.intersection(lista_to_keep)]
-italian = italian[italian.columns.intersection(lista_to_keep)]
-spain = spain[spain.columns.intersection(lista_to_keep)]
+colombian = colombian[colombian.columns.intersection(list_to_keep)]
+german = german[german.columns.intersection(list_to_keep)]
+italian = italian[italian.columns.intersection(list_to_keep)]
+spain = spain[spain.columns.intersection(list_to_keep)]
 
 colombian = colombian.reindex(sorted(colombian.columns), axis=1)
 german = german.reindex(sorted(german.columns), axis=1)
