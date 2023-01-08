@@ -6,7 +6,7 @@ Even though motor speech problems represent an early sign of Parkinson's Disease
 
 ## Experimental Pipeline 
 
-The experimental pipeline followed in our papar goes as follow:
+The experimental pipeline followed in our papar goes as follows:
 
 1) Data pre-processing 
 
