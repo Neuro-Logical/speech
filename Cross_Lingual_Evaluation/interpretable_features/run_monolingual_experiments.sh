@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
+# MONO-LINGUAL EXPERIMENTS
 
 # change to the full path of where the interpretable_features folder is.
 # Input and output paths are specified at the beginning of each script and should be be modified accordingly.
 
 cd '/export/afavaro/git_code_version/speech/Cross_Lingual_Evaluation/interpretable_features/'
 
-#  Mono-Lingual experiments
 # Colombian Spanish
 
 python classification/mono_lingual/colombian/AUROC/RP.py
@@ -40,7 +40,6 @@ python classification/mono_lingual/english/AUROC/SS.py
 python classification/mono_lingual/english/Models/SS.py
 python classification/mono_lingual/english/SENS/SS.py
 
-
 # German
 
 python classification/mono_lingual/german/AUROC/RP.py
@@ -54,7 +53,6 @@ python classification/mono_lingual/german/SENS/SS.py
 python classification/mono_lingual/german/AUROC/TDU.py
 python classification/mono_lingual/german/Models/TDU.py
 python classification/mono_lingual/german/SENS/TDU.py
-
 
 # Italian
 
