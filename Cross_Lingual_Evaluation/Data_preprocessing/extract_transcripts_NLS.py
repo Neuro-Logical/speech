@@ -1,3 +1,4 @@
+
 # base input directory containing recordings to transcribe.
 base = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k'
 
