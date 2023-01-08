@@ -10,7 +10,7 @@ import torch
 
 def informational_verb(text):
 
-      """ Compute the informativeness of the narratives by counting how many (if any) salient events (verbs) are mentioned. """
+ """ Compute the informativeness of the narratives by counting how many (if any) salient events (verbs) are mentioned. """
 
     cont_con = 0
 
@@ -55,6 +55,7 @@ def extract_word_timestamp(path_recordings, output_folder):
      Original code can be found at: https://github.com/jianfch/stable-ts.
 
     """
+
     paths = [os.path.join(path_recordings, base) for base in os.listdir(path_recordings)]
 
     #remove empty recordings

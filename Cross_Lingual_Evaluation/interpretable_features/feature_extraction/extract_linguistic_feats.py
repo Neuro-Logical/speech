@@ -23,7 +23,8 @@ stopwords = list(stopwords.words('english'))
 def preprocess(text):
 
     """This function performs tokenization, lemmatization, removal of non-alphabetic characters
-    and stopword removal"""
+    and stopword removal.
+     text: text file containing speech transcripts."""
     # Create Doc object
     doc = nlp(text, disable=['ner'])
     # Generate lemmas
@@ -36,7 +37,8 @@ def preprocess(text):
 
 def count_words(string):
 
-    """This function returns the number of words in a string. """
+    """This function returns the number of words in a string.
+     string: text file containing speech transcripts."""
 
     # Split the string into words
     words = string.split()
@@ -46,7 +48,9 @@ def count_words(string):
 
 def word_length(string):
 
-    """This function returns the average word length in characters for the words in an item. """
+    """This function returns the average word length in characters for the words in an item.
+    string: text file containing speech transcripts."""
+
     # Get the length of the full text in characters
     chars = len(string)
     # Split the string into words
@@ -60,7 +64,8 @@ def word_length(string):
 
 def sentence_counter(text):
 
-    """ This function returns the number of sentences in an item. """
+    """ This function returns the number of sentences in an item.
+    text: text file containing speech transcripts."""
 
     doc = nlp(text)
     # Initialize a counter variable
@@ -75,7 +80,8 @@ def sentence_counter(text):
 
 def avg_sent_length(text):
 
-    """ This function returns the average sentence length in words. """
+    """ This function returns the average sentence length in words.
+    text: text file containing speech transcripts."""
 
     doc = nlp(text)
     # Initialize a counter variable
@@ -92,7 +98,8 @@ def avg_sent_length(text):
 
 def nouns(text, model=nlp):
 
-    """ This function returns the number of nouns in an item. """
+    """ This function returns the number of nouns in an item.
+    text: text file containing speech transcripts."""
 
     # Create doc object
     doc = model(text)
@@ -104,7 +111,8 @@ def nouns(text, model=nlp):
 
 def verbs(text, model=nlp):
 
-    """ This function returns the number of verbs in an item. """
+    """ This function returns the number of verbs in an item.
+    text: text file containing speech transcripts."""
 
     # Create doc object
     doc = model(text)
@@ -116,7 +124,8 @@ def verbs(text, model=nlp):
 
 def adjectives(text, model=nlp):
 
-    """ This function returns the number of adjectives in an item. """
+    """ This function returns the number of adjectives in an item.
+    text: text file containing speech transcripts."""
 
     # Create doc object
     doc = model(text)
@@ -128,7 +137,8 @@ def adjectives(text, model=nlp):
 
 def adverbs(text, model=nlp):
 
-    """This function returns the number of adverbs in an item"""
+    """This function returns the number of adverbs in an item.
+    text: text file containing speech transcripts."""
     # Create doc object
     doc = model(text)
     # Generate list of POS tags
@@ -140,7 +150,8 @@ def adverbs(text, model=nlp):
 
 def numeral(text, model=nlp):
 
-    """This function returns the number of numerals (e.g., billion) in an item"""
+    """This function returns the number of numerals (e.g., billion) in an item.
+    text: text file containing speech transcripts."""
 
     # Create doc object
     doc = model(text)
@@ -152,7 +163,8 @@ def numeral(text, model=nlp):
 
 def aux(text, model=nlp):
 
-    """This function returns the number of auxiliary in an item. """
+    """This function returns the number of auxiliary in an item.
+    text: text file containing speech transcripts."""
 
     # Create doc object
     doc = model(text)
@@ -164,7 +176,8 @@ def aux(text, model=nlp):
 
 def get_nps(text):
 
-    """ This is a function that outputs the number of noun phrases in an item. """
+    """ This is a function that outputs the number of noun phrases in an item.
+    text: text file containing speech transcripts."""
 
     doc = nlp(text)
     NP_count = 0
@@ -176,7 +189,8 @@ def get_nps(text):
 
 def get_pps(text):
 
-    """ This is a function that outputs the number of prepositional phrases in an item. """
+    """ This is a function that outputs the number of prepositional phrases in an item.
+    text: text file containing speech transcripts."""
 
     doc = nlp(text)
     pps = 0
@@ -196,7 +210,8 @@ pattern = [{'POS': 'VERB', 'OP': '?'},
 
 def get_vps(text):
 
-    """ This function returns the number of verb phrases in an item. """
+    """ This function returns the number of verb phrases in an item.
+    text: text file containing speech transcripts."""
 
     doc = nlp(text)
     vps = 0

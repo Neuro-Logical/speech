@@ -9,7 +9,6 @@ import pandas as pd
 
 device = "cpu"
 model = whisperx.load_model("medium", device)
-
 audios = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
 #indx = audios.index("/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/NLS_105_ses1_Joke.wav")
 
