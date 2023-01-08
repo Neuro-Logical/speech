@@ -56,7 +56,6 @@ means = np.mean(np.stack([mean_spain, mean_german, mean_nls, mean_czech], axis=1
 stds = np.mean(np.stack([std_spain, std_german, std_nls, std_czech], axis=1), axis=1)
 
 normalized_train_X_colombian, y_train_colombian = normalize_test(colombian, means, stds)
-
 training_data, training_labels = train_split(normalized_train_X_spain, y_train_spain, normalized_train_X_czech,
                                              y_train_czech,
                                              normalized_train_X_german, y_train_german, normalized_train_X_nls,
@@ -89,7 +88,6 @@ with open(os.path.join(SENS_OUT_PATH, f"SVM_sens.txt"), 'w') as f:
 
 #model = KNeighborsClassifier()
 model = KNeighborsClassifier(metric='euclidean', n_neighbors=11, weights='distance')
-#model = KNeighborsClassifier(metric='manhattan', n_neighbors=11, weights='uniform')
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
 cm = (confusion_matrix(test_labels, grid_predictions))
@@ -104,7 +102,6 @@ with open(os.path.join(SENS_OUT_PATH, f"KNN_sens.txt"), 'w') as f:
 
 #model = RandomForestClassifier()
 model = RandomForestClassifier(max_features='log2', n_estimators=1000)
-#model = RandomForestClassifier(max_features= 'sqrt', n_estimators= 1000)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
 cm = (confusion_matrix(test_labels, grid_predictions))
@@ -117,9 +114,8 @@ with open(os.path.join(SPEC_OUT_PATH, f"RF_spec.txt"), 'w') as f:
 with open(os.path.join(SENS_OUT_PATH, f"RF_sens.txt"), 'w') as f:
     f.writelines(str(sensitivity))
 
-#model = GradientBoostingClassifier()
+#GradientBoostingClassifier()
 model = GradientBoostingClassifier(learning_rate=0.001, max_depth=9, n_estimators=1000, subsample=0.5)
-#model = GradientBoostingClassifier(learning_rate=0.001, max_depth=9, n_estimators=1000, subsample=0.5)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
 cm = (confusion_matrix(test_labels, grid_predictions))

@@ -69,7 +69,7 @@ X_train = model.transform(training_data)
 cols = model.get_support(indices=True)
 X_test = test_data[:, cols]
 
-
+# SVM
 model = SVC(C=1.0, gamma= 0.01, kernel= 'rbf')
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
@@ -83,6 +83,7 @@ with open(os.path.join(SPEC_OUT_PATH, f"SVM_spec.txt"), 'w') as f:
 with open(os.path.join(SENS_OUT_PATH, f"SVM_sens.txt"), 'w') as f:
     f.writelines(str(sensitivity))
 
+# KNeighborsClassifier
 model = KNeighborsClassifier(metric='euclidean', n_neighbors=11, weights='distance')
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
@@ -96,7 +97,7 @@ with open(os.path.join(SPEC_OUT_PATH, f"KNN_spec.txt"), 'w') as f:
 with open(os.path.join(SENS_OUT_PATH, f"KNN_sens.txt"), 'w') as f:
     f.writelines(str(sensitivity))
 
-# define dataset
+# RandomForestClassifier
 model = RandomForestClassifier(max_features= 'sqrt', n_estimators= 1000)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)

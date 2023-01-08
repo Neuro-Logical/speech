@@ -67,7 +67,7 @@ X_train = model.transform(training_data)
 cols = model.get_support(indices=True)
 X_test = test_data[:, cols]
 
-#model = SVC(probability=True)
+# SVM
 model = SVC(C=10, gamma=0.01, kernel='rbf', probability=True)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict_proba(X_test)
@@ -77,7 +77,7 @@ print(f"auroc is {lr_auc}")
 with open(os.path.join(OUT_PATH, f"SVM_AUROC.txt"), 'w') as f:
     f.writelines(str(lr_auc))
 
-# KNeighborsClassifier
+# KNN
 model = KNeighborsClassifier(metric='euclidean', n_neighbors= 11, weights= 'distance')
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict_proba(X_test)

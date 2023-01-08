@@ -77,7 +77,7 @@ print(f"auroc is {lr_auc}")
 with open(os.path.join(OUT_PATH, f"SVM_AUROC.txt"), 'w') as f:
     f.writelines(str(lr_auc))
 
-#model = KNeighborsClassifier()
+# KNeighborsClassifier
 model = KNeighborsClassifier(metric='euclidean', n_neighbors=11, weights='distance')
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict_proba(X_test)
@@ -86,7 +86,7 @@ lr_auc = roc_auc_score(test_labels, grid_predictions)
 with open(os.path.join(OUT_PATH, f"KNN_AUROC.txt"), 'w') as f:
     f.writelines(str(lr_auc))
 
-#model = RandomForestClassifier()
+# RandomForestClassifier
 model = RandomForestClassifier(max_features= 'sqrt', n_estimators= 1000)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict_proba(X_test)

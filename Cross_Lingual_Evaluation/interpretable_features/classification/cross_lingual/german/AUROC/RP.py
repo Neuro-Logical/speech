@@ -65,7 +65,7 @@ X_train = model.transform(training_data)
 cols = model.get_support(indices=True)
 X_test = test_data[:, cols]
 
-#model = SVC(probability=True)
+# SVM
 model = SVC(C=1.0, gamma= 0.01, kernel= 'rbf', probability=True)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict_proba(X_test)

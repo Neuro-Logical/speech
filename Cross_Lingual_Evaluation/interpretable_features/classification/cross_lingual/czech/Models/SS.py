@@ -69,7 +69,7 @@ X_train = model.transform(training_data)
 cols = model.get_support(indices=True)
 X_test = test_data[:, cols]
 
-#model = SVC()
+# SVC
 model = SVC(C=10, gamma=0.01, kernel='rbf')
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
@@ -96,7 +96,7 @@ with open(os.path.join(KNN_OUT_PATH, f"all_f1.txt"), 'w') as f:
 with open(os.path.join(KNN_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
-#model = RandomForestClassifier()
+# RandomForestClassifier()
 model = RandomForestClassifier(max_features='log2', n_estimators=1000)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
@@ -122,7 +122,7 @@ with open(os.path.join(XGBOOST_OUT_PATH, f"all_f1.txt"), 'w') as f:
 with open(os.path.join(XGBOOST_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
-#model = BaggingClassifier()
+# BaggingClassifier
 model = BaggingClassifier(n_estimators=1000, max_samples=0.5)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)

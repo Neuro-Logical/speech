@@ -70,7 +70,7 @@ X_train = model.transform(training_data)
 cols = model.get_support(indices=True)
 X_test = test_data[:, cols]
 
-#model = SVC()
+# SVC
 model = SVC(C=10, gamma=0.01, kernel='rbf')
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)

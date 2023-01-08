@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-# change to the full path of where the Non_Interpretable_features folder is
+# change to the full path of where the interpretable_features folder is.
+# Input and output paths are specified at the beginning of each script and should be be modified accordingly.
+
 cd '/export/afavaro/git_code_version/speech/Cross_Lingual_Evaluation/interpretable_features/'
 
 # To change the input/output directory used in each script, please change the input/output path located at the beginning of each Python script.

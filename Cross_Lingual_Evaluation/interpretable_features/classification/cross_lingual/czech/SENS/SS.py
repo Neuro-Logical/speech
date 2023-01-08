@@ -67,7 +67,8 @@ model = SelectFromModel(clf, prefit=True, max_features=40)
 X_train = model.transform(training_data)
 cols = model.get_support(indices=True)
 X_test = test_data[:, cols]
-#model = SVC()
+
+# SVC()
 model = SVC(C=10, gamma=0.01, kernel='rbf')
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
@@ -110,7 +111,7 @@ with open(os.path.join(SPEC_OUT_PATH, f"RF_spec.txt"), 'w') as f:
 with open(os.path.join(SENS_OUT_PATH, f"RF_sens.txt"), 'w') as f:
     f.writelines(str(sensitivity))
 
-#model = GradientBoostingClassifier()
+# GradientBoostingClassifier()
 model = GradientBoostingClassifier(learning_rate=0.001, max_depth=9, n_estimators=1000, subsample=0.5)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
@@ -124,7 +125,7 @@ with open(os.path.join(SPEC_OUT_PATH, f"XG_spec.txt"), 'w') as f:
 with open(os.path.join(SENS_OUT_PATH, f"XG_sens.txt"), 'w') as f:
     f.writelines(str(sensitivity))
 
-#model = BaggingClassifier()
+# BaggingClassifier()
 model = BaggingClassifier(n_estimators=1000, max_samples=0.5)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)

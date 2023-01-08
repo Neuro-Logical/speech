@@ -52,14 +52,11 @@ normalized_train_X_czech, y_train_czech, mean_czech, std_czech = normalize(czech
 
 means = np.mean(np.stack([mean_italian, mean_german, mean_nls, mean_czech], axis=1), axis=1)
 stds = np.mean(np.stack([std_italian, std_german, std_nls, std_czech], axis=1), axis=1)
-
 normalized_train_X_colombian, y_train_colombian = normalize_test(colombian, means, stds)
-
 training_data, training_labels = train_split(normalized_train_X_italian, y_train_italian, normalized_train_X_czech,
                                              y_train_czech,
                                              normalized_train_X_german, y_train_german, normalized_train_X_nls,
                                              y_train_nls)
-
 test_data, test_labels = test_split(normalized_train_X_colombian, y_train_colombian)
 
 clf = ExtraTreesClassifier(n_estimators=30)

@@ -80,7 +80,7 @@ lr_auc = roc_auc_score(test_labels, grid_predictions)
 with open(os.path.join(OUT_PATH, f"KNN_AUROC.txt"), 'w') as f:
     f.writelines(str(lr_auc))
 
-#model = RandomForestClassifier()
+#RandomForestClassifier()
 model = RandomForestClassifier(max_features='log2', n_estimators=1000)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict_proba(X_test)
@@ -90,7 +90,6 @@ with open(os.path.join(OUT_PATH, f"RF_AUROC.txt"), 'w') as f:
     f.writelines(str(lr_auc))
 
 # XGBOOST
-#model = GradientBoostingClassifier()
 model = GradientBoostingClassifier(learning_rate=0.01, max_depth=3, n_estimators=1000, subsample=0.5)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict_proba(X_test)
@@ -100,7 +99,7 @@ print(f"auroc is {lr_auc}")
 with open(os.path.join(OUT_PATH, f"XGBoost_AUROC.txt"), 'w') as f:
     f.writelines(str(lr_auc))
 
-#model = BaggingClassifier()
+#BaggingClassifier
 model = BaggingClassifier(max_samples=0.5, n_estimators=1000)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict_proba(X_test)

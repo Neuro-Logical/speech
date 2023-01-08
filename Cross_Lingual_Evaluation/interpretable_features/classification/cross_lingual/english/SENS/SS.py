@@ -67,6 +67,7 @@ model = SelectFromModel(clf, prefit=True, max_features=40)
 X_train = model.transform(training_data)
 cols = model.get_support(indices=True)
 X_test = test_data[:, cols]
+
 #model = SVC()
 model = SVC(C=10, gamma=0.01, kernel='rbf')
 grid_result = model.fit(X_train, training_labels)

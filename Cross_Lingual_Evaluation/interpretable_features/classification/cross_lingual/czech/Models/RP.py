@@ -71,6 +71,7 @@ X_train = model.transform(training_data)
 cols = model.get_support(indices=True)
 X_test = test_data[:, cols]
 
+# SVM
 model = SVC(C=1.0, gamma= 0.01, kernel= 'rbf')
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
@@ -84,6 +85,7 @@ with open(os.path.join(SVM_OUT_PATH, f"all_f1.txt"), 'w') as f:
 with open(os.path.join(SVM_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
+# KNeighborsClassifier
 model = KNeighborsClassifier(metric='euclidean', n_neighbors=11, weights='distance')
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
@@ -96,7 +98,7 @@ with open(os.path.join(KNN_OUT_PATH, f"all_f1.txt"), 'w') as f:
 with open(os.path.join(KNN_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
-#model = RandomForestClassifier()
+# RandomForestClassifier
 model = RandomForestClassifier(max_features= 'sqrt', n_estimators= 1000)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
@@ -109,7 +111,7 @@ with open(os.path.join(RF_OUT_PATH, f"all_f1.txt"), 'w') as f:
 with open(os.path.join(RF_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
-#model = GradientBoostingClassifier()
+# GradientBoostingClassifier()
 model = GradientBoostingClassifier(learning_rate=0.01, max_depth=3, n_estimators=1000, subsample=0.7)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)
@@ -122,6 +124,7 @@ with open(os.path.join(XGBOOST_OUT_PATH, f"all_f1.txt"), 'w') as f:
 with open(os.path.join(XGBOOST_OUT_PATH, f"all_acc.txt"), 'w') as f:
     f.writelines(str(acc))
 
+# BaggingClassifier
 model = BaggingClassifier(n_estimators=1000, max_samples=0.5)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict(X_test)

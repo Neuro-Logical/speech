@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
-# change to the full path of where the interpretable_features folder is
+# change to the full path of where the interpretable_features folder is.
+# Input and output paths are specified at the beginning of each script and should be be modified accordingly.
+
 cd '/export/afavaro/git_code_version/speech/Cross_Lingual_Evaluation/interpretable_features/'
 
 #  Mono-Lingual experiments
 
 # Colombian
+
 
 python grid_search/mono_lingual/colombian/RP.py
 python grid_search/mono_lingual/colombian/SS.py

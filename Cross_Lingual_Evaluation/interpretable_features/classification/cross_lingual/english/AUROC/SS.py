@@ -71,7 +71,6 @@ X_test = test_data[:, cols]
 
 # SVC
 model = SVC(C=10, gamma=0.01, kernel='rbf', probability=True)
-#model = SVC(probability=True)
 grid_result = model.fit(X_train, training_labels)
 grid_predictions = grid_result.predict_proba(X_test)
 grid_predictions = grid_predictions[:, 1]
