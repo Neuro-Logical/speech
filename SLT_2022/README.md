@@ -12,7 +12,7 @@ task. Only the training subset containing recordings and transcriptions from 87 
 was adopted. This repository is a public open-source implementation that supports the extraction of cognitive, linguistic and acoustic features from speech recordings. This project has the aim of designing, extracting and analyzing speech and language production of subjects with different neurological disorders. 
 In this repository we report the code that supports both the **feature extraction**, and the **statistical analysis** that we perform to evaluate the significance of the features between experimental groups.
 
-## 1) Data pre-processing:
+## 1) Data pre-processing
 
 * Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz, run the script: 
 ```Data_Preprocessing/convert_to_16k.sh ```.
