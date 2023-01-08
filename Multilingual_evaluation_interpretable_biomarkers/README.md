@@ -16,7 +16,7 @@ The experimental pipeline followed in our papar goes as follow:
 2) Feature extraction:
 
   - To extract the ***cognitive*** features from speech transcripts run the script named ```extract_cognitive_features.py```
-  - To extract the ***cognitive*** features from speech transcripts run the script named ```extract_linguistic_features.py```
+  - To extract the ***linguistic*** features from speech transcripts run the script named ```extract_linguistic_features.py```
   - To extract the ***prosodic*** features from speech transcripts run the script named  ```extract_prosodic_features```
 
 3) Statistical and correlation analysis
