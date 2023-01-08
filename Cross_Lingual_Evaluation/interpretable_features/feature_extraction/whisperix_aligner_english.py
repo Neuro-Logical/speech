@@ -7,7 +7,6 @@ import whisperx
 import os
 import pandas as pd
 
-
 device = "cpu"
 model = whisperx.load_model("medium", device)
 
