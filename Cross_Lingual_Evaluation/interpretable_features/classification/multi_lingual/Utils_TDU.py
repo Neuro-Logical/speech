@@ -5,6 +5,7 @@ random.seed(10)
 
 
 def normalize(train_split, test_split):
+
     train_set = train_split
     test_set = test_split
 
@@ -44,6 +45,7 @@ def preprocess_data_frame(data_frame):
 
 
 def get_n_folds(arrayOfSpeaker):
+
     data = list(arrayOfSpeaker)  # list(range(len(arrayOfSpeaker)))
     num_of_folds = 10
     n_folds = []
@@ -53,6 +55,7 @@ def get_n_folds(arrayOfSpeaker):
 
 
 def create_n_folds(data_frame):
+
     data = []
     folds = []
 
@@ -82,33 +85,34 @@ def create_n_folds(data_frame):
 
 
 def IntersecOfSets(arr1, arr2, arr3):
+
     # Converting the arrays into sets
     s1 = set(arr1)
     s2 = set(arr2)
     s3 = set(arr3)
-
     set1 = s1.intersection(s2)  # [80, 20, 100]
-
     result_set = set1.intersection(s3)
-
     # Converts resulting set to list
     final_list = list(result_set)
+
     return final_list
 
 
 def IntersecOftwo(arr1, arr2):
+
     # Converting the arrays into sets
     s1 = set(arr1)
     s2 = set(arr2)
     set1 = s1.intersection(s2)
     final_list = list(set1)
+
     return final_list
 
 
 def train_split(colombian, colombian_lab, spain, spain_lab, german, german_lab,
                 english, english_lab):
-    train_mat_data_point = np.concatenate([colombian, spain, german, english], axis=0)
 
+    train_mat_data_point = np.concatenate([colombian, spain, german, english], axis=0)
     train_data_label = np.concatenate([colombian_lab, spain_lab, german_lab, english_lab],
                                       axis=0)
 
@@ -116,8 +120,8 @@ def train_split(colombian, colombian_lab, spain, spain_lab, german, german_lab,
 
 
 def test_split(czech, czech_lab):
-    train_mat_data_point = np.concatenate([czech], axis=0)
 
+    train_mat_data_point = np.concatenate([czech], axis=0)
     train_data_label = np.concatenate([czech_lab], axis=0)
 
     return train_mat_data_point, train_data_label
