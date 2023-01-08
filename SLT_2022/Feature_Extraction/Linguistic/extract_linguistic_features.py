@@ -53,7 +53,6 @@ def load_files(data):
 nlp = spacy.load('en_core_web_sm')
 
 # Create a function to preprocess the text
-
 # List of stopwords for english
 stopwords = list(stopwords.words('english'))
 
