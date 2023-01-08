@@ -1,12 +1,14 @@
+# base input directory containing recordings to transcribe.
+base = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k'
+
+# output directory where to save speech transcripts.
+output_folder = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Transcripts/'
+
+
 import os
 import whisper
 
-
-base = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k'
-output_folder = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Transcripts/'
-
 paths = [os.path.join(base, elem) for elem in os.listdir(base)]
-
 # keep only non-empty recordings (> 56 Bytes)
 files = []
 for m in paths:
