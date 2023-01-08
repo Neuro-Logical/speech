@@ -66,8 +66,8 @@ def word_length(string):
 
 def sentence_counter(text):
 
-    """This function returns the number of sentences in an item.
-    text: text file containing the speech transcripts."""
+    """ This function returns the number of sentences in an item.
+    text: text file containing the speech transcripts. """
 
     doc = nlp(text)
     # Initialize a counter variable
@@ -99,7 +99,7 @@ def avg_sent_length(text):
 def nouns(text, model=nlp):
 
     """ This function returns the number of nouns in an item.
-    text: text file containing the speech transcripts."""
+    text: text file containing the speech transcripts. """
     # Create doc object
     doc = model(text)
     # Generate list of POS tags
@@ -110,8 +110,9 @@ def nouns(text, model=nlp):
 
 def verbs(text, model=nlp):
 
-    """This function returns the number of verbs in an item.
-    text: text file containing the speech transcripts."""
+    """ This function returns the number of verbs in an item.
+    text: text file containing the speech transcripts. """
+
 
     # Create doc object
     doc = model(text)
@@ -165,6 +166,7 @@ def aux(text, model=nlp):
 
     """ This function returns the number of auxiliary in an item.
     text: text file containing the speech transcripts. """
+
     # Create doc object
     doc = model(text)
     # Generate list of POS tags
@@ -177,6 +179,7 @@ def get_nps(text):
 
     """ This is a function that outputs the number of noun phrases in an item.
     text: text file containing the speech transcripts."""
+
     doc = nlp(text)
     NP_count = 0
     for np in doc.noun_chunks:
@@ -209,6 +212,7 @@ def get_vps(text):
 
     """ This function returns the number of verb phrases in an item.
     text: text file containing the speech transcripts. """
+
     doc = nlp(text)
     vps = 0
     # instantiate a Matcher instance

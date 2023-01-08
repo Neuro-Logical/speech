@@ -6,22 +6,24 @@ Even though motor speech problems represent an early sign of Parkinson's Disease
 
 ## Experimental pipeline 
 
-The experimental pipeline followed in our papar goes as follows:
+The experimental pipeline followed in our paper goes as follows:
 
-1) Data pre-processing 
-   - To resample the speech recordings to 16 kHz run the script ```convert_to_16k.sh```
+1) Data pre-processing
 
-   - To extract speech transcripts from speech recordings using Whisper run ```get_speech_transcripts.py```
+   - To resample the speech recordings to 16 kHz, run the script ```data_preprocessing/convert_to_16k.sh```
 
-2) Feature extraction:
+   - To extract speech transcripts from speech recordings using Whisper (https://openai.com/blog/whisper), run ```data_preprocessing/get_speech_transcripts.py```
 
-   - To extract the ***cognitive*** features from speech transcripts run the script named ```extract_cognitive_features.py```
+3) Feature extraction:
+
+   - To extract the ***cognitive*** features from the speech transcripts, run the script named ```feature_extraction/extract_cognitive_features.py```
    
-   - To extract the ***linguistic*** features from speech transcripts run the script named ```extract_linguistic_features.py```
+   - To extract the ***linguistic*** features from speech transcripts, run the script named ```feature_extraction/extract_linguistic_features.py```
    
-   - To extract the ***prosodic*** features from speech transcripts run the script named  ```extract_prosodic_features```
+   - To extract the ***prosodic*** features from speech transcripts run the script named  ```feature_extraction/extract_prosodic_features```. In the extraction of the prosodic features two 
+   libraries were used: Disvoice (https://github.com/jcvasquezc/DisVoice/tree/master/disvoice/prosody) and DigiPsych Prosody (https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody)
 
-3) Statistical and correlation analysis
+4) Statistical and correlation analysis
 
    - To perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker use the functions in ```compute_statistics/utils.py```
    

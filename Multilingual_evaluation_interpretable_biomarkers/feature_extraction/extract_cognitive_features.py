@@ -1,8 +1,10 @@
 
 
 def uncertainty(text):
+
     """ Function design to capture the level of certainty of patients of participants when delivering  the description
-    of the image"""
+    of the image.
+    text: string containing speech transcripts."""
 
     cont_con = 0
     if "?" in text:
@@ -28,7 +30,9 @@ def uncertainty(text):
 
 
 def repetitions(text):
-    """ Count the number of repetitions in each recording, after stop word removal """
+
+    """ Count the number of repetitions in each recording, after stop word removal.
+    text: string containing speech transcripts. """
 
     stopwords = list(stopwords.words('english'))
     repetition = 0
@@ -55,8 +59,9 @@ def repetitions(text):
 
 
 def informational_verb(text):
-    """ Compute the informativeness of the narratives by
-    counting how many (if any) salient events (verbs) are mentioned. """
+
+    """ Compute the informativeness of the narratives by counting how many (if any) salient events (verbs) are mentioned.
+    text: string containing speech transcripts."""
 
     cont_con = 0
 
@@ -92,7 +97,8 @@ def informational_verb(text):
 
 def informational_content(text):
 
-    """ Count how many (if any) salient object (nouns) are mentioned in the description"""
+    """ Count how many (if any) salient object (nouns) are mentioned in the description.
+    text: string containing speech transcripts."""
 
     cont_con = 0
 
@@ -137,7 +143,8 @@ def informational_content(text):
 def ratio_info_rep_plus_uncert(df):
 
     """ Compute ratio between informativeness and uncertanty,
-    where uncertainty is represented as repetition + uncertainty"""
+    where uncertainty is represented as repetition + uncertainty.
+    text: string containing speech transcripts."""
 
     summation = df['repetition'] + df["uncertanty"]
     ratio = df['informational'] / summation  # info / rep + uncertanty

@@ -12,12 +12,11 @@ def extract_word_starting_timestamps(BASE, OUT_PATH):
 
     """  Code to extract word starting timestamps using whisperx.
      Whisperx is a whisper-Based Automatic Speech Recognition (ASR) with improved timestamp accuracy using forced alignment.
-     Source code can be found at:  https://github.com/m-bain/whisperX.
+     Code can be found at:  https://github.com/m-bain/whisperX.
 
      BASE: path to the folder where recordings are stored.
      OUTPATH: path to the folder where the file containing word starting time stamps will be stored.
-     This function outputs for each recording a csv file with two columns: the first containing the list of words and the second the corresponding starting point.
-"""
+     This function outputs for each recording a csv file with two columns: the first containing the list of words and the second the corresponding starting point. """
 
     device = "cpu"
     model = whisperx.load_model("medium", device)
