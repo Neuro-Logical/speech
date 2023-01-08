@@ -21,6 +21,7 @@ stopwords = list(stopwords.words('english'))
 ##stopwords = list(stopwords.words('italian'))
 
 def preprocess(text):
+
     """This function performs tokenization, lemmatization, removal of non-alphabetic characters
     and stopword removal"""
     # Create Doc object
