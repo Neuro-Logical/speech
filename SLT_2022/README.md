@@ -1,4 +1,4 @@
-# A Multi-modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders
+# "A Multi-modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders" (2023)
 
 ## Research Aim 
 In this project, we analyzed cognitive, linguistic, and acoustic patterns from the speech of different individuals with varying neurological disorders. 
