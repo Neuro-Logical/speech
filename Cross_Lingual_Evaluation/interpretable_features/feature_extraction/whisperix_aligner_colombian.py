@@ -10,7 +10,6 @@ import pandas as pd
 
 device = "cpu"
 model = whisperx.load_model("medium", device)
-
 audios = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
 #ind = audios.index( "/export/b15/afavaro/Frontiers/GITA_NEW_TASKS/All_Recordings_Correct_Naming/CN_AVPEPUDEAC0030_monologue.wav")
 

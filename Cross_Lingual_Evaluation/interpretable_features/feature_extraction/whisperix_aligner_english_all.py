@@ -9,7 +9,6 @@ import pandas as pd
 
 device = "cpu"
 model = whisperx.load_model("medium", device)
-
 audios = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
 
 files = []

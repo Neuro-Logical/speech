@@ -19,7 +19,6 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-
 np.random.seed(20)
 
 nls, nls_cols = nls_prep(os.path.join(BASE_DIR, "NLS/total_new_training.csv"))
