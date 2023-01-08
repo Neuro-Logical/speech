@@ -82,5 +82,5 @@ def extract_word_timestamp(path_recordings, output_folder):
                 dict = {'token': whole_tokens, 'time_stamp': whole_time_stamps}
                 df = pd.DataFrame(dict)
                 df.to_csv(f"{output_folder}/{base_name}.csv")
-    #
+
 

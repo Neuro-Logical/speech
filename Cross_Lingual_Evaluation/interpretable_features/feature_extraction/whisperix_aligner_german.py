@@ -11,6 +11,7 @@ device = "cpu"
 model = whisperx.load_model("medium", device)
 audios = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
 #ind = audios.index("/export/b15/afavaro/Frontiers/German_PD/All/PD_070_concatenateread_German.wav")
+
 for audio in audios:
     text =[]
     time_stamps = []
