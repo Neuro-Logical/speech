@@ -174,6 +174,7 @@ def german_prep(path_to_dataframe):
 
     return german, german_cols
 
+
 def czech_prep(path_to_dataframe):
 
     czech = pd.read_csv(path_to_dataframe)

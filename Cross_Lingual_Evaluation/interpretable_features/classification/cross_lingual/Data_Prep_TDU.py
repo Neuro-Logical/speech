@@ -1,5 +1,3 @@
-import random
-import numpy as np
 import pandas as pd
 
 
@@ -56,7 +54,6 @@ def italian_prep(path_to_dataframe):
     italian_cols = italian.columns.tolist()
 
     return italian, italian_cols
-
 
 
 def german_prep(path_to_dataframe):
