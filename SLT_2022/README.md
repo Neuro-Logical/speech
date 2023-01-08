@@ -12,7 +12,7 @@ task. Only the training subset containing recordings and transcriptions from 87 
 was adopted. This repository is a public open-source implementation that supports the extraction of cognitive, linguistic and acoustic features from speech recordings. This project has the aim of designing, extracting and analyzing speech and language production of subjects with different neurological disorders. 
 In this repository we report the code that supports both the **feature extraction**, and the **statistical analysis** that we perform to evaluate the significance of the features between experimental groups.
 
-## 1) Data Pre-processing:
+## 1) Data pre-processing:
 
 * Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz, run the script: 
 ```Data_Preprocessing/convert_to_16k.sh ```.
@@ -25,18 +25,21 @@ For each recording a transcription is generated in capital letters without punct
   * Follow https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/prepare.sh to extract features for your dataset. 
   
   * Adapt https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/tdnn_lstm_ctc/asr_datamodule.py to your dataset. 
+  
   * Train a model for your dataset. Please see https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/conformer_ctc/train.py. For this step, we did not train but use a pretrained English model.
+  
   * Get alignments. Please see https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/conformer_ctc/ali.py
 
-## 2) Feature Extraction 
+## 2) Feature extraction 
 
-### Cognitive Features
+### Cognitive features
 
 * To extract the cognitive features based on speech transcripts only, run the script```Feature_Extraction/Cognitive/extract_cognitive_features.py```
 
-### Acoustic Features
+### Acoustic features
 
 * For the extraction of the acoustic features related to pause and speech time we use DigiPsych Prosody Repository (<https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody>).
+
 * For the extraction of the acoustic features related F0 and energy contour we use Disvoice Repository (<https://github.com/jcvasquezc/DisVoice/tree/master/prosody>).
 
 To extract the acoustic features reported in the paper, run the script ```Feature_Extraction/Acoustic/extract_acoustic_features.py```
@@ -45,11 +48,12 @@ To extract the acoustic features reported in the paper, run the script ```Featur
 ### Linguistic Features
 
 * For the extraction of the linguistic features related to Part-of-Speech and Syntactic Complexity we use Spacy Python Library(<https://spacy.io/models>).
+
 * For the extraction of the linguistic features related to Vocabulary Richness we use <https://pypi.org/project/lexicalrichness/>. 
 
 To extract the linguistic features reported in the paper, run the script ```Feature_Extraction/Linguistic/extract_linguistic_features.sh```
 
-## 3) Statistical Analysis 
+## 3) Statistical analysis 
 
 We report the main functions used to perform the statistical analysis to assess the significance of the features between experimental groups. 
 In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker run the script ```Statistical_Analysis/utils.py```
@@ -58,7 +62,7 @@ In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, comp
 
 Due to the licensing of the used data sets, we are not allowed to publish the recordings, the extracted features, nor the labels. However, we provided the source code to perform the feature extraction, and the statistical analysis reported in the paper.
 
-## Research Article
+## Research article
 
 In case you will use this code or take inspiration from it, plese cite out work: 
 ```
