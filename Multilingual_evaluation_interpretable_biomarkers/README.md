@@ -34,7 +34,7 @@ The experimental pipeline followed in our paper goes as follows:
   ```
      feature_extraction/extract_linguistic_features.py
   ```
-   - To extract the linguistic and cognitive features from the transcripts of your speech data set, you can use the notebook in:
+   - To extract the linguistic and cognitive features from the transcripts of your speech data set, you can use the notebook:
 
   ``` 
      feature_extraction/extract_ling_cog_features.ipynb
