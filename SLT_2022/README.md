@@ -21,7 +21,7 @@ Spoken responses were automatically transcribed using a pre-trained conformer CT
   4) Train a model for your dataset. Please see https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/conformer_ctc/train.py. With respect to this step, we did not train any model from scratch but we did use a pretrained English model.
   5) Get alignments. Please see https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/conformer_ctc/ali.py
 
-  To play with Google Colab using your own audios, see the notebook:
+  To extract speech transcripts using your own data set, please see the notebook:
 
   ```
   Data_Preprocessing/generate_transcripts.ipynb 
