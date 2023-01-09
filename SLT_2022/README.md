@@ -63,7 +63,6 @@ Then, to extract the acoustic features reported in the paper, run:
 ``` 
 $ bash Feature_Extraction/Acoustic/extract_acoustic_features.sh
  ```
-
 ## Statistical analysis 📊
 In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker, see the functions in the script:
 ``` 
