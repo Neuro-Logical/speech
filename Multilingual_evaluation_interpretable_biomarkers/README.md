@@ -2,7 +2,9 @@
 
 ## Aim 
 
-Even though motor speech problems represent an early sign of Parkinson's Disease (PD), non-motor symptoms such as cognitive and linguistic impairments are also prevalent. Interpretable biomarkers derived from speech can help clinicians perform PD diagnosis and monitor the disorder's evolution over time. This work focuses on the multilingual evaluation of a composite array of biomarkers that can assist PD evaluation from speech. Most of previous works on automatic PD detection mainly analyzed acoustic biomarkers connected to hypokinetic dysarthria, a motor speech disorder associated with PD, and considered only a few languages and tasks simultaneously. In this work, we explored the acoustic, linguistic, and cognitive information encoded in the speech of several cohorts with PD subjects. Twenty-three biomarkers were analyzed from American English, Italian, Castilian Spanish, Colombian Spanish, German, and Czech by conducting a statistical analysis to evaluate which biomarkers better differentiate PD from healthy participants. The study leverages the concept of language robustness as a criterion in which a biomarker behaves the same, independently of the language. Hence, we propose a set of speech-based biomarkers that can effectively help evaluating PD while being language-independent. Biomarkers defining monopitch, pause time, pause percentage, silence duration, and speech rhythm provided better discriminability between experimental groups across languages. Similar conclusions were obtained for the linguistic biomarkers representing the length of the narratives and the syntactic categories of nouns and auxiliaries. Altogether, besides being significant, these biomarkers satisfied the language robustness requirements. As such, they can be adopted as interpretable biomarkers in the clinical practice across languages.
+This repository is a public open-source implementation that supports the extraction of cognitive, linguistic and acoustic features from speech recordings. This project has the aim of designing, extracting and analyzing speech and language production of subjects with different neurological disorders. 
+In this repository we report the code that supports both the **data pre-processing**, the **feature extraction**, and the **statistical analysis** that we perform to evaluate the significance of the features between experimental groups.
+
 
 ## Experimental pipeline 💥
 
@@ -22,7 +24,7 @@ The experimental pipeline followed in our paper goes as follows:
       python data_preprocessing/get_speech_transcripts.py
    ```
 
-### Feature extraction:
+### Feature extraction 🔨
 
    - To extract the ***cognitive*** features from the speech transcripts, see the script
 
@@ -46,7 +48,7 @@ The experimental pipeline followed in our paper goes as follows:
   ```
    In the extraction of the prosodic features two libraries were used: ***Disvoice*** (https://github.com/jcvasquezc/DisVoice/tree/master/disvoice/prosody) and ***DigiPsych Prosody*** (https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody). 
 
-#### Statistical and correlation analysis
+#### Statistical and correlation analysis 📊
 
    - To perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker use the functions in 
   ```
@@ -62,4 +64,11 @@ The experimental pipeline followed in our paper goes as follows:
 
 Due to the licensing of the used data sets, we are not allowed to publish the recordings, the features, nor the labels. However, we provide the source code to perform the feature extraction, the statistical, and the correlation analysis reported in the paper. 
 
+## Acknowledgements 🙏
 
+In case you will use this code or take inspiration from it, plese cite out work: 
+```
+
+Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R. D., Villalba, J., Dehak, N., Moro-Velazquez, L. A Multi-Modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders. 2022 IEEE Spoken Language Technology Workshop (SLT). IEEE, 2022
+
+```
