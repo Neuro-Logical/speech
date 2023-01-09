@@ -41,7 +41,7 @@ The experimental pipeline followed in our paper goes as follows:
   ``` 
      feature_extraction/extract_ling_cog_features.ipynb
   ```
-   - To extract the ***prosodic*** features from speech transcripts, change the input path (recording folder) and the output path (path to csv file containing the features) and run the script 
+   - To extract the ***prosodic*** features from speech transcripts, change the input path (recording folder) and the output path (path to csv file containing the extracted features) and run the script 
 
   ```
     $ bash feature_extraction/extract_prosodic_features.sh 
