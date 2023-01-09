@@ -1,4 +1,4 @@
-# A Multi-modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders
+# A Multi-modal Array of Interpretable Features
 
 ## What is it 🔎
 
