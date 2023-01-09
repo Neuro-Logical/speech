@@ -24,7 +24,7 @@ In this repository we report the code that supports both the **feature extractio
 
 5) Get alignments. Please see https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/conformer_ctc/ali.py
 
-To play with Google Colab using your own audios to extract speech transcripts, you can use the notebook in:
+To play with Google Colab using your own audios, you can use the notebook in:
 
   ```
   Data_Preprocessing/generate_transcripts.ipynb 
