@@ -58,7 +58,7 @@ To extract the linguistic features reported in the paper, run the script
   ```Feature_Extraction/Linguistic/extract_linguistic_features.sh
   ```
 
-## 3) Statistical analysis 
+## Statistical analysis 
 
 We report the main functions used to perform the statistical analysis to assess the significance of the features between experimental groups. 
 In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker run the script 
