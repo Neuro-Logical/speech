@@ -2,8 +2,11 @@
 
 ## What is it 🔎
 This repository is a public open-source implementation that supports the extraction of cognitive, linguistic and acoustic features from speech recordings. This project has the aim of designing, extracting and analyzing speech and language production of subjects with different neurological disorders. 
-In this repository we report the code that supports both the  **data pre-processing**, **feature extraction**, and the **statistical analysis** that we perform to evaluate the significance of the features between experimental groups.
+In this repository we report the code that supports both the  **data pre-processing**, **feature extraction**, and the **statistical analysis** that we perform to evaluate the significance of the features between experimental groups. This code is associated to the paper entitled (see reference in Acknowledgements):
 
+``` 
+ A Multi-Modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders
+```
 ## Data pre-processing 📈
 * Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz, run the script: 
   
@@ -46,6 +49,11 @@ To extract the linguistic and cognitive features from the transcripts of your sp
   ```
 ### Acoustic features 🔊
 For the extraction of the acoustic features related to pause and speech time we use DigiPsych Prosody Repository (<https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody>). For the extraction of the acoustic features related F0 and energy contour we use Disvoice Repository (<https://github.com/jcvasquezc/DisVoice/tree/master/prosody>).
+, the **feature extraction**, the **statistical analysis**, and the **correlation analysis** that can be performed to evaluate both the effectiveness of the features in differentiating between CN and PD subjects as well as and their correlations with the strength of disorder using clinical scores (e.g., UPDRS). This code is associated to the paper entitled:
+
+``` 
+ A MULTI-MODAL ARRAY OF INTERPRETABLE FEATURES TO EVALUATE LANGUAGE AND SPEECH PATTERNS IN DIFFERENT NEUROLOGICAL DISORDERS
+```
 To extract the acoustic features reported in the paper, run:
 
   ``` 
