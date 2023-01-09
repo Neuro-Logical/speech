@@ -13,7 +13,7 @@ In this repository we report the code that supports both the  **data pre-process
 ```
 # Clone the repo
 $ git clone https://github.com/Neuro-Logical/speech.git
-cd SLT_2022
+$ cd SLT_2022
 
 # Create a virtual environment
 python3 -m virtualenv .venv
