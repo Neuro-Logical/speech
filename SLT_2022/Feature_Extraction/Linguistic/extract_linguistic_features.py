@@ -109,6 +109,7 @@ def sentence_counter(text):
     # Update the counter for each sentence which can be found in the doc.sents object returned by the Spacy model
     for sentence in doc.sents:
         counter = counter + 1
+
     return counter
 
 
@@ -128,6 +129,7 @@ def avg_sent_length(text):
     words = text.split()
     # Compute the average sentence length and round it to the second decimal point
     avg_sent_length = len(words) / sent_number
+
     return round(avg_sent_length, 2)
 
 
@@ -194,6 +196,7 @@ def numeral(text, model=nlp):
     # Generate list of POS tags
     pos = [token.pos_ for token in doc]
     # Return number of adverbs
+
     return pos.count('NUM')
 
 
@@ -207,6 +210,7 @@ def aux(text, model=nlp):
     # Generate list of POS tags
     pos = [token.pos_ for token in doc]
     # Return number of adverbs
+
     return pos.count('AUX')
 
 
@@ -219,6 +223,7 @@ def get_nps(text):
     NP_count = 0
     for np in doc.noun_chunks:
         NP_count = NP_count + 1
+
     return NP_count
     # print(np)
 
@@ -299,6 +304,7 @@ def temporal_connectives_count(text):
     for string in temporal_connectives:
         for match in re.finditer(string, text):
             count += 1
+
     return count
 
 
@@ -311,6 +317,7 @@ def causal_connectives_count(text):
     for string in causal_connectives:
         for match in re.finditer(string, text):
             count += 1
+
     return count
 
 
@@ -323,6 +330,7 @@ def exemplifying_connectives_count(text):
     for string in exemplifying_connectives:
         for match in re.finditer(string, text):
             count += 1
+
     return count
 
 
@@ -335,6 +343,7 @@ def additive_connectives_count(text):
     for string in additive_connectives:
         for match in re.finditer(string, text):
             count += 1
+
     return count
 
 
@@ -347,6 +356,7 @@ def contrastive_connectives_count(text):
     for string in contrastive_connectives:
         if string in text:
             cont_con = cont_con + 1
+
     return cont_con
 
 
