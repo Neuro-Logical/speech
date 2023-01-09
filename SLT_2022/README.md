@@ -31,7 +31,6 @@ In this repository we report the code that supports both the  **data pre-process
   Data_Preprocessing/generate_transcripts.ipynb 
   ```
 
-
 ## Feature extraction 🔨
 
 ### Cognitive features 🧠
