@@ -28,14 +28,15 @@ In this repository we report the code that supports both the  **data pre-process
   ```
 ## Feature extraction 🔨
 ### Cognitive features 🧠
-* To extract the cognitive features based on speech transcripts only, the code can be found in:
+
+To extract the cognitive features based on speech transcripts only, the code can be found in:
 
   ``` 
   Feature_Extraction/Cognitive/extract_cognitive_features.py
   ```
 ### Linguistic Features 🔡
-* For the extraction of the linguistic features related to Part-of-Speech and Syntactic Complexity we use Spacy Python Library(<https://spacy.io/models>).
-* For the extraction of the linguistic features related to Vocabulary Richness we use <https://pypi.org/project/lexicalrichness/>. 
+For the extraction of the linguistic features related to Part-of-Speech and Syntactic Complexity we use Spacy Python Library(<https://spacy.io/models>).
+For the extraction of the linguistic features related to Vocabulary Richness we use <https://pypi.org/project/lexicalrichness/>. 
 
 To extract the linguistic features reported in the paper, run:
 
@@ -49,7 +50,6 @@ To extract the linguistic and cognitive features from the transcripts of your sp
   ```
 ### Acoustic features 🔊
 For the extraction of the acoustic features related to pause and speech time we use DigiPsych Prosody Repository (<https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody>). For the extraction of the acoustic features related F0 and energy contour we use Disvoice Repository (<https://github.com/jcvasquezc/DisVoice/tree/master/prosody>).
-
 To install Disvoice in editable mode run:
 
 ```
@@ -62,16 +62,15 @@ $ git https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody.git
 ```
 Then, to extract the acoustic features reported in the paper, run:
 
-  ``` 
-  $ bash Feature_Extraction/Acoustic/extract_acoustic_features.sh
-  ```
+``` 
+$ bash Feature_Extraction/Acoustic/extract_acoustic_features.sh
+ ```
 
 ## Statistical analysis 📊
 In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker, see the functions in the script:
-
-  ``` 
+``` 
   Statistical_Analysis/utils.py
-  ```
+ ```
 ## Reproducibility
 Due to the licensing of the used data sets, we are not allowed to publish the recordings, the extracted features, nor the labels. However, we provided the source code to perform the feature extraction, and the statistical analysis reported in the paper.
 
