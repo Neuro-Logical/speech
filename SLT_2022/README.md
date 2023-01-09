@@ -92,7 +92,7 @@ Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R
 
 ```
 
-## Further references 
+## Further references 📖
 
 [1] Laureano Moro-Velazquez and Najim Dehak, “A review of the use of prosodic aspects of speech for the automatic detection and assessment of parkinson’s disease,” in Automatic Assessment of Parkinsonian Speech Workshop. Springer, 2019, pp. 42–59.”​
 
