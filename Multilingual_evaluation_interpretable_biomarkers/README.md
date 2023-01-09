@@ -24,12 +24,23 @@ The experimental pipeline followed in our paper goes as follows:
 
 ### Feature extraction:
 
-   - To extract the ***cognitive*** features from the speech transcripts, run the script named ```feature_extraction/extract_cognitive_features.py```
-   
-   - To extract the ***linguistic*** features from speech transcripts, run the script named ```feature_extraction/extract_linguistic_features.py```
-   
-   - To extract the ***prosodic*** features from speech transcripts run the script named  ```feature_extraction/extract_prosodic_features```. In the extraction of the prosodic features two 
-   libraries were used: Disvoice (https://github.com/jcvasquezc/DisVoice/tree/master/disvoice/prosody) and DigiPsych Prosody (https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody)
+   - To extract the ***cognitive*** features from the speech transcripts, see the script
+
+   ``` 
+      feature_extraction/extract_cognitive_features.py
+  ```
+   - To extract the ***linguistic*** features from speech transcripts, see the script
+
+  ```
+     feature_extraction/extract_linguistic_features.py
+  ```
+   - To extract the ***prosodic*** features from speech transcripts, see the script
+
+  ```
+    feature_extraction/extract_prosodic_features
+  ``` 
+
+   In the extraction of the prosodic features two libraries were used: Disvoice (https://github.com/jcvasquezc/DisVoice/tree/master/disvoice/prosody) and DigiPsych Prosody (https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody)
 
 #### Statistical and correlation analysis
 
