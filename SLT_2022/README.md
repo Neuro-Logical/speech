@@ -35,7 +35,7 @@ To extract the cognitive features based on speech transcripts only, see:
   ```
 ### Linguistic Features 🔡
 For the extraction of the linguistic features related to Part-of-Speech and Syntactic Complexity we use Spacy Python Library (<https://spacy.io/models>). We used the pretrained model for English ```en_core_web_sm``` (<https://spacy.io/models/en>). 
-For the extraction of the linguistic features related to Vocabulary Richness we used <https://pypi.org/project/lexicalrichness/>.
+For the extraction of the linguistic features related to Vocabulary Richness we used ```lexicalrichness 0.3.1``` (<https://pypi.org/project/lexicalrichness/>).
 To extract the linguistic features reported in the paper, see:
 
   ``` 
