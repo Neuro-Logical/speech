@@ -2,8 +2,8 @@
 
 ## Aim 
 
-This repository is a public open-source implementation that supports the extraction of cognitive, linguistic and acoustic features from speech recordings. This project has the aim of designing, extracting and analyzing speech and language production of subjects with different neurological disorders. 
-In this repository we report the code that supports both the **data pre-processing**, the **feature extraction**, and the **statistical analysis** that we perform to evaluate the significance of the features between experimental groups.
+This repository is a public open-source implementation that supports the extraction of cognitive, linguistic and acoustic features from speech recordings. This project has the aim of designing, extracting and analyzing speech and language production of subjects with Parkinson's Disease (PD). 
+In this repository we report the code that supports both the **data pre-processing**, the **feature extraction**, the **statistical analysis**, and the **correlation analysis** that we perform to evaluate the effectiveness of the features 
 
 
 ## Experimental pipeline 💥
@@ -51,11 +51,12 @@ The experimental pipeline followed in our paper goes as follows:
 #### Statistical and correlation analysis 📊
 
    - To perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker use the functions in 
+
   ```
    compute_statistics/utils.py
    ```
-   
    - To perform the correlation analysis between the feature and the clinical scores (UDRS III, UPDRS III part I (speech assessment), and Hoen and Yahr (H\&Y) scale), use the functions in  
+
   ``` 
     compute_statistics/compute_correlation.py
    ```
