@@ -18,17 +18,16 @@ In this repository we report the code that supports both the **feature extractio
   ```
   Data_Preprocessing/generate_transcripts.ipynb
   ```
-  For each recording a transcription is generated in capital letters without punctuation marks. The steps followed to get speech transcripts and alignment are: 
+For each recording a transcription is generated in capital letters without punctuation marks. The steps followed to get speech transcripts and alignment are: 
   
-    * Prepare your data. Please see https://lhotse.readthedocs.io/en/latest/corpus.html#adding-new-corpora for more information. You can find various recipes for different datasets in https://github.com/lhotse-speech/lhotse/tree/master/lhotse/recipes. 
-    
-      * Follow https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/prepare.sh to extract features for your dataset. 
-    
-      * Adapt https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/tdnn_lstm_ctc/asr_datamodule.py to your dataset. 
-    
-      * Train a model for your dataset. Please see https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/conformer_ctc/train.py. For this step, we did not train but use a pretrained English model.
-    
-      * Get alignments. Please see https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/conformer_ctc/ali.py
+1) Prepare your data. Please see https://lhotse.readthedocs.io/en/latest/corpus.html#adding-new-corpora for more information. You can find various recipes for different datasets in https://github.com/lhotse-speech/lhotse/tree/master/lhotse/recipes. 
+2) Follow https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/prepare.sh to extract features for your dataset. 
+
+3) Adapt https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/tdnn_lstm_ctc/asr_datamodule.py to your dataset. 
+
+4) Train a model for your dataset. Please see https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/conformer_ctc/train.py. For this step, we did not train but use a pretrained English model.
+
+5) Get alignments. Please see https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/conformer_ctc/ali.py
 
 ## Feature extraction 🔨
 
