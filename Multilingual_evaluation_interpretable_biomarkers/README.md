@@ -43,9 +43,8 @@ The experimental pipeline followed in our paper goes as follows:
 
   ```
     feature_extraction/extract_prosodic_features
-  ``` 
-
-   In the extraction of the prosodic features two libraries were used: ***Disvoice*** (https://github.com/jcvasquezc/DisVoice/tree/master/disvoice/prosody) and ***DigiPsych Prosody*** (https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody)
+  ```
+   In the extraction of the prosodic features two libraries were used: ***Disvoice*** (https://github.com/jcvasquezc/DisVoice/tree/master/disvoice/prosody) and ***DigiPsych Prosody*** (https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody). 
 
 #### Statistical and correlation analysis
 
