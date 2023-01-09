@@ -84,7 +84,7 @@ Due to the licensing of the used data sets, we are not allowed to publish the re
 
 ## Acknowledgements 🙏
 
-In case you will use this code or take inspiration from it, plese cite out work: 
+In case you will use this code or take inspiration from it, please cite out work: 
 ```
 
 Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R. D., Villalba, J., Dehak, N., Moro-Velazquez, L. A Multi-Modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders. 2022 IEEE Spoken Language Technology Workshop (SLT). IEEE, 2022

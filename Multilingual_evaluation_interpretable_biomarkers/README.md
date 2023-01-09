@@ -3,8 +3,7 @@
 ## Aim 
 
 This repository is a public open-source implementation that supports the extraction of cognitive, linguistic and acoustic features from speech recordings. This project has the aim of designing, extracting and analyzing speech and language production of subjects with Parkinson's Disease (PD). 
-In this repository we report the code that supports both the **data pre-processing**, the **feature extraction**, the **statistical analysis**, and the **correlation analysis** that we perform to evaluate the effectiveness of the features 
-
+In this repository we report the code that supports both the **data pre-processing**, the **feature extraction**, the **statistical analysis**, and the **correlation analysis** that can be performed to evaluate both the effectiveness of the features in differentiating between CN and PD subjects as well as and their correlations with the strength of disorder using clinical scores (e.g., UPDRS).
 
 ## Experimental pipeline 💥
 
@@ -67,9 +66,4 @@ Due to the licensing of the used data sets, we are not allowed to publish the re
 
 ## Acknowledgements 🙏
 
-In case you will use this code or take inspiration from it, plese cite out work: 
-```
-
-Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R. D., Villalba, J., Dehak, N., Moro-Velazquez, L. A Multi-Modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders. 2022 IEEE Spoken Language Technology Workshop (SLT). IEEE, 2022
-
-```
+In case you will use this code or take inspiration from it, please cite out work.
