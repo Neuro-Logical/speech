@@ -13,13 +13,8 @@ In this repository we report the code that supports both the **feature extractio
   $ bash Data_Preprocessing/convert_to_16k.sh 
   ```
 
-* Spoken responses were automatically transcribed using a pre-trained conformer CTC  model (https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09) for the Librispeech data set built on top of icefall (https://github.com/k2-fsa/icefall). Transcriptions were manually supervised and corrected when needed. An interactive notebook that can be used to extract speech transcript can be found in:
+* Spoken responses were automatically transcribed using a pre-trained conformer CTC  model (https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09) for the Librispeech data set built on top of icefall (https://github.com/k2-fsa/icefall). Transcriptions were manually supervised and corrected when needed. For each recording a transcription is generated in capital letters without punctuation marks. The steps followed to get speech transcripts and alignment are: 
 
-  ```
-  Data_Preprocessing/generate_transcripts.ipynb
-  ```
-For each recording a transcription is generated in capital letters without punctuation marks. The steps followed to get speech transcripts and alignment are: 
-  
 1) Prepare your data. Please see https://lhotse.readthedocs.io/en/latest/corpus.html#adding-new-corpora for more information. You can find various recipes for different datasets in https://github.com/lhotse-speech/lhotse/tree/master/lhotse/recipes. 
 2) Follow https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/prepare.sh to extract features for your dataset. 
 
@@ -28,6 +23,13 @@ For each recording a transcription is generated in capital letters without punct
 4) Train a model for your dataset. Please see https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/conformer_ctc/train.py. For this step, we did not train but use a pretrained English model.
 
 5) Get alignments. Please see https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/conformer_ctc/ali.py
+
+To play with Google Colab using your own audios to extract speech transcripts, you can use the notebook in:
+
+  ```
+  Data_Preprocessing/generate_transcripts.ipynb 
+  ```
+
 
 ## Feature extraction 🔨
 
@@ -51,7 +53,7 @@ To extract the linguistic features reported in the paper, run the script
   ``` 
   python Feature_Extraction/Linguistic/extract_linguistic_features.py
   ```
-We also created an interactive notebook supporting the extraction of the linguistic and cognitive features from a csv file. It can be found in:
+We created an interactive notebook supporting the extraction of the linguistic and cognitive features from a csv file. It can be found in:
 
  ``` 
   Feature_Extraction/extract_ling_cog_features.ipynb
