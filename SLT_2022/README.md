@@ -34,22 +34,11 @@ In this repository we report the code that supports both the **feature extractio
 
 ### Cognitive features 🧠
 
-* To extract the cognitive features based on speech transcripts only, run the script:
+* To extract the cognitive features based on speech transcripts only, the code can be found in:
 
   ``` 
-  python Feature_Extraction/Cognitive/extract_cognitive_features.py
-  ```
-
-### Acoustic features 🔊
-
-* For the extraction of the acoustic features related to pause and speech time we use DigiPsych Prosody Repository (<https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody>).
-
-* For the extraction of the acoustic features related F0 and energy contour we use Disvoice Repository (<https://github.com/jcvasquezc/DisVoice/tree/master/prosody>).
-
-To extract the acoustic features reported in the paper, run the script:
-
-  ``` 
-  $ bash Feature_Extraction/Acoustic/extract_acoustic_features.sh
+  Feature_Extraction/Cognitive/extract_cognitive_features.py
+  
   ```
 
 ### Linguistic Features 🔡
@@ -67,6 +56,18 @@ We also created an interactive notebook supporting the extraction of the linguis
 
  ``` 
   Feature_Extraction/extract_ling_cog_features.ipynb
+  ```
+
+### Acoustic features 🔊
+
+* For the extraction of the acoustic features related to pause and speech time we use DigiPsych Prosody Repository (<https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody>).
+
+* For the extraction of the acoustic features related F0 and energy contour we use Disvoice Repository (<https://github.com/jcvasquezc/DisVoice/tree/master/prosody>).
+
+To extract the acoustic features reported in the paper, run the script:
+
+  ``` 
+  $ bash Feature_Extraction/Acoustic/extract_acoustic_features.sh
   ```
 ## Statistical analysis 📊
 
