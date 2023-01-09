@@ -47,7 +47,7 @@ In this repository we report the code that supports both the  **data pre-process
 
 * For the extraction of the linguistic features related to Vocabulary Richness we use <https://pypi.org/project/lexicalrichness/>. 
 
-To extract the linguistic features reported in the paper, run the script 
+To extract the linguistic features reported in the paper, run:
 
   ``` 
   python Feature_Extraction/Linguistic/extract_linguistic_features.py
@@ -61,14 +61,14 @@ To extract the linguistic and cognitive features from the transcripts of your sp
 ### Acoustic features 🔊
 
 For the extraction of the acoustic features related to pause and speech time we use DigiPsych Prosody Repository (<https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody>). For the extraction of the acoustic features related F0 and energy contour we use Disvoice Repository (<https://github.com/jcvasquezc/DisVoice/tree/master/prosody>).
-To extract the acoustic features reported in the paper, run the script:
+To extract the acoustic features reported in the paper, run:
 
   ``` 
   $ bash Feature_Extraction/Acoustic/extract_acoustic_features.sh
   ```
 ## Statistical analysis 📊
 
-In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker, see the functions in the script 
+In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker, see the functions in the script:
 
   ``` 
   Statistical_Analysis/utils.py
