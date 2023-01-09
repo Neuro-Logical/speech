@@ -33,11 +33,9 @@ In this repository we report the code that supports both the  **data pre-process
   ``` 
   Feature_Extraction/Cognitive/extract_cognitive_features.py
   ```
-
 ### Linguistic Features 🔡
 
 * For the extraction of the linguistic features related to Part-of-Speech and Syntactic Complexity we use Spacy Python Library(<https://spacy.io/models>).
-
 * For the extraction of the linguistic features related to Vocabulary Richness we use <https://pypi.org/project/lexicalrichness/>. 
 
 To extract the linguistic features reported in the paper, run:
@@ -50,7 +48,6 @@ To extract the linguistic and cognitive features from the transcripts of your sp
  ``` 
   Feature_Extraction/extract_ling_cog_features.ipynb
   ```
-
 ### Acoustic features 🔊
 
 For the extraction of the acoustic features related to pause and speech time we use DigiPsych Prosody Repository (<https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody>). For the extraction of the acoustic features related F0 and energy contour we use Disvoice Repository (<https://github.com/jcvasquezc/DisVoice/tree/master/prosody>).
@@ -66,7 +63,6 @@ In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, comp
   ``` 
   Statistical_Analysis/utils.py
   ```
-
 ## Reproducibility
 
 Due to the licensing of the used data sets, we are not allowed to publish the recordings, the extracted features, nor the labels. However, we provided the source code to perform the feature extraction, and the statistical analysis reported in the paper.
@@ -79,7 +75,6 @@ In case you will use this code or take inspiration from it, please cite out work
 Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R. D., Villalba, J., Dehak, N., Moro-Velazquez, L. A Multi-Modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders. 2022 IEEE Spoken Language Technology Workshop (SLT). IEEE, 2022
 
 ```
-
 ## Further references 📖
 
 [1] Laureano Moro-Velazquez and Najim Dehak, “A review of the use of prosodic aspects of speech for the automatic detection and assessment of parkinson’s disease,” in Automatic Assessment of Parkinsonian Speech Workshop. Springer, 2019, pp. 42–59.”​
