@@ -8,6 +8,21 @@ In this repository we report the code that supports both the **data pre-processi
  Multilingual Evaluation of Interpretable Biomarkers to Represent Language and Speech Patterns in Parkinson's Disease
 ```
 
+## Set up 
+
+```
+# Clone the repo
+$ git clone https://github.com/Neuro-Logical/speech.git
+$ cd Multilingual_Evaluation
+
+# Create a virtual environment
+python3 -m virtualenv .venv
+source .venv/bin/activate
+
+# Install the dependencies within the working environment with exact versions
+pip install -r requirements.txt
+```
+
 ## Experimental pipeline 💥
 ### Data pre-processing 📈
 
