@@ -7,6 +7,31 @@ In this repository we report the code that supports both the  **data pre-process
 ``` 
  A Multi-Modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders
 ```
+
+## Set up 
+
+```
+# Clone the repo
+$ git clone https://github.com/Neuro-Logical/speech.git
+ 
+# Create a virtual environment
+python3 -m virtualenv .venv
+source .venv/bin/activate
+
+# Install the dependencies within the working environment with exact versions
+pip install -r requirements.txt
+
+```
+# Create a virtual environment
+python3 -m virtualenv .venv
+source .venv/bin/activate
+
+# Create a virtual environment
+python3 -m virtualenv .venv
+source .venv/bin/activate
+
+# Install the deps from the last known working environment with exact versions
+pip install -r requirements.txt
 ## Data pre-processing 📈
 Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz, run the script: 
   
