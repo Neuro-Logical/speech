@@ -12,7 +12,6 @@ In this repository we report the code that supports both the  **data pre-process
   ```
   $ bash Data_Preprocessing/convert_to_16k.sh 
   ```
-
 * Spoken responses were automatically transcribed using a pre-trained conformer CTC  model (https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09) for the Librispeech data set built on top of icefall (https://github.com/k2-fsa/icefall). Transcriptions were manually supervised and corrected when needed. For each recording a transcription is generated in capital letters without punctuation marks. The steps followed to get speech transcripts and alignment are:
 
   1) Prepare your data. Please see https://lhotse.readthedocs.io/en/latest/corpus.html#adding-new-corpora for more information. You can find various recipes for different datasets in https://github.com/lhotse-speech/lhotse/tree/master/lhotse/recipes.
@@ -26,9 +25,7 @@ In this repository we report the code that supports both the  **data pre-process
   ```
   Data_Preprocessing/generate_transcripts.ipynb 
   ```
-
 ## Feature extraction 🔨
-
 ### Cognitive features 🧠
 
 * To extract the cognitive features based on speech transcripts only, the code can be found in:
