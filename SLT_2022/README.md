@@ -30,9 +30,9 @@ In this repository we report the code that supports both the **feature extractio
     
       * Get alignments. Please see https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/conformer_ctc/ali.py
 
-## Feature extraction 
+## Feature extraction 🔨
 
-### Cognitive features
+### Cognitive features 🧠
 
 * To extract the cognitive features based on speech transcripts only, run the script:
 
@@ -40,7 +40,7 @@ In this repository we report the code that supports both the **feature extractio
   python Feature_Extraction/Cognitive/extract_cognitive_features.py
   ```
 
-### Acoustic features
+### Acoustic features 🔊
 
 * For the extraction of the acoustic features related to pause and speech time we use DigiPsych Prosody Repository (<https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody>).
 
@@ -52,7 +52,7 @@ To extract the acoustic features reported in the paper, run the script:
   $ bash Feature_Extraction/Acoustic/extract_acoustic_features.sh
   ```
 
-### Linguistic Features
+### Linguistic Features 🔡
 
 * For the extraction of the linguistic features related to Part-of-Speech and Syntactic Complexity we use Spacy Python Library(<https://spacy.io/models>).
 
@@ -68,7 +68,7 @@ We also created an interactive notebook supporting the extraction of the linguis
  ``` 
   Feature_Extraction/extract_ling_cog_features.ipynb
   ```
-## Statistical analysis 
+## Statistical analysis 📊
 
 We report the main functions used to perform the statistical analysis to assess the significance of the features between experimental groups. 
 In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker run the script 
