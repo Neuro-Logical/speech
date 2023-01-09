@@ -1,10 +1,9 @@
 KALDI_ROOT=/home/afavaro/kaldi
 export PATH=$PATH:$KALDI_ROOT/src/featbin/
 
-
 # prosodic features extraction using Disvoice: https://github.com/jcvasquezc/DisVoice/tree/master/disvoice/prosody
 # The script saves a feature matrix in csv format.
-# # This script should be run inside the folder named: disvoice/prosody.
+# This script should be run inside the folder named: disvoice/prosody.
 
 python prosody.py "/export/c12/afavaro/NLS_Data_Set_16k" "/export/b14/afavaro/Acoustic_Features/prosody.csv" "true" "false" "csv"
 python prosody.py "/export/b15/afavaro/Frontiers/ADR_2021/audio_16k/" "/export/b15/afavaro/Frontiers/ADR_2021/prosody.csv" "true" "false" "csv"
@@ -16,7 +15,6 @@ python prosody.py "/export/b15/afavaro/Frontiers/ADR_2021/audio_16k/" "/export/b
 # f can be 10, 20, 30 ms.
 # -a is the path to the folder containing the recordings.
 # This script should be run inside the folder named: DigiPsych_Prosody.
-
 
 python featurize.py -a  /export/c12/afavaro/NLS_Data_Set_16k -f 20
 python featurize.py -a  /export/b15/afavaro/Frontiers/ADR_2021/audio_16k/ -f 20

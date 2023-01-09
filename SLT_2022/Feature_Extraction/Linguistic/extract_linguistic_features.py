@@ -9,8 +9,8 @@ from spacy.matcher import Matcher
 
 def compute_lexical_diversity(transcript):
 
-    """Function to compute different metrics for lexical diversity.
-    transcript: text file containing speech transcipt."""
+    """ This function computes different metrics for lexical diversity.
+    transcript: text file containing speech transcript."""
 
     lex = LexicalRichness(transcript)
     # word_count = lex.words
@@ -47,9 +47,7 @@ def load_files(data):
 
     return frame
 
-
 # Load the pretrained pipeline for english
-
 nlp = spacy.load('en_core_web_sm')
 
 # Create a function to preprocess the text
@@ -59,8 +57,8 @@ stopwords = list(stopwords.words('english'))
 
 def preprocess(text):
 
-    """ This is a function to perform tokenization, lemmatization, removal of non-alphabetic characters
-    and stopword removal.
+    """ This function performs tokenization, lemmatization, non-alphabetic characters removal,
+    and stopwords removal.
     text: text file containing the speech transcripts.
     """
     # Create Doc object
@@ -77,6 +75,7 @@ def count_words(string):
 
     """ This function returns the number of words in a string.
      string: text file containing the speech transcripts."""
+
     # Split the string into words
     words = string.split()
     # Return the number of words
@@ -113,8 +112,7 @@ def sentence_counter(text):
     return counter
 
 
-# Note that this function is applied to the raw text in order to identify sentence boundaries
-
+# Note that this function is applied to the raw text (containing punctuations) in order to identify sentence boundaries.
 def avg_sent_length(text):
 
     """ This function returns the average sentence length in words.
@@ -188,7 +186,8 @@ def adverbs(text, model=nlp):
 
 def numeral(text, model=nlp):
 
-    """ This function returns the number of numerals (e.g., billion) in an item"""
+    """ This function returns the number of numerals (e.g., billion) in an item.
+         text: text file containing the speech transcripts."""
 
     # Create doc object
     doc = model(text)
@@ -200,7 +199,9 @@ def numeral(text, model=nlp):
 
 def aux(text, model=nlp):
 
-    """ This function returns the number of auxiliary in an item"""
+    """ This function returns the number of auxiliary in an item.
+    text: text file containing the speech transcripts."""
+
     # Create doc object
     doc = model(text)
     # Generate list of POS tags

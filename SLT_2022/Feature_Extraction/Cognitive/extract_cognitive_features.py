@@ -1,14 +1,3 @@
-import spacy
-import seaborn as sns
-import os
-from scipy import stats
-import pandas as pd
-import numpy as np
-from spacy.matcher import Matcher
-import statsmodels
-from nltk.corpus import stopwords
-
-
 def uncertainty(text):
 
     """ Compute the level of certainty of the subjects in delivering the image description during the CTP task.

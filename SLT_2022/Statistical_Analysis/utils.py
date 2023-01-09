@@ -23,7 +23,8 @@ def delete_multiple_element(list_object, indices):
 
 def kruskal(output_path, biomarkers_name, c, p, c_name, p_name):
 
-    """ Function that perform pair-wise Kruskal-Wallis H-test from each pair of biomarkers/features.
+    """
+     Function that performs pair-wise Kruskal-Wallis H-test from each pair of biomarkers/features.
     f: output path where to save the statistics.
     biomarkers_name: list of biomarkers' name.
     c: matrix of features from the control group.
@@ -31,8 +32,9 @@ def kruskal(output_path, biomarkers_name, c, p, c_name, p_name):
     c_name: control group name (e.g., "CN")
     p_name: Parkinson's group name (e.g., "PD")
 
-    Output: text file saving the significant p-value in correspondence to each pair-wise comparison between two distributions of a given biomarker. .
-    An example of text file generated using this function can be found in Statistical_Analysis/results_statistical_analysis.txt
+    Output: text file saving the p-value in correspondence to each pair-wise comparison between two distributions of a given biomarker.
+    An example of text file generated using this function can be found in Statistical_Analysis/results_statistical_analysis.txt.
+
     """
 
     for i, title in enumerate(biomarkers_name):
@@ -67,7 +69,7 @@ def compute_eta_squared(H, n_of_grp, n_of_observations):
 def holm_correction(kruskal):
 
     """ Holm correction to apply after Kruskal wallis test.
-    This function takes as input the .txt containing the results of the Kruskal-Wallis test."""
+    This function takes as input a text containing the results of the Kruskal-Wallis test (see function kruskal). """
 
     line_to_remove = []
     values = []
