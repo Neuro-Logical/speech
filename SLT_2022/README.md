@@ -36,7 +36,8 @@ For each recording a transcription is generated in capital letters without punct
 
 * To extract the cognitive features based on speech transcripts only, run the script:
 
-  ``` python Feature_Extraction/Cognitive/extract_cognitive_features.py
+  ``` 
+  python Feature_Extraction/Cognitive/extract_cognitive_features.py
   ```
 
 ### Acoustic features
@@ -47,7 +48,8 @@ For each recording a transcription is generated in capital letters without punct
 
 To extract the acoustic features reported in the paper, run the script:
 
-  ``` $ bash Feature_Extraction/Acoustic/extract_acoustic_features.sh
+  ``` 
+  $ bash Feature_Extraction/Acoustic/extract_acoustic_features.sh
   ```
 
 ### Linguistic Features
@@ -58,7 +60,8 @@ To extract the acoustic features reported in the paper, run the script:
 
 To extract the linguistic features reported in the paper, run the script 
 
-  ``` python Feature_Extraction/Linguistic/extract_linguistic_features.py
+  ``` 
+  python Feature_Extraction/Linguistic/extract_linguistic_features.py
   ```
 
 ## Statistical analysis 
@@ -66,7 +69,8 @@ To extract the linguistic features reported in the paper, run the script
 We report the main functions used to perform the statistical analysis to assess the significance of the features between experimental groups. 
 In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker run the script 
 
-  ``` python Statistical_Analysis/utils.py
+  ``` 
+  python Statistical_Analysis/utils.py
   ```
 
 ## Reproducibility
