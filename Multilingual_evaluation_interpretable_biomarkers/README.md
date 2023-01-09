@@ -10,9 +10,13 @@ The experimental pipeline followed in our paper goes as follows:
 
 ### 1) Data pre-processing
 
-   - To resample the speech recordings to 16 kHz, run the script ```data_preprocessing/convert_to_16k.sh```
+   - To resample the speech recordings to 16 kHz, run:
 
-   - To extract speech transcripts from speech recordings using Whisper (https://openai.com/blog/whisper), run ```data_preprocessing/get_speech_transcripts.py```
+    ``` $ bash data_preprocessing/convert_to_16k.sh
+      ```
+   - To extract speech transcripts from speech recordings using Whisper (https://openai.com/blog/whisper), run:
+
+    ```python data_preprocessing/get_speech_transcripts.py ```
 
 ### 3) Feature extraction:
 
