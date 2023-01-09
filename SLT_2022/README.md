@@ -41,7 +41,7 @@ To extract the linguistic features reported in the paper, see:
   ``` 
   python Feature_Extraction/Linguistic/extract_linguistic_features.py
   ```
-To extract the linguistic and cognitive features from the transcripts of your speech data set, you can use the notebook in:
+To extract the linguistic and cognitive features from the transcripts of your speech data set, you can use the notebook:
 
  ``` 
   Feature_Extraction/extract_ling_cog_features.ipynb
