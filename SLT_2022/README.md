@@ -29,16 +29,15 @@ Spoken responses were automatically transcribed using a pre-trained conformer CT
 ## Feature extraction 🔨
 ### Cognitive features 🧠
 
-To extract the cognitive features based on speech transcripts only, the code can be found in:
-
+To extract the cognitive features based on speech transcripts only, see:
   ``` 
   Feature_Extraction/Cognitive/extract_cognitive_features.py
   ```
 ### Linguistic Features 🔡
-For the extraction of the linguistic features related to Part-of-Speech and Syntactic Complexity we use Spacy Python Library(<https://spacy.io/models>).
+For the extraction of the linguistic features related to Part-of-Speech and Syntactic Complexity we use Spacy Python Library (<https://spacy.io/models>). The pretrained model for English we used is: ```en_core_web_sm```
 For the extraction of the linguistic features related to Vocabulary Richness we use <https://pypi.org/project/lexicalrichness/>. 
 
-To extract the linguistic features reported in the paper, run:
+To extract the linguistic features reported in the paper, see:
 
   ``` 
   python Feature_Extraction/Linguistic/extract_linguistic_features.py
