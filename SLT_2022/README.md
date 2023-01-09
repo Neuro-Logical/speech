@@ -63,7 +63,11 @@ To extract the linguistic features reported in the paper, run the script
   ``` 
   python Feature_Extraction/Linguistic/extract_linguistic_features.py
   ```
+We also created an interactive notebook supporting the extraction of the linguistic and cognitive features from a csv file. It can be found at:
 
+ ``` 
+  Feature_Extraction/extract_ling_cog_features.ipynb
+  ```
 ## Statistical analysis 
 
 We report the main functions used to perform the statistical analysis to assess the significance of the features between experimental groups. 
