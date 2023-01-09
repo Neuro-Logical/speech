@@ -1,12 +1,10 @@
 # A Multi-modal Array of Interpretable Features
 
 ## What is it 🔎
-
 This repository is a public open-source implementation that supports the extraction of cognitive, linguistic and acoustic features from speech recordings. This project has the aim of designing, extracting and analyzing speech and language production of subjects with different neurological disorders. 
 In this repository we report the code that supports both the  **data pre-processing**, **feature extraction**, and the **statistical analysis** that we perform to evaluate the significance of the features between experimental groups.
 
 ## Data pre-processing 📈
-
 * Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz, run the script: 
   
   ```
@@ -27,14 +25,12 @@ In this repository we report the code that supports both the  **data pre-process
   ```
 ## Feature extraction 🔨
 ### Cognitive features 🧠
-
 * To extract the cognitive features based on speech transcripts only, the code can be found in:
 
   ``` 
   Feature_Extraction/Cognitive/extract_cognitive_features.py
   ```
 ### Linguistic Features 🔡
-
 * For the extraction of the linguistic features related to Part-of-Speech and Syntactic Complexity we use Spacy Python Library(<https://spacy.io/models>).
 * For the extraction of the linguistic features related to Vocabulary Richness we use <https://pypi.org/project/lexicalrichness/>. 
 
@@ -49,7 +45,6 @@ To extract the linguistic and cognitive features from the transcripts of your sp
   Feature_Extraction/extract_ling_cog_features.ipynb
   ```
 ### Acoustic features 🔊
-
 For the extraction of the acoustic features related to pause and speech time we use DigiPsych Prosody Repository (<https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody>). For the extraction of the acoustic features related F0 and energy contour we use Disvoice Repository (<https://github.com/jcvasquezc/DisVoice/tree/master/prosody>).
 To extract the acoustic features reported in the paper, run:
 
@@ -57,18 +52,15 @@ To extract the acoustic features reported in the paper, run:
   $ bash Feature_Extraction/Acoustic/extract_acoustic_features.sh
   ```
 ## Statistical analysis 📊
-
 In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker, see the functions in the script:
 
   ``` 
   Statistical_Analysis/utils.py
   ```
 ## Reproducibility
-
 Due to the licensing of the used data sets, we are not allowed to publish the recordings, the extracted features, nor the labels. However, we provided the source code to perform the feature extraction, and the statistical analysis reported in the paper.
 
 ## Acknowledgements 🙏
-
 In case you will use this code or take inspiration from it, please cite out work: 
 ```
 
@@ -76,7 +68,6 @@ Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R
 
 ```
 ## Further references 📖
-
 [1] Laureano Moro-Velazquez and Najim Dehak, “A review of the use of prosodic aspects of speech for the automatic detection and assessment of parkinson’s disease,” in Automatic Assessment of Parkinsonian Speech Workshop. Springer, 2019, pp. 42–59.”​
 
 [2] Saturnino Luz, Fasih Haider, Sofia de la Fuente, Davida Fromm, and Brian MacWhinney, “Alzheimer’s dementia recognition through spontaneous speech: The address challenge,” arXiv preprint arXiv:2004.06833, 2020. ​
