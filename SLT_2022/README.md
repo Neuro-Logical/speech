@@ -5,7 +5,7 @@
 This repository is a public open-source implementation that supports the extraction of cognitive, linguistic and acoustic features from speech recordings. This project has the aim of designing, extracting and analyzing speech and language production of subjects with different neurological disorders. 
 In this repository we report the code that supports both the **feature extraction**, and the **statistical analysis** that we perform to evaluate the significance of the features between experimental groups.
 
-## 1) Data pre-processing
+## Data pre-processing 📈
 
 * Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz, run the script: 
   
@@ -30,7 +30,7 @@ For each recording a transcription is generated in capital letters without punct
   
   * Get alignments. Please see https://github.com/k2-fsa/icefall/blob/master/egs/librispeech/ASR/conformer_ctc/ali.py
 
-## 2) Feature extraction 
+## Feature extraction 
 
 ### Cognitive features
 
@@ -47,7 +47,6 @@ For each recording a transcription is generated in capital letters without punct
 To extract the acoustic features reported in the paper, run the script 
   ```Feature_Extraction/Acoustic/extract_acoustic_features.py
   ```
-
 
 ### Linguistic Features
 
@@ -70,7 +69,7 @@ In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, comp
 
 Due to the licensing of the used data sets, we are not allowed to publish the recordings, the extracted features, nor the labels. However, we provided the source code to perform the feature extraction, and the statistical analysis reported in the paper.
 
-## Research article
+## Acknowledgements 🙏
 
 In case you will use this code or take inspiration from it, plese cite out work: 
 ```
