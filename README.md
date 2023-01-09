@@ -3,9 +3,7 @@ Directories associated to different research projects related to the evaluation 
 
 ## Setup ⚙️ 
  To install, clone, and modify this package in editable mode:
-
 ```
-$ git clone https://github.com/Neuro-Logical/speech.git
-
+$ git clone https://github.com/Neuro-Logical/speech.git 
 ```
 
