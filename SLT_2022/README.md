@@ -39,7 +39,6 @@ In this repository we report the code that supports both the  **data pre-process
 
   ``` 
   Feature_Extraction/Cognitive/extract_cognitive_features.py
-  
   ```
 
 ### Linguistic Features 🔡
