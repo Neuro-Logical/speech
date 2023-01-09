@@ -54,7 +54,8 @@ The experimental pipeline followed in our paper goes as follows:
    ```
    
    - To perform the correlation analysis between the feature and the clinical scores (UDRS III, UPDRS III part I (speech assessment), and Hoen and Yahr (H\&Y) scale), use the functions in  
-  ``` compute_statistics/compute_correlation.py
+  ``` 
+    compute_statistics/compute_correlation.py
    ```
    
 ### Reproducibility
