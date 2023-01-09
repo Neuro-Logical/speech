@@ -48,9 +48,14 @@ The experimental pipeline followed in our paper goes as follows:
 
 #### Statistical and correlation analysis
 
-   - To perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker use the functions in ```compute_statistics/utils.py```
+   - To perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker use the functions in 
+  ```
+   compute_statistics/utils.py
+   ```
    
-   - To perform the correlation analysis between the feature and the clinical scores (UDRS III, UPDRS III part I (speech assessment), and Hoen and Yahr (H\&Y) scale), use the functions in  ```compute_statistics/compute_correlation.py```
+   - To perform the correlation analysis between the feature and the clinical scores (UDRS III, UPDRS III part I (speech assessment), and Hoen and Yahr (H\&Y) scale), use the functions in  
+  ``` compute_statistics/compute_correlation.py
+   ```
    
 ### Reproducibility
 
