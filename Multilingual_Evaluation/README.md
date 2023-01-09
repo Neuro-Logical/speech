@@ -2,10 +2,10 @@
 
 This repository is a public open-source implementation meant to support a multilingual evaluation of interpretable biomarkers to represent language and Speech Patterns in Parkinson’s Disease (PD).
 This project has the aim of designing, extracting and analyzing speech and language production of subjects with Parkinson's Disease (PD). 
-In this repository we report the code that supports both the **data pre-processing**, the **feature extraction**, the **statistical analysis**, and the **correlation analysis** that can be performed to evaluate both the effectiveness of the features in differentiating between CN and PD subjects as well as and their correlations with the strength of disorder using clinical scores (e.g., UPDRS). This code is associated to the paper entitled:
+In this repository we report the code that supports both the **data pre-processing**, the **feature extraction**, the **statistical analysis**, and the **correlation analysis** that can be performed to evaluate both the effectiveness of the features in differentiating between CN and PD subjects as well as and their correlations with the strength of disorder using clinical scores (e.g., UPDRS).  This code is associated to the paper entitled (see reference in Acknowledgements):
 
 ``` 
- A MULTI-MODAL ARRAY OF INTERPRETABLE FEATURES TO EVALUATE LANGUAGE AND SPEECH PATTERNS IN DIFFERENT NEUROLOGICAL DISORDERS
+ Multilingual Evaluation of Interpretable Biomarkers to Represent Language and Speech Patterns in Parkinson's Disease
 ```
 
 ## Experimental pipeline 💥
