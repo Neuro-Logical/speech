@@ -63,7 +63,7 @@ To extract the linguistic features reported in the paper, run the script
   ``` 
   python Feature_Extraction/Linguistic/extract_linguistic_features.py
   ```
-We also created an interactive notebook supporting the extraction of the linguistic and cognitive features from a csv file. It can be found at:
+We also created an interactive notebook supporting the extraction of the linguistic and cognitive features from a csv file. It can be found in:
 
  ``` 
   Feature_Extraction/extract_ling_cog_features.ipynb
