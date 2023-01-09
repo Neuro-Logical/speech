@@ -5,9 +5,6 @@ This project has the aim of designing, extracting and analyzing speech and langu
 In this repository we report the code that supports both the **data pre-processing**, the **feature extraction**, the **statistical analysis**, and the **correlation analysis** that can be performed to evaluate both the effectiveness of the features in differentiating between CN and PD subjects as well as and their correlations with the strength of disorder using clinical scores (e.g., UPDRS).
 
 ## Experimental pipeline 💥
-
-The experimental pipeline followed in our paper goes as follows:
-
 ### Data pre-processing 📈
 
    - To resample the speech recordings to 16 kHz, run:
@@ -21,7 +18,6 @@ The experimental pipeline followed in our paper goes as follows:
    ```
       python data_preprocessing/get_speech_transcripts.py
    ```
-
 ### Feature extraction 🔨
 
    - To extract the ***cognitive*** features from the speech transcripts, see the script
@@ -44,8 +40,7 @@ The experimental pipeline followed in our paper goes as follows:
   ```
     $ bash feature_extraction/extract_prosodic_features.sh 
   ```
-   In the extraction of the prosodic features two libraries were used: ***Disvoice*** (https://github.com/jcvasquezc/DisVoice/tree/master/disvoice/prosody) and ***DigiPsych Prosody*** (https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody). 
-
+   In the extraction of the prosodic features two libraries were used: ***Disvoice*** (https://github.com/jcvasquezc/DisVoice/tree/master/disvoice/prosody) and ***DigiPsych Prosody*** (https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody).
 #### Statistical and correlation analysis 📊
 
    - To perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker use the functions in 
@@ -58,11 +53,9 @@ The experimental pipeline followed in our paper goes as follows:
   ``` 
     compute_statistics/compute_correlation.py
    ```
-   
 ### Reproducibility
 
-Due to the licensing of the used data sets, we are not allowed to publish the recordings, the features, nor the labels. However, we provide the source code to perform the feature extraction, the statistical, and the correlation analysis reported in the paper. 
-
+Due to the licensing of the used data sets, we are not allowed to publish the recordings, the features, nor the labels. However, we provide the source code to perform the feature extraction, the statistical, and the correlation analysis reported in the paper.
 ## Acknowledgements 🙏
 
 In case you will use this code or take inspiration from it, please cite out work.
