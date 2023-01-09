@@ -73,11 +73,10 @@ To extract the acoustic features reported in the paper, run the script:
   ```
 ## Statistical analysis 📊
 
-We report the main functions used to perform the statistical analysis to assess the significance of the features between experimental groups. 
-In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker run the script 
+In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker, see the functions in the script 
 
   ``` 
-  python Statistical_Analysis/utils.py
+  Statistical_Analysis/utils.py
   ```
 
 ## Reproducibility
