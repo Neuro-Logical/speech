@@ -5,11 +5,10 @@ import numpy as np
 from sklearn import metrics
 
 # Functions used to perform:
-
-#    1 - Pair-wise Kruskal-Wallis H-tests
-#    2 - FDR corrections
-#    3 - Compute the AUROC associated to each biomarker.
-#    4 - Compute the eta squared effect size
+#    '1 - Pair-wise Kruskal-Wallis H-tests.
+#    '2 - FDR corrections.'
+#    '3 - Compute the AUROC associated to each biomarker.
+#    '4 - Compute the eta squared effect size.
 
 
 def delete_multiple_element(list_object, indices):
@@ -24,7 +23,8 @@ def delete_multiple_element(list_object, indices):
 
 def kruskal(output_path, biomarkers_name, c, p, c_name, p_name):
 
-    """ Function that perform pair-wise Kruskal-Wallis H-test from each pair of biomarkers/features.
+    """
+     Function that performs pair-wise Kruskal-Wallis H-test from each pair of biomarkers/features.
     f: output path where to save the statistics.
     biomarkers_name: list of biomarkers' name.
     c: matrix of features from the control group.
@@ -32,8 +32,9 @@ def kruskal(output_path, biomarkers_name, c, p, c_name, p_name):
     c_name: control group name (e.g., "CN")
     p_name: Parkinson's group name (e.g., "PD")
 
-    Output: text file saving the significant p-value in correspondence to each pair-wise comparison between two distributions of a given biomarker. .
-    An example of text file generated using this function can be found in compute_statistcs/utils/results.txt
+    Output: text file saving the p-value in correspondence to each pair-wise comparison between two distributions of a given biomarker.
+    An example of text file generated using this function can be found in compute_statists/results.txt
+
     """
 
     for i, title in enumerate(biomarkers_name):
@@ -60,16 +61,15 @@ def compute_eta_squared(H, n_of_grp, n_of_observations):
     """ Function that computes the eta squared effect size.
     H: is the value of the Kruskal Wallis H-test.
     n_of_grp: is the number of experimental group considered.
-    n_of_observ: is the total number of samples considered."""
-
+    n_of_observations: is the total number of samples considered."""
 
     return (H - n_of_grp + 1) / (n_of_observations - n_of_grp)
 
 
 def holm_correction(kruskal):
 
-    """Holm correction to apply after Kruskal wallis test.
-    This function takes as input the .txt containing the results of the Kruskal-Wallis test."""
+    """ Holm correction to apply after Kruskal wallis test.
+    This function takes as input a text containing the results of the Kruskal-Wallis test (see function kruskal). """
 
     line_to_remove = []
     values = []
@@ -96,6 +96,3 @@ def holm_correction(kruskal):
         final.append(kruskal[i])
 
     return final, corrected
-
-
-
