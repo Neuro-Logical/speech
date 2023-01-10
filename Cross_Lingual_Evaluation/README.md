@@ -16,7 +16,7 @@ $ pip install -r requirements.txt
 ```
 ## Data pre-processing 📈
 
-Recordings have to be resampled to 16 kHz, as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz, run the following command changing input and output path: 
+Recordings have to be resampled at 16 kHz, as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz, run the following command changing input and output path: 
   
   ```
   $ bash Data_prereprocessing/convert_to_16k.sh 
