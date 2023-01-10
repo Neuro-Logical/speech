@@ -89,10 +89,24 @@ Then, to extract the acoustic features reported in the paper, run:
 $ bash Feature_Extraction/Acoustic/extract_acoustic_features.sh
  ```
 ## Statistical analysis 📊
+### Prepare the data 
+
+For each family of features (i.e., acoustic, cognitive, linguistic), create a csv file having as columns the feature names (e.g., F0_std), the label and the task under analysis. Each row should report data for different subjects.
+
+| column name      | data_type | Description  |
+| :---        |    :----:   |          ---: |
+| feature_name      | int or float  | Value of the feature extract   |
+| label   | string (i.e., "CN" or "PD"  | Labels are needed to analyze statistical difference   |
+| Task   | string (i.e., "CookieTheft"  | Task from which the feature has ben extracted.   |
+
+
+### Analysis 
+
 In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker, see the functions in the script:
 ``` 
   Statistical_Analysis/utils.py
  ```
+
 ## Reproducibility
 Due to the licensing of the used data sets, we are not allowed to publish the recordings, the extracted features, nor the labels. However, we provided the source code to perform the feature extraction, and the statistical analysis reported in the paper.
 
