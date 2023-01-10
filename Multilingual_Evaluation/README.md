@@ -61,7 +61,6 @@ $ pip install -r requirements.txt
   ```
    In the extraction of the prosodic features two libraries were used: ***Disvoice*** (https://github.com/jcvasquezc/DisVoice/tree/master/disvoice/prosody) and ***DigiPsych Prosody*** (https://github.com/NeuroLexDiagnostics/DigiPsych_Prosody).
 #### Statistical and correlation analysis 📊
-
 ##### Prepare data 
 For the statistical and correlation analysis, the following data structure is required. For each family of features (i.e., acoustic, cognitive, linguistic), create a csv file structured as reported in the table below.
 
