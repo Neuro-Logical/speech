@@ -22,16 +22,7 @@ source .venv/bin/activate
 # Install the dependencies within the working environment with exact versions
 pip install -r requirements.txt
 ```
-# Create a virtual environment
-python3 -m virtualenv .venv
-source .venv/bin/activate
 
-# Create a virtual environment
-python3 -m virtualenv .venv
-source .venv/bin/activate
-
-# Install the deps from the last known working environment with exact versions
-pip install -r requirements.txt
 ## Data pre-processing 📈
 Recordings from both the data sets were resmapled to 16 kHz as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz, run the script: 
   
