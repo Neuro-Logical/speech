@@ -15,13 +15,14 @@ $ source .venv/bin/activate
 $ pip install -r requirements.txt
 ```
 ## Data pre-processing 📈
-Recordings from both the data sets were resampled to 16 kHz as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz, run the script: 
+
+Recordings have to be resampled to 16 kHz, as required by the algorithms used for the feature extraction. To resample speech recordings to 16kHz, run the following command changing input and output path: 
   
   ```
   $ bash Data_prereprocessing/convert_to_16k.sh 
   ```
 
-   - To extract speech transcripts from speech recordings using openAI Whisper (https://openai.com/blog/whisper), run:
+To extract speech transcripts from speech recordings using openAI Whisper (https://openai.com/blog/whisper), run the following command changing input and output path:
 
    ```
    $ python Data_preprocessing/extract_transcripts.py
