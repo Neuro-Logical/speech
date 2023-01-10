@@ -8,7 +8,7 @@ In this repository we report the code that supports both the **data pre-processi
  Multilingual Evaluation of Interpretable Biomarkers to Represent Language and Speech Patterns in Parkinson's Disease
 ```
 
-## Set up 
+## Set up  ⚙️ 
 
 ```
 # Clone the repo

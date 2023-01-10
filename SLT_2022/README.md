@@ -8,7 +8,7 @@ In this repository we report the code that supports both the  **data pre-process
  A Multi-Modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders
 ```
 
-## Set up 
+## Set up  ⚙️ 
 
 ```
 # Clone the repo
