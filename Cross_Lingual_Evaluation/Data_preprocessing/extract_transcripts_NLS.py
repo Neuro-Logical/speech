@@ -7,7 +7,6 @@ import os
 import whisper
 
 paths = [os.path.join(base, elem) for elem in os.listdir(base)]
-# keep only non-empty recordings (> 56 Bytes)
 files = []
 for m in paths:
     size = os.stat(m).st_size / 1000
