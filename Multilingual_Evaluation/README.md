@@ -69,12 +69,13 @@ For each family of features (i.e., acoustic, cognitive, linguistic), create a cs
 | :---        |    :----:   |          ---: |
 | Feature name      | int or float  |Extracted feature value |
 | Label   | string ("CN" or "PD")  | Classes needed to analyze statistical difference between experimental groups|
+| Speaker ID | string or int | Unique identifier of each subject | 
 | UPDRSIII  | float or int   | Unified Parkinson Disease Rating Scale (part 3) (value needed in the correlation analysis)|
 | UPDRSIII-speech| float or int  | Unified Parkinson Disease Rating Scale (part 3) speech assessment (value needed in the correlation analysis)  |
 | H&Y | float or int  | Hoehn & Yahr rating scale (value needed in the correlation analysis)|
 | Task name | string (i.e., "CookieTheft") | Task from which the feature has ben extracted|
 
-#### Analysis 
+#### Analysis
 
    - To perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker use the functions in 
 
