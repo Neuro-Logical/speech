@@ -95,9 +95,9 @@ For each family of features (i.e., acoustic, cognitive, linguistic), create a cs
 
 | column name      | data_type | Description  |
 | :---        |    :----:   |          ---: |
-| feature_name      | int or float  | Value of the feature extract   |
-| label   | string (i.e., "CN" or "PD"  | Labels are needed to analyze statistical difference   |
-| Task   | string (i.e., "CookieTheft"  | Task from which the feature has ben extracted.   |
+| feature_name      | int or float  | Value of the feature extracted (e.g., type-token ration)   |
+| label   | string (e.g., "CN", "PD", "AD")  |  Classes are needed to analyze statistical difference between experimental groups.  |
+| Task   | string (i.e., "CookieTheft"  | Task from which the feature has ben extracted.  |
 
 
 ### Analysis 
