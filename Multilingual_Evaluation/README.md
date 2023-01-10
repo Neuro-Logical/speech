@@ -63,7 +63,7 @@ pip install -r requirements.txt
 #### Statistical and correlation analysis 📊
 
 ##### Prepare data 
-For each family of features (i.e., acoustic, cognitive, linguistic), create a csv file having as columns the feature names (e.g., F0_std), the label and the task under analysis. Each row should report data for different subjects.
+For the statistical and correlation analysis, the following data structure is required. For each family of features (i.e., acoustic, cognitive, linguistic), create a csv file structured as reported in the table below.
 
 | Column name      | Data Type | Description  |
 | :---        |    :----:   |          ---: |
@@ -75,7 +75,7 @@ For each family of features (i.e., acoustic, cognitive, linguistic), create a cs
 | H&Y | float or int  | Hoehn & Yahr rating scale (value needed in the correlation analysis)|
 | Task name | string (i.e., "CookieTheft") | Task from which the feature has ben extracted|
 
-A mock csv file reproducing the structure of data to use in the statistical and correlation analysis is reported in ``` data/data.csv ```.
+A mock csv file reproducing the structure above is reported in ``` data/data.csv ```.
 
 #### Analysis
 
