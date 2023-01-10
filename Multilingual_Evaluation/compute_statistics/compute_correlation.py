@@ -3,7 +3,7 @@ import statsmodels.api
 from scipy.stats import spearmanr
 import pandas as pd
 
-def normalize(dataframe):
+def normalize(dataframe, columns):
 
     # select only columns containing the values of the features.
     feats = dataframe.iloc[:, -2:-1]
@@ -25,10 +25,12 @@ def normalize(dataframe):
 def compute_correlation(data_frame, num_cols, clinical_score):
 
     """ Compute correlation between biomarker values and UPDRSIII/UPDRSIII.I scores/H&Y scale.
+    After computing spearman correlation with corresponding p-value, FDR correction is applied.
+
     dataframe: pandas dataframe where the columns represent the normalized features,
     each row corresponds to a different subject and a single column contains the clinical score
     for each of the subject.
-    num_cols (int): number of columns containing the features starting from the beginning.
+    num_cols (int): number of columns containing (starting from the beginning) containing the values of the features only.
     clinical_score (string): "updrs", "hoen" "updrs_speech" """
 
     feats_col = data_frame.iloc[:, :num_cols]  # select only columns containing features
