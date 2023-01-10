@@ -1,12 +1,30 @@
 import numpy as np
 import statsmodels.api
 from scipy.stats import spearmanr
+import pandas as pd
 
+def normalize(dataframe):
+
+    # select only columns containing the values of the features.
+    feats = dataframe.iloc[:, -2:-1]
+    # select only columns containing the info about the task/subject (i.e., speaker ID, UPDRS, task)
+    info_subject = new.iloc[:, :3]
+    df_z_scaled = feats.copy()
+
+    # apply normalization techniques
+    for column in df_z_scaled.columns:
+        df_z_scaled[column] = (df_z_scaled[column] -
+                               df_z_scaled[column].mean()) / df_z_scaled[column].std()
+
+    normalized = df_z_scaled
+    norm_data = pd.concat([normalized, info_subject], axis=1)
+
+    return norm_data
 
 def compute_correlation_updrs(dataframe):
 
     """ Compute correlation between biomarker values and UPDRS scores.
-    dataframe: pandas dataframe where the columns represent the features,
+    dataframe: pandas dataframe where the columns represent the normalized features,
     each row corresponds to a different subject and a single column contains the UPDRS score
     for each of the subject. """
 
@@ -34,7 +52,7 @@ def compute_correlation_updrs(dataframe):
 def compute_correlation_updrs_speech(dataframe):
 
     """ Compute correlation between biomarker values and UPDRS part III.I (speech evaluation) .
-    dataframe: pandas dataframe where the columns represent the features,
+    dataframe: pandas dataframe where the columns represent the normalized features,
     each row corresponds to a different subject and a single column contains the UPDRS III.I score
     for each of the subject."""
 
@@ -62,7 +80,7 @@ def compute_correlation_updrs_speech(dataframe):
 def compute_correlation_hoehn_yahr(dataframe):
 
     """ Compute correlation between biomarker values and UPDRS part III.I (speech evaluation) .
-    dataframe: pandas dataframe where the columns represent the features,
+    dataframe: pandas dataframe where the columns represent the normalized features,
     each row corresponds to a different subject and a single column contains the Hoenh & Yahr score
     for each of the subject. """
 
