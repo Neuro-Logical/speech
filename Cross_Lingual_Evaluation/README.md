@@ -24,5 +24,5 @@ Recordings from both the data sets were resampled to 16 kHz as required by the a
    - To extract speech transcripts from speech recordings using openAI Whisper (https://openai.com/blog/whisper), run:
 
    ```
-      python Data_preprocessing/extract_transcripts.py
+   $ python Data_preprocessing/extract_transcripts.py
    ```
