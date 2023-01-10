@@ -75,6 +75,8 @@ For each family of features (i.e., acoustic, cognitive, linguistic), create a cs
 | H&Y | float or int  | Hoehn & Yahr rating scale (value needed in the correlation analysis)|
 | Task name | string (i.e., "CookieTheft") | Task from which the feature has ben extracted|
 
+A mock csv file reproducing the structure of data to use in the statistical and correlation analysis is reported in ``` data/data.csv ```.
+
 #### Analysis
 
    - To perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker use the functions in 

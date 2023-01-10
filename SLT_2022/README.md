@@ -90,8 +90,6 @@ For each family of features (i.e., acoustic, cognitive, linguistic), create a cs
 | label   | string (e.g., "CN", "PD")  |  Classes are needed to analyze statistical difference between experimental groups|
 | Task   | string (i.e., "CookieTheft") | Task from which the feature has ben extracted|
 
-A mock csv file reproducing the structure of data to use in the statistical and correlation analysis is reported in ``` data/data.csv ```.
-
 ### Analysis 
 
 In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, compute eta-squared effect-size and AUROC for each biomarker, see the functions in the script:
