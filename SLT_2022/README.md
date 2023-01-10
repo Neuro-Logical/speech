@@ -93,11 +93,11 @@ $ bash Feature_Extraction/Acoustic/extract_acoustic_features.sh
 
 For each family of features (i.e., acoustic, cognitive, linguistic), create a csv file having as columns the feature names (e.g., F0_std), the label and the task under analysis. Each row should report data for different subjects.
 
-| column name      | data_type | Description  |
+| Column name      | Data Type | Description  |
 | :---        |    :----:   |          ---: |
 | feature_name      | int or float  | Value of the feature extracted (e.g., type-token ration)   |
-| label   | string (e.g., "CN", "PD", "AD")  |  Classes are needed to analyze statistical difference between experimental groups.  |
-| Task   | string (i.e., "CookieTheft"  | Task from which the feature has ben extracted.  |
+| label   | string (e.g., "CN", "PD")  |  Classes are needed to analyze statistical difference between experimental groups|
+| Task   | string (i.e., "CookieTheft") | Task from which the feature has ben extracted|
 
 
 ### Analysis 
