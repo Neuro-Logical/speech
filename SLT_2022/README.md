@@ -16,11 +16,11 @@ $ git clone https://github.com/Neuro-Logical/speech.git
 $ cd SLT_2022
 
 # Create a virtual environment
-python3 -m virtualenv .venv
-source .venv/bin/activate
+$ python3 -m virtualenv .venv
+$ source .venv/bin/activate
 
 # Install the dependencies within the working environment with exact versions
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 ## Data pre-processing 📈
