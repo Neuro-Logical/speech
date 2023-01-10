@@ -21,6 +21,7 @@ for m in audios:
 #indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/NLS_003_ses02_Bluered.wav")
 
 for audio in files:
+    print(audio)
     text =[]
     time_stamps = []
     base_name = os.path.basename(audio).split(".wav")[0]
