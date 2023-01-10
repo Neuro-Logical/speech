@@ -12,7 +12,8 @@ files = []
 for m in paths:
     size = os.stat(m).st_size / 1000
     if size > 56:
-        files.append(m)
+        if "NLS_127" in m:
+            files.append(m)
 
 # extract and save transcripts in text files.
 for i in files:
