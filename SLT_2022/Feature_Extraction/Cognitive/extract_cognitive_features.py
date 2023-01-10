@@ -97,7 +97,7 @@ def informational_verb(text):
 def informational_content(text):
 
     """ Compute the informativeness of the narratives by
-    counting how many (if any) salient object (nouns) are mentioned"""
+    counting how many (if any) salient object (nouns) are mentioned. """
 
     cont_con = 0
 
