@@ -89,6 +89,10 @@ A mock csv file reproducing the structure above is reported in ``` data/data.csv
   ``` 
     compute_statistics/compute_correlation.py
    ```
+A practical application of the statistical analysis and of the correlation analysis is presented in the notebooks:
+ ``` compute_statistics/compute_stats.ipynb```, and  ``` compute_statistics/correlation_analysis.ipynb```.
+
+
 ### Reproducibility
 
 Due to the licensing of the used data sets, we are not allowed to publish the recordings, the features, nor the labels. However, we provide the source code to perform the feature extraction, the statistical, and the correlation analysis reported in the paper.
