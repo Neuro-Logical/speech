@@ -21,85 +21,34 @@ def normalize(dataframe):
 
     return norm_data
 
-def compute_correlation_updrs(dataframe):
 
-    """ Compute correlation between biomarker values and UPDRS scores.
+def compute_correlation(data_frame, num_cols, clinical_score):
+
+    """ Compute correlation between biomarker values and UPDRSIII/UPDRSIII.I scores/H&Y scale.
     dataframe: pandas dataframe where the columns represent the normalized features,
-    each row corresponds to a different subject and a single column contains the UPDRS score
-    for each of the subject. """
+    each row corresponds to a different subject and a single column contains the clinical score
+    for each of the subject.
+    num_cols (int): number of columns containing the features starting from the beginning.
+    clinical_score (string): "updrs", "hoen" "updrs_speech" """
 
-    biomarkers = dataframe.iloc[:, :-7].dropna() #select only columns in the data frame containing feature values.
-    updrs_pd = biomarkers['updrs'].tolist()
-    feats = biomarkers.columns.values.tolist()
+    feats_col = data_frame.iloc[:, :num_cols]  # select only columns containing features
+    print(feats_col)
+    updrs_pd = data_frame[clinical_score].tolist()
+    feats = feats_col.columns.values.tolist()
     file = []
-    p_vals = []
+    p_values = []
 
     for fea in feats:
-        data = biomarkers[fea].tolist()
+        data = feats_col[fea].tolist()
         corr, _ = spearmanr(data, updrs_pd)
-        p_vals.append(_)
-        file.append(f'Spearman correlation for feats {fea}: p_value {_} and correlation coeff is {corr}')
-
-    # Apply FDR correction
-    res = statsmodels.stats.multitest.fdrcorrection(p_vals, alpha=0.05, method='indep', is_sorted=False)
+        p_values.append(_)
+        file.append((f'Spearm correlation for feats {fea}: p_value {_} and correlation coeff is {corr}'))
+    print(file)
+    # Apply correction
+    res = statsmodels.stats.multitest.fdrcorrection(p_values, alpha=0.05, method='indep', is_sorted=False)
     ows = np.where(res[1][:, ] < 0.05)
     l = list(ows[0])
     values = res[1][l]
     for m in zip(l, values):
         print(m, feats[m[0]])
 
-
-def compute_correlation_updrs_speech(dataframe):
-
-    """ Compute correlation between biomarker values and UPDRS part III.I (speech evaluation) .
-    dataframe: pandas dataframe where the columns represent the normalized features,
-    each row corresponds to a different subject and a single column contains the UPDRS III.I score
-    for each of the subject."""
-
-    biomarkers = dataframe.iloc[:, :-7].dropna() #select only columns in the data frame containing feature values.
-    updrs_pd = biomarkers['updrs_speech'].tolist()
-    feats = biomarkers.columns.values.tolist()
-    file = []
-    p_vals = []
-
-    for fea in feats:
-        data = biomarkers[fea].tolist()
-        corr, _ = spearmanr(data, updrs_pd)
-        p_vals.append(_)
-        file.append(f'Spearman correlation for feats {fea}: p_value {_} and correlation coeff is {corr}')
-
-    # Apply FDR correction
-    res = statsmodels.stats.multitest.fdrcorrection(p_vals, alpha=0.05, method='indep', is_sorted=False)
-    ows = np.where(res[1][:, ] < 0.05)
-    l = list(ows[0])
-    values = res[1][l]
-    for m in zip(l, values):
-        print(m, feats[m[0]])
-
-
-def compute_correlation_hoehn_yahr(dataframe):
-
-    """ Compute correlation between biomarker values and UPDRS part III.I (speech evaluation) .
-    dataframe: pandas dataframe where the columns represent the normalized features,
-    each row corresponds to a different subject and a single column contains the Hoenh & Yahr score
-    for each of the subject. """
-
-    biomarkers = dataframe.iloc[:, :-7].dropna() #select only columns in the data frame containing feature values.
-    updrs_pd = biomarkers['hoenh_yahr'].tolist()
-    feats = biomarkers.columns.values.tolist()
-    file = []
-    p_vals = []
-
-    for fea in feats:
-        data = biomarkers[fea].tolist()
-        corr, _ = spearmanr(data, updrs_pd)
-        p_vals.append(_)
-        file.append(f'Spearman correlation for feats {fea}: p_value {_} and correlation coeff is {corr}')
-
-    # Apply FDR correction
-    res = statsmodels.stats.multitest.fdrcorrection(p_vals, alpha=0.05, method='indep', is_sorted=False)
-    ows = np.where(res[1][:, ] < 0.05)
-    l = list(ows[0])
-    values = res[1][l]
-    for m in zip(l, values):
-        print(m, feats[m[0]])
