@@ -38,7 +38,7 @@ def compute_correlation_updrs(dataframe):
         data = biomarkers[fea].tolist()
         corr, _ = spearmanr(data, updrs_pd)
         p_vals.append(_)
-        file.append(f'Spearm correlation for feats {fea}: p_value {_} and correlation coeff is {corr}')
+        file.append(f'Spearman correlation for feats {fea}: p_value {_} and correlation coeff is {corr}')
 
     # Apply FDR correction
     res = statsmodels.stats.multitest.fdrcorrection(p_vals, alpha=0.05, method='indep', is_sorted=False)
@@ -56,7 +56,7 @@ def compute_correlation_updrs_speech(dataframe):
     each row corresponds to a different subject and a single column contains the UPDRS III.I score
     for each of the subject."""
 
-    biomarkers = dataframe.iloc[:, :-7].dropna()
+    biomarkers = dataframe.iloc[:, :-7].dropna() #select only columns in the data frame containing feature values.
     updrs_pd = biomarkers['updrs_speech'].tolist()
     feats = biomarkers.columns.values.tolist()
     file = []
@@ -66,7 +66,7 @@ def compute_correlation_updrs_speech(dataframe):
         data = biomarkers[fea].tolist()
         corr, _ = spearmanr(data, updrs_pd)
         p_vals.append(_)
-        file.append(f'Spearm correlation for feats {fea}: p_value {_} and correlation coeff is {corr}')
+        file.append(f'Spearman correlation for feats {fea}: p_value {_} and correlation coeff is {corr}')
 
     # Apply FDR correction
     res = statsmodels.stats.multitest.fdrcorrection(p_vals, alpha=0.05, method='indep', is_sorted=False)
@@ -84,7 +84,7 @@ def compute_correlation_hoehn_yahr(dataframe):
     each row corresponds to a different subject and a single column contains the Hoenh & Yahr score
     for each of the subject. """
 
-    biomarkers = dataframe.iloc[:, :-7].dropna()
+    biomarkers = dataframe.iloc[:, :-7].dropna() #select only columns in the data frame containing feature values.
     updrs_pd = biomarkers['hoenh_yahr'].tolist()
     feats = biomarkers.columns.values.tolist()
     file = []
@@ -94,7 +94,7 @@ def compute_correlation_hoehn_yahr(dataframe):
         data = biomarkers[fea].tolist()
         corr, _ = spearmanr(data, updrs_pd)
         p_vals.append(_)
-        file.append(f'Spearm correlation for feats {fea}: p_value {_} and correlation coeff is {corr}')
+        file.append(f'Spearman correlation for feats {fea}: p_value {_} and correlation coeff is {corr}')
 
     # Apply FDR correction
     res = statsmodels.stats.multitest.fdrcorrection(p_vals, alpha=0.05, method='indep', is_sorted=False)
