@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 
-# change to the full path of where the Non_Interpretable_Features folder is
-cd '/home/ytsai25/Non_Interpretable_Features'
+# change to the full path of where the Non_Interpretable_features folder is
+cd '/home/ytsai25/Non_Interpretable_features'
 
 # set folder to save feature files (need to have subfolders "xvector" and "trill")
 feat_pth='/export/b11/ytsai25/feats/'
 # set input folder that contains all data sets
 rec_pth='/export/b15/afavaro/Frontiers/'
 # set folder to save printed experiment results
-out_pth='/home/ytsai25/Non_Interpretable_Features/output/'
+out_pth='/home/ytsai25/Non_Interpretable_features/output/'
 
 # feature extraction (uncomment this part if needed)
 # python /feature_extraction/feature_extraction.py $rec_pth $feat_pth
