@@ -33,4 +33,4 @@ To extract the speech transcripts from the speech recordings using openAI Whispe
 
 ## Interpretable and Non-interpretable Pipeline
 
-Code for feature extraction and machine learning experiments using interpretable and non intepretable features is reported into  ```inter```
+Code for feature extraction and machine learning experiments using interpretable and non intepretable features is reported into  ```Interpretable_features``` and ```Non_interpretable
