@@ -7,7 +7,6 @@ cd '/home/ytsai25/Non_Interpretable_features'
 feat_pth='/export/b11/ytsai25/feats/'
 # set folder to save printed experiment results
 out_pth='/home/ytsai25/Non_Interpretable_features/output/'
-mkdir -p output
 # input folder that contains all data sets
 rec_pth='/export/b15/afavaro/Frontiers/'
 
