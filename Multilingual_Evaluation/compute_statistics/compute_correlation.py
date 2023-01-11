@@ -3,12 +3,12 @@ import statsmodels.api
 from scipy.stats import spearmanr
 import pandas as pd
 
-def normalize(dataframe, columns):
+def normalize(dataframe):
 
     # select only columns containing the values of the features.
     feats = dataframe.iloc[:, -2:-1]
     # select only columns containing the info about the task/subject (i.e., speaker ID, UPDRS, task)
-    info_subject = new.iloc[:, :3]
+    info_subject = dataframe.iloc[:, :3]
     df_z_scaled = feats.copy()
 
     # apply normalization techniques
