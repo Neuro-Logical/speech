@@ -10,9 +10,16 @@ import pandas as pd
 device = "cpu"
 model = whisperx.load_model("medium", device)
 audios = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
-indx = audios.index("/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/NLS_057_ses01_ProsacVigor3.wav")
 
-for audio in audios[indx:]:
+files = []
+for m in audios:
+    size = os.stat(m).st_size / 1000
+    if size > 56:
+        files.append(m)
+
+indx = files.index("/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/NLS_057_ses01_ProsacVigor3.wav")
+
+for audio in audios[indx+1:]:
     text =[]
     time_stamps = []
     base_name = os.path.basename(audio).split(".wav")[0]
