@@ -18,7 +18,7 @@ for m in audios:
         if "NLS_127" in m:
             files.append(m)
 
-#indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/NLS_003_ses02_Bluered.wav")
+#indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/NLS_057_ses01_ProsacVigor3.wav")
 
 for audio in files:
     print(audio)
