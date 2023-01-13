@@ -19,7 +19,7 @@ for m in audios:
 
 indx = files.index("/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/NLS_057_ses01_ProsacVigor3.wav")
 
-for audio in audios[indx+1:]:
+for audio in audios[indx+2:]:
     text =[]
     time_stamps = []
     base_name = os.path.basename(audio).split(".wav")[0]
