@@ -19,7 +19,7 @@ for m in audios:
 
 indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/NLS_100_ses01_ProsacVigor7.wav")
 
-for audio in files[indx=1:]:
+for audio in files[indx+1:]:
     print(audio)
     text =[]
     time_stamps = []
