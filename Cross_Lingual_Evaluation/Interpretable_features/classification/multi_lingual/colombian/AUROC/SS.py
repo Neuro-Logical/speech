@@ -3,8 +3,8 @@ OUT_PATH = "/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_S
 
 import sys
 sys.path.append("/export/b15/afavaro/git_code_version/speech")
-from Cross_Lingual_Evaluation.interpretable_features.classification.multi_lingual.Data_Prep_SS import *
-from Cross_Lingual_Evaluation.interpretable_features.classification.multi_lingual.Utils_SS import *
+from Cross_Lingual_Evaluation.Interpretable_features.classification.multi_lingual.Data_Prep_SS import *
+from Cross_Lingual_Evaluation.Interpretable_features.classification.multi_lingual.Utils_SS import *
 import random
 import os
 from sklearn.ensemble import ExtraTreesClassifier
