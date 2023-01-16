@@ -4,8 +4,8 @@ SPEC_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Fe
 SENS_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With_Feats_Selection/Cross_Val_Results_Cross_Mean1/ENGLISH/SS/SENS/'
 
 sys.path.append("/export/b15/afavaro/git_code_version/speech")
-from Cross_Lingual_Evaluation.interpretable_features.classification.cross_lingual.Data_Prep_SS import *
-from Cross_Lingual_Evaluation.interpretable_features.classification.cross_lingual.Utils_SS import *
+from Cross_Lingual_Evaluation.Interpretable_features.classification.cross_lingual.Data_Prep_SS import *
+from Cross_Lingual_Evaluation.Interpretable_features.classification.cross_lingual.Utils_SS import *
 import numpy as np
 import os
 from sklearn.ensemble import ExtraTreesClassifier

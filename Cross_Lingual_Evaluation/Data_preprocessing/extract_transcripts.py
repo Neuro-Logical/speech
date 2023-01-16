@@ -4,7 +4,7 @@ import whisper
 
 def extract_speech_transcripts(path_to_recordings, output_folder):
 
-    """ Function thats extract speech transcripts using OpenAI's Whisper.
+    """ Function that extract speech transcripts using OpenAI's Whisper.
     path_to_recordings: path to the folder containing the recordings to transcribe.
     output_folder: path to the folder where the transcript of each recording will be stored.
     This function outputs a text file for each recording with the corresponding transcriptions. """
