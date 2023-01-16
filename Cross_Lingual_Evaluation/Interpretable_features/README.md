@@ -9,7 +9,8 @@ The pipeline goes as follows:
 2) Features extraction 
 
     - To extract the acoustic features described in the paper run ```feature_extraction/extract_acoustic_feats.sh```
-    - To extract the linguistic features described in the paper run ```feature_extraction/extract_linguistic_feats.py``` 
+    - To extract the linguistic features described in the paper run ```feature_extraction/extract_linguistic_feats.py``` .
+    - To extract the linguistic and cognitive features from the transcripts of your speech data set, you can use the notebook: ```feature_extraction/extract_ling_cog_features.ipynb```
     - To extract the cognitive features described in the paper run ```feature_extraction/extract_cognitive_feats.py```
    
 3) Grid search
