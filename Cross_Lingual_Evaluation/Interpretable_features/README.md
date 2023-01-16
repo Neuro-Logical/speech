@@ -3,8 +3,9 @@ Code to reproduce the experiments related with interpretable features. Interpret
 The pipeline goes as follows:
 
 1) Data pre-processing
+
   - To resample the speech recordings to 16 kHz run the script ```convert_to_16k.sh```
-  - To extract speech transcripts from speech recordings using Whisper run ```/extract_transcripts.py```
+  - To extract speech transcripts from speech recordings using Whisper run ```extract_transcripts.py```
 
 2) Features extraction 
 
@@ -17,10 +18,26 @@ The pipeline goes as follows:
 
     - To identify the best hyperparameters for each model within the mono-lingual and multi-lingual experiments run ```grid_search/run_gridsearch.sh```.
    
-5) Classification 
+4) Classification 
 
    - run ```monolingual_experiments.sh``` for mono-lingual experiments
    - run ```multilingual_experiments.sh``` for cross-lingual experiments 
    - run ```crosslingual_experiments.sh``` for cross-lingual experiments
 
    All the experiments are organized separately for each language. In doing so, we also evaluated different tasks separately. The three tasks evaluated were a reading passage (RP), a spontaneous speech (SS) task, and text dependent utterances (TDU).
+
+
+### Prepare data 
+For the classification experiments, the following data structure is required for each language. For each family of features (i.e., acoustic, cognitive, linguistic), create a csv file structured as reported in the table below.
+
+| Column name      | Data Type | Description  |
+| :---        |    :----:   |          ---: |
+| Feature name      | int or float  |Extracted feature value |
+| Label   | string ("CN" or "PD")  | Classes needed to analyze statistical difference between experimental groups|
+| Speaker ID | string or int | Unique identifier of each subject | 
+| UPDRSIII  | float or int   | Unified Parkinson Disease Rating Scale (part 3) (value needed in the correlation analysis)|
+| UPDRSIII-speech| float or int  | Unified Parkinson Disease Rating Scale (part 3) speech assessment (value needed in the correlation analysis)  |
+| H&Y | float or int  | Hoehn & Yahr rating scale (value needed in the correlation analysis)|
+| Task name | string (i.e., "CookieTheft") | Task from which the feature has ben extracted|
+
+A mock csv file reproducing the structure above is reported in ``` data/data.csv ```.
