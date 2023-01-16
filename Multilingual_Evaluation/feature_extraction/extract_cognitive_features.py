@@ -1,61 +1,8 @@
-
-
-def uncertainty(text):
-
-    """ Function design to capture the level of certainty of patients of participants when delivering  the description
-    of the image.
-    text: string containing speech transcripts."""
-
-    cont_con = 0
-    if "?" in text:
-        cont_con = cont_con + 1
-    if "why" in text:
-        cont_con = cont_con + 1
-    if "might" in text:
-        cont_con = cont_con + 1
-    if "could" in text:
-        cont_con = cont_con + 1
-    if "may" in text:
-        cont_con = cont_con + 1
-    if "uhm" in text:
-        cont_con = cont_con + 1
-    if "ah" in text:
-        cont_con = cont_con + 1
-    if "perhaps" in text:
-        cont_con = cont_con + 1
-    if "looks like" in text:
-        cont_con = cont_con + 1
-
-    return cont_con
-
-
-def repetitions(text):
-
-    """ Count the number of repetitions in each recording, after stop word removal.
-    text: string containing speech transcripts. """
-
-    stopwords = list(stopwords.words('english'))
-    repetition = 0
-    text = text.split()
-    d = dict()
-
-    for line in text:
-        line = line.strip()
-        line = line.lower()
-        words = line.split(" ")
-        for word in words:
-
-            if word in d:
-                d[word] = d[word] + 1
-            else:
-                d[word] = 1
-
-    for key in list(d.keys()):
-        if key not in stopwords:
-            if d[key] > 1:
-                repetition += 1
-
-    return repetition
+import sys
+sys.path.append("/export/c07/afavaro/whisperX")
+import whisperx
+import os
+import pandas as pd
 
 
 def informational_verb(text):
@@ -95,70 +42,30 @@ def informational_verb(text):
     return cont_con
 
 
-def informational_content(text):
+def extract_word_starting_timestamps(BASE, OUT_PATH):
 
-    """ Count how many (if any) salient object (nouns) are mentioned in the description.
-    text: string containing speech transcripts."""
+    """  Code to extract word starting timestamps using whisperx.
+     Whisperx is a whisper-Based Automatic Speech Recognition (ASR) with improved timestamp accuracy using forced alignment.
+     Code can be found at:  https://github.com/m-bain/whisperX.
+     BASE: path to the folder where recordings are stored.
+     OUTPATH: path to the folder where the file containing word starting time stamps will be stored.
+     This function outputs for each recording a csv file with two columns: the first containing the list of words and the second the corresponding starting point. """
 
-    cont_con = 0
+    device = "cpu"
+    model = whisperx.load_model("medium", device)
+    audios = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
 
-    if "mother" in text:
-        cont_con = cont_con + 1
-    if "sister" in text:
-        cont_con = cont_con + 1
-    if "cookie" in text:
-        cont_con = cont_con + 1
-    if "cookie jar" in text:
-        cont_con = cont_con + 1
-    if "curtains" in text:
-        cont_con = cont_con + 1
-    if "cabinet" in text:
-        cont_con = cont_con + 1
-    if "brother" in text:
-        cont_con = cont_con + 1
-    if "chair" in text:
-        cont_con = cont_con + 1
-    if "kitchen" in text:
-        cont_con = cont_con + 1
-    if "sink" in text:
-        cont_con = cont_con + 1
-    if "garden" in text:
-        cont_con = cont_con + 1
-    if "fall" in text:
-        cont_con = cont_con + 1
-    if "dishes" in text:
-        cont_con = cont_con + 1
-    if "stool" in text:
-        cont_con = cont_con + 1
-    if "poddle" in text:
-        cont_con = cont_con + 1
-    if "shoes" in text:
-        cont_con = cont_con + 1
-    if "apron" in text:
-        cont_con = cont_con + 1
-
-    return cont_con
-
-
-def ratio_info_rep_plus_uncert(df):
-
-    """ Compute ratio between informativeness and uncertanty,
-    where uncertainty is represented as repetition + uncertainty.
-    text: string containing speech transcripts."""
-
-    summation = df['repetition'] + df["uncertanty"]
-    ratio = df['informational'] / summation  # info / rep + uncertanty
-    df["ratio_info_rep_plus_uncert"] = ratio
-
-    return df
-
-
-def ratio_rep_certanty(df):
-
-    """ Compute the ratio between repetitions and uncertainty """
-
-    division = df['repetition'] / df["uncertanty"]  # repetition / uncertainty
-    df["ratio_rep_certanty"] = division
-
-    return df
+    for audio in audios:
+        text =[]
+        time_stamps = []
+        base_name = os.path.basename(audio).split("wav")[0]
+        result = model.transcribe(audio)
+        model_a, metadata = whisperx.load_align_model(language_code=result["language"], device=device)
+        result_aligned = whisperx.align(result["segments"], model_a, metadata, audio, device)
+        out = (result_aligned["word_segments"]) # after alignment
+        for element in out:
+            text.append(element['text'])
+            time_stamps.append(element['start'])
+        data = pd.DataFrame({'word': text, 'time_stamps': time_stamps})
+        data.to_csv(os.path.join(OUT_PATH, base_name + ".csv"))
 
