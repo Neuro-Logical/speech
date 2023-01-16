@@ -33,11 +33,6 @@ For the classification experiments, the following data structure is required for
 | Column name      | Data Type | Description  |
 | :---        |    :----:   |          ---: |
 | Feature name      | int or float  |Extracted feature value |
-| Label   | string ("CN" or "PD")  | Classes needed to analyze statistical difference between experimental groups|
-| Speaker ID | string or int | Unique identifier of each subject | 
-| UPDRSIII  | float or int   | Unified Parkinson Disease Rating Scale (part 3) (value needed in the correlation analysis)|
-| UPDRSIII-speech| float or int  | Unified Parkinson Disease Rating Scale (part 3) speech assessment (value needed in the correlation analysis)  |
-| H&Y | float or int  | Hoehn & Yahr rating scale (value needed in the correlation analysis)|
-| Task name | string (i.e., "CookieTheft") | Task from which the feature has ben extracted|
+| Speaker ID | string | Unique identifier of each subject that should contain information about the class (i.e., HC, PD), the subject ID (e.g., 12), and the the task (e.g., monologue). An exaple is: HC_12_monologue.wav | 
 
 A mock csv file reproducing the structure above is reported in ``` data/data.csv ```.
