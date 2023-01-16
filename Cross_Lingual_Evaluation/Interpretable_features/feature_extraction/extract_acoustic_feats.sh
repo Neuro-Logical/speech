@@ -5,6 +5,10 @@ export PATH=$PATH:$KALDI_ROOT/src/featbin/
 # The script saves a feature matrix in csv format.
 # This script should be run inside the folder named: disvoice/prosody.
 
+# This script should called as follows:
+# python prosody.py <file_or_folder_audio> <file_features> <static (true or false)> <plots (true or false)> <format (csv, txt, npy, kaldi, torch)>
+
+
 python prosody.py "/export/b15/afavaro/Frontiers/Czech_PD/All_16k/" "/export/b15/afavaro/Frontiers/Czech_PD/prosody.csv" "true" "false" "csv"
 
 python prosody.py  "/export/b15/afavaro/Frontiers/German_PD/All/" "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/GERMAN/Acoustic/Prosody/prosody.csv" "true" "false" "csv"
@@ -38,6 +42,10 @@ python prosody.py "/export/b15/afavaro/Frontiers/Italian_PD/FBR1/" "/export/b15/
 # f = frame length, namely the length of the frame used by the VAD adopted for the feature extraction. f can be 10, 20, 30 ms.
 # -a is the path to the folder containing the recordings.
 # This script should be run inside the folder named: DigiPsych_Prosody.
+
+# This script should be called as follows:
+## python featurize.py -a <file_or_folder_audio> -f f <frame length (10, 20, 30 ms}>
+
 
 python featurize.py -a  /export/b15/afavaro/Frontiers/Czech_PD/All_16k/ -f 20
 
