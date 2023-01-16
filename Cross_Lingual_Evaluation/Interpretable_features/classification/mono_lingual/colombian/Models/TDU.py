@@ -7,8 +7,8 @@ BAGGING_OUT_PATH = '/export/b15/afavaro/Frontiers/submission/Classification_With
 
 import sys
 sys.path.append("/export/b15/afavaro/git_code_version/speech")
-from Cross_Lingual_Evaluation.interpretable_features.classification.mono_lingual.Data_Prep_TDU import *
-from Cross_Lingual_Evaluation.interpretable_features.classification.mono_lingual.Utils import *
+from Cross_Lingual_Evaluation.Interpretable_features.classification.mono_lingual.Data_Prep_TDU import *
+from Cross_Lingual_Evaluation.Interpretable_features.classification.mono_lingual.Utils import *
 import numpy as np
 import random
 import os
