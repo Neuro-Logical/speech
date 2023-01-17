@@ -35,3 +35,4 @@ For the classification experiments, the following data structure is required for
 | Feature name      | int or float  |Extracted feature value |
 | Speaker ID | string | Unique identifier of each subject that should contain information about the class (i.e., HC, PD),  <br> the subject ID (e.g., 12), and the the task (e.g., monologue). An exaple is: HC_12_monologue.wav | 
 
+A mock csv file reproducing the structure above is reported in ``` data/data_interpretable_feats.csv ```.
