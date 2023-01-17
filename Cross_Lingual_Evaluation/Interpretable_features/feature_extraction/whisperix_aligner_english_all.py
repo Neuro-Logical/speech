@@ -17,7 +17,7 @@ for m in audios:
     if size > 56:
             files.append(m)
 
-indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/NLS_001_ses01_ProsacVigor7.wav")
+indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/PEC_012_ses01_Namingaction10.wav")
 
 for audio in files[indx:]:
     print(audio)
