@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # MULTI-LINGUAL EXPERIMENTS
 
+
+# Experiments are conducted task-wise. The 3 tasks analyzed separately are: 1) read passage (RP), 2) text dependent utterances (TDU) and 3) spontaneous speech (SS).
 # change to the full path of where the Interpretable_features folder is.
 # Input and output paths are specified at the beginning of each script and should be be modified accordingly.
 

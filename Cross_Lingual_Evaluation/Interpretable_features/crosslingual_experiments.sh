@@ -6,6 +6,10 @@
 
 cd '/export/afavaro/git_code_version/speech/Cross_Lingual_Evaluation/Interpretable_features/'
 
+# Experiments are conducted task-wise. The 3 tasks analyzed separately are: 1) read passage (RP), 2) text dependent utterances (TDU) and 3) spontaneous speech (SS).
+# change to the full path of where the Interpretable_features folder is.
+# Input and output paths are specified at the beginning of each script and should be be modified accordingly.
+
 # Colombian
 
 python classification/cross_lingual/colombian/AUROC/RP.py
