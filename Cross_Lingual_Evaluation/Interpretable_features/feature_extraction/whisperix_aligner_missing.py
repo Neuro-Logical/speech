@@ -16,7 +16,6 @@ files = [os.path.join(tot, file + ".wav") for file in files]
 device = "cpu"
 model = whisperx.load_model("small", device)
 
-
 files_new = []
 for m in files:
     size = os.stat(m).st_size / 1000
