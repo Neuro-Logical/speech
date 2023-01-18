@@ -13,14 +13,14 @@ for m in paths:
     if size > 56:
         if "NLS_126" in m:
             files.append(m)
-        if "NLS_125" in m:
-            files.append(m)
+      #  if "NLS_125" in m:
+         #   files.append(m)
 
-indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/NLS_125_ses01_Namingaction9.wav")
-print(indx)
+#indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/NLS_125_ses01_Namingaction9.wav")
+#print(indx)
 # extract and save transcripts in text files.
 #for i in files[indx+2:]:
-for i in files[indx+3:]:
+for i in files:
     print(i)
     model = whisper.load_model("medium")
     result = model.transcribe(i)
