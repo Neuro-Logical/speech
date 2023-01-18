@@ -17,7 +17,7 @@ for m in paths:
             files.append(m)
 
 indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/NLS_125_ses01_Namingaction9.wav")
-
+print("CIAOAOO")
 # extract and save transcripts in text files.
 for i in files[indx+2:]:
     print(i)
