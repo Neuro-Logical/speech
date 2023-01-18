@@ -6,7 +6,7 @@ import whisperx
 import os
 import pandas as pd
 
-tot = "/export/b16/afavaro/AD_speech/"
+tot = "/export/b16/afavaro/AD_speech_16/"
 tots =[elem.split(".wav")[0] for elem in os.listdir(tot)]
 tot_1 = "/export/b16/afavaro/Alignment/"
 tots_1 =[elem.split(".csv")[0] for elem in os.listdir(tot_1)]
