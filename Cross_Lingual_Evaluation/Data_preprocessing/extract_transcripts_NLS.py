@@ -16,7 +16,7 @@ for m in paths:
         if "NLS_125" in m:
             files.append(m)
 
-indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/NLS_125_ses01_WordColor.wav")
+indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/NLS_125_ses01_Namingaction9.wav")
 
 # extract and save transcripts in text files.
 for i in files[indx:]:
