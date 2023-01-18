@@ -1,5 +1,5 @@
 
-output_folder = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Transcripts/'
+output_folder = '/export/b16/afavaro/Transcripts/'
 
 import os
 import whisper
