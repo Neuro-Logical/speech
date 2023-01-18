@@ -17,9 +17,9 @@ for m in files:
     if size > 56:
         if "Cookie" in m:
             files_new.append(m)
-
+print(len(files_new))
 # extract and save transcripts in text files.
-for i in files[files_new]:
+for i in files_new:
     print(i)
     model = whisper.load_model("medium")
     result = model.transcribe(i)
