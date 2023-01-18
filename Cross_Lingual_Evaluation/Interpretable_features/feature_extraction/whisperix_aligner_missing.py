@@ -22,6 +22,7 @@ for m in files:
     size = os.stat(m).st_size / 1000
     if size > 56:
             files_new.append(m)
+print(len(files_new))
 
 for audio in files_new:
     print(audio)
