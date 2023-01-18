@@ -20,7 +20,7 @@ indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/NLS_125_
 print(indx)
 # extract and save transcripts in text files.
 #for i in files[indx+2:]:
-for i in files[indx:]:
+for i in files[indx+3:]:
     print(i)
     model = whisper.load_model("medium")
     result = model.transcribe(i)
