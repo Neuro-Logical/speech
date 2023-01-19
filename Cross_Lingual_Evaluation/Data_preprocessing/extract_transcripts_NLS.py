@@ -20,11 +20,11 @@ for m in paths:
         if "AD_025" in m:
             files.append(m)
 
-#indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/NLS_125_ses01_Namingaction9.wav")
+indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/AD_024_ses01_SmoothSustained5.wav")
 #print(indx)
 # extract and save transcripts in text files.
 #for i in files[indx+2:]:
-for i in files:
+for i in files[indx:]:
     print(i)
     model = whisper.load_model("medium")
     result = model.transcribe(i)
