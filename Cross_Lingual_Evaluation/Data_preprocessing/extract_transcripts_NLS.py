@@ -11,7 +11,7 @@ files = []
 for m in paths:
     size = os.stat(m).st_size / 1000
     if size > 56:
-        if "NLS_126" in m:
+        if "NLS_125" in m:
             files.append(m)
       #  if "NLS_125" in m:
          #   files.append(m)
