@@ -25,3 +25,4 @@ tqdm==4.64.1
 webrtcvad==2.0.10
 whisper==1.0
 xgboost==1.5.0
+ffmpeg-normalize==1.26.1
