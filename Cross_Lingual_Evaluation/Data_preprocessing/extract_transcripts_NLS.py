@@ -11,20 +11,14 @@ files = []
 for m in paths:
     size = os.stat(m).st_size / 1000
     if size > 56:
-        if "AD_022" in m:
-            files.append(m)
-        if "AD_023" in m:
-            files.append(m)
-        if "AD_024" in m:
-            files.append(m)
-        if "AD_025" in m:
+        if "Cookie" in m:
             files.append(m)
 
-indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/AD_022_ses01_SmoothSustained5.wav")
-#print(indx)
+#indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/AD_022_ses01_SmoothSustained5.wav")
+
 # extract and save transcripts in text files.
 #for i in files[indx+2:]:
-for i in files[indx:]:
+for i in files:
     print(i)
     model = whisper.load_model("medium")
     result = model.transcribe(i)
