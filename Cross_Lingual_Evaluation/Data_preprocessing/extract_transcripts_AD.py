@@ -1,5 +1,5 @@
 
-output_folder = '/export/b16/afavaro/Transcripts/'
+#output_folder = '/export/b16/afavaro/Transcripts/'
 
 import os
 import whisper
