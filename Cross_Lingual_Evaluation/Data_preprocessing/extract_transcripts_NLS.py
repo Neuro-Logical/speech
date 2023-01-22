@@ -14,11 +14,11 @@ for m in paths:
         if "Cookie" in m:
             files.append(m)
 
-#indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/AD_022_ses01_SmoothSustained5.wav")
+indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/NLS_073_ses01_CookieThief.wav")
 
 # extract and save transcripts in text files.
 #for i in files[indx+2:]:
-for i in files:
+for i in files[indx:1]:
     print(i)
     model = whisper.load_model("medium")
     result = model.transcribe(i)
