@@ -14,7 +14,7 @@ for m in paths:
         if "Cookie" in m:
             files.append(m)
 
-indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/NLS_073_ses01_CookieThief.wav")
+indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/NLS_054_ses01_CookieThief.wav")
 
 # extract and save transcripts in text files.
 #for i in files[indx+2:]:
