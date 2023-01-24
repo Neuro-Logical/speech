@@ -19,7 +19,7 @@ for m in audios:
     if size > 56:
             files.append(m)
 
-indx = files.index("/export/b15/afavaro/Trevor_paper/speech_16/AD_002_ses03_SecuencestroopPrevious2.wav")
+indx = files.index("/export/b15/afavaro/Trevor_paper/speech_16/NLS_014_ses04_WordColor.wav")
 for audio in files[indx:]:
     print(audio)
     text =[]
