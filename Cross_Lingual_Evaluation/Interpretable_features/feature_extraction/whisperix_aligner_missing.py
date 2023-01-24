@@ -5,6 +5,8 @@ sys.path.append("/export/c07/afavaro/whisperX")
 import whisperx
 import os
 import pandas as pd
+device = "cpu"
+model = whisperx.load_model("small", device)
 
 one = '/export/b15/afavaro/Trevor_paper/speech_16/'
 tots = [elem.split(".wav")[0] for elem in os.listdir(one)]
@@ -20,15 +22,13 @@ for m in tots_1:
 
 files = (set(tots) ^ set(tot_wc))
 files = [os.path.join(one, file + ".wav") for file in files]
-files.remove("/export/b15/afavaro/Trevor_paper/speech_16/PEC_047_ses01_WordColor.wav")
-files.remove("/export/b15/afavaro/Trevor_paper/speech_16/NLS_048_ses01_SecuencestroopPrevious1.wav")
-device = "cpu"
-model = whisperx.load_model("small", device)
+
 
 files_new = []
 for m in files:
     size = os.stat(m).st_size / 1000
     if size > 56:
+        if os.path.exists(m):
             files_new.append(m)
 print(len(files_new))
 
