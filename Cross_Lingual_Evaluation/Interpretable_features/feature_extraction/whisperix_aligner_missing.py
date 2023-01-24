@@ -1,4 +1,4 @@
-OUT_PATH = "/export/b16/afavaro/Alignment/"
+OUT_PATH = '/export/b15/afavaro/Trevor_paper/Alignment/'
 
 import sys
 sys.path.append("/export/c07/afavaro/whisperX")
@@ -6,12 +6,20 @@ import whisperx
 import os
 import pandas as pd
 
-tot = "/export/b16/afavaro/AD_speech_16/"
-tots =[elem.split(".wav")[0] for elem in os.listdir(tot)]
-tot_1 = "/export/b16/afavaro/Alignment/"
-tots_1 =[elem.split(".csv")[0] for elem in os.listdir(tot_1)]
-files = (set(tots)^set(tots_1))
-files = [os.path.join(tot, file + ".wav") for file in files]
+one = '/export/b15/afavaro/Trevor_paper/speech_16/'
+tots = [elem.split(".wav")[0] for elem in os.listdir(one)]
+two = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx'
+tots_1 = [elem.split(".csv")[0] for elem in os.listdir(two)]
+
+tot_wc = []
+for m in tots_1:
+    if "SecuencestroopPrevious" in m:
+        tot_wc.append(m)
+    if "WordColor" in m:
+        tot_wc.append(m)
+
+files = (set(tots) ^ set(tot_wc))
+files = [os.path.join(one, file + ".wav") for file in files]
 
 device = "cpu"
 model = whisperx.load_model("small", device)
