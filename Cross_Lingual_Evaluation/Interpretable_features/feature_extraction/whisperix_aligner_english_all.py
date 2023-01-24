@@ -20,7 +20,7 @@ for m in audios:
             files.append(m)
 
 indx = files.index("/export/b15/afavaro/Trevor_paper/speech_16/AD_002_ses03_SecuencestroopPrevious2.wav")
-for audio in files:
+for audio in files[indx:]:
     print(audio)
     text =[]
     time_stamps = []
