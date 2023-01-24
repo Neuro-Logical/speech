@@ -21,7 +21,7 @@ for m in tots_1:
 files = (set(tots) ^ set(tot_wc))
 files = [os.path.join(one, file + ".wav") for file in files]
 files.remove("/export/b15/afavaro/Trevor_paper/speech_16/PEC_047_ses01_WordColor.wav")
-
+files.remove("/export/b15/afavaro/Trevor_paper/speech_16/NLS_048_ses01_SecuencestroopPrevious1.wav")
 device = "cpu"
 model = whisperx.load_model("small", device)
 
