@@ -1,5 +1,5 @@
 #BASE = "/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/"
-BASE = "/export/b15/afavaro/Trevor_paper/speech/"
+BASE = "/export/b15/afavaro/Trevor_paper/speech_16/"
 OUT_PATH = '/export/b15/afavaro/Trevor_paper/Alignment/'
 #OUT_PATH = "/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx"
 
