@@ -1,7 +1,7 @@
-#BASE = "/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/"
-BASE = "/export/b15/afavaro/Trevor_paper/speech_16/"
-OUT_PATH = '/export/b15/afavaro/Trevor_paper/Alignment/'
-#OUT_PATH = "/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx"
+BASE = "/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/"
+#BASE = "/export/b15/afavaro/Trevor_paper/speech_16/"
+#OUT_PATH = '/export/b15/afavaro/Trevor_paper/Alignment/'
+OUT_PATH = "/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx"
 
 import sys
 sys.path.append("/export/c07/afavaro/whisperX")
@@ -19,7 +19,8 @@ for m in audios:
     if size > 56:
             files.append(m)
 
-indx = files.index("/export/b15/afavaro/Trevor_paper/speech_16/NLS_014_ses04_WordColor.wav")
+indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/PEC_019_ses01_SmoothSustained5.wav")
+
 for audio in files[indx:]:
     print(audio)
     text =[]
