@@ -1,7 +1,6 @@
 hubert_base = '/export/b11/ytsai25/feats/hubert/GITA/'
 audio_dir = '/export/b15/afavaro/Frontiers/GITA_NEW_TASKS/All_Recordings_Correct_Naming/'
 
-
 import os
 import numpy as np
 import torchaudio

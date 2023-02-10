@@ -1,15 +1,18 @@
 wav2vec = '/export/b11/ytsai25/feats/wav2vec/GITA/'
 audio_dir = '/export/b15/afavaro/Frontiers/GITA_NEW_TASKS/All_Recordings_Correct_Naming/'
+/PD_AVPEPUDEA0013_TDU
+
 
 import os
 import numpy as np
 import torchaudio
 
 tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
+ind = tot.index("/export/b15/afavaro/Frontiers/GITA_NEW_TASKS/All_Recordings_Correct_Naming/PD_AVPEPUDEA0013_TDU.py")
 bundle = torchaudio.pipelines.WAV2VEC2_XLSR53
 model = bundle.get_model()
 
-for audio in tot:
+for audio in tot[ind:]:
     base = os.path.basename(audio).split(".wav")[0]
     waveform, sample_rate = torchaudio.load(audio)
     waveform = torchaudio.functional.resample(waveform, sample_rate, bundle.sample_rate)
