@@ -6,7 +6,7 @@ import numpy as np
 import torchaudio
 
 tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
-bundle = torchaudio.pipelines.HUBERT_BASE
+bundle = torchaudio.pipelines.WAV2VEC2_XLSR53
 model = bundle.get_model()
 
 for audio in tot:
