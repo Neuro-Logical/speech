@@ -17,7 +17,7 @@ for audio in tot:
 
     #save feat from last layer
     numpy_array = features[-1].cpu().detach().numpy()
-    output_file = os.path.join(hubert_base, base +".npy")
+    output_file = os.path.join(hubert_base, base + ".npy")
     print(output_file)
     with open(output_file, 'wb') as f:
         np.save(f, numpy_array)
