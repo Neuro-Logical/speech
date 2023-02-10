@@ -5,7 +5,7 @@
 #audio_dir = '/export/b15/afavaro/Frontiers/Neurovoz_data/audio_used_frontiers/'
 
 # GermanPD
-hubert_base = "/export/b11/ytsai25/feats/wav2vec/German_PD/"
+wav2vec = "/export/b11/ytsai25/feats/wav2vec/German_PD/"
 audio_dir = '/export/b15/afavaro/Frontiers/German_PD/All/'
 
 import os
