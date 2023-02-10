@@ -1,6 +1,6 @@
 wav2vec = '/export/b11/ytsai25/feats/wav2vec/GITA/'
 audio_dir = '/export/b15/afavaro/Frontiers/GITA_NEW_TASKS/All_Recordings_Correct_Naming/'
-/PD_AVPEPUDEA0013_TDU
+
 
 
 import os
