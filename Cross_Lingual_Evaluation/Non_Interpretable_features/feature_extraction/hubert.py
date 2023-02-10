@@ -8,7 +8,7 @@
 #audio_dir = '/export/b15/afavaro/Frontiers/Neurovoz_data/audio_used_frontiers/'
 
 # GermanPD
-hubert_base = "/export/b11/ytsai25/feats/hubert/GermanPD"
+hubert_base = "/export/b11/ytsai25/feats/hubert/German_PD/"
 audio_dir = '/export/b15/afavaro/Frontiers/German_PD/All/'
 
 
