@@ -1,8 +1,13 @@
 #wav2vec = '/export/b11/ytsai25/feats/wav2vec/GITA/'
 #audio_dir = '/export/b15/afavaro/Frontiers/GITA_NEW_TASKS/All_Recordings_Correct_Naming/'
 
-wav2vec = '/export/b11/ytsai25/feats/wav2vec/Neurovoz/'
-audio_dir = '/export/b15/afavaro/Frontiers/Neurovoz_data/audio_used_frontiers/'
+#wav2vec = '/export/b11/ytsai25/feats/wav2vec/Neurovoz/'
+#audio_dir = '/export/b15/afavaro/Frontiers/Neurovoz_data/audio_used_frontiers/'
+
+# GermanPD
+hubert_base = "/export/b11/ytsai25/feats/wav2vec/German_PD/"
+audio_dir = '/export/b15/afavaro/Frontiers/German_PD/All/'
+
 
 import os
 import numpy as np
