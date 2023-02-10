@@ -8,7 +8,7 @@
 #audio_dir = '/export/b15/afavaro/Frontiers/Neurovoz_data/audio_used_frontiers/'
 
 # GermanPD
-hubert_base = "/export/b11/ytsai25/feats/hubert/German_PD/"
+hubert_base = "/export/b15/afavaro/Frontiers/German_PD/All"
 audio_dir = '/export/b15/afavaro/Frontiers/German_PD/All/'
 
 
@@ -17,7 +17,7 @@ import numpy as np
 import torchaudio
 
 tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
-#ind = tot.index("/export/b15/afavaro/Frontiers/GITA_NEW_TASKS/All_Recordings_Correct_Naming/PD_AVPEPUDEA0041_monologue.wav")
+#ind = tot.index("/export/b15/afavaro/Frontiers/German_PD/All/PD_007_monologue_German.wav")
 bundle = torchaudio.pipelines.HUBERT_BASE
 model = bundle.get_model()
 
