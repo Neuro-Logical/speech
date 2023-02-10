@@ -15,7 +15,7 @@ for audio in tot:
     waveform = torchaudio.functional.resample(waveform, sample_rate, bundle.sample_rate)
     features, _ = model.extract_features(waveform)
     numpy_array = features[-1].cpu().detach().numpy()
-    output_file = os.path.join(wav2vec, base +".npy")
+    output_file = os.path.join(wav2vec, base + ".npy")
     print(output_file)
     with open(output_file, 'wb') as f:
         np.save(f, numpy_array)
