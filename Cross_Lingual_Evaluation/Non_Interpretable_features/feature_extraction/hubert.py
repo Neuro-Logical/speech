@@ -21,7 +21,7 @@ tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
 bundle = torchaudio.pipelines.HUBERT_BASE
 model = bundle.get_model()
 
-for audio in tot:
+for audio in tot[ind:]:
     base = os.path.basename(audio).split(".wav")[0]
     waveform, sample_rate = torchaudio.load(audio)
     waveform = torchaudio.functional.resample(waveform, sample_rate, bundle.sample_rate)
