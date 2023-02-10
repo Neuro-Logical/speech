@@ -4,8 +4,13 @@
 #audio_dir = '/export/b15/afavaro/Frontiers/GITA_NEW_TASKS/All_Recordings_Correct_Naming/'
 
 # Neurovoz
-hubert_base = "/export/b11/ytsai25/feats/hubert/Neurovoz"
-audio_dir = '/export/b15/afavaro/Frontiers/Neurovoz_data/audio_used_frontiers/'
+#hubert_base = "/export/b11/ytsai25/feats/hubert/Neurovoz"
+#audio_dir = '/export/b15/afavaro/Frontiers/Neurovoz_data/audio_used_frontiers/'
+
+# GermanPD
+hubert_base = "/export/b11/ytsai25/feats/hubert/GermanPD"
+audio_dir = '/export/b15/afavaro/Frontiers/German_PD/All/'
+
 
 import os
 import numpy as np
