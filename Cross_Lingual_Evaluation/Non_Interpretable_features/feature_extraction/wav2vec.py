@@ -8,7 +8,7 @@ import numpy as np
 import torchaudio
 
 tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
-ind = tot.index("/export/b15/afavaro/Frontiers/GITA_NEW_TASKS/All_Recordings_Correct_Naming/PD_AVPEPUDEA0013_TDU.py")
+ind = tot.index("/export/b15/afavaro/Frontiers/GITA_NEW_TASKS/All_Recordings_Correct_Naming/PD_AVPEPUDEA0013_TDU.wav")
 bundle = torchaudio.pipelines.WAV2VEC2_XLSR53
 model = bundle.get_model()
 
