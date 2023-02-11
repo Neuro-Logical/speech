@@ -27,7 +27,7 @@ ind = tot.index("/export/b15/afavaro/Frontiers/NLS/RP_conc_resampled/AD_2_RP.wav
 bundle = torchaudio.pipelines.HUBERT_BASE
 model = bundle.get_model()
 
-for audio in tot:
+for audio in tot[ind:]:
     base = os.path.basename(audio).split(".wav")[0]
     waveform, sample_rate = torchaudio.load(audio)
     waveform = torchaudio.functional.resample(waveform, sample_rate, bundle.sample_rate)
