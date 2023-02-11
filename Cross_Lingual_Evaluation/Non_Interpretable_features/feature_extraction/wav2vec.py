@@ -8,8 +8,11 @@
 #wav2vec = "/export/b11/ytsai25/feats/wav2vec/German_PD/"
 #audio_dir = '/export/b15/afavaro/Frontiers/German_PD/All/'
 
-wav2vec = "/export/b11/ytsai25/feats/wav2vec/Czech_PD/"
-audio_dir = '/export/b15/afavaro/Frontiers/Czech_PD/All_16k/'
+#wav2vec = "/export/b11/ytsai25/feats/wav2vec/Czech_PD/"
+#audio_dir = '/export/b15/afavaro/Frontiers/Czech_PD/All_16k/'
+
+audio_dir =  '/export/b15/afavaro/Frontiers/NLS/RP_conc_resampled/'
+wav2vec = "/export/b11/ytsai25/feats/wav2vec/NLS/"
 
 import os
 import numpy as np
