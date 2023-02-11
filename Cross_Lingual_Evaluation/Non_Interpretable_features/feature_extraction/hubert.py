@@ -17,11 +17,11 @@ import numpy as np
 import torchaudio
 
 tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
-ind = tot.index("/export/b15/afavaro/Frontiers/German_PD/All/PD_087_readtext_German.wav")
+#ind = tot.index("/export/b15/afavaro/Frontiers/German_PD/All/PD_087_readtext_German.wav")
 bundle = torchaudio.pipelines.HUBERT_BASE
 model = bundle.get_model()
 
-for audio in tot[ind:]:
+for audio in tot:
     base = os.path.basename(audio).split(".wav")[0]
     waveform, sample_rate = torchaudio.load(audio)
     waveform = torchaudio.functional.resample(waveform, sample_rate, bundle.sample_rate)
