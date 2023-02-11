@@ -17,7 +17,7 @@ import numpy as np
 import torchaudio
 
 tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
-ind = tot.index("/export/b15/afavaro/Frontiers/German_PD/All/PD_007_monologue_German.wav")
+ind = tot.index("/export/b15/afavaro/Frontiers/German_PD/All/PD_087_readtext_German.wav")
 bundle = torchaudio.pipelines.HUBERT_BASE
 model = bundle.get_model()
 
