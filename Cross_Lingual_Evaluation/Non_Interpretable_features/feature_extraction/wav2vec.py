@@ -11,7 +11,7 @@
 #wav2vec = "/export/b11/ytsai25/feats/wav2vec/Czech_PD/"
 #audio_dir = '/export/b15/afavaro/Frontiers/Czech_PD/All_16k/'
 
-audio_dir =  '/export/b15/afavaro/Frontiers/NLS_RESAMPLED/'
+audio_dir =  '/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/'
 wav2vec = "/export/b11/ytsai25/feats/wav2vec/NLS/"
 
 import os
