@@ -19,7 +19,7 @@ import numpy as np
 import torchaudio
 
 tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
-#ind = tot.index("/export/b15/afavaro/Frontiers/German_PD/All/PD_043_monologue_German.wav")
+ind = tot.index("/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/NLS/NLS_52_ses1_CookieThief.wav")
 bundle = torchaudio.pipelines.WAV2VEC2_XLSR53
 model = bundle.get_model()
 
