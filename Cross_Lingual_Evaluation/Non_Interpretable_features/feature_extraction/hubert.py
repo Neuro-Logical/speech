@@ -8,8 +8,11 @@
 #audio_dir = '/export/b15/afavaro/Frontiers/Neurovoz_data/audio_used_frontiers/'
 
 # GermanPD
-hubert_base = "/export/b11/ytsai25/feats/hubert/German_PD/"
-audio_dir = '/export/b15/afavaro/Frontiers/German_PD/All/'
+#hubert_base = "/export/b11/ytsai25/feats/hubert/German_PD/"
+#audio_dir = '/export/b15/afavaro/Frontiers/German_PD/All/'
+
+hubert_base = "/export/b11/ytsai25/feats/hubert/Czech_PD/"
+audio_dir = '/export/b15/afavaro/Frontiers/Czech_PD/All_16k/'
 
 
 import os
