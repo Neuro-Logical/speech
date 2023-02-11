@@ -15,7 +15,7 @@
 #audio_dir = '/export/b15/afavaro/Frontiers/Czech_PD/All_16k/'
 
 
-audio_dir =  '/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/
+audio_dir =  '/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/'
 hubert_base = "/export/b11/ytsai25/feats/hubert/NLS/"
 
 import os
