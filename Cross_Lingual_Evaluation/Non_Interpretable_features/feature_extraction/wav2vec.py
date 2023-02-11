@@ -11,7 +11,7 @@
 #wav2vec = "/export/b11/ytsai25/feats/wav2vec/Czech_PD/"
 #audio_dir = '/export/b15/afavaro/Frontiers/Czech_PD/All_16k/'
 
-audio_dir =  '/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/'
+audio_dir =  '/export/b15/afavaro/Frontiers/NLS_RESAMPLED/'
 wav2vec = "/export/b11/ytsai25/feats/wav2vec/NLS/"
 
 import os
@@ -19,7 +19,7 @@ import numpy as np
 import torchaudio
 
 tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
-ind = tot.index("/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/NLS/NLS_52_ses1_CookieThief.wav")
+ind = tot.index("/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/NLS_52_ses1_CookieThief.wav")
 bundle = torchaudio.pipelines.WAV2VEC2_XLSR53
 model = bundle.get_model()
 
