@@ -15,8 +15,8 @@
 #audio_dir = '/export/b15/afavaro/Frontiers/Czech_PD/All_16k/'
 
 
-audio_dir =  '/export/b11/ytsai25/feats/hubert/NLS/'
-hubert_base = "/export/b11/ytsai25/feats/hubert/Czech_PD/"
+audio_dir =  '/export/b15/afavaro/Frontiers/NLS/RP_conc_resampled/'
+hubert_base = "/export/b11/ytsai25/feats/hubert/NLS/"
 
 import os
 import numpy as np
