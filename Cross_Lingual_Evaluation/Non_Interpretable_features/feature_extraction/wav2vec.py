@@ -23,7 +23,7 @@ ind = tot.index("/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/NLS_52_ses1_Coo
 bundle = torchaudio.pipelines.WAV2VEC2_XLSR53
 model = bundle.get_model()
 
-for audio in tot:
+for audio in tot[ind:]:
     base = os.path.basename(audio).split(".wav")[0]
     waveform, sample_rate = torchaudio.load(audio)
     waveform = torchaudio.functional.resample(waveform, sample_rate, bundle.sample_rate)
