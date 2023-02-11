@@ -11,9 +11,12 @@
 #hubert_base = "/export/b11/ytsai25/feats/hubert/German_PD/"
 #audio_dir = '/export/b15/afavaro/Frontiers/German_PD/All/'
 
-hubert_base = "/export/b11/ytsai25/feats/hubert/Czech_PD/"
-audio_dir = '/export/b15/afavaro/Frontiers/Czech_PD/All_16k/'
+#hubert_base = "/export/b11/ytsai25/feats/hubert/Czech_PD/"
+#audio_dir = '/export/b15/afavaro/Frontiers/Czech_PD/All_16k/'
 
+
+audio_dir =  '/export/b11/ytsai25/feats/hubert/NLS/'
+hubert_base = "/export/b11/ytsai25/feats/hubert/Czech_PD/"
 
 import os
 import numpy as np
