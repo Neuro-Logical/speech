@@ -26,7 +26,7 @@ import numpy as np
 import torchaudio
 
 tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
-ind = tot.index(os.path.join(wav2vec, "PD_Michele_C_FB1MCIICLHL46M240120171837.wav"))
+ind = tot.index(os.path.join(audio_dir, "PD_Michele_C_FB1MCIICLHL46M240120171837.wav"))
 bundle = torchaudio.pipelines.HUBERT_BASE
 model = bundle.get_model()
 

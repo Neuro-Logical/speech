@@ -23,7 +23,7 @@ import numpy as np
 import torchaudio
 
 tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
-ind = tot.index(os.path.join(wav2vec, "PD_Antonia_G_B1AGNUTGOL52F100220171041.wav"))
+ind = tot.index(os.path.join(audio_dir, "PD_Antonia_G_B1AGNUTGOL52F100220171041.wav"))
 bundle = torchaudio.pipelines.WAV2VEC2_XLSR53
 model = bundle.get_model()
 
