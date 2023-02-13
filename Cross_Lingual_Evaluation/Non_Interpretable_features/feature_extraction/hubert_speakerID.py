@@ -12,6 +12,7 @@ model = HubertForSequenceClassification.from_pretrained("superb/hubert-large-sup
 feature_extractor = Wav2Vec2FeatureExtractor.from_pretrained("superb/hubert-large-superb-sid")
 
 for audio in tot:
+    print(audio)
     base = os.path.basename(audio).split(".wav")[0]
     array, fs = torchaudio.load(audio)
     inputs = feature_extractor(array.squeeze(), sampling_rate=16000, padding=True, return_tensors="pt")
