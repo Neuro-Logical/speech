@@ -17,6 +17,8 @@ for audio in tot:
     inputs = feature_extractor(array.squeeze(), sampling_rate=16000, padding=True, return_tensors="pt")
     with torch.no_grad():
         outputs = model(**inputs)
+
+
     # choose specific layer
     last_hidden_states = outputs.hidden_states[-2].squeeze().mean(axis=0).numpy()
     output_file = os.path.join(wav2vec_base, base + ".npy")

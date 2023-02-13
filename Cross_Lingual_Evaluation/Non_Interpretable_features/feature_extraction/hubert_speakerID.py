@@ -6,7 +6,7 @@ import torch
 audio_dir = '/export/b15/afavaro/Frontiers/Italian_PD/Audio_Whole_Ita_16/'
 hubert_base = "/export/b11/ytsai25/feats/hubert/new/"
 
-
+#"superb/hubert-base-superb-sid"
 tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
 model = HubertForSequenceClassification.from_pretrained("superb/hubert-large-superb-sid")
 feature_extractor = Wav2Vec2FeatureExtractor.from_pretrained("superb/hubert-large-superb-sid")
