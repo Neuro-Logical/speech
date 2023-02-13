@@ -5,7 +5,7 @@ import os
 import torchaudio
 import numpy as np
 import torch
-from transformers import HubertForSequenceClassification, Wav2Vec2FeatureExtractor
+#from transformers import HubertForSequenceClassification, Wav2Vec2FeatureExtractor
 
 1/0
 tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
