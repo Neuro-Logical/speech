@@ -1,5 +1,6 @@
-audio_dir = '/export/b15/afavaro/Frontiers/Italian_PD/Audio_Whole_Ita_16/'
-hubert_base = "/export/b11/ytsai25/feats/hubert/new/"
+import transformers
+1/0
+
 
 import os
 import torchaudio
@@ -7,8 +8,9 @@ import numpy as np
 import torch
 import transformers
 #from transformers import Wav2Vec2FeatureExtractor
-1/0
 #from transformers import HubertForSequenceClassification
+audio_dir = '/export/b15/afavaro/Frontiers/Italian_PD/Audio_Whole_Ita_16/'
+hubert_base = "/export/b11/ytsai25/feats/hubert/new/"
 
 1/0
 tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
