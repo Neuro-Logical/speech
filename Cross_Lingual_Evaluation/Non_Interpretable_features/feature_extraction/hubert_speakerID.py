@@ -7,8 +7,8 @@ import numpy as np
 import torch
 from transformers import HubertForSequenceClassification, Wav2Vec2FeatureExtractor
 
-tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
 1/0
+tot = [os.path.join(audio_dir, elem) for elem in os.listdir(audio_dir)]
 model = HubertForSequenceClassification.from_pretrained("superb/hubert-large-superb-sid")
 feature_extractor = Wav2Vec2FeatureExtractor.from_pretrained("superb/hubert-large-superb-sid")
 
