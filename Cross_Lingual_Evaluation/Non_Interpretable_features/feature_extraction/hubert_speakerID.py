@@ -15,6 +15,8 @@ for audio in tot:
     print(audio)
     base = os.path.basename(audio).split(".wav")[0]
     array, fs = torchaudio.load(audio)
+    print(array)
+    print(array.shape)
     inputs = feature_extractor(array.squeeze(), sampling_rate=16000, padding=True, return_tensors="pt")
     print(inputs)
     with torch.no_grad():
