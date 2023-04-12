@@ -1,7 +1,4 @@
-#BASE = "/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/"
-BASE = "/export/b15/afavaro/Trevor_paper/speech_16_2/"
-OUT_PATH = '/export/b15/afavaro/Trevor_paper/Alignment_2/'
-#OUT_PATH = "/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx"
+OUT_PATH = "/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx"
 
 import sys
 sys.path.append("/export/c07/afavaro/whisperX")
@@ -9,15 +6,27 @@ import whisperx
 import os
 import pandas as pd
 
+all_paths = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/'
+transc_path = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx/'
+
+path_audiods = [os.path.join(all_paths, elem) for elem in os.listdir(all_paths)]
+path_tr = [os.path.join(transc_path, elem) for elem in os.listdir(transc_path)]
+
+names_tr = [os.path.basename(elem).split(".csv")[0] for elem in path_tr]
+names_audio = [os.path.basename(elem).split(".wav")[0] for elem in path_audiods]
+
+all_names = list(set(names_tr)^set(names_audio))
+all_names_complete = [os.path.join(all_paths, elem + ".wav") for elem in all_names]
+
 device = "cpu"
 model = whisperx.load_model("small", device)
-audios = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
+#audios = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
 
 files = []
-for m in audios:
+for m in all_names_complete:
     size = os.stat(m).st_size / 1000
     if size > 56:
-            files.append(m)
+        files.append(m)
 
 #indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/PEC_019_ses01_SmoothSustained5.wav")
 
