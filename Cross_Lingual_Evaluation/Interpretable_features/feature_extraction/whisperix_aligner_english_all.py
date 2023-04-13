@@ -31,14 +31,14 @@ for m in all_names_complete:
        #     files.append(m)
        # if "Cookie" in m:
            # files.append(m)
-        if "Rainbow" in m:
+      #  if "Rainbow" in m:
+        #    files.append(m)
+       # if "Word" in m:
+           # files.append(m)
+        if "Secuences" in m:
             files.append(m)
-        if "Word" in m:
-            files.append(m)
-        if "Sequence" in m:
-            files.append(m)
-        if "Joke" in m:
-            files.append(m)
+       # if "Joke" in m:
+           # files.append(m)
 
 #indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/PEC_019_ses01_SmoothSustained5.wav")
 
