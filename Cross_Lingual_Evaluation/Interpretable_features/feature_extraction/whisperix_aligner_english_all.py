@@ -27,17 +27,17 @@ for m in all_names_complete:
     size = os.stat(m).st_size / 1000
     if size > 56:
 
-        if "Poem" in m:
+      #  if "Poem" in m:
+       #     files.append(m)
+       # if "Cookie" in m:
             files.append(m)
-        if "Cookie" in m:
+        if "Rainbow" in m:
             files.append(m)
-        if "passage" in m:
+        if "Word" in m:
             files.append(m)
-        if "color" in m:
+        if "Sequence" in m:
             files.append(m)
-        if "sequence" in m:
-            files.append(m)
-        if "joke" in m:
+        if "Joke" in m:
             files.append(m)
 
 #indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/PEC_019_ses01_SmoothSustained5.wav")
