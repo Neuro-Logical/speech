@@ -26,7 +26,22 @@ files = []
 for m in all_names_complete:
     size = os.stat(m).st_size / 1000
     if size > 56:
-        files.append(m)
+
+        if "Poem" in m:
+            files.append(m)
+        if "Cookie" in m:
+            files.append(m)
+        if "passage" in m:
+            files.append(m)
+        if "color" in m:
+            files.append(m)
+        if "sequence" in m:
+            files.append(m)
+        if "joke" in m:
+            files.append(m)
+
+
+
 
 #indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/PEC_019_ses01_SmoothSustained5.wav")
 
