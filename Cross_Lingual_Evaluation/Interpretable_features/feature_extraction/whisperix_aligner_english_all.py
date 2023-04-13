@@ -17,7 +17,7 @@ names_audio = [os.path.basename(elem).split(".wav")[0] for elem in path_audiods]
 
 all_names = list(set(names_tr)^set(names_audio))
 all_names_complete = [os.path.join(all_paths, elem + ".wav") for elem in all_names]
-
+print("done")
 device = "cpu"
 model = whisperx.load_model("small", device)
 #audios = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
@@ -39,9 +39,6 @@ for m in all_names_complete:
             files.append(m)
         if "joke" in m:
             files.append(m)
-
-
-
 
 #indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/PEC_019_ses01_SmoothSustained5.wav")
 
