@@ -11,30 +11,7 @@ files = []
 for m in paths:
     size = os.stat(m).st_size / 1000
     if size > 56:
-        if "NLS_018_ses01_CookieThief" in m:
-            files.append(m)
-        if "NLS_049_ses01_CookieThief" in m:
-            files.append(m)
-        if "PEC_027_ses01_CookieThief" in m:
-            files.append(m)
-        if "PEC_039_ses01_CookieThief" in m:
-            files.append(m)
-        if "PEC_048_ses01_CookieThief" in m:
-            files.append(m)
-        if "PEC_067_ses01_CookieThief" in m:
-            files.append(m)
-        if "NLS_015_ses01_CookieThief'" in m:
-            files.append(m)
-        if "NLS_035_ses01_CookieThief" in m:
-            files.append(m)
-
-        if "AD_007_ses03_CookieThief" in m:
-            files.append(m)
-        if "PEC_065_ses01_CookieThief" in m:
-            files.append(m)
-        if "NLS_014_ses01_CookieThief" in m:
-            files.append(m)
-        if "NLS_050_ses01_CookieThief" in m:
+        if "Cookie" in m:
             files.append(m)
 
 #indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/PEC_063_ses01_CookieThief.wav")
