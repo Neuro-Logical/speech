@@ -6,6 +6,7 @@ output_folder = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Transcripts/'
 import os
 import whisper
 print("CIAOAOO")
+
 paths = [os.path.join(base, elem) for elem in os.listdir(base)]
 files = []
 for m in paths:
