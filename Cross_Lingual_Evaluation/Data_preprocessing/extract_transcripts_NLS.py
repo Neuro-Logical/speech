@@ -1,5 +1,5 @@
 # base input directory containing recordings to transcribe.
-base = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k'
+base = '/export/c12/afavaro/new_resampled/'
 # output directory where to save speech transcripts.
 output_folder = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Transcripts/'
 
@@ -13,6 +13,7 @@ for m in paths:
     if size > 56:
         if "Cookie" in m:
             files.append(m)
+
 
 #indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/PEC_063_ses01_CookieThief.wav")
 
