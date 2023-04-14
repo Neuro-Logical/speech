@@ -1,5 +1,5 @@
 BASE = '/export/c12/afavaro/new_resampled/'
-OUT_PATH = "/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx"
+OUT_PATH = "/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx/"
 
 
 import sys
@@ -28,7 +28,6 @@ for m in audios:
             files.append(m)
         if "Joke" in m:
             files.append(m)
-
 
 #indx = files.index("/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/PEC_040_ses01_CookieThief.wav")
 
