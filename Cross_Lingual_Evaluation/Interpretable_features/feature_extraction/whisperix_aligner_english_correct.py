@@ -16,18 +16,21 @@ files = []
 for m in audios:
     size = os.stat(m).st_size / 1000
     if size > 56:
-        if "Poem" in m:
+        if "NLS_007_ses03_Poem" in m:
             files.append(m)
-        if "Cookie" in m:
-            files.append(m)
-        if "Rainbow" in m:
-            files.append(m)
-        if "Word" in m:
-            files.append(m)
-        if "Secuences" in m:
-            files.append(m)
-        if "Joke" in m:
-            files.append(m)
+
+        #if "Poem" in m:
+        #    files.append(m)
+        #if "Cookie" in m:
+        #    files.append(m)
+        #if "Rainbow" in m:
+        #    files.append(m)
+        #if "Word" in m:
+        #    files.append(m)
+        #if "Secuences" in m:
+        #    files.append(m)
+        #if "Joke" in m:
+        #    files.append(m)
 
 #indx = files.index("/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/PEC_040_ses01_CookieThief.wav")
 
