@@ -1,5 +1,5 @@
 # base input directory containing recordings to transcribe.
-base = '/export/c12/afavaro/new_resampled/'
+base = '/export/c12/afavaro/New_NLS/audio_fusion/ctp/'
 # output directory where to save speech transcripts.
 output_folder = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Transcripts/'
 
@@ -12,7 +12,7 @@ files = []
 for m in paths:
     size = os.stat(m).st_size / 1000
     if size > 56:
-        if "Cookie" in m:
+        if "NLS_082_ses01_CookieThief" in m:
             files.append(m)
 
 print("done")
