@@ -1,5 +1,5 @@
-BASE = '/export/c12/afavaro/New_NLS/audio_fusion/poem/'
-OUT_PATH = "/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx/"
+BASE = '/export/c12/afavaro/New_NLS/audio_fusion/joke_clean/'
+OUT_PATH = '/export/c12/afavaro/New_NLS/audio_fusion/Alignment/joke_cleaned/'
 
 
 import sys
@@ -16,7 +16,6 @@ files = []
 for m in audios:
     size = os.stat(m).st_size / 1000
     if size > 56:
-        if "NLS_007_ses03_Poem" in m:
             files.append(m)
 
         #if "Poem" in m:
