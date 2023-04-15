@@ -1,4 +1,4 @@
-BASE = '/export/c12/afavaro/new_resampled/'
+BASE = '/export/c12/afavaro/New_NLS/audio_fusion/poem/'
 OUT_PATH = "/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx/"
 
 
