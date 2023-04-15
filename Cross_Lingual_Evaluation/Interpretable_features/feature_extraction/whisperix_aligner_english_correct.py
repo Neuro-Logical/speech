@@ -35,6 +35,7 @@ for m in audios:
 #indx = files.index("/export/b15/afavaro/Frontiers/NLS/NLS_RESAMPLED/PEC_040_ses01_CookieThief.wav")
 
 for audio in files:
+    print(audio)
     text =[]
     time_stamps = []
     base_name = os.path.basename(audio).split(".wav")[0]
