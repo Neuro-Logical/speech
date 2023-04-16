@@ -7,8 +7,8 @@ import parselmouth
 from feature_extraction_utils import *
 
 
-name = 'secuence'
-gita = '/export/c12/afavaro/New_NLS/audio_fusion/audio_intensity_normalized/secuence/'
+name = 'wordcolor'
+gita = '/export/c12/afavaro/New_NLS/audio_fusion/audio_intensity_normalized/wordcolor/'
 files= [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
 
 
