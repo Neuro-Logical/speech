@@ -7,8 +7,8 @@ import parselmouth
 from feature_extraction_utils import *
 
 
-name = 'wordcolor'
-gita = '/export/c12/afavaro/New_NLS/audio_fusion/audio_intensity_normalized/wordcolor/'
+name = 'ctp'
+gita = '/export/c12/afavaro/New_NLS/audio_fusion/audio_intensity_normalized/ctp/'
 files= [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
 
 
