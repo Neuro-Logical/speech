@@ -30,7 +30,6 @@ def compute_intensity_attribute(files):
         #print(sound_filepath)
 
         sound_file = parselmouth.Sound(sound)
-
         intensity_attributes = get_intensity_attributes(sound_file)[0]
         #speak_rate = get_speaking_rate(sound_file, sound[1])
         pitch_attributes = get_pitch_attributes(sound_file)[0]
