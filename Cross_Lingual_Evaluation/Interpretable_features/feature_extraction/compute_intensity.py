@@ -12,23 +12,19 @@ gita = '/export/c12/afavaro/New_NLS/audio_fusion/audio_intensity_normalized/poem
 files= [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
 
 
-out_path = '/export/c12/afavaro/New_NLS/audio_fusion/features/'
+out_path = '/export/c12/afavaro/New_NLS/audio_fusion/features/intensity/'
 out_file = os.path.join(out_path, name + ".csv")
 print(out_file)
 
 def compute_intensity_attribute(files):
 
     df_tot = []
-
-    #for sound in zip(files, file_transcr):
     for sound in files:
         print(sound)
 
         df = pd.DataFrame()
         attributes = {}
         sound_filepath = os.path.basename(sound)
-        #print(sound_filepath)
-
         sound_file = parselmouth.Sound(sound)
         intensity_attributes = get_intensity_attributes(sound_file)[0]
         #speak_rate = get_speaking_rate(sound_file, sound[1])
