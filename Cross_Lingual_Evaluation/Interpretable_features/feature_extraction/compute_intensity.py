@@ -7,8 +7,8 @@ import parselmouth
 from feature_extraction_utils import *
 
 
-name = 'poem'
-gita = '/export/c12/afavaro/New_NLS/audio_fusion/audio_intensity_normalized/poem/'
+name = 'rainbow'
+gita = '/export/c12/afavaro/New_NLS/audio_fusion/audio_intensity_normalized/rainbow/'
 files= [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
 
 
