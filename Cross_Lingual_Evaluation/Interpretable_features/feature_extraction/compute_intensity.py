@@ -6,7 +6,6 @@ import os
 import parselmouth
 from feature_extraction_utils import *
 
-
 name = 'joke'
 gita = '/export/c12/afavaro/New_NLS/audio_fusion/audio_intensity_normalized/joke/'
 files= [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
