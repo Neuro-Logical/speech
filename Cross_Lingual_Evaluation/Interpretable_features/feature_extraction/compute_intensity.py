@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
 import pandas as pd
 import os
 import parselmouth
@@ -48,7 +47,6 @@ def compute_intensity_attribute(files):
         df.at[0, 'sound_filepath' ] = sound_filepath
         rearranged_columns = df.columns.tolist()[-1:] + df.columns.tolist()[:-1]
         df = df[rearranged_columns]
-      #  print(df)
         df_tot.append(df)
 
     new_df = pd.concat(df_tot)
