@@ -12,6 +12,7 @@ name = 'poem'
 gita = '/export/c12/afavaro/New_NLS/audio_fusion/audio_intensity_normalized/poem/'
 files= [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
 
+
 out_path = '/export/c12/afavaro/New_NLS/audio_fusion/features/'
 out_file = os.path.join(out_path, name + ".csv")
 print(out_file)
