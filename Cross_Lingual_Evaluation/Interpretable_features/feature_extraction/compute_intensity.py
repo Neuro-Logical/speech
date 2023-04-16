@@ -2,48 +2,19 @@
 # coding: utf-8
 
 
-
 import pandas as pd
 import os
 import parselmouth
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 from feature_extraction_utils import *
 
 
-
-gita = "/export/b15/afavaro/Trevor_paper/speech_16_norm_2/"
+name = 'poem'
+gita = '/export/c12/afavaro/New_NLS/audio_fusion/audio_intensity_normalized/poem/'
 files= [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
 
-
-for sound in zip(files, file_transcr):
-    print(sound)
-    
-
-
-# In[20]:
-
-
-gita = '/export/b15/afavaro/Frontiers/NLS/L_Normalized/'
-#gita = '/export/b15/afavaro/Frontiers/NLS/RPs_concatenated/'
-#f = [elem.split(".wav")[0] for elem in sorted(os.listdir(gita))]
-files= [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
-
-
-# In[3]:
-
-
-gita
-
-
-# In[7]:
-
-
-## Monologue
-
-gita = '/export/b15/afavaro/Frontiers/Italian_PD/RPs_concatenated/'
-files= [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
+out_path = '/export/c12/afavaro/New_NLS/audio_fusion/features/'
+out_file = os.path.join(out_path, name + ".csv")
+print(out_file)
 
 def compute_intensity_attribute(files):
 
@@ -82,6 +53,6 @@ def compute_intensity_attribute(files):
     new_df = pd.concat(df_tot)
     return new_df
 
+new_df = compute_intensity_attribute(files)
 
-
-new_df.to_csv("/export/b15/afavaro/Trevor_paper/Results/intensity_2.csv")
+new_df.to_csv(out_file)
