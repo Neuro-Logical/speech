@@ -1,7 +1,7 @@
 # base input directory containing recordings to transcribe.
-base = '/export/c12/afavaro/New_NLS/NLS_Speech_Data/AD_014/speech/'
+base = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios/'
 # output directory where to save speech transcripts.
-output_folder = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Transcripts/'
+output_folder = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audio_transcripts/'
 
 import os
 import whisper
