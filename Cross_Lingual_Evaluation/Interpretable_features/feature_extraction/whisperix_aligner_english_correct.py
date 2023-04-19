@@ -1,5 +1,5 @@
-BASE = '/export/c12/afavaro/New_NLS/audio_fusion/joke_clean/'
-OUT_PATH = '/export/c12/afavaro/New_NLS/audio_fusion/Alignment/joke_cleaned/'
+BASE = '/export/c12/afavaro/New_NLS/NLS_Speech_Data/AD_014/speech/'
+OUT_PATH = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx/'
 
 
 import sys
@@ -31,9 +31,9 @@ for m in audios:
         #if "Joke" in m:
         #    files.append(m)
 
-indx = files.index("/export/c12/afavaro/New_NLS/audio_fusion/joke_clean/NLS_089_ses01_Joke.wav")
+#indx = files.index("/export/c12/afavaro/New_NLS/audio_fusion/joke_clean/NLS_089_ses01_Joke.wav")
 
-for audio in files[indx:]:
+for audio in files:
     print(audio)
     text =[]
     time_stamps = []
