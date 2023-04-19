@@ -12,8 +12,11 @@ files = []
 for m in paths:
     size = os.stat(m).st_size / 1000
     if size > 56:
-      #  if "NLS_082_ses01_CookieThief" in m:
+        if "CookieThief" in m:
             files.append(m)
+
+      #  if "NLS_082_ses01_CookieThief" in m:
+
 
 print("done")
 #indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/PEC_063_ses01_CookieThief.wav")
