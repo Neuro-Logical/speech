@@ -1,6 +1,5 @@
-BASE = '/export/c12/afavaro/New_NLS/NLS_Speech_Data/AD_014/speech/'
-OUT_PATH = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx/'
-
+BASE = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios'
+OUT_PATH = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audio_aligner/'
 
 import sys
 sys.path.append("/export/c07/afavaro/whisperX")
@@ -16,20 +15,20 @@ files = []
 for m in audios:
     size = os.stat(m).st_size / 1000
     if size > 56:
-            #files.append(m)
+        files.append(m)
 
-        if "Poem" in m:
-            files.append(m)
-        if "Cookie" in m:
-            files.append(m)
-        if "Rainbow" in m:
-            files.append(m)
-        if "Word" in m:
-            files.append(m)
-        if "Secuences" in m:
-            files.append(m)
-        if "Joke" in m:
-            files.append(m)
+     #   if "Poem" in m:
+     #       files.append(m)
+     #   if "Cookie" in m:
+     #       files.append(m)
+     #   if "Rainbow" in m:
+     #       files.append(m)
+     #   if "Word" in m:
+     #       files.append(m)
+     #   if "Secuences" in m:
+     #       files.append(m)
+     #   if "Joke" in m:
+     #       files.append(m)
 
 #indx = files.index("/export/c12/afavaro/New_NLS/audio_fusion/joke_clean/NLS_089_ses01_Joke.wav")
 
