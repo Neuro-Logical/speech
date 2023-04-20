@@ -6,12 +6,12 @@ import os
 import parselmouth
 from feature_extraction_utils import *
 
-name = 'joke'
-gita = '/export/c12/afavaro/New_NLS/audio_fusion/audio_intensity_normalized/joke/'
+name = 'all_tasks'
+gita = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audio_loudness_normalization'
 files= [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
 
 
-out_path = '/export/c12/afavaro/New_NLS/audio_fusion/features/intensity/'
+out_path = '/export/c12/afavaro/New_NLS/audio_fusion_new/feats'
 out_file = os.path.join(out_path, name + ".csv")
 print(out_file)
 
