@@ -7,22 +7,33 @@ import os
 import whisper
 print("CIAOAOO")
 
-paths = [os.path.join(base, elem) for elem in os.listdir(base)]
+
+path_audiods = [os.path.join(base, elem) for elem in os.listdir(base)]
+path_tr = [os.path.join(output_folder, elem) for elem in os.listdir(output_folder)]
+
+names_tr = [os.path.basename(elem).split(".txt")[0] for elem in path_tr]
+names_audio = [os.path.basename(elem).split(".wav")[0] for elem in path_audiods]
+
+all_names = list(set(names_tr) ^ set(names_audio))
+all_names_complete = [os.path.join(base, elem + ".wav") for elem in all_names]
+
+#paths = [os.path.join(base, elem) for elem in os.listdir(base)]
+
 files = []
-for m in paths:
+for m in all_names_complete:
     size = os.stat(m).st_size / 1000
     if size > 56:
-        if "CookieThief" in m:
+       # if "CookieThief" in m:
             files.append(m)
 
       #  if "NLS_082_ses01_CookieThief" in m:
 
 
 print("done")
-indx = files.index("/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios/PEC_028_ses01_CookieThief.wav")
+#indx = files.index("/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios/PEC_028_ses01_CookieThief.wav")
 
 # extract and save transcripts in text files.
-for i in files[indx:]:
+for i in files:
     print(i)
     model = whisper.load_model("medium")
     result = model.transcribe(i)
