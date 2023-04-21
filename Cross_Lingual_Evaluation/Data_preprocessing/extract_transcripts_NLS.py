@@ -1,5 +1,5 @@
 # base input directory containing recordings to transcribe.
-base = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios/'
+base = '/export/c12/afavaro/New_NLS/audio_fusion_new/ctp_audios'
 # output directory where to save speech transcripts.
 output_folder = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audio_transcripts/'
 
