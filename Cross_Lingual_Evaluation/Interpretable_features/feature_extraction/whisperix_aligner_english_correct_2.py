@@ -30,9 +30,9 @@ for m in audios:
      #   if "Joke" in m:
      #       files.append(m)
 
-#indx = files.index("/export/c12/afavaro/New_NLS/audio_fusion/joke_clean/NLS_089_ses01_Joke.wav")
+indx = files.index("/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios/NLS_052_ses01_SecuencestroopPrevious2.csv")
 
-for audio in files[500:]:
+for audio in files[indx:]:
     print(audio)
     text =[]
     time_stamps = []
