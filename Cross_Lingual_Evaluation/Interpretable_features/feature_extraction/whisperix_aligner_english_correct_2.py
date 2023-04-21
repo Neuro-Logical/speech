@@ -30,7 +30,7 @@ for m in audios:
      #   if "Joke" in m:
      #       files.append(m)
 
-indx = files.index("/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios/AD_003_ses02_WordColor.wav.wav")
+indx = files.index("/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios/AD_003_ses02_WordColor.wav")
 
 for audio in files[indx+1:]:
     print(audio)
