@@ -19,10 +19,10 @@ for m in paths:
 
 
 print("done")
-#indx = files.index("/export/c12/afavaro/New_NLS/NLS_Speech_Data_All_16k/PEC_063_ses01_CookieThief.wav")
+indx = files.index("/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios/PEC_028_ses01_CookieThief.wav")
 
 # extract and save transcripts in text files.
-for i in files:
+for i in files[indx:]:
     print(i)
     model = whisper.load_model("medium")
     result = model.transcribe(i)
