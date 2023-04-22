@@ -9,10 +9,19 @@ import pandas as pd
 
 device = "cpu"
 model = whisperx.load_model("medium", device)
-audios = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
+
+path_audiods = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
+path_tr = [os.path.join(OUT_PATH, elem) for elem in os.listdir(OUT_PATH)]
+
+names_tr = [os.path.basename(elem).split(".csv")[0] for elem in path_tr]
+names_audio = [os.path.basename(elem).split(".wav")[0] for elem in path_audiods]
+
+all_names = list(set(names_tr) ^ set(names_audio))
+all_names_complete = [os.path.join(base, elem + ".wav") for elem in all_names]
+print(len(all_names_complete))
 
 files = []
-for m in audios:
+for m in all_names_complete:
     size = os.stat(m).st_size / 1000
     if size > 56:
         files.append(m)
