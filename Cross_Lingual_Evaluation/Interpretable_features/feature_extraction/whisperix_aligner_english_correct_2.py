@@ -1,4 +1,4 @@
-BASE = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios'
+BASE = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios/'
 OUT_PATH = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audio_aligner/'
 
 import sys
