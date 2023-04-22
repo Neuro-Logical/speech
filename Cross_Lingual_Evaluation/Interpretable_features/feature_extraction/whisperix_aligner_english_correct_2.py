@@ -39,9 +39,8 @@ for m in all_names_complete:
      #   if "Joke" in m:
      #       files.append(m)
 
-indx = files.index("/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios/NLS_048_ses01_CookieThief.wav")
 
-for audio in files[indx+1:]:
+for audio in files:
     print(audio)
     text =[]
     time_stamps = []
