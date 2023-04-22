@@ -32,7 +32,7 @@ for m in audios:
 
 #indx = files.index("/export/c12/afavaro/New_NLS/audio_fusion/joke_clean/NLS_089_ses01_Joke.wav")
 
-for audio in files[-200:]:
+for audio in files[-300:]:
     print(audio)
     text =[]
     time_stamps = []
