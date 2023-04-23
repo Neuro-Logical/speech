@@ -1,5 +1,6 @@
 BASE = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios/'
-OUT_PATH = '/export/c06/afavaro/aligner_2/'
+OUT_PATH = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audio_aligner/'
+OUT_2 = '/export/c06/afavaro/aligner_2'
 
 import sys
 sys.path.append("/export/c07/afavaro/whisperX")
@@ -54,4 +55,4 @@ for audio in files:
         text.append(element['text'])
         time_stamps.append(element['start'])
     data = pd.DataFrame({'word': text, 'time_stamps': time_stamps})
-    data.to_csv(os.path.join(OUT_PATH, base_name + ".csv"))
+    data.to_csv(os.path.join(OUT_2, base_name + ".csv"))
