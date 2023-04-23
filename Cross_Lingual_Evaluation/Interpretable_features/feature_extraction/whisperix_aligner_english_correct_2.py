@@ -1,5 +1,5 @@
 BASE = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios/'
-OUT_PATH = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audio_aligner/'
+OUT_PATH = '/export/c06/afavaro/aligner_2/'
 
 import sys
 sys.path.append("/export/c07/afavaro/whisperX")
