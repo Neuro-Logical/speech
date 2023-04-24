@@ -1,5 +1,5 @@
-BASE = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios/'
-OUT_PATH = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audio_aligner/'
+BASE = '/export/c07/afavaro/KCL_PD_DATA/KCL_PD_Dataset/ReadText/all_audio_resampled/'
+OUT_PATH = '/export/c07/afavaro/KCL_PD_DATA/KCL_PD_Dataset/ReadText/all_audios_aligner/'
 #OUT_2 = '/export/c06/afavaro/aligner_3'
 
 import sys
@@ -12,21 +12,12 @@ device = "cpu"
 model = whisperx.load_model("medium", device)
 
 path_audiods = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
-#path_tr = [os.path.join(OUT_PATH, elem) for elem in os.listdir(OUT_PATH)]
-
-#names_tr = [os.path.basename(elem).split(".csv")[0] for elem in path_tr]
-#names_audio = [os.path.basename(elem).split(".wav")[0] for elem in path_audiods]
-
-#all_names = list(set(names_tr) ^ set(names_audio))
-#all_names_complete = [os.path.join(BASE, elem + ".wav") for elem in all_names]
-#print(len(all_names_complete))
-#print(all_names_complete)
 
 files = []
 for m in path_audiods:
     size = os.stat(m).st_size / 1000
     if size > 56:
-        if "PEC_011_ses01_SecuencestroopPrevious2.wav" in m:
+       # if "PEC_011_ses01_SecuencestroopPrevious2.wav" in m:
             files.append(m)
 print(files)
 
