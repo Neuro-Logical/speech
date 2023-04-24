@@ -26,7 +26,7 @@ files = []
 for m in path_audiods:
     size = os.stat(m).st_size / 1000
     if size > 56:
-        if "PEC_026_ses01_CookieThief.wav" in m:
+        if "PEC_011_ses01_SecuencestroopPrevious2.wav" in m:
             files.append(m)
 print(files)
 
