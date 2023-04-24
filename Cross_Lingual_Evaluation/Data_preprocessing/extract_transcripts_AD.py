@@ -16,7 +16,7 @@ for m in path_audiods:
 print(len(files_new))
 
 # extract and save transcripts in text files.
-for i in files_new[-20]:
+for i in files_new[-20:]:
     print(i)
     model = whisper.load_model("medium")
     result = model.transcribe(i)
