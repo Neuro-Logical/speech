@@ -26,6 +26,7 @@ for m in all_names_complete:
     size = os.stat(m).st_size / 1000
     if size > 56:
         files.append(m)
+print(files)
 
      #   if "Poem" in m:
      #       files.append(m)
@@ -39,7 +40,6 @@ for m in all_names_complete:
      #       files.append(m)
      #   if "Joke" in m:
      #       files.append(m)
-
 
 for audio in files:
     print(audio)
