@@ -20,6 +20,7 @@ names_audio = [os.path.basename(elem).split(".wav")[0] for elem in path_audiods]
 all_names = list(set(names_tr) ^ set(names_audio))
 all_names_complete = [os.path.join(BASE, elem + ".wav") for elem in all_names]
 print(len(all_names_complete))
+print(all_names_complete)
 
 files = []
 for m in all_names_complete:
