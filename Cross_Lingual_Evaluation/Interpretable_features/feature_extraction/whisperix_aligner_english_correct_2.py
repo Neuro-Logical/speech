@@ -12,21 +12,22 @@ device = "cpu"
 model = whisperx.load_model("medium", device)
 
 path_audiods = [os.path.join(BASE, elem) for elem in os.listdir(BASE)]
-path_tr = [os.path.join(OUT_PATH, elem) for elem in os.listdir(OUT_PATH)]
+#path_tr = [os.path.join(OUT_PATH, elem) for elem in os.listdir(OUT_PATH)]
 
-names_tr = [os.path.basename(elem).split(".csv")[0] for elem in path_tr]
-names_audio = [os.path.basename(elem).split(".wav")[0] for elem in path_audiods]
+#names_tr = [os.path.basename(elem).split(".csv")[0] for elem in path_tr]
+#names_audio = [os.path.basename(elem).split(".wav")[0] for elem in path_audiods]
 
-all_names = list(set(names_tr) ^ set(names_audio))
-all_names_complete = [os.path.join(BASE, elem + ".wav") for elem in all_names]
-print(len(all_names_complete))
-print(all_names_complete)
+#all_names = list(set(names_tr) ^ set(names_audio))
+#all_names_complete = [os.path.join(BASE, elem + ".wav") for elem in all_names]
+#print(len(all_names_complete))
+#print(all_names_complete)
 
 files = []
-for m in all_names_complete:
+for m in path_audiods:
     size = os.stat(m).st_size / 1000
     if size > 56:
-        files.append(m)
+        if "PEC_026_ses01_CookieThief.wav" in m:
+            files.append(m)
 print(files)
 
      #   if "Poem" in m:
