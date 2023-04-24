@@ -12,7 +12,7 @@ files_new = []
 for m in path_audiods:
     size = os.stat(m).st_size / 1000
     if size > 56:
-            files_new.append(m)
+        files_new.append(m)
 print(len(files_new))
 
 # extract and save transcripts in text files.
