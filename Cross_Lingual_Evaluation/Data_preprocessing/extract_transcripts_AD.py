@@ -1,5 +1,5 @@
 # base input directory containing recordings to transcribe.
-base = '/export/c07/afavaro/KCL_PD_DATA/KCL_PD_Dataset/ReadText/all_audio_resampled/'
+base = '/export/c07/afavaro/KCL_PD_DATA/KCL_PD_Dataset/ReadText/all_audios_transcripts/to_refine/'
 # output directory where to save speech transcripts.
 output_folder = '/export/c07/afavaro/KCL_PD_DATA/KCL_PD_Dataset/ReadText/all_audios_transcripts/'
 
