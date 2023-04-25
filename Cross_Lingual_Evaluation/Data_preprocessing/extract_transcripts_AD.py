@@ -34,7 +34,7 @@ print("done")
 # extract and save transcripts in text files.
 for i in files[-6:]:
     print(i)
-    model = whisper.load_model("medium")
+    model = whisper.load_model("medium", language="en")
     result = model.transcribe(i)
     test = result['text']
     base = os.path.basename(i).split(".wav")[0]
