@@ -27,6 +27,7 @@ all_names_complete = [os.path.join(base, elem + ".wav") for elem in all_names]
 
       #  if "NLS_082_ses01_CookieThief" in m:
 
+all_names_complete = all_names_complete[5:]
 print(len(all_names_complete))
 print("done")
 # extract and save transcripts in text files.
