@@ -30,7 +30,8 @@ all_names_complete = [os.path.join(base, elem + ".wav") for elem in all_names]
 print(len(all_names_complete))
 print("done")
 # extract and save transcripts in text files.
-for i in all_names_complete:
+for num, i in enumerate(all_names_complete):
+    print(num)
     print(i)
     model = whisper.load_model("base")
     result = model.transcribe(i)
