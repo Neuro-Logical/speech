@@ -20,8 +20,8 @@ path_audiods = [os.path.join(base, elem) for elem in os.listdir(base)]
 
 files = []
 for m in path_audiods:
-    size = os.stat(m).st_size / 1000
-    if size > 56:
+    #size = os.stat(m).st_size / 1000
+    #if size > 56:
        # if "CookieThief" in m:
             files.append(m)
 
