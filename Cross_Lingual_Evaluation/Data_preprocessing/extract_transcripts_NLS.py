@@ -20,8 +20,8 @@ path_tr = [os.path.join(output_folder, elem) for elem in os.listdir(output_folde
 
 files = []
 for m in path_tr:
-    size = os.stat(m).st_size / 1000
-    if size > 56:
+   # size = os.stat(m).st_size / 1000
+   # if size > 56:
        # if "CookieThief" in m:
             files.append(m)
 
