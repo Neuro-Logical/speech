@@ -1,7 +1,7 @@
 # base input directory containing recordings to transcribe.
-base = '/export/c12/afavaro/Phonological model/blue_color/'
+base = '/export/c12/afavaro/Phonological model/green_color/'
 # output directory where to save speech transcripts.
-output_folder = '/export/c12/afavaro/Phonological model/blue_transcripts/'
+output_folder = '/export/c12/afavaro/Phonological model/green_transcripts/'
 
 import os
 import whisper
