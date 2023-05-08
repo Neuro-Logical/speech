@@ -114,7 +114,10 @@ def IntersecOftwo(arr1, arr2):
 
 
 #% try two feats
-for feat_used in ['xvector','trill']:
+# for feat_used in ['xvector','trill']:
+for feat_used in ['wav2vec2/hidden8','wav2vec2/hidden6','wav2vec2/hidden5','wav2vec2/hidden4','wav2vec2/hidden3',
+'wav2vec2/hidden2','wav2vec2/hidden1','wav2vec2/hidden0','hubert/hidden8','hubert/hidden6','hubert/hidden5','hubert/hidden4','hubert/hidden3',
+'hubert/hidden2','hubert/hidden1','hubert/hidden0','xvector','trill']:
     print()
     print('----------------')
     print(feat_used)
@@ -255,7 +258,7 @@ for feat_used in ['xvector','trill']:
     normalized_train_X_spain, y_train_spain, mean_spain, std_spain = normalize(spain)
     normalized_train_X_colombian, y_train_colombian, mean_colombian, std_colombian = normalize(colombian)
 
-    # 1- german test ---------------------------------
+    # 1- German test ---------------------------------
     means = np.mean(np.stack([mean_italian, mean_spain, mean_colombian], axis=1), axis=1)
     stds = np.mean(np.stack([std_italian, std_spain, std_colombian], axis=1), axis=1)
 
@@ -295,7 +298,7 @@ for feat_used in ['xvector','trill']:
     test_scores = grid_test_scores[:,0].tolist()
 
     # report
-    print('german:')
+    print('German:')
     print(classification_report(y_test, grid_predictions, output_dict=False))
     print(confusion_matrix(y_test, grid_predictions))
 
@@ -407,7 +410,7 @@ for feat_used in ['xvector','trill']:
     test_scores = grid_test_scores[:,0].tolist()
 
     # report
-    print('italian:')
+    print('Italian:')
     print(classification_report(y_test, grid_predictions, output_dict=False))
     print(confusion_matrix(test_labels, grid_predictions))
 

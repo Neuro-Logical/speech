@@ -112,7 +112,10 @@ def IntersecOftwo(arr1, arr2):
 
 
 #% try two feats
-for feat_used in ['xvector','trill']:
+# for feat_used in ['xvector','trill']:
+for feat_used in ['wav2vec2/hidden8','wav2vec2/hidden6','wav2vec2/hidden5','wav2vec2/hidden4','wav2vec2/hidden3',
+'wav2vec2/hidden2','wav2vec2/hidden1','wav2vec2/hidden0','hubert/hidden8','hubert/hidden6','hubert/hidden5','hubert/hidden4','hubert/hidden3',
+'hubert/hidden2','hubert/hidden1','hubert/hidden0','xvector','trill']:
     print()
     print('----------------')
     print(feat_used)
@@ -266,7 +269,7 @@ for feat_used in ['xvector','trill']:
 
     # ----------------
     czech = pd.read_csv(
-        "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/czech/final_data_experiments_updated.csv")
+        "/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/Czech/final_data_experiments_updated.csv")
     czech['names'] = [elem.split("_")[1] for elem in czech.AudioFile.tolist()]
     czech['task'] = [elem.split("_")[2] for elem in czech['AudioFile'].tolist()]
     czech['labels'] = [elem.split("_")[0] for elem in czech.AudioFile.tolist()]
@@ -344,7 +347,7 @@ for feat_used in ['xvector','trill']:
     normalized_train_X_nls, y_train_nls, mean_nls, std_nls = normalize(nls)
     normalized_train_X_czech, y_train_czech, mean_czech, std_czech = normalize(czech)
 
-    # 1- german test ---------------------------------
+    # 1- German test ---------------------------------
     means = np.mean(np.stack([mean_italian, mean_nls, mean_colombian, mean_czech], axis=1), axis=1)
     stds = np.mean(np.stack([std_italian, std_nls, std_colombian, std_czech], axis=1), axis=1)
 
@@ -385,7 +388,7 @@ for feat_used in ['xvector','trill']:
     test_scores = grid_test_scores[:,0].tolist()
 
     # report
-    print('german:')
+    print('German:')
     print(classification_report(y_test, grid_predictions, output_dict=False))
     print(confusion_matrix(y_test, grid_predictions))
 
@@ -499,7 +502,7 @@ for feat_used in ['xvector','trill']:
     test_scores = grid_test_scores[:,0].tolist()
 
     # report
-    print('italian:')
+    print('Italian:')
     print(classification_report(y_test, grid_predictions, output_dict=False))
     print(confusion_matrix(test_labels, grid_predictions))
 
@@ -557,7 +560,7 @@ for feat_used in ['xvector','trill']:
     test_scores = grid_test_scores[:,0].tolist()
 
     # report
-    print('czech:')
+    print('Czech:')
     print(classification_report(y_test, grid_predictions, output_dict=False))
     print(confusion_matrix(test_labels, grid_predictions))
 

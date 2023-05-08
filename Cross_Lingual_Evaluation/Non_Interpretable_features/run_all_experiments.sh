@@ -3,15 +3,20 @@
 # change this to the full path of where the Non_Interpretable_features folder is
 cd '/home/ytsai25/Non_Interpretable_features'
 
-# set folder to save feature files (need to have subfolders "xvector" and "trill")
+# set folder to save feature files (will have subfolders "xvector", "trill", "hubert", "wav2vec2")
 feat_pth='/export/b11/ytsai25/feats/'
+mkdir -p "${feat_pth}xvector"
+mkdir -p "${feat_pth}trill"
+mkdir -p "${feat_pth}hubert"
+mkdir -p "${feat_pth}wav2vec2"
+
 # set folder to save printed experiment results
 out_pth='/home/ytsai25/Non_Interpretable_features/output/'
 # input folder that contains all data sets
 rec_pth='/export/b15/afavaro/Frontiers/'
 
 # feature extraction (features already extracted and saved on the grid, uncomment this part if to re-extract)
-# python /feature_extraction/feature_extraction.py $rec_pth $feat_pth
+# python feature_extraction/feature_extraction.py $rec_pth $feat_pth
 
 # mono-lingual experiments ==================
 # Colombian Spanish

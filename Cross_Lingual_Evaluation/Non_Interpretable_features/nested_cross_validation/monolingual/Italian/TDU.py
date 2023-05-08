@@ -62,8 +62,12 @@ def normalize(train_split, test_split):
     return normalized_train_X, normalized_test_X, y_train, y_test
 
 #% try two feats
-for feat_used in ['xvector','trill']:
-    best_param = best_param_init[feat_used]
+# for feat_used in ['xvector','trill']:
+for feat_used in ['wav2vec2/hidden8','wav2vec2/hidden6','wav2vec2/hidden5','wav2vec2/hidden4','wav2vec2/hidden3',
+'wav2vec2/hidden2','wav2vec2/hidden1','wav2vec2/hidden0','hubert/hidden8','hubert/hidden6','hubert/hidden5','hubert/hidden4','hubert/hidden3',
+'hubert/hidden2','hubert/hidden1','hubert/hidden0','xvector','trill']:
+    if feat_used in best_param_init.keys():
+        best_param = best_param_init[feat_used]
     print()
     print('---------------')
     print(feat_used)
