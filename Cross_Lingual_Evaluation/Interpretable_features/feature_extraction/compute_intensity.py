@@ -6,12 +6,11 @@ import os
 import parselmouth
 from feature_extraction_utils import *
 
-name = 'all_tasks'
-gita = '/export/c12/afavaro/New_NLS/audio_fusion_new/all_audio_loudness_normalization'
-files= [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
+name = 'intensity'
+gita = '/export/b16/afavaro/AD_longitudinal_may/audios'
+files = [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
 
-
-out_path = '/export/c12/afavaro/New_NLS/audio_fusion_new/feats'
+out_path = '/export/b16/afavaro/AD_longitudinal_may/feats/'
 out_file = os.path.join(out_path, name + ".csv")
 print(out_file)
 
@@ -47,5 +46,4 @@ def compute_intensity_attribute(files):
     return new_df
 
 new_df = compute_intensity_attribute(files)
-
 new_df.to_csv(out_file)
