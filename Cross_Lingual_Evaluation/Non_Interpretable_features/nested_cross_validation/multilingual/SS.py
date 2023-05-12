@@ -170,8 +170,12 @@ best_param_init =  {
             'xvector': 45,
             'trill': 50,
             }
-for feat_used in ['xvector','trill']:
-    best_param = best_param_init[feat_used]
+# for feat_used in ['xvector','trill']:
+for feat_used in ['wav2vec2/hidden8','wav2vec2/hidden6','wav2vec2/hidden5','wav2vec2/hidden4','wav2vec2/hidden3',
+'wav2vec2/hidden2','wav2vec2/hidden1','wav2vec2/hidden0','hubert/hidden8','hubert/hidden6','hubert/hidden5','hubert/hidden4','hubert/hidden3',
+'hubert/hidden2','hubert/hidden1','hubert/hidden0','xvector','trill']:
+    if feat_used in best_param_init.keys():
+        best_param = best_param_init[feat_used]
     print()
     print('----------------')
     print(feat_used)
@@ -349,8 +353,8 @@ for feat_used in ['xvector','trill']:
     german_cols = german.columns.tolist()
 
     # ----------------
-    #spain =pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/czech/final_data_experiments.csv")
-    czech =pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/czech/final_data_experiments_updated.csv")
+    #spain =pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/Czech/final_data_experiments.csv")
+    czech =pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/Czech/final_data_experiments_updated.csv")
 
     czech['filename'] = czech['AudioFile'] #%
     czech['names'] =  [elem.split("_")[1] for elem in czech.AudioFile.tolist()]
@@ -628,7 +632,7 @@ for feat_used in ['xvector','trill']:
         test_scores += grid_test_scores[:,0].tolist()
 
     # report
-    print('czech:')
+    print('Czech:')
     print(classification_report(truth, predictions, output_dict=False))
     print(confusion_matrix(truth, predictions))
 
@@ -727,7 +731,7 @@ for feat_used in ['xvector','trill']:
     print(roc_auc_score(truth,test_scores))
     print('----------')
 
-    # Test - german -----------------------
+    # Test - German -----------------------
     predictions = []
     truth = []
     test_scores = []
@@ -754,7 +758,7 @@ for feat_used in ['xvector','trill']:
         test_scores += grid_test_scores[:,0].tolist()
 
     # report
-    print('german:')
+    print('German:')
     print(classification_report(truth, predictions, output_dict=False))
     print(confusion_matrix(truth, predictions))
 

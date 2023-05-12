@@ -63,8 +63,12 @@ def normalize(train_split, test_split):
 
 
 #% try two feats
-for feat_used in ['xvector','trill']:
-    best_param = best_param_init[feat_used]
+# for feat_used in ['xvector','trill']:
+for feat_used in ['wav2vec2/hidden8','wav2vec2/hidden6','wav2vec2/hidden5','wav2vec2/hidden4','wav2vec2/hidden3',
+'wav2vec2/hidden2','wav2vec2/hidden1','wav2vec2/hidden0','hubert/hidden8','hubert/hidden6','hubert/hidden5','hubert/hidden4','hubert/hidden3',
+'hubert/hidden2','hubert/hidden1','hubert/hidden0','xvector','trill']:
+    if feat_used in best_param_init.keys():
+        best_param = best_param_init[feat_used]
     print()
     print('---------------')
     print(feat_used)
@@ -72,7 +76,7 @@ for feat_used in ['xvector','trill']:
 
     # {'monologue', 'readtext'}
     # get dataframe of all recordings with labels
-    spain =pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/czech/final_data_experiments_updated.csv")
+    spain =pd.read_csv("/export/b15/afavaro/Frontiers/submission/Statistical_Analysis/Czech/final_data_experiments_updated.csv")
     spain['names'] =  [elem.split("_")[1] for elem in spain.AudioFile.tolist()]
     spain['task'] = [elem.split("_")[2] for elem in spain['AudioFile'].tolist()]
     spain['labels'] = [elem.split("_")[0] for elem in spain.AudioFile.tolist()]
