@@ -6,8 +6,8 @@ import os
 import parselmouth
 from feature_extraction_utils import *
 
-name = 'intensity'
-gita = '/export/c12/afavaro/Phonological_model/audio_rainbow/'
+name = 'intensity_all_audios'
+gita = '/export/c12/afavaro/Phonological_model/all_audios_laureano/'
 files = [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
 
 out_path = '/export/c12/afavaro/Phonological_model/all_feats_laureano/'
