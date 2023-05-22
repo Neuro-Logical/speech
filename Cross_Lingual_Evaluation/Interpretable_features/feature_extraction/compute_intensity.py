@@ -10,7 +10,7 @@ name = 'intensity_color'
 gita = '/export/c12/afavaro/New_NLS/audio_fusion_new/audio_color_sequence/'
 files = [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
 
-out_path = '/export/b16/afavaro/AD_longitudinal_may/feats/'
+out_path = '/export/c12/afavaro/New_NLS/audio_fusion_new/feats/'
 out_file = os.path.join(out_path, name + ".csv")
 print(out_file)
 
