@@ -18,6 +18,8 @@ all_names = list(set(names_tr) ^ set(names_audio))
 all_names_complete = [os.path.join(base, elem + ".wav") for elem in all_names]
 #
 #
+
+
 #files = []
 #for m in path_audiods:
    # size = os.stat(m).st_size / 1000
