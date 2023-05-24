@@ -1,7 +1,7 @@
 # base input directory containing recordings to transcribe.
-base = '/export/c12/afavaro/Phonological model/green_color/'
+base = '/scratch4/lmorove1/afavaro/data/New_NLS/NLS_Speech_Data_All_Files_16k/'
 # output directory where to save speech transcripts.
-output_folder = '/export/c12/afavaro/Phonological model/green_transcripts/'
+output_folder = '/scratch4/lmorove1/afavaro/data/New_NLS/NLS_Speech_Data_Transcripts_RockFish/'
 
 import os
 import whisper
@@ -20,18 +20,14 @@ all_names_complete = [os.path.join(base, elem + ".wav") for elem in all_names]
 
 files = []
 for m in all_names_complete:
-    #size = os.stat(m).st_size / 1000
-    #if size > 56:
-       # if "CookieThief" in m:
-            files.append(m)
-
-      #  if "NLS_082_ses01_CookieThief" in m:
+    size = os.stat(m).st_size / 1000
+    if size > 56:
+        files.append(m)
 
 print(len(files))
 print("done")
 #indx = files.index("/export/c12/afavaro/New_NLS/audio_fusion_new/all_audios/PEC_028_ses01_CookieThief.wav")
 
-# extract and save transcripts in text files.
 for i in files:
     print(i)
     model = whisper.load_model("medium")
