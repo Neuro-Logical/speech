@@ -9,17 +9,17 @@ print("CIAOAOO")
 
 
 path_audiods = [os.path.join(base, elem) for elem in os.listdir(base)]
-path_tr = [os.path.join(output_folder, elem) for elem in os.listdir(output_folder)]
+#path_tr = [os.path.join(output_folder, elem) for elem in os.listdir(output_folder)]
 #
-names_tr = [os.path.basename(elem).split(".txt")[0] for elem in path_tr]
-names_audio = [os.path.basename(elem).split(".wav")[0] for elem in path_audiods]
+#names_tr = [os.path.basename(elem).split(".txt")[0] for elem in path_tr]
+#names_audio = [os.path.basename(elem).split(".wav")[0] for elem in path_audiods]
 #
-all_names = list(set(names_tr) ^ set(names_audio))
-all_names_complete = [os.path.join(base, elem + ".wav") for elem in all_names]
+#all_names = list(set(names_tr) ^ set(names_audio))
+#all_names_complete = [os.path.join(base, elem + ".wav") for elem in all_names]
 
 
 files = []
-for m in all_names_complete:
+for m in path_audiods:
     size = os.stat(m).st_size / 1000
     if size > 56:
         files.append(m)
