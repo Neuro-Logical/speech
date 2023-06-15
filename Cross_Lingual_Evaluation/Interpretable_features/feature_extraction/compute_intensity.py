@@ -6,11 +6,11 @@ import os
 import parselmouth
 from feature_extraction_utils import *
 
-name = 'intensity_color'
-gita = '/export/b16/afavaro/cross_sectional_may/audios_ctp/'
+name = 'intensity'
+gita = '/export/b16/afavaro/AD_longitudinal_may/all_audios_cross_sectional_loudness_norm/'
 files = [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
 
-out_path = '/export/b16/afavaro/cross_sectional_may/feats/ctp/'
+out_path = '/export/b16/afavaro/AD_longitudinal_may/feats/feats_cross_sectional/'
 out_file = os.path.join(out_path, name + ".csv")
 print(out_file)
 
