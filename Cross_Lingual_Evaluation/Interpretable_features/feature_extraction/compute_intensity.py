@@ -7,10 +7,10 @@ import parselmouth
 from feature_extraction_utils import *
 
 name = 'intensity_PD'
-gita = '/export/b17/afavaro/parkceleb_experiments/Data_2/PD_16k_sub/'
+gita = '/export/b17/afavaro/parkceleb_experiments/Data_2/PD_16k_sub_5/'
 files = [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
 
-out_path = '/export/b17/afavaro/parkceleb_experiments/Data_2/Feats/'
+out_path = '/export/b17/afavaro/parkceleb_experiments/Data_2/Feats_5/'
 out_file = os.path.join(out_path, name + ".csv")
 print(out_file)
 
