@@ -9,6 +9,7 @@ from feature_extraction_utils import *
 name = 'intensity_PD'
 gita = '/export/b17/afavaro/parkceleb_experiments/Data_2/PD_16k_Loudness/'
 files = [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
+files.remove("/export/b17/afavaro/parkceleb_experiments/Data_2/PD_16k_Loudness/Michael_Kinsley_Dk3UjzhRiKY_710620.0.wav")
 
 out_path = '/export/b17/afavaro/parkceleb_experiments/Data_2/Feats/'
 out_file = os.path.join(out_path, name + ".csv")
