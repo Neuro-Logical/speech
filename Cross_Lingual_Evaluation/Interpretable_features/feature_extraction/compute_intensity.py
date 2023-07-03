@@ -7,7 +7,7 @@ import parselmouth
 from feature_extraction_utils import *
 
 name = 'intensity_CN'
-gita = '/export/b17/afavaro/parkceleb_experiments/Data_2/CN_16k_Loudness/'
+gita = '/export/b17/afavaro/parkceleb_experiments/Data_2/CN_16k_sub/'
 files = [os.path.join(gita, elem) for elem in sorted(os.listdir(gita))]
 
 out_path = '/export/b17/afavaro/parkceleb_experiments/Data_2/Feats/'
