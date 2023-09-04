@@ -97,4 +97,15 @@ A practical application of the statistical analysis and of the correlation analy
 Due to the licensing of the used data sets, we are not allowed to publish the recordings, the features, nor the labels. However, we provide the source code to perform the feature extraction, the statistical, and the correlation analysis reported in the paper.
 ## Acknowledgements 🙏
 
-In case you will use this code or take inspiration from it, please cite out work.
+In case you will use this code or take inspiration from it, please cite out work as follows:
+
+``` 
+@inproceedings{favaro2023multi,
+  title={A multi-modal array of interpretable features to evaluate language and speech patterns in different neurological disorders},
+  author={Favaro, Anna and Motley, Chelsie and Cao, Tianyu and Iglesias, Miguel and Butala, Ankur and Oh, Esther S and Stevens, Robert D and Villalba, Jes{\'u}s and Dehak, Najim and Moro-Vel{\'a}zquez, Laureano},
+  booktitle={2022 IEEE Spoken Language Technology Workshop (SLT)},
+  pages={532--539},
+  year={2023},
+  organization={IEEE}
+}
+```
