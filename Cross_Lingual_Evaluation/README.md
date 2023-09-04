@@ -1,6 +1,3 @@
-### A Cross-lingual Evaluation of Interpretable and Non-interpretable Approaches for Automatic Detection of Parkinson's Disease from Language and Speech
-
-
 This project aimed at comparing the performance of interpretable and non-interpretable biomarkers in the detection of Parkinson's Disease.
 
 ## Set up  ⚙️ 
