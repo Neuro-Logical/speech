@@ -100,12 +100,14 @@ Due to the licensing of the used data sets, we are not allowed to publish the re
 In case you will use this code or take inspiration from it, please cite out work as follows:
 
 ``` 
-@inproceedings{favaro2023multi,
-  title={A multi-modal array of interpretable features to evaluate language and speech patterns in different neurological disorders},
-  author={Favaro, Anna and Motley, Chelsie and Cao, Tianyu and Iglesias, Miguel and Butala, Ankur and Oh, Esther S and Stevens, Robert D and Villalba, Jes{\'u}s and Dehak, Najim and Moro-Vel{\'a}zquez, Laureano},
-  booktitle={2022 IEEE Spoken Language Technology Workshop (SLT)},
-  pages={532--539},
+@article{favaro2023multilingual,
+  title={Multilingual evaluation of interpretable biomarkers to represent language and speech patterns in Parkinson's disease},
+  author={Favaro, Anna and Moro-Vel{\'a}zquez, Laureano and Butala, Ankur and Motley, Chelsie and Cao, Tianyu and Stevens, Robert David and Villalba, Jes{\'u}s and Dehak, Najim},
+  journal={Frontiers in Neurology},
+  volume={14},
+  pages={1142642},
   year={2023},
-  organization={IEEE}
-}
+  publisher={Frontiers}
+} 
+
 ```

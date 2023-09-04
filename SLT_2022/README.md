@@ -101,12 +101,23 @@ In order to perform pair-wise Kruskal-Wallis H-tests, apply FDR correction, comp
 Due to the licensing of the used data sets, we are not allowed to publish the recordings, the extracted features, nor the labels. However, we provided the source code to perform the feature extraction, and the statistical analysis reported in the paper.
 
 ## Acknowledgements 🙏
-In case you will use this code or take inspiration from it, please cite out work: 
+In case you will use this code or take inspiration from it, please cite out work as follows:
+
+
+
+In case you will use this code or take inspiration from it, please cite out work as follows:
+
+``` 
+@inproceedings{favaro2023multi,
+  title={A multi-modal array of interpretable features to evaluate language and speech patterns in different neurological disorders},
+  author={Favaro, Anna and Motley, Chelsie and Cao, Tianyu and Iglesias, Miguel and Butala, Ankur and Oh, Esther S and Stevens, Robert D and Villalba, Jes{\'u}s and Dehak, Najim and Moro-Vel{\'a}zquez, Laureano},
+  booktitle={2022 IEEE Spoken Language Technology Workshop (SLT)},
+  pages={532--539},
+  year={2023},
+  organization={IEEE}
+}
 ```
 
-Favaro, A., Motley, C., Cao, T., Iglesias, M., Butala, A., Oh, E. S., Stevens, R. D., Villalba, J., Dehak, N., Moro-Velazquez, L. A Multi-Modal Array of Interpretable Features to Evaluate Language and Speech Patterns in Different Neurological Disorders. 2022 IEEE Spoken Language Technology Workshop (SLT). IEEE, 2022
-
-```
 ## Further references 📖
 [1] Favaro, A., Motley, S., Samus, Q.M., Butala, A., Dehak, N., Oh, E.S. and Moro-Velazquez, L. (2022), Artificial Intelligence Tools to Evaluate Language and Speech Patterns in Alzheimer's Disease. Alzheimer's Dement., 18: e064913. https://doi.org/10.1002/alz.064913
 
