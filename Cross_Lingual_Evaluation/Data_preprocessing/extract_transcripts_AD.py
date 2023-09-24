@@ -5,7 +5,6 @@ output_folder = '/export/b16/afavaro/PARKCELEB/experiments_english3/longitudinal
 
 import os
 import whisper
-torch.cuda.is_available()
 
 path_audios = [os.path.join(base, elem) for elem in os.listdir(base)]
 
