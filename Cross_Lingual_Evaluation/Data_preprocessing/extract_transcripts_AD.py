@@ -6,7 +6,7 @@ output_folder = '/export/b16/afavaro/PARKCELEB/experiments_english3/longitudinal
 import os
 import whisper
 
-path_audios = [os.path.join(base, elem) for elem in os.listdir(base)]
+path_audios = [os.path.join(base, elem) for elem in os.listdir(base)][1384:]
 
 print(len(path_audios))
 # extract and save transcripts in text files.
