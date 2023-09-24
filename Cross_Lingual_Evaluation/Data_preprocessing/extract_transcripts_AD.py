@@ -1,7 +1,7 @@
 # base input directory containing recordings to transcribe.
 base = '/export/b16/afavaro/PARKCELEB/experiments_english3/longitudinal_study/data/after_5/'
 # output directory where to save speech transcripts.
-output_folder = '/export/b16/afavaro/PARKCELEB/experiments_english3/longitudinal_study/transcripts/5_after/'
+output_folder = '/export/b16/afavaro/PARKCELEB/experiments_english3/longitudinal_study/transcripts/after_5/'
 
 import os
 import whisper
