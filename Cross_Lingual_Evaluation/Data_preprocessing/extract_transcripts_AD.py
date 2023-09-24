@@ -1,28 +1,17 @@
 # base input directory containing recordings to transcribe.
-base = '/export/c12/afavaro/Phonological model/all_recordings/'
+base = '/export/b16/afavaro/PARKCELEB/experiments_english3/longitudinal_study/data/after_5/'
 # output directory where to save speech transcripts.
-output_folder = '/export/c12/afavaro/Phonological model/all_transcripts/'
+output_folder = '/export/b16/afavaro/PARKCELEB/experiments_english3/longitudinal_study/transcripts/5_after/'
 
 import os
 import whisper
-print("CIAOAOO")
+torch.cuda.is_available()
 
+path_audios = [os.path.join(base, elem) for elem in os.listdir(base)]
 
-path_audiods = [os.path.join(base, elem) for elem in os.listdir(base)]
-path_tr = [os.path.join(output_folder, elem) for elem in os.listdir(output_folder)]
-##
-names_tr = [os.path.basename(elem).split(".txt")[0] for elem in path_tr]
-names_audio = [os.path.basename(elem).split(".wav")[0] for elem in path_audiods]
-##
-all_names = list(set(names_tr) ^ set(names_audio))
-all_names_complete = [os.path.join(base, elem + ".wav") for elem in all_names]
-
-
-all_names_complete = all_names_complete ## change later
-print(len(all_names_complete))
-print("done")
+print(len(path_audios))
 # extract and save transcripts in text files.
-for num, i in enumerate(all_names_complete):
+for num, i in enumerate(path_audios):
     print(num)
     print(i)
     model = whisper.load_model("base")
