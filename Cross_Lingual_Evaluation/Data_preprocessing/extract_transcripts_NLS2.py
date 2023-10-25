@@ -1,5 +1,5 @@
 # base input directory containing recordings to transcribe.
-base = '/export/b16/afavaro/PARKCELEB/experiments_english3/longitudinal_study/data/after_10_above/'
+base = '/export/b16/afavaro/PARKCELEB/experiments_english3/longitudinal_study/data/NEW_PD/after_10_above/'
 # output directory where to save speech transcripts.
 output_folder = '/export/b16/afavaro/PARKCELEB/experiments_english3/longitudinal_study/transcripts/after_10_above/'
 
