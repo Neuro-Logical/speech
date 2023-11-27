@@ -11,10 +11,10 @@ model = whisperx.load_model("small", device)
 one = '/export/b15/afavaro/Trevor_paper/speech_16_2/'
 tots = [elem.split(".wav")[0] for elem in os.listdir(one)]
 #two = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx'
-#tots_1 = [elem.split(".csv")[0] for elem in os.listdir(two)]
+##tots_1 = [elem.split(".csv")[0] for elem in os.listdir(two)]
 
 tot_wc = []
-for m in tots_1:
+for m in tots:
     if "SecuencestroopPrevious" in m:
         tot_wc.append(m)
     if "WordColor" in m:
