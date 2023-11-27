@@ -13,19 +13,19 @@ tots = [elem.split(".wav")[0] for elem in os.listdir(one)]
 #two = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx'
 ##tots_1 = [elem.split(".csv")[0] for elem in os.listdir(two)]
 
-tot_wc = []
-for m in tots:
-    if "SecuencestroopPrevious" in m:
-        tot_wc.append(m)
-    if "WordColor" in m:
-        tot_wc.append(m)
-
-files = (set(tots) ^ set(tot_wc))
-files = [os.path.join(one, file + ".wav") for file in files]
-
+#tot_wc = []
+#for m in tots:
+#    if "SecuencestroopPrevious" in m:
+#        tot_wc.append(m)
+#    if "WordColor" in m:
+#        tot_wc.append(m)
+#
+#files = (set(tots) ^ set(tot_wc))
+#files = [os.path.join(one, file + ".wav") for file in files]
+#
 
 files_new = []
-for m in files:
+for m in tots:
     size = os.stat(m).st_size / 1000
     if size > 56:
         if os.path.exists(m) == True:
