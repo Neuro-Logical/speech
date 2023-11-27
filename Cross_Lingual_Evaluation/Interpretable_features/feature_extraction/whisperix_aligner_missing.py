@@ -9,7 +9,8 @@ device = "cpu"
 model = whisperx.load_model("small", device)
 
 one = '/export/b15/afavaro/Trevor_paper/speech_16_2/'
-tots = [elem.split(".wav")[0] for elem in os.listdir(one)]
+files = [os.path.join(one, elem) for elem in os.listdir(one)]
+#tots = [elem.split(".wav")[0] for elem in os.listdir(one)]
 #two = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx'
 ##tots_1 = [elem.split(".csv")[0] for elem in os.listdir(two)]
 
