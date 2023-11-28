@@ -8,7 +8,7 @@ import pandas as pd
 device = "cpu"
 model = whisperx.load_model("small", device)
 
-one = '/export/b01/afavaro/tmeyer_alignment/audio_all/'
+one = '/export/b01/afavaro/tmeyer_new_output/tmeyer_resampled_audios/'
 files = [os.path.join(one, elem) for elem in os.listdir(one)]
 #tots = [elem.split(".wav")[0] for elem in os.listdir(one)]
 #two = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx'
