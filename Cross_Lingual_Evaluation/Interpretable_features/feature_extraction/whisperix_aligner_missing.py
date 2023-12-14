@@ -1,5 +1,6 @@
 OUT_PATH = '/export/b01/afavaro/tmeyer_new_output/tmeyer_alignment_all2/'
 
+
 import sys
 sys.path.append("/export/c07/afavaro/whisperX")
 import whisperx
