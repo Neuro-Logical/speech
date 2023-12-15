@@ -34,7 +34,7 @@ for m in files:
             files_new.append(m)
 print(len(files_new))
 
-for audio in files_new[445:]:
+for audio in files_new:
     print(audio)
     text =[]
     time_stamps = []
