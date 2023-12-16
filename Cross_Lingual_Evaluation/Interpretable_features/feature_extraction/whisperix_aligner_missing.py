@@ -10,8 +10,7 @@ device = "cpu"
 model = whisperx.load_model("small", device)
 
 files = [
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_100_ses01_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_100_ses01_SecuenceStroopPrevious2.wav']
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_100_ses01_SecuenceStroopPrevious1.wav']
 
 
 
