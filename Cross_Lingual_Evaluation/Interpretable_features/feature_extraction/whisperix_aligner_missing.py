@@ -9,8 +9,42 @@ import pandas as pd
 device = "cpu"
 model = whisperx.load_model("small", device)
 
-one = '/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/'
-files = [os.path.join(one, elem) for elem in os.listdir(one)]
+files = ['/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/PEC_063_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_058_ses01_SecuenceStroopPrevious2.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_167_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_101_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/AD_020_ses02_SecuenceStroopPrevious2.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_033_ses01_SecuenceStroopPrevious2.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_113_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_062_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_169_ses01_Wordcolor.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_108_ses01_SecuenceStroopPrevious2.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_094_ses01_Wordcolor.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_094_ses01_SecuenceStroopPrevious2.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_022_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_007_ses02_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/PEC_011_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/AD_026_ses01_SecuenceStroopPrevious2.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/AD_024_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_083_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_081_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_054_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_121_ses02_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_035_ses01_SecuenceStroopPrevious2.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/PEC_041_ses01_SecuenceStroopPrevious2.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_126_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_100_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_094_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_080_ses02_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_079_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_035_ses01_SecuenceStroopPrevious1.wav'
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_031_ses01_SecuenceStroopPrevious2.wav']
+
+
+
+
+#one = '/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/'
+#files = [os.path.join(one, elem) for elem in os.listdir(one)]
 #tots = [elem.split(".wav")[0] for elem in os.listdir(one)]
 #two = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx'
 ##tots_1 = [elem.split(".csv")[0] for elem in os.listdir(two)]
@@ -34,7 +68,7 @@ for m in files:
             files_new.append(m)
 print(len(files_new))
 
-for audio in files_new[625:]:
+for audio in files_new:
     print(audio)
     text =[]
     time_stamps = []
