@@ -10,34 +10,10 @@ device = "cpu"
 model = whisperx.load_model("small", device)
 
 files = [
-
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_035_ses01_SecuenceStroopPrevious2.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_079_ses01_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_080_ses02_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_094_ses01_SecuenceStroopPrevious1.wav',
 '/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_100_ses01_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_126_ses01_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_169_ses01_Wordcolor.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_101_ses01_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_094_ses01_Wordcolor.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_054_ses01_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_094_ses01_SecuenceStroopPrevious2.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_058_ses01_SecuenceStroopPrevious2.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_035_ses01_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/AD_026_ses01_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/PEC_049_ses01_SecuenceStroopPrevious2.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_081_ses01_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/PEC_017_ses01_SecuenceStroopPrevious2.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_069_ses01_SecuenceStroopPrevious2.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_119_ses01_SecuenceStroopPrevious2.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_022_ses01_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/PEC_063_ses01_Wordcolor.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_003_ses02_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/AD_005_ses01_SecuenceStroopPrevious2.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/PEC_035_ses01_SecuenceStroopPrevious2.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/PEC_035_ses01_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_044_ses01_SecuenceStroopPrevious2.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/PEC_026_ses01_SecuenceStroopPrevious1.wav']
+'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_100_ses01_SecuenceStroopPrevious2.wav']
+
+
 
 #one = '/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/'
 #files = [os.path.join(one, elem) for elem in os.listdir(one)]
