@@ -16,7 +16,7 @@ files = [os.path.join(one, elem) for elem in os.listdir(one)]
 files_new = []
 for m in files:
     size = os.stat(m).st_size / 1000
-    if size > 56:
+    if size > 70:
         if os.path.exists(m) == True:
             files_new.append(m)
 #print(len(files_new))
