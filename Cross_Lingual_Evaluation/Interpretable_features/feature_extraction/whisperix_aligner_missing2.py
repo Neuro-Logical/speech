@@ -23,8 +23,7 @@ for m in files:
 
 for audio_file in files_new:
 
-    import gc
-    batch_size = 16  # reduce if low on GPU mem
+    base_name = os.path.basename(audio_file).split(".wav")[0]
 
     # 1. Transcribe with original whisper (batched)
     model = whisperx.load_model("medium", device, compute_type=compute_type)
@@ -40,10 +39,4 @@ for audio_file in files_new:
     model_a, metadata = whisperx.load_align_model(language_code=result["language"], device=device)
     result = whisperx.align(result["segments"], model_a, metadata, audio, device, return_char_alignments=False)
 
-    print(result["segments"])  # after alignment
-
-
-
-
-   # data = pd.DataFrame({'word': text, 'time_stamps': time_stamps})
-   # data.to_csv(os.path.join(OUT_PATH, base_name + ".csv"))
+    result["segments"].to_csv(os.path.join(OUT_PATH, base_name + ".csv"))
