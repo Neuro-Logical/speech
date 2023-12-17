@@ -1,4 +1,4 @@
-OUT_PATH = '/export/b01/afavaro/tmeyer_new_output/tmeyer_alignment_all2/'
+OUT_PATH = '/data/lmorove1/afavaro/data/others/trevor_alignment/'
 
 
 import sys
@@ -7,22 +7,11 @@ import whisperx
 import os
 import pandas as pd
 device = "cpu"
-model = whisperx.load_model("small", device)
-
-files = [
-
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_058_ses01_SecuenceStroopPrevious2.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/AD_026_ses01_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/PEC_063_ses01_Wordcolor.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_084_ses01_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/AD_024_ses01_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/NLS_114_ses01_SecuenceStroopPrevious1.wav',
-'/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/PEC_018_ses01_SecuenceStroopPrevious1.wav']
+model = whisperx.load_model("medium", device)
 
 
-
-#one = '/export/b01/afavaro/tmeyer_new_output/tmeyer_ressampled_norm_audios/'
-#files = [os.path.join(one, elem) for elem in os.listdir(one)]
+one = '/data/lmorove1/afavaro/data/others/trevor_audios/'
+files = [os.path.join(one, elem) for elem in os.listdir(one)]
 #tots = [elem.split(".wav")[0] for elem in os.listdir(one)]
 #two = '/export/c12/afavaro/New_NLS/NLS_Speech_Data_Word_Alignment_whisperx'
 ##tots_1 = [elem.split(".csv")[0] for elem in os.listdir(two)]
@@ -38,15 +27,15 @@ files = [
 #files = [os.path.join(one, file + ".wav") for file in files]
 #
 
-files_new = []
-for m in files:
-    size = os.stat(m).st_size / 1000
-    if size > 56:
-        if os.path.exists(m) == True:
-            files_new.append(m)
-print(len(files_new))
+#files_new = []
+#for m in files:
+#    size = os.stat(m).st_size / 1000
+#    if size > 56:
+#        if os.path.exists(m) == True:
+#            files_new.append(m)
+#print(len(files_new))
 
-for audio in files_new:
+for audio in files:
     print(audio)
     text =[]
     time_stamps = []
