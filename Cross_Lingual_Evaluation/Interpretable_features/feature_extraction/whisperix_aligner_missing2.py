@@ -17,7 +17,7 @@ files = [os.path.join(one, elem) for elem in os.listdir(one)]
 files_new = []
 for m in files:
     size = os.stat(m).st_size / 1000
-    if size > 70:
+    if size > 56:
         if os.path.exists(m) == True:
             files_new.append(m)
 #print(len(files_new))
@@ -27,7 +27,7 @@ for audio_file in files_new:
     base_name = os.path.basename(audio_file).split(".wav")[0]
 
     # 1. Transcribe with original whisper (batched)
-    model = whisperx.load_model("medium", device, compute_type=compute_type)
+    model = whisperx.load_model("large-v2", device, compute_type=compute_type)
 
     audio = whisperx.load_audio(audio_file)
     result = model.transcribe(audio, batch_size=batch_size)
