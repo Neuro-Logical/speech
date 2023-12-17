@@ -6,7 +6,7 @@ sys.path.append("/export/c07/afavaro/whisperX")
 import whisperx
 import os
 import pandas as pd
-device = "cpu"
+device = "cuda"
 model = whisperx.load_model("medium", device)
 
 
