@@ -7,7 +7,7 @@ import whisperx
 import os
 import pandas as pd
 device = "cuda"
-model = whisperx.load_model("medium", device)
+model = whisperx.load_model("small", device)
 
 
 one = '/data/lmorove1/afavaro/data/others/trevor_audios/'
@@ -35,7 +35,7 @@ for m in files:
             files_new.append(m)
 #print(len(files_new))
 
-for audio in files:
+for audio in files_new:
     print(audio)
     text =[]
     time_stamps = []
