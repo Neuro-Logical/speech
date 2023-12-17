@@ -5,7 +5,8 @@ import sys
 sys.path.append("/export/c07/afavaro/whisperX")
 import whisperx
 import os
-import pandas as pd
+import json
+
 device = "cuda"
 batch_size = 16  # reduce if low on GPU mem
 compute_type = "float16"
@@ -38,5 +39,7 @@ for audio_file in files_new:
     # 2. Align whisper output
     model_a, metadata = whisperx.load_align_model(language_code=result["language"], device=device)
     result = whisperx.align(result["segments"], model_a, metadata, audio, device, return_char_alignments=False)
-
-    result["segments"].to_csv(os.path.join(OUT_PATH, base_name + ".csv"))
+    json_path = os.path.join(OUT_PATH, base_name + ".json")
+    #result["segments"].to_csv(os.path.join(OUT_PATH, base_name + ".csv"))
+    with open(json_path, "w") as outfile:
+        json.dump(result, outfile)
