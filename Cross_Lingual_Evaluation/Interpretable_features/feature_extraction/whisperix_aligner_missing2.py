@@ -1,4 +1,4 @@
-OUT_PATH = '/data/lmorove1/afavaro/data/others/trevor_alignment/'
+OUT_PATH = '/export/b01/afavaro/tmeyer_new_output/redo_align/'
 
 
 import sys
@@ -11,7 +11,7 @@ device = "cuda"
 batch_size = 16  # reduce if low on GPU mem
 compute_type = "float16"
 
-one = '/data/lmorove1/afavaro/data/others/trevor_audios/'
+one = '/export/b01/afavaro/tmeyer_alignment/redo_align/'
 files = [os.path.join(one, elem) for elem in os.listdir(one)]
 
 files_new = []
@@ -23,7 +23,6 @@ for m in files:
 #print(len(files_new))
 
 for audio_file in files_new:
-
     base_name = os.path.basename(audio_file).split(".wav")[0]
 
     # 1. Transcribe with original whisper (batched)
