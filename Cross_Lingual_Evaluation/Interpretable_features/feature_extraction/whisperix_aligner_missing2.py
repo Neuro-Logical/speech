@@ -1,4 +1,4 @@
-OUT_PATH = '/export/b01/afavaro/tmeyer_new_output/redo_align/'
+OUT_PATH = '/data/lmorove1/afavaro/data/others/redo_all/alignment/'
 
 
 import sys
@@ -11,7 +11,7 @@ device = "cuda"
 batch_size = 16  # reduce if low on GPU mem
 compute_type = "float16"
 
-one = '/export/b01/afavaro/tmeyer_alignment/redo_align/'
+one = '/data/lmorove1/afavaro/data/others/redo_all/redo_all/'
 files = [os.path.join(one, elem) for elem in os.listdir(one)]
 
 files_new = []
