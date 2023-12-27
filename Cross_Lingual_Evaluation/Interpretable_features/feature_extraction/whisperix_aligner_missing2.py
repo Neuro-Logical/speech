@@ -1,6 +1,5 @@
 OUT_PATH = '/data/lmorove1/afavaro/data/others/redo_all/alignment/'
 
-
 import sys
 sys.path.append("/export/c07/afavaro/whisperX")
 import whisperx
