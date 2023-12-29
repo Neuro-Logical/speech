@@ -1,4 +1,4 @@
-OUT_PATH = '/scratch4/lmorove1/afavaro/nls_experiments/all_audio_not_refined/out_diarization_all/'
+OUT_PATH = '/scratch4/lmorove1/afavaro/nls_experiments/Word_Color/out_diarization_all/'
 
 import json
 import os
@@ -10,7 +10,7 @@ batch_size = 16  # reduce if low on GPU mem
 compute_type = "float16"
 model = whisperx.load_model("large-v2", device, compute_type=compute_type)
 
-one = '/scratch4/lmorove1/afavaro/nls_experiments/all_audio_not_refined/all_audio_not_refined/'
+one = '/scratch4/lmorove1/afavaro/nls_experiments/Word_Color/audio/'
 files = [os.path.join(one, elem) for elem in os.listdir(one)]
 
 files_new = []
