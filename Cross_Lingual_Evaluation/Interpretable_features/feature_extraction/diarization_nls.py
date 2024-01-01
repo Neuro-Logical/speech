@@ -1,4 +1,4 @@
-OUT_PATH = '/scratch4/lmorove1/afavaro/nls_experiments/Reading_task/Action/out_diarization_all/'
+OUT_PATH = '/scratch4/lmorove1/afavaro/nls_experiments/Action/out_diarization_all/
 
 import json
 import os
