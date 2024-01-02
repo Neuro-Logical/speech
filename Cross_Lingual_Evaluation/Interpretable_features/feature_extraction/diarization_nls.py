@@ -8,7 +8,7 @@ YOUR_HF_TOKEN = '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'
 device = "cuda"
 batch_size = 16  # reduce if low on GPU mem
 compute_type = "float16"
-model = whisperx.load_model("large", device, compute_type=compute_type)
+model = whisperx.load_model("base.en", device, compute_type=compute_type)
 
 one = '/scratch4/lmorove1/afavaro/nls_experiments/Action/audio/'
 files = [os.path.join(one, elem) for elem in os.listdir(one)]
