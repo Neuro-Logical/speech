@@ -24,7 +24,7 @@ for m in files:
 #ind = files_new.index(path)
 
 for audio_file in files_new:
-    all_sents_list = sorted([os.path.join(transcripts_path, elem) for elem in os.listdir(transcripts_path)])
+    #all_sents_list = sorted([os.path.join(transcripts_path, elem) for elem in os.listdir(transcripts_path)])
     # path = os.path.join(transcripts_path, 'pd113_ses01_CookieThief.txt')
     # ind = all_sents_list.index(path)
     base_name = os.path.basename(audio_file).split(".wav")[0]
