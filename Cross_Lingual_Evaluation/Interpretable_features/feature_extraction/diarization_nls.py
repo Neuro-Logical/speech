@@ -20,7 +20,7 @@ for m in files:
         if os.path.exists(m) == True:
             files_new.append(m)
 
-path = os.path.join(one, 'NLS_089_ses01_Namingaction9.txt')
+path = os.path.join(one, 'NLS_053_ses02_Namingaction6.txt')
 ind = files_new.index(path)
 
 for audio_file in files_new[ind+1:]:
