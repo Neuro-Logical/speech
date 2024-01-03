@@ -20,7 +20,13 @@ for m in files:
         if os.path.exists(m) == True:
             files_new.append(m)
 
+#path = os.path.join(one, 'pd113_ses01_CookieThief.txt')
+#ind = files_new.index(path)
+
 for audio_file in files_new:
+    all_sents_list = sorted([os.path.join(transcripts_path, elem) for elem in os.listdir(transcripts_path)])
+    # path = os.path.join(transcripts_path, 'pd113_ses01_CookieThief.txt')
+    # ind = all_sents_list.index(path)
     base_name = os.path.basename(audio_file).split(".wav")[0]
     print(base_name)
 
