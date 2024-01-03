@@ -21,7 +21,7 @@ for m in files:
             files_new.append(m)
 
 
-path = os.path.join(one, 'NLS_057_ses01_Namingaction8.wav')
+path = os.path.join(one, 'NLS_096_ses01_Namingaction1.wav')
 ind = files_new.index(path)
 
 for audio_file in files_new[ind+1:]:
