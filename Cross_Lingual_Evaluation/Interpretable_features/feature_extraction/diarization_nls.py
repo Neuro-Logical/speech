@@ -20,7 +20,6 @@ for m in files:
         if os.path.exists(m) == True:
             files_new.append(m)
 
-
 path = os.path.join(one, 'PEC_048_ses01_Namingaction1.wav')
 ind = files_new.index(path)
 
